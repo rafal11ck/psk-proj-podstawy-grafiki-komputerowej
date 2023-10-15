@@ -1,7 +1,10 @@
 #ifndef ENGINE_HPP_
 #define ENGINE_HPP_
 
+#include "point2d.hpp"
+#include "primitiveRenderer.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Time.hpp>
 #include <iostream>
 
 /**
@@ -10,12 +13,20 @@
  *Singleton class.
  * */
 class Engine {
+  friend PrimitiveRenderer;
+
   using mainWindow_t = sf::RenderWindow;
 
 public:
   /**
    * @brief Engine getter. */
   static Engine &getEngine();
+
+  /**
+   * @brief Get out stream */
+  std::ostream &getOutStream();
+
+  Point2d getWindowDimensions() const;
 
   /**
    * @brief Sets max framerate of m_mainWindow */
@@ -39,6 +50,9 @@ private:
    * Window.
    *  */
   mainWindow_t m_mainWindow;
+
+  /** @brief Gaps between ticks. */
+  sf::Time m_tickTimeStep{sf::seconds(1.0f / 30.0f)};
 
   /**
    *@brief Engine constructor. */
