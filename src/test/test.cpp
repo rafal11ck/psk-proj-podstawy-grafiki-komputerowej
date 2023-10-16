@@ -2,7 +2,7 @@
 
 int main() {
   Engine &eng = Engine::getEngine();
-  eng.setMaxFrameRate(75);
+  eng.setMaxFrameRate(30);
 
   eng.loop();
 }

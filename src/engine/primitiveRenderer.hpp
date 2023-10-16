@@ -14,7 +14,13 @@ public:
    * @param color Color of the pixel.
    * */
   static void drawPoint(const Point2d cord, sf::Color color = sf::Color::Red);
-  static void drawLineIterative(Point2d a, Point2d b);
-};
+  static void drawLineIterative(Point2d a, Point2d b,
+                                sf::Color color = sf::Color::Green);
 
+  static void drawLine(Point2d a, Point2d b,
+                       sf::Color color = sf::Color::Green);
+
+  static void drawTriangle(Point2d a, Point2d b, Point2d c,
+                           sf::Color color = sf::Color::Green);
+};
 #endif // PRIMITIVERENDERER_HPP_

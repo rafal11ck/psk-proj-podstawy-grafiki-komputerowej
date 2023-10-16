@@ -34,13 +34,13 @@ void handleEvents(sf::RenderWindow &window) {
  */
 void render(sf::RenderWindow &window) {
   window.clear();
-
-  for (int i{}; i < 500; ++i) {
+  // test pixel draw
+  for (int i{}; i < 200; ++i) {
     PrimitiveRenderer::drawPoint({100 + i, 100});
   }
 
-  Point2d origin{Engine::getEngine().getWindowDimensions().getX() / 2,
-                 Engine::getEngine().getWindowDimensions().getY() / 2};
+  // test drawing lines
+  Point2d origin{100 + 55, 200};
 
   for (auto offset : std::vector<Point2d>{
            {15, -55},  {35, -55},  {55, -55},  {55, -35},  {55, -15},
@@ -49,6 +49,10 @@ void render(sf::RenderWindow &window) {
            {-55, 15},  {-55, 35},  {-55, 55},  {-35, 55},  {-15, 55},
        }) {
     PrimitiveRenderer::drawLineIterative(origin, origin + offset);
+    PrimitiveRenderer::drawLine(origin + 55 * 2, origin + 55 * 2 + offset);
+
+    // triangle
+    PrimitiveRenderer::drawTriangle({100, 260}, {250, 300}, {300, 400});
   }
 
   window.display();
