@@ -1,5 +1,6 @@
 #include "primitiveRenderer.hpp"
 #include "SFML/Graphics/Color.hpp"
+#include "SFML/Graphics/PrimitiveType.hpp"
 #include "SFML/Graphics/Vertex.hpp"
 #include "SFML/System/Vector2.hpp"
 #include "engine.hpp"
@@ -8,7 +9,6 @@
 #include <valarray>
 
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
-
   sf::Image image;
   const auto dimestions{Engine::getEngine().getWindowDimensions()};
 
@@ -62,4 +62,10 @@ void PrimitiveRenderer::drawTriangle(Point2d a, Point2d b, Point2d c,
   drawLineIterative(a, b, color);
   drawLineIterative(b, c, color);
   drawLineIterative(c, a, color);
+}
+
+void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points) {
+  for (int i{}; i < points.size() - 1; ++i) {
+    drawLine(points[i], points[i + 1]);
+  }
 }

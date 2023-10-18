@@ -55,6 +55,8 @@ void render(sf::RenderWindow &window) {
     PrimitiveRenderer::drawTriangle({100, 260}, {250, 300}, {300, 400});
   }
 
+  PrimitiveRenderer::drawLine({{100, 420}, {400, 450}, {300, 500}, {200, 410}});
+
   window.display();
 }
 

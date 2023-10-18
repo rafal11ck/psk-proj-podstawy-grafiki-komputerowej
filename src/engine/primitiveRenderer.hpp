@@ -4,6 +4,7 @@
 #include "SFML/Graphics/Color.hpp"
 #include "point2d.hpp"
 #include <SFML/Graphics/PrimitiveType.hpp>
+#include <vector>
 
 class PrimitiveRenderer {
 
@@ -22,5 +23,7 @@ public:
 
   static void drawTriangle(Point2d a, Point2d b, Point2d c,
                            sf::Color color = sf::Color::Green);
+
+  static void drawLine(const std::vector<Point2d> &points);
 };
 #endif // PRIMITIVERENDERER_HPP_
