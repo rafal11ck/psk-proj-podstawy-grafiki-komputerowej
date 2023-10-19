@@ -1,8 +1,10 @@
 #ifndef LINESEGMENT_HPP_
 #define LINESEGMENT_HPP_
 
+#include "drawable.hpp"
 #include "point2d.hpp"
-class LineSegment {
+
+class LineSegment : Drawable {
   Point2d m_a;
   Point2d m_b;
 

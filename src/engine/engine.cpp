@@ -29,11 +29,10 @@ void handleEvents(sf::RenderWindow &window) {
   }
 }
 
-/**
- * @brief Render stuff
- */
-void render(sf::RenderWindow &window) {
+void Engine::render() {
+  auto &window = m_mainWindow;
   window.clear();
+
   // test pixel draw
   for (int i{}; i < 200; ++i) {
     PrimitiveRenderer::drawPoint({100 + i, 100});
@@ -50,12 +49,15 @@ void render(sf::RenderWindow &window) {
        }) {
     PrimitiveRenderer::drawLineIterative(origin, origin + offset);
     PrimitiveRenderer::drawLine(origin + 55 * 2, origin + 55 * 2 + offset);
-
     // triangle
     PrimitiveRenderer::drawTriangle({100, 260}, {250, 300}, {300, 400});
   }
 
   PrimitiveRenderer::drawLine({{100, 420}, {400, 450}, {300, 500}, {200, 410}});
+
+  for (auto &drawAble : m_rendererDrawables) {
+    drawAble->draw();
+  }
 
   window.display();
 }
@@ -81,7 +83,7 @@ void Engine::loop() {
     }
 
     // render
-    render(window);
+    render();
   }
 
   m_outStream << "Engine loop done\n";
@@ -92,4 +94,10 @@ Engine::Engine(sf::VideoMode mode, std::string title) { init(mode, title); };
 void Engine::init(sf::VideoMode mode, std::string title) {
   m_outStream << "Engine init\n";
   m_mainWindow.create(mode, title);
+}
+
+Engine::~Engine() {
+  for (auto it : m_rendererDrawables) {
+    delete it;
+  }
 }

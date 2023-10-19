@@ -1,11 +1,15 @@
 #ifndef ENGINE_HPP_
 #define ENGINE_HPP_
 
+#include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Time.hpp>
 #include <iostream>
+#include <list>
+#include <map>
+#include <vector>
 
 /**
  *@brief Engine.
@@ -14,6 +18,11 @@
  * */
 class Engine {
   friend PrimitiveRenderer;
+
+private:
+  /**
+   *@brief Collection of objects that will be drawn */
+  std::list<Drawable *> m_rendererDrawables;
 
   using mainWindow_t = sf::RenderWindow;
 
@@ -33,10 +42,17 @@ public:
   void setMaxFrameRate(int fps);
 
   /**
+   * @brief Render stuff
+   */
+  void render();
+
+  /**
    * @brief main loop */
   void loop();
 
 private:
+  ~Engine();
+
   /**
    * @brief member instance. */
   static Engine s_singletonInstance;
@@ -61,6 +77,30 @@ private:
   /**
    * @brief Initialize main window */
   void init(sf::VideoMode mode, std::string title);
+
+  /**
+   *@brief Add drawable
+   *@param drawable Drawable that will be added.
+   *@return Iterator.
+   *
+   *@note Iterator can be used to remove drawable added.
+   **/
+  const std::list<Drawable *>::iterator addDrawable(Drawable *drawable) {
+    m_rendererDrawables.push_back(drawable);
+    auto it{m_rendererDrawables.end()};
+    --it;
+
+    return it;
+  }
+
+  /**
+   *@brief Remove drawable
+   *@param it Iterator to drawable to be removed
+   *
+   **/
+  void removeDrawable(const std::list<Drawable *>::iterator it) {
+    m_rendererDrawables.erase(it);
+  }
 };
 
 #endif // ENGINE_HPP_
