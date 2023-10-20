@@ -9,6 +9,8 @@
 
 Engine Engine::s_singletonInstance{Engine()};
 
+sf::Color PrimitiveRenderer::getDefaultColor() { return s_defaultColor; }
+
 Engine &Engine::getEngine() { return s_singletonInstance; }
 
 std::ostream &Engine::getOutStream() { return m_outStream; };
@@ -19,7 +21,7 @@ Point2d Engine::getWindowDimensions() const {
 
 void Engine::setMaxFrameRate(int fps) { m_mainWindow.setFramerateLimit(fps); }
 
-void handleEvents(sf::RenderWindow &window) {
+void Engine::handleWindowEvents(sf::RenderWindow &window) {
   for (auto event = sf::Event{}; window.pollEvent(event);) {
     if (event.type == sf::Event::Closed) {
       window.close();
@@ -50,7 +52,8 @@ void Engine::render() {
     PrimitiveRenderer::drawLineIterative(origin, origin + offset);
     PrimitiveRenderer::drawLine(origin + 55 * 2, origin + 55 * 2 + offset);
     // triangle
-    PrimitiveRenderer::drawTriangle({100, 260}, {250, 300}, {300, 400});
+    PrimitiveRenderer::drawLine({{100, 260}, {250, 300}, {300, 400}},
+                                PrimitiveRenderer::getDefaultColor(), true);
   }
 
   PrimitiveRenderer::drawLine({{100, 420}, {400, 450}, {300, 500}, {200, 410}});
@@ -73,7 +76,7 @@ void Engine::loop() {
 
   while (window.isOpen()) {
     // handleEvents
-    handleEvents(window);
+    handleWindowEvents(window);
 
     dTime += clock.restart();
     while (dTime >= m_tickTimeStep) {

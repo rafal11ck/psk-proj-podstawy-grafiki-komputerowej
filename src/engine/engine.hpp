@@ -37,6 +37,8 @@ public:
 
   Point2d getWindowDimensions() const;
 
+  void handleWindowEvents(sf::RenderWindow &window);
+
   /**
    * @brief Sets max framerate of m_mainWindow */
   void setMaxFrameRate(int fps);

@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include <valarray>
 
+sf::Color PrimitiveRenderer::s_defaultColor{sf::Color::Red};
+
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
   sf::Image image;
   const auto dimestions{Engine::getEngine().getWindowDimensions()};
@@ -57,15 +59,11 @@ void PrimitiveRenderer::drawLine(Point2d a, Point2d b, sf::Color color) {
   Engine::getEngine().m_mainWindow.draw(line, 2, sf::Lines);
 }
 
-void PrimitiveRenderer::drawTriangle(Point2d a, Point2d b, Point2d c,
-                                     sf::Color color) {
-  drawLineIterative(a, b, color);
-  drawLineIterative(b, c, color);
-  drawLineIterative(c, a, color);
-}
-
-void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points) {
+void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points,
+                                 sf::Color color, bool lastToFirst) {
   for (int i{}; i < points.size() - 1; ++i) {
     drawLine(points[i], points[i + 1]);
   }
+  if (lastToFirst)
+    drawLine(points[0], points.back());
 }
