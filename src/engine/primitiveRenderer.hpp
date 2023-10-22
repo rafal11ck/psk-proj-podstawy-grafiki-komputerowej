@@ -24,13 +24,16 @@ public:
                                 sf::Color color = sf::Color::Green);
 
   /**
-   *@brief
+   *@brief Draw Line
+   *@param a Point a of the line.
+   *@param b Point b of the line
+   *@param color Color of the line.
    **/
   static void drawLine(Point2d a, Point2d b,
                        sf::Color color = sf::Color::Green);
 
   /**
-   *@brief Draws a line that goes from point to point
+   *@brief Draw a line that goes from point to point
    *@param points Points that line goes through
    *@param color Color
    *@param lastToFirst If true draw line from last point to first
