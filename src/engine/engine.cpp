@@ -1,106 +1,84 @@
+
 #include "engine.hpp"
-#include "point2d.hpp"
-#include "primitiveRenderer.hpp"
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/System/Time.hpp>
-#include <SFML/Window/Event.hpp>
-#include <string_view>
+#include "SFML/Window/Event.hpp"
+#include "SFML/Window/VideoMode.hpp"
+#include <iostream>
 
-Engine Engine::s_singletonInstance{Engine()};
+#define LOGTRACE                                                               \
+  Engine::s_logStream << __FILE_NAME__ << " " << __PRETTY_FUNCTION__ << '\n';
 
-sf::Color PrimitiveRenderer::getDefaultColor() { return s_defaultColor; }
+#define LOGINFO                                                                \
+  Engine::s_logStream << "\033[35m" << __FILE_NAME__ << " "                    \
+                      << __PRETTY_FUNCTION__ << "\033[0m\n";
 
-Engine &Engine::getEngine() { return s_singletonInstance; }
+std::ostream &Engine::s_logStream{std::cerr};
 
-std::ostream &Engine::getOutStream() { return m_outStream; };
+Engine *Engine::s_instancePtr{nullptr};
 
-Point2d Engine::getWindowDimensions() const {
-  return {m_mainWindow.getSize().x, m_mainWindow.getSize().y};
+Engine::Engine() {}
+Engine::~Engine() {}
+
+Engine &Engine::getInstance() {
+  if (s_instancePtr == nullptr)
+    s_instancePtr = new Engine;
+  return *s_instancePtr;
 }
 
-void Engine::setMaxFrameRate(int fps) { m_mainWindow.setFramerateLimit(fps); }
+Engine &Engine::setMaxFps(int fps) {
+  LOGINFO
+  m_maxFPS = fps;
+  m_window.setFramerateLimit(fps);
+  return getInstance();
+}
 
-void Engine::handleWindowEvents(sf::RenderWindow &window) {
-  for (auto event = sf::Event{}; window.pollEvent(event);) {
-    if (event.type == sf::Event::Closed) {
-      window.close();
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-      window.close();
+Engine &Engine::setWindowTitle(std::string_view title) {
+  LOGINFO
+  m_windowTitle = title;
+  return getInstance();
+}
+
+Engine &Engine::setResolution(Point2d resolution) {
+  LOGINFO
+  m_resoltuon = resolution;
+  return getInstance();
+}
+
+Engine &Engine::buildWindow() {
+  LOGINFO
+  m_window.create({static_cast<unsigned int>(m_resoltuon.getX()),
+                   static_cast<unsigned int>(m_resoltuon.getY())},
+                  m_windowTitle);
+  m_window.setFramerateLimit(m_maxFPS);
+  return getInstance();
+}
+
+Point2d Engine::getResolution() const {
+  LOGINFO
+  return m_resoltuon;
+}
+
+void Engine::handleEvents() {
+  LOGTRACE
+  sf::Event event;
+  while (m_window.pollEvent(event)) {
+    if (event.type == sf::Event::Closed)
+      m_window.close();
   }
 }
+
+void Engine::clear() { m_window.clear(); }
 
 void Engine::render() {
-  auto &window = m_mainWindow;
-  window.clear();
+  LOGTRACE
 
-  // test pixel draw
-  for (int i{}; i < 200; ++i) {
-    PrimitiveRenderer::drawPoint({100 + i, 100});
-  }
-
-  // test drawing lines
-  Point2d origin{100 + 55, 200};
-
-  for (auto offset : std::vector<Point2d>{
-           {15, -55},  {35, -55},  {55, -55},  {55, -35},  {55, -15},
-           {55, 15},   {55, 35},   {55, 55},   {35, 55},   {15, 55},
-           {-15, -55}, {-35, -55}, {-55, -55}, {-55, -35}, {-55, -15},
-           {-55, 15},  {-55, 35},  {-55, 55},  {-35, 55},  {-15, 55},
-       }) {
-    PrimitiveRenderer::drawLineIterative(origin, origin + offset);
-    PrimitiveRenderer::drawLine(origin + 55 * 2, origin + 55 * 2 + offset);
-    // triangle
-    PrimitiveRenderer::drawLine({{100, 260}, {250, 300}, {300, 400}},
-                                PrimitiveRenderer::getDefaultColor(), true);
-  }
-
-  PrimitiveRenderer::drawLine({{100, 420}, {400, 450}, {300, 500}, {200, 410}});
-
-  for (auto &drawAble : m_rendererDrawables) {
-    drawAble->draw();
-  }
-
-  window.display();
+  m_window.display();
 }
 
 void Engine::loop() {
-  m_outStream << "Engine loop\n";
-  auto &window = m_mainWindow;
-
-  // Clock for ticks.
-  sf::Clock clock{};
-  // Difference in time accumulator.
-  sf::Time dTime{};
-
-  while (window.isOpen()) {
-    // handleEvents
-    handleWindowEvents(window);
-
-    dTime += clock.restart();
-    while (dTime >= m_tickTimeStep) {
-      dTime -= m_tickTimeStep;
-
-      // doLogic();
-    }
-
-    // render
+  LOGINFO
+  while (m_window.isOpen()) {
+    handleEvents();
+    clear();
     render();
-  }
-
-  m_outStream << "Engine loop done\n";
-}
-
-Engine::Engine(sf::VideoMode mode, std::string title) { init(mode, title); };
-
-void Engine::init(sf::VideoMode mode, std::string title) {
-  m_outStream << "Engine init\n";
-  m_mainWindow.create(mode, title);
-}
-
-Engine::~Engine() {
-  for (auto it : m_rendererDrawables) {
-    delete it;
   }
 }

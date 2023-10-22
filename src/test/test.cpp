@@ -1,8 +1,9 @@
 #include "engine.hpp"
 
 int main() {
-  Engine &eng = Engine::getEngine();
-  eng.setMaxFrameRate(60);
+  Engine &eng =
+      Engine::getInstance().setWindowTitle("dev").setMaxFps(1).buildWindow();
 
+  eng.setMaxFps(1);
   eng.loop();
 }

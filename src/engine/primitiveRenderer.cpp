@@ -12,7 +12,7 @@ sf::Color PrimitiveRenderer::s_defaultColor{sf::Color::Red};
 
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
   sf::Image image;
-  const auto dimestions{Engine::getEngine().getWindowDimensions()};
+  const auto dimestions{Engine::getInstance().getResolution()};
 
   image.create(1, 1, color);
 
@@ -22,7 +22,7 @@ void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
   sf::Sprite sprite(texture);
   sprite.setPosition(cord.getX(), cord.getY());
 
-  Engine::getEngine().m_mainWindow.draw(sprite);
+  Engine::getInstance().m_window.draw(sprite);
 }
 
 void PrimitiveRenderer::drawLineIterative(Point2d a, Point2d b,
@@ -56,7 +56,7 @@ void PrimitiveRenderer::drawLine(Point2d a, Point2d b, sf::Color color) {
   sf::Vertex line[] = {sf::Vertex(sf::Vector2f(a.getX(), a.getY())),
                        sf::Vertex(sf::Vector2f(b.getX(), b.getY()))};
 
-  Engine::getEngine().m_mainWindow.draw(line, 2, sf::Lines);
+  Engine::getInstance().m_window.draw(line, 2, sf::Lines);
 }
 
 void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points,

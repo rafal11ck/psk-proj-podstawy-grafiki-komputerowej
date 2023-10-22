@@ -1,108 +1,83 @@
 #ifndef ENGINE_HPP_
 #define ENGINE_HPP_
 
+#include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Window/VideoMode.hpp"
+#include "SFML/Window/Window.hpp"
+#include "SFML/Window/WindowStyle.hpp"
 #include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Time.hpp>
-#include <iostream>
 #include <list>
-#include <map>
-#include <vector>
 
-/**
- *@brief Engine.
- *
- *Singleton class.
- * */
 class Engine {
+public:
   friend PrimitiveRenderer;
 
 private:
-  /**
-   *@brief Collection of objects that will be drawn */
-  std::list<Drawable *> m_rendererDrawables;
+  /** @brief Pointer to the instance.
+   */
+  static Engine *s_instancePtr;
 
-  using mainWindow_t = sf::RenderWindow;
+  /** @brief Window to draw stuff on.
+   */
+  sf::RenderWindow m_window{};
+  /** @brief Resolution of the window.
+   */
+  Point2d m_resoltuon{800, 800};
+  /** @brief Window title.
+   */
+  std::string m_windowTitle{"dev"};
+  /**
+   *@brief max fps
+   **/
+  int m_maxFPS{60};
+
+  /** @brief Renderable objects collection, it will be rendered.
+   */
+  std::list<Drawable *> m_renderables;
+
+  static std::ostream &s_logStream;
 
 public:
-  /**
-   * @brief Engine getter. */
-  static Engine &getEngine();
-
-  /**
-   * @brief Get out stream */
-  std::ostream &getOutStream();
-
-  Point2d getWindowDimensions() const;
-
-  void handleWindowEvents(sf::RenderWindow &window);
-
-  /**
-   * @brief Sets max framerate of m_mainWindow */
-  void setMaxFrameRate(int fps);
-
-  /**
-   * @brief Render stuff
-   */
-  void render();
-
-  /**
-   * @brief main loop */
-  void loop();
-
-private:
+  Engine();
   ~Engine();
 
-  /**
-   * @brief member instance. */
-  static Engine s_singletonInstance;
+  /** @brief Instance getter.
+   */
+  static Engine &getInstance();
 
-  /**
-   *@brief Stream used for output. */
-  std::ostream &m_outStream{std::cerr};
+  /** @brief Set Max FPS.
+   */
+  Engine &setMaxFps(int fps);
 
-  /**
-   * @brief
-   * Window.
-   *  */
-  mainWindow_t m_mainWindow;
+  /** @brief Set window title.
+   *  @param title Title. */
+  Engine &setWindowTitle(std::string_view title);
 
-  /** @brief Gaps between ticks. */
-  sf::Time m_tickTimeStep{sf::seconds(1.0f / 30.0f)};
+  /** @brief Set resolution.
+   */
+  Engine &setResolution(Point2d resolution);
 
-  /**
-   *@brief Engine constructor. */
-  Engine(sf::VideoMode mode = {1920u, 1080u}, std::string title = "dev");
+  /** @brief Set resolution.
+   */
+  Engine &setResolution(Point2d::cordinate_t x, Point2d::cordinate_t y) {
+    setResolution({x, y});
+    return *this;
+  };
 
-  /**
-   * @brief Initialize main window */
-  void init(sf::VideoMode mode, std::string title);
+  /** @brief Get resolution.
+   */
+  Point2d getResolution() const;
 
-  /**
-   *@brief Add drawable
-   *@param drawable Drawable that will be added.
-   *@return Iterator.
-   *
-   *@note Iterator can be used to remove drawable added.
-   **/
-  const std::list<Drawable *>::iterator addDrawable(Drawable *drawable) {
-    m_rendererDrawables.push_back(drawable);
-    auto it{m_rendererDrawables.end()};
-    --it;
+  /** @brief Build the window.
+   */
+  Engine &buildWindow();
 
-    return it;
-  }
-
-  /**
-   *@brief Remove drawable
-   *@param it Iterator to drawable to be removed
-   *
-   **/
-  void removeDrawable(const std::list<Drawable *>::iterator it) {
-    m_rendererDrawables.erase(it);
-  }
+  void handleEvents();
+  void clear();
+  void render();
+  void loop();
 };
 
 #endif // ENGINE_HPP_
