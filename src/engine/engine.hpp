@@ -8,7 +8,7 @@
 #include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
-#include <list>
+#include <functional>
 
 class Engine {
 public:
@@ -17,7 +17,12 @@ public:
 private:
   /** @brief Pointer to the instance.
    */
+  static std::ostream &s_logStream;
   static Engine *s_instancePtr;
+
+  /** @brief custom function fired in the main loop.
+   * */
+  std::function<void()> m_loopFunction{[]() {}};
 
   /** @brief Window to draw stuff on.
    */
@@ -35,9 +40,6 @@ private:
 
   /** @brief Renderable objects collection, it will be rendered.
    */
-  std::list<Drawable *> m_renderables;
-
-  static std::ostream &s_logStream;
 
 public:
   Engine();
@@ -66,6 +68,12 @@ public:
     return *this;
   };
 
+  /** @brief set function that is invoked in the main loop  */
+  Engine &setLoopFunction(std::function<void()> function) {
+    m_loopFunction = function;
+    return *this;
+  };
+
   /** @brief Get resolution.
    */
   Point2d getResolution() const;
@@ -77,6 +85,7 @@ public:
   void handleEvents();
   void clear();
   void render();
+  void display();
   void loop();
 };
 

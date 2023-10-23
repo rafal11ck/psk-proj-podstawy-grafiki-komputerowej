@@ -13,6 +13,7 @@ public:
   Point2d(cordinate_t x = 0, cordinate_t y = 0);
 
   friend Point2d operator+(const Point2d &a, const Point2d &b);
+  friend Point2d &operator+=(Point2d &a, const Point2d &b);
 
   cordinate_t getX() const;
   cordinate_t getY() const;

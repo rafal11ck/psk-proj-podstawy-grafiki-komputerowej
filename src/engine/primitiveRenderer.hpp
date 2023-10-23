@@ -41,6 +41,7 @@ public:
   static void drawLine(const std::vector<Point2d> &points,
                        sf::Color color = s_defaultColor,
                        bool lastToFirst = false);
-};
 
+  static void drawEclipse(Point2d origin, int r1, int r2);
+};
 #endif // PRIMITIVERENDERER_HPP_

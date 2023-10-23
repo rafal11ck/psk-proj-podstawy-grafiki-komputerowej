@@ -7,6 +7,11 @@ Point2d operator+(const Point2d &a, const Point2d &b) {
   return {a.m_x + b.m_x, a.m_y + b.m_y};
 }
 
+Point2d &operator+=(Point2d &a, const Point2d &b) {
+  a = a + b;
+  return a;
+}
+
 Point2d::cordinate_t Point2d::getX() const { return m_x; };
 Point2d::cordinate_t Point2d::getY() const { return m_y; };
 

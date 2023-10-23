@@ -2,6 +2,7 @@
 #include "engine.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/VideoMode.hpp"
+#include "primitiveRenderer.hpp"
 #include <iostream>
 
 #define LOGTRACE                                                               \
@@ -66,11 +67,19 @@ void Engine::handleEvents() {
   }
 }
 
-void Engine::clear() { m_window.clear(); }
+void Engine::clear() {
+  LOGTRACE
+  m_window.clear();
+}
 
 void Engine::render() {
   LOGTRACE
+  PrimitiveRenderer::drawLine({{20, 20}, {220, 20}, {150, 150}},
+                              PrimitiveRenderer::s_defaultColor, true);
+}
 
+void Engine::display() {
+  LOGTRACE
   m_window.display();
 }
 
@@ -79,6 +88,8 @@ void Engine::loop() {
   while (m_window.isOpen()) {
     handleEvents();
     clear();
+    m_loopFunction();
     render();
+    display();
   }
 }

@@ -6,13 +6,14 @@
 #include "engine.hpp"
 #include "point2d.hpp"
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include <valarray>
 
 sf::Color PrimitiveRenderer::s_defaultColor{sf::Color::Red};
 
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
   sf::Image image;
-  const auto dimestions{Engine::getInstance().getResolution()};
+  const auto dimestions{Engine::getInstance().m_window.getSize()};
 
   image.create(1, 1, color);
 
@@ -53,8 +54,8 @@ void PrimitiveRenderer::drawLineIterative(Point2d a, Point2d b,
 }
 
 void PrimitiveRenderer::drawLine(Point2d a, Point2d b, sf::Color color) {
-  sf::Vertex line[] = {sf::Vertex(sf::Vector2f(a.getX(), a.getY())),
-                       sf::Vertex(sf::Vector2f(b.getX(), b.getY()))};
+  sf::Vertex line[] = {sf::Vertex(sf::Vector2f(a.getX(), a.getY()), color),
+                       sf::Vertex(sf::Vector2f(b.getX(), b.getY()), color)};
 
   Engine::getInstance().m_window.draw(line, 2, sf::Lines);
 }
@@ -66,4 +67,20 @@ void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points,
   }
   if (lastToFirst)
     drawLine(points[0], points.back());
+}
+
+void PrimitiveRenderer::drawEclipse(Point2d origin, int rx, int ry) {
+  for (double i{}; i < rx * M_PI; ++i) {
+    Point2d cord{Point2d{static_cast<Point2d::cordinate_t>(rx * cos(i)),
+                         static_cast<Point2d::cordinate_t>(ry * sin(i))}};
+
+    drawPoint(origin + Point2d{cord.getX(), cord.getY()});
+    drawPoint(origin + Point2d{cord.getX(), -cord.getY()});
+    drawPoint(origin + Point2d{-cord.getX(), cord.getY()});
+    drawPoint(origin + Point2d{-cord.getX(), -cord.getY()});
+    drawPoint(origin + Point2d{cord.getY(), cord.getX()});
+    drawPoint(origin + Point2d{cord.getY(), -cord.getX()});
+    drawPoint(origin + Point2d{-cord.getY(), cord.getX()});
+    drawPoint(origin + Point2d{-cord.getY(), -cord.getX()});
+  }
 }
