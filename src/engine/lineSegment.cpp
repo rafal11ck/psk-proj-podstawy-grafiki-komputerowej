@@ -2,10 +2,10 @@
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
 
-void LineSegment::draw() { PrimitiveRenderer::drawLine(m_a, m_b); }
+void LineSegment::draw() { PrimitiveRenderer::drawLine(m_start, m_end); }
 
-Point2d LineSegment::getA() const { return m_a; }
-Point2d LineSegment::getB() const { return m_b; }
+Point2d LineSegment::getStart() const { return m_start; }
+Point2d LineSegment::getEnd() const { return m_end; }
 
-void LineSegment::setA(Point2d val) { m_a = val; }
-void LineSegment::setB(Point2d val) { m_b = val; }
+void LineSegment::setA(Point2d val) { m_start = val; }
+void LineSegment::setB(Point2d val) { m_end = val; }

@@ -1,12 +1,10 @@
-
 #include "engine.hpp"
+#include "SFML/Graphics/Rect.hpp"
+#include "SFML/Graphics/View.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/VideoMode.hpp"
 #include "primitiveRenderer.hpp"
 #include <iostream>
-
-#define LOGTRACE                                                               \
-  Engine::s_logStream << __FILE_NAME__ << " " << __PRETTY_FUNCTION__ << '\n';
 
 #define LOGINFO                                                                \
   Engine::s_logStream << "\033[35m" << __FILE_NAME__ << " "                    \
@@ -33,13 +31,11 @@ Engine &Engine::setMaxFps(int fps) {
 }
 
 Engine &Engine::setWindowTitle(std::string_view title) {
-  LOGINFO
   m_windowTitle = title;
   return getInstance();
 }
 
 Engine &Engine::setResolution(Point2d resolution) {
-  LOGINFO
   m_resoltuon = resolution;
   return getInstance();
 }
@@ -53,41 +49,43 @@ Engine &Engine::buildWindow() {
   return getInstance();
 }
 
-Point2d Engine::getResolution() const {
-  LOGINFO
-  return m_resoltuon;
-}
+Point2d Engine::getResolution() const { return m_resoltuon; }
 
 void Engine::handleEvents() {
-  LOGTRACE
   sf::Event event;
   while (m_window.pollEvent(event)) {
     if (event.type == sf::Event::Closed)
       m_window.close();
+    if (event.type == sf::Event::Resized) {
+
+      // Update engine info
+      m_resoltuon.setX(event.size.width);
+      m_resoltuon.setY(event.size.height);
+      // make new view
+      sf::FloatRect view{0, 0, static_cast<float>(m_resoltuon.getX()),
+                         static_cast<float>(m_resoltuon.getY())};
+      m_window.setView(sf::View{view});
+
+      s_logStream << "Resized\t" << event.size.width << '\t'
+                  << event.size.height << '\n';
+    }
   }
 }
 
-void Engine::clear() {
-  LOGTRACE
-  m_window.clear();
-}
+void Engine::clear() { m_window.clear(); }
 
 void Engine::render() {
-  LOGTRACE
   PrimitiveRenderer::drawLine({{20, 20}, {220, 20}, {150, 150}},
                               PrimitiveRenderer::s_defaultColor, true);
 }
 
-void Engine::display() {
-  LOGTRACE
-  m_window.display();
-}
+void Engine::display() { m_window.display(); }
 
 void Engine::loop() {
   LOGINFO
   while (m_window.isOpen()) {
-    handleEvents();
     clear();
+    handleEvents();
     m_loopFunction();
     render();
     display();

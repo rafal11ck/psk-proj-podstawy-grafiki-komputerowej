@@ -2,10 +2,6 @@
 #define ENGINE_HPP_
 
 #include "SFML/Graphics/RenderWindow.hpp"
-#include "SFML/Window/VideoMode.hpp"
-#include "SFML/Window/Window.hpp"
-#include "SFML/Window/WindowStyle.hpp"
-#include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
 #include <functional>

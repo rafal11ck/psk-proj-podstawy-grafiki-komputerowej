@@ -5,14 +5,14 @@
 #include "point2d.hpp"
 
 class LineSegment : Drawable {
-  Point2d m_a;
-  Point2d m_b;
+  Point2d m_start;
+  Point2d m_end;
 
 public:
   void draw();
 
-  Point2d getA() const;
-  Point2d getB() const;
+  Point2d getStart() const;
+  Point2d getEnd() const;
 
   void setA(Point2d val);
   void setB(Point2d val);
