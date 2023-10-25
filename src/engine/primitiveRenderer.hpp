@@ -13,6 +13,8 @@ public:
 public:
   static sf::Color getDefaultColor();
 
+  static sf::Color getPixelColor(Point2d cord);
+
   /**
    * @brief Draw an pixel.
    * @param cord Cordinate at which to draw pixel at. From top left corner.
@@ -21,7 +23,7 @@ public:
   static void drawPoint(const Point2d cord, sf::Color color = s_defaultColor);
 
   static void drawLineIterative(Point2d a, Point2d b,
-                                sf::Color color = sf::Color::Green);
+                                sf::Color color = s_defaultColor);
 
   /**
    *@brief Draw Line
@@ -29,8 +31,7 @@ public:
    *@param b Point b of the line
    *@param color Color of the line.
    **/
-  static void drawLine(Point2d a, Point2d b,
-                       sf::Color color = sf::Color::Green);
+  static void drawLine(Point2d a, Point2d b, sf::Color color = s_defaultColor);
 
   /**
    *@brief Draw a line that goes from point to point
@@ -42,6 +43,11 @@ public:
                        sf::Color color = s_defaultColor,
                        bool lastToFirst = false);
 
-  static void drawEclipse(Point2d origin, int r1, int r2);
+  static void drawCircle(Point2d origin, int r);
+
+  static void drawEclipse(Point2d origin, int rx, int ry);
+
+  static void fill(Point2d origin, sf::Color paintColor,
+                   sf::Color boundaryColor);
 };
 #endif // PRIMITIVERENDERER_HPP_
