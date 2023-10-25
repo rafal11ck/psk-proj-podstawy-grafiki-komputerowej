@@ -5,6 +5,7 @@
  * @brief abstract class for drawables
  */
 class Drawable {
+
 public:
   /**
    *@brief draw */

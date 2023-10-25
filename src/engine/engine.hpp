@@ -2,13 +2,23 @@
 #define ENGINE_HPP_
 
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Window/Event.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
 #include <functional>
 
+/**
+ * @brief The god. */
 class Engine {
 public:
   friend PrimitiveRenderer;
+
+  using eventHandler_t = std::function<void(const sf::Event &)>;
+
+  Engine(const Engine &) = delete;
+  Engine(Engine &&) = delete;
+  Engine &operator=(const Engine &) = delete;
+  Engine &operator=(Engine &&) = delete;
 
 private:
   /** @brief Pointer to the instance.
@@ -30,14 +40,20 @@ private:
    */
   std::string m_windowTitle{"dev"};
   /**
-   *@brief max fps
+   *@brief Max fps
    **/
   int m_maxFPS{60};
 
-  /** @brief Renderable objects collection, it will be rendered.
-   */
+  /**
+   *@brief Custom functions handling events.
+   **/
+  std::array<eventHandler_t, sf::Event::Count> m_eventHandlers;
 
 public:
+  /**
+   * @brief Constructor
+   *
+   **/
   Engine();
   ~Engine();
 
@@ -46,6 +62,7 @@ public:
   static Engine &getInstance();
 
   /** @brief Set Max FPS.
+   * @param fps max FPS.
    */
   Engine &setMaxFps(int fps);
 
@@ -54,6 +71,7 @@ public:
   Engine &setWindowTitle(std::string_view title);
 
   /** @brief Set resolution.
+   * @param resolution Resolution to be set.
    */
   Engine &setResolution(Point2d resolution);
 
@@ -64,11 +82,21 @@ public:
     return *this;
   };
 
-  /** @brief set function that is invoked in the main loop  */
+  /** @brief Set function that is invoked in the main loop.
+   *  @param function Function that will be called in loop.
+   * */
   Engine &setLoopFunction(std::function<void()> function) {
     m_loopFunction = function;
     return *this;
   };
+
+  /**
+   * @brief Set custom event handler
+   * @param eventType Type of event that handler receives.
+   * @param handler Function handling the event
+   **/
+  Engine &setEventHandler(sf::Event::EventType eventType,
+                          eventHandler_t handler);
 
   /** @brief Get resolution.
    */

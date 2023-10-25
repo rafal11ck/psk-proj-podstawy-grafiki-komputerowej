@@ -4,6 +4,7 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/VideoMode.hpp"
 #include "primitiveRenderer.hpp"
+#include <algorithm>
 #include <iostream>
 
 #define LOGINFO                                                                \
@@ -14,7 +15,10 @@ std::ostream &Engine::s_logStream{std::cerr};
 
 Engine *Engine::s_instancePtr{nullptr};
 
-Engine::Engine() {}
+Engine::Engine() {
+  /// Fills custom event handlers with placeholder functions.
+  m_eventHandlers.fill([](const sf::Event &event) {});
+}
 Engine::~Engine() {}
 
 Engine &Engine::getInstance() {
@@ -49,6 +53,12 @@ Engine &Engine::buildWindow() {
   return getInstance();
 }
 
+Engine &Engine::setEventHandler(sf::Event::EventType eventType,
+                                eventHandler_t handler) {
+  m_eventHandlers[eventType] = handler;
+  return *this;
+}
+
 Point2d Engine::getResolution() const { return m_resoltuon; }
 
 void Engine::handleEvents() {
@@ -69,6 +79,9 @@ void Engine::handleEvents() {
       s_logStream << "Resized\t" << event.size.width << '\t'
                   << event.size.height << '\n';
     }
+
+    // Fire custom event handler.
+    m_eventHandlers[event.type](event);
   }
 }
 
