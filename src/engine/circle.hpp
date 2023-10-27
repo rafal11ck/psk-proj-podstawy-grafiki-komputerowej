@@ -1,20 +1,22 @@
 #ifndef CIRCLE_H_
 #define CIRCLE_H_
 
+#include "SFML/Graphics/CircleShape.hpp"
 #include "SFML/Graphics/Color.hpp"
 #include "drawable.hpp"
-#include "point2d.hpp"
-#include "primitiveRenderer.hpp"
 
 class Circle : public Drawable {
-  Point2d m_origin{};
-  int m_radius{};
-  sf::Color m_color{PrimitiveRenderer::s_defaultColor};
-  sf::Color m_fillColor{sf::Color::Transparent};
+  sf::CircleShape m_shape{};
 
 public:
-  void setColor(sf::Color color) { m_color = color; };
-  void setFillColor(sf::Color fillColor) { m_fillColor = fillColor; };
+  Circle &setColor(sf::Color color) {
+    m_shape.setOutlineColor(color);
+    return *this;
+  };
+  Circle &setFillColor(sf::Color fillColor) {
+    m_shape.setFillColor(fillColor);
+    return *this;
+  };
 
   void draw() const;
 };
