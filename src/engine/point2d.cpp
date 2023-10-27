@@ -31,6 +31,6 @@ void Point2d::swap(Point2d &b) {
   std::swap(m_y, b.m_y);
 }
 
-sf::Vector2f Point2d::toVector2f() {
+sf::Vector2f Point2d::toVector2f() const {
   return {static_cast<float>(m_x), static_cast<float>(m_y)};
 }

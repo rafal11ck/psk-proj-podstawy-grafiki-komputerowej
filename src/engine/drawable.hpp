@@ -5,9 +5,11 @@
  * @brief abstract class for drawables
  */
 
+#include "SFML/Graphics/Color.hpp"
 class Drawable {
 
 public:
+  using Color = sf::Color;
   /**
    *@brief draw */
   virtual void draw() const = 0;

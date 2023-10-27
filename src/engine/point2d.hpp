@@ -14,6 +14,7 @@ private:
 public:
   Point2d(cordinate_t x = 0, cordinate_t y = 0);
   Point2d(const Point2d &point) = default;
+
   explicit Point2d(const sf::Vector2f &vector);
 
   friend Point2d operator+(const Point2d &a, const Point2d &b);
@@ -29,7 +30,7 @@ public:
 
   void swap(Point2d &b);
 
-  sf::Vector2f toVector2f();
+  sf::Vector2f toVector2f() const;
 };
 
 #endif // POINT2D_HPP_
