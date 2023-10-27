@@ -2,6 +2,7 @@
 #define PRIMITIVERENDERER_HPP_
 
 #include "SFML/Graphics/Color.hpp"
+#include "drawable.hpp"
 #include "point2d.hpp"
 #include <SFML/Graphics/PrimitiveType.hpp>
 #include <vector>
@@ -17,7 +18,7 @@ public:
 
   /**
    * @brief Draw an pixel.
-   * @param cord Cordinate at which to draw pixel at. From top left corner.
+   * @param cord Coordinate at which to draw pixel at. From top left corner.
    * @param color Color of the pixel.
    * */
   static void drawPoint(const Point2d cord, sf::Color color = s_defaultColor);
@@ -43,11 +44,12 @@ public:
                        sf::Color color = s_defaultColor,
                        bool lastToFirst = false);
 
-  static void drawCircle(Point2d origin, int r);
+  static void drawCircle(Point2d origin, int r,
+                         sf::Color color = s_defaultColor);
 
-  static void drawEclipse(Point2d origin, int rx, int ry);
+  static void drawEclipse(Point2d origin, int rx, int ry,
+                          sf::Color color = s_defaultColor);
 
-  static void fill(Point2d origin, sf::Color paintColor,
-                   sf::Color boundaryColor);
+  static void draw(const Drawable &drawable) { drawable.draw(); }
 };
 #endif // PRIMITIVERENDERER_HPP_

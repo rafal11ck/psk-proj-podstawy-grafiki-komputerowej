@@ -8,18 +8,13 @@
 #include "point2d.hpp"
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include <exception>
+#include <functional>
+#include <iostream>
+#include <queue>
 #include <valarray>
 
 sf::Color PrimitiveRenderer::s_defaultColor{sf::Color::Red};
-
-sf::Color PrimitiveRenderer::getPixelColor(Point2d cord) {
-  auto res{Engine::getInstance().getResolution()};
-  sf::Texture texture;
-  texture.create(res.getX(), res.getY());
-  texture.update(Engine::getInstance().m_window);
-  auto image = texture.copyToImage();
-  return image.getPixel(cord.getX(), cord.getY());
-}
 
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
   sf::Image image;
@@ -79,9 +74,9 @@ void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points,
     drawLine(points[0], points.back());
 }
 
-void PrimitiveRenderer::drawCircle(Point2d origin, int r) {
+void PrimitiveRenderer::drawCircle(Point2d origin, int r, sf::Color color) {
   double step = 1.0 / r;
-  for (double i{}; i < M_PI / 4; i += step) {
+  for (double i{}; i <= M_PI / 4; i += step) {
     Point2d cord{Point2d{static_cast<Point2d::cordinate_t>(r * cos(i)),
                          static_cast<Point2d::cordinate_t>(r * sin(i))}};
 
@@ -96,8 +91,15 @@ void PrimitiveRenderer::drawCircle(Point2d origin, int r) {
   }
 }
 
-void PrimitiveRenderer::drawEclipse(Point2d origin, int rx, int ry) {
-  double step = 1.0 / rx;
+void PrimitiveRenderer::drawEclipse(Point2d origin, int rx, int ry,
+                                    sf::Color color) {
+  // if is circle draw circle instead
+  if (rx == ry) {
+    drawCircle(origin, rx);
+    return;
+  }
+
+  double step = 1.0 / (rx > ry ? rx : ry);
   for (double i{}; i < M_PI / 2; i += step) {
     Point2d cord{Point2d{static_cast<Point2d::cordinate_t>(rx * cos(i)),
                          static_cast<Point2d::cordinate_t>(ry * sin(i))}};
@@ -107,17 +109,4 @@ void PrimitiveRenderer::drawEclipse(Point2d origin, int rx, int ry) {
     drawPoint(origin + Point2d{-cord.getX(), cord.getY()});
     drawPoint(origin + Point2d{-cord.getX(), -cord.getY()});
   }
-}
-
-void PrimitiveRenderer::fill(Point2d origin, sf::Color paintColor,
-                             sf::Color boundaryColor) {
-  if (getPixelColor(origin) == paintColor ||
-      getPixelColor(origin) == boundaryColor)
-    return;
-
-  drawPoint(origin, paintColor);
-  fill(origin + Point2d{1, 0}, paintColor, boundaryColor);
-  fill(origin + Point2d{0, -1}, paintColor, boundaryColor);
-  fill(origin + Point2d{-1, 0}, paintColor, boundaryColor);
-  fill(origin + Point2d{0, 1}, paintColor, boundaryColor);
 }

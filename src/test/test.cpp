@@ -2,19 +2,12 @@
 #include "SFML/Window/Event.hpp"
 #include "engine.hpp"
 #include "point2d.hpp"
-#include "primitiveRenderer.hpp"
 #include <algorithm>
 #include <iostream>
 
-void customLoopFunction() {
-  PrimitiveRenderer::drawLine({20, 170}, {200, 170}, sf::Color::Magenta);
+#include "lineSegment.hpp"
 
-  PrimitiveRenderer::drawCircle({100, 270}, 70);
-  PrimitiveRenderer::drawEclipse({200, 400}, 140, 70);
-  PrimitiveRenderer::drawEclipse({200, 400}, 40, 60);
-  PrimitiveRenderer::fill({150, 400}, sf::Color::Blue,
-                          PrimitiveRenderer::s_defaultColor);
-}
+void customLoopFunction() {}
 
 int main() {
   Engine &eng = Engine::getInstance()
@@ -28,6 +21,9 @@ int main() {
               << ev.mouseButton.button << '\t' << ev.mouseButton.x << '\t'
               << ev.mouseButton.y << "\n";
   });
+
+  LineSegment *l = new LineSegment{{10, 10}, {100, 200}, sf::Color::Yellow};
+  eng.add(l);
 
   eng.loop();
 }

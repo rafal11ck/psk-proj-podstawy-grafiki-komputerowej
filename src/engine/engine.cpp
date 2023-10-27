@@ -3,7 +3,6 @@
 #include "SFML/Graphics/View.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/VideoMode.hpp"
-#include "primitiveRenderer.hpp"
 #include <algorithm>
 #include <iostream>
 
@@ -19,6 +18,7 @@ Engine::Engine() {
   /// Fills custom event handlers with placeholder functions.
   m_eventHandlers.fill([](const sf::Event &event) {});
 }
+
 Engine::~Engine() {}
 
 Engine &Engine::getInstance() {
@@ -88,8 +88,9 @@ void Engine::handleEvents() {
 void Engine::clear() { m_window.clear(); }
 
 void Engine::render() {
-  PrimitiveRenderer::drawLine({{20, 20}, {220, 20}, {150, 150}},
-                              PrimitiveRenderer::s_defaultColor, true);
+  for (auto drawAble : m_drawablesCollection) {
+    drawAble->draw();
+  }
 }
 
 void Engine::display() { m_window.display(); }
@@ -104,3 +105,7 @@ void Engine::loop() {
     display();
   }
 }
+
+sf::RenderWindow &Engine::getWindow() { return m_window; }
+
+void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
