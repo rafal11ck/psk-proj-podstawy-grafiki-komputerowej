@@ -1,7 +1,8 @@
 
-#include "circle.hpp"
 #include "SFML/Graphics/CircleShape.hpp"
+#include "circleShape.hpp"
 #include "engine.hpp"
+#include "point2d.hpp"
 
 CircleShape::CircleShape(float radius, Point2d position, Color color,
                          Color fillColor) {
@@ -29,6 +30,10 @@ CircleShape &CircleShape::setPosition(const Point2d &point) {
 CircleShape &CircleShape::setRadius(float radius) {
   m_shape.setRadius(radius);
   return *this;
+}
+
+Point2d CircleShape::getPosition() const {
+  return Point2d{m_shape.getPosition()};
 }
 
 void CircleShape::draw() const {

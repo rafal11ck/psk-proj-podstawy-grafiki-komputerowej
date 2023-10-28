@@ -110,6 +110,7 @@ public:
   void clear();
   void render();
   void display();
+
   void loop();
 
   sf::RenderWindow &getWindow();

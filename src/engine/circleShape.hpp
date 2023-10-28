@@ -22,6 +22,7 @@ public:
 
   CircleShape &setRadius(float radius);
 
+  Point2d getPosition() const;
   void draw() const;
 };
 
