@@ -1,6 +1,7 @@
 #include "engine.hpp"
 #include "SFML/Graphics/Rect.hpp"
 #include "SFML/Graphics/View.hpp"
+#include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/VideoMode.hpp"
 #include <algorithm>
@@ -97,15 +98,25 @@ void Engine::display() { m_window.display(); }
 
 void Engine::loop() {
   LOGINFO
+
   while (m_window.isOpen()) {
     clear();
     handleEvents();
+
+    // restart clock
+    m_lastFrameDuration = m_clock.restart();
+
     m_loopFunction();
+
     render();
     display();
   }
 }
 
-sf::RenderWindow &Engine::getWindow() { return m_window; }
+Engine::RenderWindow &Engine::getWindow() { return m_window; }
 
 void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
+
+Engine::Time Engine::getLastFrameDuration() const {
+  return m_lastFrameDuration;
+}

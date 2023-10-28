@@ -2,6 +2,8 @@
 #define ENGINE_HPP_
 
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/System/Clock.hpp"
+#include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
 #include "drawable.hpp"
 #include "point2d.hpp"
@@ -17,6 +19,9 @@ public:
 
   using eventHandler_t = std::function<void(const sf::Event &)>;
   using drawableCollection_t = std::set<const Drawable *>;
+  using Time = sf::Time;
+  using Clock = sf::Clock;
+  using RenderWindow = sf::RenderWindow;
 
 private:
   /** @brief Pointer to the instance.
@@ -30,7 +35,7 @@ private:
 
   /** @brief Window to draw stuff on.
    */
-  sf::RenderWindow m_window{};
+  RenderWindow m_window{};
   /** @brief Resolution of the window.
    */
   Point2d m_resoltuon{800, 800};
@@ -47,7 +52,19 @@ private:
    **/
   std::array<eventHandler_t, sf::Event::Count> m_eventHandlers;
 
+  /**
+   *@brief Stuff that is drawn in window each frame
+   **/
   drawableCollection_t m_drawablesCollection{};
+
+  /**
+   *@brief Clock for computing ticks. */
+  Clock m_clock{};
+
+  /**
+   *@brief Duration of last frame.
+   **/
+  Time m_lastFrameDuration{};
 
 public:
   /**
@@ -113,9 +130,11 @@ public:
 
   void loop();
 
-  sf::RenderWindow &getWindow();
+  RenderWindow &getWindow();
 
   void add(Drawable *drawable);
+
+  Time getLastFrameDuration() const;
 };
 
 #endif // ENGINE_HPP_

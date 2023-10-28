@@ -15,18 +15,24 @@
 std::vector<Drawable *> drawables;
 
 void customLoopFunction() {
-  static int i = 0;
-  static float change = 1;
+  static float speed = 200;
+  static float distanceSum = 0;
+
+  auto deltaTime{Engine::getInstance().getLastFrameDuration().asSeconds()};
+
+  float distance = speed * deltaTime;
+  distanceSum += std::abs(distance);
+  // std::cerr << "Elapsed " << deltaTime << '\t' << "Sum " << distanceSum <<
+  // '\n';
 
   for (auto drawable : drawables) {
-    drawable->setPosition(drawable->getPosition() + Point2d{0, change});
+    drawable->setPosition(drawable->getPosition() + Point2d{0, distance});
   }
 
-  if (i > 30) {
-    change *= -1;
-    i = 0;
+  if (distanceSum >= 500) {
+    speed *= -1;
+    distanceSum = 0;
   }
-  ++i;
 }
 
 void addSomeRenderables() {
@@ -64,7 +70,7 @@ void setUpCustomEvents() {
 int main() {
   Engine &eng = Engine::getInstance()
                     .setWindowTitle("dev")
-                    .setMaxFps(30)
+                    .setMaxFps(60)
                     .setLoopFunction(customLoopFunction)
                     .buildWindow();
 
