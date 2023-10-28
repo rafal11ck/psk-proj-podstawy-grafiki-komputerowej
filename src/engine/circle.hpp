@@ -6,21 +6,21 @@
 #include "drawable.hpp"
 #include "point2d.hpp"
 
-class Circle : public Drawable {
+class CircleShape : public Drawable {
 
   sf::CircleShape m_shape{};
 
 public:
-  Circle(float radius = {}, Point2d position = {}, Color fillColor = {},
-         Color outlineColor = {});
+  CircleShape(float radius = {}, Point2d position = {}, Color fillColor = {},
+              Color outlineColor = {});
 
-  Circle &setOutlineColor(Color color);
+  CircleShape &setOutlineColor(Color color);
 
-  Circle &setFillColor(Color fillColor);
+  CircleShape &setFillColor(Color fillColor);
 
-  Circle &setPosition(const Point2d &point);
+  CircleShape &setPosition(const Point2d &point);
 
-  Circle &setRadius(float radius);
+  CircleShape &setRadius(float radius);
 
   void draw() const;
 };

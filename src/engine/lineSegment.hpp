@@ -12,8 +12,7 @@ class LineSegment : public Drawable {
   sf::Color m_color;
 
 public:
-  LineSegment(Point2d start, Point2d end,
-              sf::Color color = PrimitiveRenderer::s_defaultColor);
+  LineSegment(Point2d start, Point2d end, sf::Color color = {});
 
   void draw() const;
 

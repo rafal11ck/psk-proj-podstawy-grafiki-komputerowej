@@ -13,7 +13,7 @@
  * @brief The god. */
 class Engine {
 public:
-  friend PrimitiveRenderer;
+  // friend PrimitiveRenderer;
 
   using eventHandler_t = std::function<void(const sf::Event &)>;
   using drawableCollection_t = std::set<const Drawable *>;

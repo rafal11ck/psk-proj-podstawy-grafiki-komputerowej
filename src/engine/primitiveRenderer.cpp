@@ -1,9 +1,13 @@
+
+/**
 #include "primitiveRenderer.hpp"
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/PrimitiveType.hpp"
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Vertex.hpp"
 #include "SFML/System/Vector2.hpp"
+#include "circle.hpp"
+#include "drawable.hpp"
 #include "engine.hpp"
 #include "point2d.hpp"
 #include <SFML/Graphics.hpp>
@@ -15,7 +19,6 @@
 #include <valarray>
 
 sf::Color PrimitiveRenderer::s_defaultColor{sf::Color::Red};
-
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
   sf::Image image;
   const auto dimestions{Engine::getInstance().m_window.getSize()};
@@ -68,10 +71,10 @@ void PrimitiveRenderer::drawLine(Point2d a, Point2d b, sf::Color color) {
 void PrimitiveRenderer::drawLine(const std::vector<Point2d> &points,
                                  sf::Color color, bool lastToFirst) {
   for (int i{}; i < points.size() - 1; ++i) {
-    drawLine(points[i], points[i + 1]);
+    drawLine(points[i], points[i + 1], color);
   }
   if (lastToFirst)
-    drawLine(points[0], points.back());
+    drawLine(points[0], points.back(), color);
 }
 
 void PrimitiveRenderer::drawCircle(Point2d origin, int r, sf::Color color) {
@@ -110,3 +113,7 @@ void PrimitiveRenderer::drawEclipse(Point2d origin, int rx, int ry,
     drawPoint(origin + Point2d{-cord.getX(), -cord.getY()});
   }
 }
+
+void PrimitiveRenderer::draw(const Drawable &drawable) { drawable.draw(); }
+
+*/

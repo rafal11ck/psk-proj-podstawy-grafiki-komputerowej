@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "lineSegment.hpp"
+#include "primitiveRenderer.hpp"
 
 void customLoopFunction() {}
 
@@ -17,11 +18,11 @@ void addSomeRenderables() {
       new LineSegment{{70 + 85, 10}, {70 + 85, 120}, sf::Color::Yellow};
   eng.add(l);
 
-  Circle *circle{new Circle{}};
+  CircleShape *circle{new CircleShape{}};
   circle->setRadius(45).setPosition({70, 100}).setFillColor(sf::Color::Yellow);
   eng.add(circle);
 
-  Circle *circle2{new Circle{}};
+  CircleShape *circle2{new CircleShape{}};
   circle2->setRadius(45)
       .setPosition({150, 100})
       .setFillColor(sf::Color::Yellow);

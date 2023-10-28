@@ -10,6 +10,7 @@ class Drawable {
 
 public:
   using Color = sf::Color;
+
   /**
    *@brief draw */
   virtual void draw() const = 0;
