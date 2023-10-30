@@ -6,7 +6,14 @@
 #include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
+#include "shape.hpp"
 
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
 class LineSegment : public Shape {
   sf::Vertex m_points[2] = {};
   sf::Color m_color;
@@ -24,5 +31,5 @@ public:
 
   void setColor(sf::Color color) { m_color = color; };
 };
-
+};     // namespace obstacle
 #endif // LINESEGMENT_HPP_

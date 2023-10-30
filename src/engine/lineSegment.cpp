@@ -6,6 +6,13 @@
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
 
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
+
 LineSegment::LineSegment(Point2d start, Point2d end, sf::Color color)
     : m_points{{start.toVector2f(), color}, {end.toVector2f(), color}},
       m_color{color} {};
@@ -23,3 +30,5 @@ void LineSegment::setStart(Point2d val) {
 void LineSegment::setEnd(Point2d val) {
   m_points[1].position = val.toVector2f();
 }
+
+}; // namespace obstacle

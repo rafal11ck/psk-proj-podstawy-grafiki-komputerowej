@@ -5,10 +5,9 @@
 #include "SFML/System/Clock.hpp"
 #include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
-#include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
-#include "shape.hpp"
+#include <SFML/Graphics/Drawable.hpp>
 #include <functional>
 #include <set>
 
@@ -16,13 +15,16 @@
  * @brief The god. */
 class Engine {
 public:
-  // friend PrimitiveRenderer;
+  friend obstacle::PrimitiveRenderer;
 
-  using eventHandler_t = std::function<void(const sf::Event &)>;
-  using drawableCollection_t = std::set<const Drawable *>;
   using Time = sf::Time;
   using Clock = sf::Clock;
   using RenderWindow = sf::RenderWindow;
+  using Event = sf::Event;
+  using Drawable = sf::Drawable;
+
+  using eventHandler_t = std::function<void(const Event &)>;
+  using drawableCollection_t = std::set<const Drawable *>;
 
 private:
   /** @brief Pointer to the instance.
@@ -51,7 +53,7 @@ private:
   /**
    *@brief Custom functions handling events.
    **/
-  std::array<eventHandler_t, sf::Event::Count> m_eventHandlers;
+  std::array<eventHandler_t, Event::Count> m_eventHandlers;
 
   /**
    *@brief Stuff that is drawn in window each frame
@@ -113,8 +115,7 @@ public:
    * @param eventType Type of event that handler receives.
    * @param handler Function handling the event
    **/
-  Engine &setEventHandler(sf::Event::EventType eventType,
-                          eventHandler_t handler);
+  Engine &setEventHandler(Event::EventType eventType, eventHandler_t handler);
 
   /** @brief Get resolution.
    */
@@ -133,7 +134,7 @@ public:
 
   RenderWindow &getWindow();
 
-  void add(Shape *drawable);
+  void add(Drawable *drawable);
 
   Time getLastFrameDuration() const;
 };

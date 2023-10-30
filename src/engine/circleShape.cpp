@@ -4,6 +4,13 @@
 #include "engine.hpp"
 #include "point2d.hpp"
 
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
+
 CircleShape::CircleShape(float radius, Point2d position, Color color,
                          Color fillColor) {
   setRadius(radius);
@@ -39,3 +46,5 @@ Point2d CircleShape::getPosition() const {
 void CircleShape::draw() const {
   Engine::getInstance().getWindow().draw(m_shape);
 }
+
+}; // namespace obstacle

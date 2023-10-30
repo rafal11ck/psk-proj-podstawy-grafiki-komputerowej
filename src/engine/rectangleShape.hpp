@@ -2,8 +2,15 @@
 #define RECTANGLESHAPE_H_
 
 #include "SFML/Graphics/RectangleShape.hpp"
-#include "drawable.hpp"
 #include "point2d.hpp"
+#include "shape.hpp"
+
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
 
 class RectangleShape : public Shape {
   sf::RectangleShape m_shape{};
@@ -25,5 +32,7 @@ public:
 
   void draw() const;
 };
+
+}; // namespace obstacle
 
 #endif // RECTANGLESHAPE_H_

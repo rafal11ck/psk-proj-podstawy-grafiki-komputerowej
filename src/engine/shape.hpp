@@ -2,12 +2,18 @@
 #define SHAPE_H_
 
 /**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+/**
  * @brief abstract class
  */
 
 #include "drawable.hpp"
 #include "point2d.hpp"
 
+namespace obstacle {
 class Shape : public Drawable {
 
 public:
@@ -17,4 +23,5 @@ public:
   virtual Point2d getPosition() const = 0;
 };
 
+};     // namespace obstacle
 #endif // SHAPE_H_

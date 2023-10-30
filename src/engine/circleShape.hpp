@@ -1,11 +1,18 @@
-#ifndef CIRCLE_H_
-#define CIRCLE_H_
+#ifndef CIRCLESHAPE_H_
+#define CIRCLESHAPE_H_
 
 #include "SFML/Graphics/CircleShape.hpp"
 #include "SFML/Graphics/Color.hpp"
 #include "drawable.hpp"
 #include "point2d.hpp"
+#include "shape.hpp"
 
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
 class CircleShape : public Shape {
 
   sf::CircleShape m_shape{};
@@ -26,4 +33,5 @@ public:
   void draw() const;
 };
 
-#endif // CIRCLE_H_
+};     // namespace obstacle
+#endif // CIRCLESHAPE_H_

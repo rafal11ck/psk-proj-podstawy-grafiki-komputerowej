@@ -1,13 +1,11 @@
 
-/**
 #include "primitiveRenderer.hpp"
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/PrimitiveType.hpp"
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Vertex.hpp"
 #include "SFML/System/Vector2.hpp"
-#include "circle.hpp"
-#include "drawable.hpp"
+#include "circleShape.hpp"
 #include "engine.hpp"
 #include "point2d.hpp"
 #include <SFML/Graphics.hpp>
@@ -17,6 +15,13 @@
 #include <iostream>
 #include <queue>
 #include <valarray>
+
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
 
 sf::Color PrimitiveRenderer::s_defaultColor{sf::Color::Red};
 void PrimitiveRenderer::drawPoint(const Point2d cord, sf::Color color) {
@@ -116,4 +121,4 @@ void PrimitiveRenderer::drawEclipse(Point2d origin, int rx, int ry,
 
 void PrimitiveRenderer::draw(const Drawable &drawable) { drawable.draw(); }
 
-*/
+}; // namespace obstacle

@@ -91,7 +91,7 @@ void Engine::clear() { m_window.clear(); }
 
 void Engine::render() {
   for (auto drawAble : m_drawablesCollection) {
-    drawAble->draw();
+    m_window.draw(*drawAble);
   }
 }
 
@@ -116,7 +116,7 @@ void Engine::loop() {
 
 Engine::RenderWindow &Engine::getWindow() { return m_window; }
 
-void Engine::add(Shape *drawable) { m_drawablesCollection.insert(drawable); }
+void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
 
 Engine::Time Engine::getLastFrameDuration() const {
   return m_lastFrameDuration;

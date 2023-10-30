@@ -3,6 +3,13 @@
 #include "engine.hpp"
 #include "point2d.hpp"
 
+/**
+ *@file
+ *@deprecated Bad design. Reinventing wheel.
+ **/
+
+namespace obstacle {
+
 RectangleShape::RectangleShape(Point2d position, Point2d size, Color fillColor,
                                Color outlineColor) {
   setPosition(position);
@@ -38,3 +45,5 @@ Point2d RectangleShape::getPosition() const {
 void RectangleShape::draw() const {
   Engine::getInstance().getWindow().draw(m_shape);
 }
+
+}; // namespace obstacle
