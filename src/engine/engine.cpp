@@ -116,7 +116,7 @@ void Engine::loop() {
 
 Engine::RenderWindow &Engine::getWindow() { return m_window; }
 
-void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
+void Engine::add(Shape *shape) { m_drawablesCollection.insert(shape); }
 
 Engine::Time Engine::getLastFrameDuration() const {
   return m_lastFrameDuration;

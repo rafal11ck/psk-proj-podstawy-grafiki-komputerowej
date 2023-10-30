@@ -1,19 +1,18 @@
 #ifndef SHAPE_H_
 #define SHAPE_H_
 
+#include "drawable.hpp"
+#include "point2d.hpp"
+
 /**
  *@file
  *@deprecated Bad design. Reinventing wheel.
  **/
 
+namespace obstacle {
 /**
  * @brief abstract class
  */
-
-#include "drawable.hpp"
-#include "point2d.hpp"
-
-namespace obstacle {
 class Shape : public Drawable {
 
 public:

@@ -2,6 +2,7 @@
 #define ENGINE_HPP_
 
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Graphics/Shape.hpp"
 #include "SFML/System/Clock.hpp"
 #include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
@@ -22,9 +23,10 @@ public:
   using RenderWindow = sf::RenderWindow;
   using Event = sf::Event;
   using Drawable = sf::Drawable;
+  using Shape = sf::Shape;
 
   using eventHandler_t = std::function<void(const Event &)>;
-  using drawableCollection_t = std::set<const Drawable *>;
+  using shapeCollection_t = std::set<const Shape *>;
 
 private:
   /** @brief Pointer to the instance.
@@ -41,7 +43,7 @@ private:
   RenderWindow m_window{};
   /** @brief Resolution of the window.
    */
-  Point2d m_resoltuon{800, 800};
+  Point2d m_resoltuon{1000, 800};
   /** @brief Window title.
    */
   std::string m_windowTitle{"dev"};
@@ -58,7 +60,7 @@ private:
   /**
    *@brief Stuff that is drawn in window each frame
    **/
-  drawableCollection_t m_drawablesCollection{};
+  shapeCollection_t m_drawablesCollection{};
 
   /**
    *@brief Clock for computing ticks. */
@@ -134,7 +136,7 @@ public:
 
   RenderWindow &getWindow();
 
-  void add(Drawable *drawable);
+  void add(Shape *shape);
 
   Time getLastFrameDuration() const;
 };
