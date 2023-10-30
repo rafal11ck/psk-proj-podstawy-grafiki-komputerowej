@@ -1,4 +1,5 @@
 #include "engine.hpp"
+#include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Graphics/Rect.hpp"
 #include "SFML/Graphics/View.hpp"
 #include "SFML/System/Time.hpp"
@@ -115,7 +116,7 @@ void Engine::loop() {
 
 Engine::RenderWindow &Engine::getWindow() { return m_window; }
 
-void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
+void Engine::add(Shape *drawable) { m_drawablesCollection.insert(drawable); }
 
 Engine::Time Engine::getLastFrameDuration() const {
   return m_lastFrameDuration;

@@ -132,7 +132,7 @@ public:
 
   RenderWindow &getWindow();
 
-  void add(Drawable *drawable);
+  void add(Shape *drawable);
 
   Time getLastFrameDuration() const;
 };

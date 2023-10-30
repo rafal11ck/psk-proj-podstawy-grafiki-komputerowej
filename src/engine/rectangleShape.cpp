@@ -21,7 +21,7 @@ RectangleShape &RectangleShape::setFillColor(Color fillColor) {
   return *this;
 };
 
-Drawable &RectangleShape::setPosition(const Point2d &position) {
+Shape &RectangleShape::setPosition(const Point2d &position) {
   m_shape.setPosition(position.toVector2f());
   return *this;
 };

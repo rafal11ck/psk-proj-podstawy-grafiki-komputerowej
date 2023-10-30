@@ -6,7 +6,7 @@
 #include "drawable.hpp"
 #include "point2d.hpp"
 
-class CircleShape : public Drawable {
+class CircleShape : public Shape {
 
   sf::CircleShape m_shape{};
 

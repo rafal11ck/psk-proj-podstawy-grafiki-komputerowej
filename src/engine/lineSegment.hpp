@@ -7,7 +7,7 @@
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
 
-class LineSegment : public Drawable {
+class LineSegment : public Shape {
   sf::Vertex m_points[2] = {};
   sf::Color m_color;
 

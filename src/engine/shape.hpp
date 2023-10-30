@@ -7,17 +7,17 @@
 
 #include "SFML/Graphics/Color.hpp"
 #include "point2d.hpp"
-class Drawable {
+class Shape {
 
 public:
-  virtual ~Drawable(){};
+  virtual ~Shape(){};
   using Color = sf::Color;
 
   /**
    *@brief draw */
   virtual void draw() const = 0;
 
-  virtual Drawable &setPosition(const Point2d &point) = 0;
+  virtual Shape &setPosition(const Point2d &point) = 0;
   virtual Point2d getPosition() const = 0;
 };
 

@@ -5,7 +5,7 @@
 #include "drawable.hpp"
 #include "point2d.hpp"
 
-class RectangleShape : public Drawable {
+class RectangleShape : public Shape {
   sf::RectangleShape m_shape{};
 
 public:
@@ -17,7 +17,7 @@ public:
 
   RectangleShape &setFillColor(Color fillColor);
 
-  Drawable &setPosition(const Point2d &position);
+  Shape &setPosition(const Point2d &position);
 
   RectangleShape &setSize(Point2d size);
 
