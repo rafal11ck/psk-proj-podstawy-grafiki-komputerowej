@@ -8,6 +8,7 @@
 #include "drawable.hpp"
 #include "point2d.hpp"
 #include "primitiveRenderer.hpp"
+#include "shape.hpp"
 #include <functional>
 #include <set>
 

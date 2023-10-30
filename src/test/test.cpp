@@ -12,7 +12,7 @@
 #include "primitiveRenderer.hpp"
 #include "rectangleShape.hpp"
 
-std::vector<Drawable *> drawables;
+std::vector<Shape *> drawables;
 
 void customLoopFunction() {
   static float speed = 200;

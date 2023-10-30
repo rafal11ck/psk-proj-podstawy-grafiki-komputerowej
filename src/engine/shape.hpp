@@ -1,24 +1,20 @@
-#ifndef DRAWABLE_H_
-#define DRAWABLE_H_
+#ifndef SHAPE_H_
+#define SHAPE_H_
 
 /**
- * @brief abstract class for drawables
+ * @brief abstract class
  */
 
-#include "SFML/Graphics/Color.hpp"
+#include "drawable.hpp"
 #include "point2d.hpp"
-class Shape {
+
+class Shape : public Drawable {
 
 public:
   virtual ~Shape(){};
-  using Color = sf::Color;
-
-  /**
-   *@brief draw */
-  virtual void draw() const = 0;
 
   virtual Shape &setPosition(const Point2d &point) = 0;
   virtual Point2d getPosition() const = 0;
 };
 
-#endif // DRAWABLE_H_
+#endif // SHAPE_H_
