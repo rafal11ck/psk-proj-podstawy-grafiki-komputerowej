@@ -4,14 +4,9 @@
 #include "SFML/Graphics/Shape.hpp"
 #include "SFML/Window/Event.hpp"
 #include "engine.hpp"
-#include "point2d.hpp"
 #include <algorithm>
 #include <iostream>
 #include <vector>
-
-#include "lineSegment.hpp"
-#include "primitiveRenderer.hpp"
-#include "rectangleShape.hpp"
 
 namespace G {
 std::vector<Engine::Shape *> drwables{};
@@ -81,6 +76,5 @@ int main() {
 
   setUpCustomEvents();
   addSomeRenderables();
-  eng.setLoopFunction(customLoopFunction);
   eng.loop();
 }

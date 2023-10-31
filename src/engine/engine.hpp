@@ -26,7 +26,7 @@ public:
   using Shape = sf::Shape;
 
   using eventHandler_t = std::function<void(const Event &)>;
-  using shapeCollection_t = std::set<const Shape *>;
+  using drawableCollection_t = std::set<const Drawable *>;
 
 private:
   /** @brief Pointer to the instance.
@@ -60,7 +60,7 @@ private:
   /**
    *@brief Stuff that is drawn in window each frame
    **/
-  shapeCollection_t m_drawablesCollection{};
+  drawableCollection_t m_drawablesCollection{};
 
   /**
    *@brief Clock for computing ticks. */
@@ -136,7 +136,7 @@ public:
 
   RenderWindow &getWindow();
 
-  void add(Shape *shape);
+  void add(Drawable *shape);
 
   Time getLastFrameDuration() const;
 };
