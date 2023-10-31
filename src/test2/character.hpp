@@ -14,8 +14,8 @@ public:
 
   Point2d m_postion{};
   float m_movementSpeed{50};
-  std::pair<int, int> currentSprite{};
-  std::pair<int, int> spriteSize{};
+  std::pair<int, int> m_currentSprite{};
+  std::pair<int, int> m_spriteSize{};
 
 public:
   ~Character(){};
