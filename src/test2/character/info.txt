@@ -1,2 +1,0 @@
- spritesheet.png
-300 300

@@ -4,7 +4,6 @@
 #include "SFML/Graphics/Vertex.hpp"
 #include "engine.hpp"
 #include "point2d.hpp"
-#include "primitiveRenderer.hpp"
 
 /**
  *@file

@@ -3,10 +3,7 @@
 
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/Vertex.hpp"
-#include "drawable.hpp"
 #include "point2d.hpp"
-#include "primitiveRenderer.hpp"
-#include "shape.hpp"
 
 /**
  *@file
@@ -14,7 +11,7 @@
  **/
 
 namespace obstacle {
-class LineSegment : public Shape {
+class LineSegment {
   sf::Vertex m_points[2] = {};
   sf::Color m_color;
 

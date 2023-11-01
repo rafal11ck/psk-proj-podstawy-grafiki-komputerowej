@@ -6,8 +6,8 @@
 #include "SFML/System/Clock.hpp"
 #include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
+#include "log.hpp"
 #include "point2d.hpp"
-#include "primitiveRenderer.hpp"
 #include <SFML/Graphics/Drawable.hpp>
 #include <functional>
 #include <set>
@@ -16,8 +16,6 @@
  * @brief The god. */
 class Engine {
 public:
-  friend obstacle::PrimitiveRenderer;
-
   using Time = sf::Time;
   using Clock = sf::Clock;
   using RenderWindow = sf::RenderWindow;

@@ -20,6 +20,8 @@ public:
   friend Point2d operator+(const Point2d &a, const Point2d &b);
   friend Point2d &operator+=(Point2d &a, const Point2d &b);
 
+  friend Point2d operator*(const Point2d &a, float b);
+
   friend std::ostream &operator<<(std::ostream &os, const Point2d &point);
 
   cordinate_t getX() const;

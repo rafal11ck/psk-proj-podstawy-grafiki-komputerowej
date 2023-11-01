@@ -15,6 +15,10 @@ Point2d &operator+=(Point2d &a, const Point2d &b) {
   return a;
 }
 
+Point2d operator*(const Point2d &a, float b) {
+  return {a.getX() * b, a.getY() * b};
+};
+
 std::ostream &operator<<(std::ostream &os, const Point2d &point) {
   os << "Point2d(" << point.m_x << ", " << point.m_y << ")";
   return os;

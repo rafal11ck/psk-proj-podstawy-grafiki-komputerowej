@@ -8,10 +8,6 @@
 #include <algorithm>
 #include <iostream>
 
-#define LOGINFO                                                                \
-  Engine::s_logStream << "\033[35m" << __FILE_NAME__ << " "                    \
-                      << __PRETTY_FUNCTION__ << "\033[0m\n";
-
 std::ostream &Engine::s_logStream{std::cerr};
 
 Engine *Engine::s_instancePtr{nullptr};
@@ -30,7 +26,7 @@ Engine &Engine::getInstance() {
 }
 
 Engine &Engine::setMaxFps(int fps) {
-  LOGINFO
+  LOGINFON;
   m_maxFPS = fps;
   m_window.setFramerateLimit(fps);
   return getInstance();
@@ -47,7 +43,7 @@ Engine &Engine::setResolution(Point2d resolution) {
 }
 
 Engine &Engine::buildWindow() {
-  LOGINFO
+  LOGINFON;
   m_window.create({static_cast<unsigned int>(m_resoltuon.getX()),
                    static_cast<unsigned int>(m_resoltuon.getY())},
                   m_windowTitle);
@@ -98,7 +94,7 @@ void Engine::render() {
 void Engine::display() { m_window.display(); }
 
 void Engine::loop() {
-  LOGINFO
+  LOGINFON;
 
   while (m_window.isOpen()) {
     clear();
