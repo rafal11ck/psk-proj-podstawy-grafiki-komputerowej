@@ -25,7 +25,7 @@ public:
   using Shape = sf::Shape;
 
   using eventHandler_t = std::function<void(const Event &)>;
-  using drawableCollection_t = std::set<const Drawable *>;
+  using drawableCollection_t = std::set<Drawable *>;
   using animatedObjecsCollection_t = std::set<AnimatedObject *>;
 
 private:

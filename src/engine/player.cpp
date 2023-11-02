@@ -8,6 +8,12 @@
 
 Player::~Player(){};
 
+void Player::move(Point2d vec) {
+  GameObject::move(vec);
+  sf::Sprite::move(getMoveVector().toVector2f());
+  // LOGINFO << GameObject::getPosition() << '\n';
+};
+
 Point2d Player::getMoveVectorOrigin() const {
   Point2d vec{};
 
@@ -25,14 +31,24 @@ Point2d Player::getMoveVectorOrigin() const {
 void Player::setMovementSpeed(float speed) { m_movementSpeed = speed; }
 float Player::getMovementSpeed() const { return m_movementSpeed; };
 
+bool Player::isMovingDiagonaly() const {
+  Point2d vec{getMoveVectorOrigin()};
+  auto absMoveDist{std::abs(vec.getX()) + std::abs(vec.getY())};
+  return absMoveDist > 1;
+}
+
 Point2d Player::getMoveVector() const {
   return getMoveVectorOrigin() * m_movementSpeed *
          Engine::getInstance().getLastFrameDuration().asSeconds();
 }
 
-void Player::setIsMoving(MoveDirection direction, bool isMoving) {
-  m_isMoving[static_cast<ssize_t>(direction)] = isMoving;
+void Player::setIsMoving(MoveDirection direction) {
+  m_isMoving[static_cast<ssize_t>(direction)] = true;
 };
+
+void Player::stopMoving(MoveDirection direction) {
+  m_isMoving[static_cast<ssize_t>(direction)] = false;
+}
 
 bool Player::isMoving() const {
   bool moving{};
@@ -45,6 +61,10 @@ bool Player::isMoving() const {
   return moving;
 }
 
+bool Player::isMoving(MoveDirection direction) const {
+  return m_isMoving[static_cast<ssize_t>(direction)];
+}
+
 void Player::stopMoving() {
   for (auto &it : m_isMoving) {
     it = false;
@@ -52,13 +72,6 @@ void Player::stopMoving() {
 }
 
 void Player::update() {
-
-  // check if player is moving
-  if (isMoving()) {
-    Point2d vec = getMoveVector();
-    move(vec);
-    stopMoving();
-  }
+  Point2d vec = getMoveVector();
+  move(vec);
 };
-
-void Player::animate() {}

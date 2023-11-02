@@ -5,6 +5,7 @@
 #include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/VideoMode.hpp"
+#include "log.hpp"
 #include <algorithm>
 #include <iostream>
 
@@ -13,11 +14,20 @@ std::ostream &Engine::s_logStream{std::cerr};
 Engine *Engine::s_instancePtr{nullptr};
 
 Engine::Engine() {
+  LOGINFON;
   /// Fills custom event handlers with placeholder functions.
   m_eventHandlers.fill([](const sf::Event &event) {});
 }
 
-Engine::~Engine() {}
+Engine::~Engine() {
+  LOGINFON;
+  for (sf::Drawable *it : m_drawablesCollection) {
+    delete it;
+  }
+  for (AnimatedObject *it : m_animatedObjectsCollection) {
+    delete it;
+  }
+}
 
 Engine &Engine::getInstance() {
   if (s_instancePtr == nullptr)
