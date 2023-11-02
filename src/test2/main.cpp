@@ -3,13 +3,19 @@
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
+#include "animatedObject.hpp"
+#include "bush.hpp"
 #include "engine.hpp"
 #include "log.hpp"
 #include "player.hpp"
 #include <iostream>
 #include <utility>
 
-Player player;
+using sf::IntRect;
+
+Player player{};
+std::array<Bush, 4> bush{};
+Engine &eng = Engine::getInstance();
 
 void handlePlayerMovement() {
 
@@ -39,23 +45,32 @@ void customLoop() {
   handlePlayerMovement();
 }
 
-int main() {
-  Engine &eng =
-      Engine::getInstance().setWindowTitle("dev").setMaxFps(75).buildWindow();
-
-  eng.setEventHandler(sf::Event::KeyPressed, keyPressedEventHandler);
-
-  sf::Texture texture{};
-  texture.loadFromFile("../src/"
-                       "test2/resurce/player/spritesheet.png",
-                       sf::IntRect(0, 0, 300, 300));
-  player.setTexture(texture);
+void initialziePlayer() {
+  player.loadFromFile("resource/player/spritesheet.png",
+                      sf::IntRect(0, 0, 300, 300));
+  player.setTexture(player);
   player.setColor(sf::Color::Blue);
   player.setMovementSpeed(150);
 
   eng.add(&player);
+}
 
+void initializeBush() {
+  for (ssize_t i{}; i < bush.max_size(); ++i) {
+    LOGINFO << i << '\n';
+    bush[i].setPosition({300, 150 * (i + 1.f)});
+    eng.add(&(bush[i]));
+  }
+}
+
+int main() {
+
+  eng.setWindowTitle("dev").setMaxFps(75).buildWindow();
+  eng.setEventHandler(sf::Event::KeyPressed, keyPressedEventHandler);
   eng.setLoopFunction(customLoop);
+
+  initialziePlayer();
+  initializeBush();
 
   eng.loop();
 }

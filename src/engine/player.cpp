@@ -6,6 +6,8 @@
 #include "point2d.hpp"
 #include <bits/ranges_algo.h>
 
+Player::~Player(){};
+
 Point2d Player::getMoveVectorOrigin() const {
   Point2d vec{};
 
@@ -58,3 +60,5 @@ void Player::update() {
     stopMoving();
   }
 };
+
+void Player::animate() {}

@@ -74,8 +74,8 @@ void Engine::handleEvents() {
                          static_cast<float>(m_resoltuon.getY())};
       m_window.setView(sf::View{view});
 
-      s_logStream << "Resized\t" << event.size.width << '\t'
-                  << event.size.height << '\n';
+      LOGINFO << "Resized\t" << event.size.width << '\t' << event.size.height
+              << '\n';
     }
 
     // Fire custom event handler.
@@ -86,9 +86,8 @@ void Engine::handleEvents() {
 void Engine::clear() { m_window.clear(); }
 
 void Engine::render() {
-  for (auto drawAble : m_drawablesCollection) {
-    m_window.draw(*drawAble);
-  }
+  animateObjects();
+  drawDrawables();
 }
 
 void Engine::display() { m_window.display(); }
@@ -114,6 +113,21 @@ Engine::RenderWindow &Engine::getWindow() { return m_window; }
 
 void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
 
+void Engine::add(AnimatedObject *animatedObject) {
+  m_animatedObjectsCollection.insert(animatedObject);
+}
 Engine::Time Engine::getLastFrameDuration() const {
   return m_lastFrameDuration;
+}
+
+void Engine::drawDrawables() {
+  for (auto &it : m_drawablesCollection)
+    getWindow().draw(*it);
+}
+
+void Engine::animateObjects() {
+  for (auto it : m_animatedObjectsCollection) {
+    it->animate();
+    getWindow().draw(*it);
+  }
 }

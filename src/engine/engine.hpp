@@ -6,6 +6,7 @@
 #include "SFML/System/Clock.hpp"
 #include "SFML/System/Time.hpp"
 #include "SFML/Window/Event.hpp"
+#include "animatedObject.hpp"
 #include "log.hpp"
 #include "point2d.hpp"
 #include <SFML/Graphics/Drawable.hpp>
@@ -25,6 +26,7 @@ public:
 
   using eventHandler_t = std::function<void(const Event &)>;
   using drawableCollection_t = std::set<const Drawable *>;
+  using animatedObjecsCollection_t = std::set<AnimatedObject *>;
 
 private:
   /** @brief Pointer to the instance.
@@ -59,6 +61,8 @@ private:
    *@brief Stuff that is drawn in window each frame
    **/
   drawableCollection_t m_drawablesCollection{};
+
+  animatedObjecsCollection_t m_animatedObjectsCollection{};
 
   /**
    *@brief Clock for computing ticks. */
@@ -135,8 +139,13 @@ public:
   RenderWindow &getWindow();
 
   void add(Drawable *shape);
+  void add(AnimatedObject *animatedObject);
 
   Time getLastFrameDuration() const;
+
+private:
+  void drawDrawables();
+  void animateObjects();
 };
 
 #endif // ENGINE_HPP_

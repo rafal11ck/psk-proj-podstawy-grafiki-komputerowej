@@ -13,6 +13,8 @@ point2d.cpp
 point2d.hpp
 updateableObject.cpp
 updateableObject.hpp
+animatedObject.hpp
+animatedObject.cpp
 )
 target_link_libraries(engine sfml-graphics)
 target_compile_features(engine PRIVATE cxx_std_20)

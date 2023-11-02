@@ -4,13 +4,14 @@
 #include "GameObject.hpp"
 #include "SFML/Graphics/Shape.hpp"
 #include "SFML/Graphics/Sprite.hpp"
+#include "animatedObject.hpp"
 #include "log.hpp"
 #include "point2d.hpp"
 #include "updateableObject.hpp"
 #include <array>
 #include <sys/types.h>
 
-class Player : public GameObject, public UpdateableObject, public sf::Sprite {
+class Player : public AnimatedObject {
 public:
   enum class MoveDirection { north, east, south, west, count };
 
@@ -26,6 +27,7 @@ private:
   };
 
 public:
+  virtual ~Player();
   void setIsMoving(MoveDirection direction, bool isMoving = true);
   bool isMoving() const;
   void stopMoving();
@@ -37,5 +39,6 @@ public:
   Point2d getMoveVector() const;
 
   void update();
+  void animate();
 };
 #endif // PLAYER_H_
