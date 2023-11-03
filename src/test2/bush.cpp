@@ -16,16 +16,17 @@ Bush::Bush() {
 
 void Bush::animate() {
   m_animationTimer += Engine::getInstance().getLastFrameDuration().asSeconds();
-  if (m_animationTimer > m_animationFrameDuration) {
-    nextSprite();
-    m_animationTimer = 0;
-  }
+  if (m_animationTimer < m_animationFrameDuration)
+    return;
+
+  m_animationTimer = 0;
+  nextSprite();
 }
 
 void Bush::nextSprite() {
+  this->setTextureRect(getCurrentSpriteRectangle(m_aninmationFrameIndicator));
   ++m_aninmationFrameIndicator;
   m_aninmationFrameIndicator %= 2;
-  this->setTextureRect(getCurrentSpriteRectangle(m_aninmationFrameIndicator));
 }
 
 sf::IntRect Bush::getCurrentSpriteRectangle(int frameNumber) {

@@ -9,8 +9,6 @@
 #include <algorithm>
 #include <iostream>
 
-std::ostream &Engine::s_logStream{std::cerr};
-
 Engine *Engine::s_instancePtr{nullptr};
 
 Engine::Engine() {

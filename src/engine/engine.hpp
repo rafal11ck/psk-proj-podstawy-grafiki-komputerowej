@@ -31,7 +31,6 @@ public:
 private:
   /** @brief Pointer to the instance.
    */
-  static std::ostream &s_logStream;
   static Engine *s_instancePtr;
 
   /** @brief custom function fired in the main loop.
@@ -91,7 +90,8 @@ public:
   Engine &setMaxFps(int fps);
 
   /** @brief Set window title.
-   *  @param title Title. */
+   *  @param title Title.
+   *  */
   Engine &setWindowTitle(std::string_view title);
 
   /** @brief Set resolution.
@@ -115,9 +115,9 @@ public:
   };
 
   /**
-   * @brief Set custom event handler
+   * @brief Set custom event handler.
    * @param eventType Type of event that handler receives.
-   * @param handler Function handling the event
+   * @param handler Function handling the event.
    **/
   Engine &setEventHandler(Event::EventType eventType, eventHandler_t handler);
 

@@ -3,6 +3,7 @@
 
 #include "SFML/System/Vector2.hpp"
 #include <ostream>
+
 class Point2d {
 public:
   using cordinate_t = float;

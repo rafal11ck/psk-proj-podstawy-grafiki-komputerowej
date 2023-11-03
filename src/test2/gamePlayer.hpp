@@ -44,4 +44,5 @@ private:
   sf::IntRect getCurrentAnimationFrameSpriteRectangle() const;
   int getRowOfAnimation() const;
 };
+
 #endif // GAMEPLAYER_H_

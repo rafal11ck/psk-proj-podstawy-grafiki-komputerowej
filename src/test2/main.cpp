@@ -1,4 +1,3 @@
-
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/Rect.hpp"
 #include "SFML/Graphics/Texture.hpp"
@@ -21,7 +20,7 @@ Engine &eng = Engine::getInstance();
 void initialziePlayer() {
   LOGINFON;
   player.setMovementSpeed(150);
-  player.setColor(sf::Color::Blue);
+  player.setColor(sf::Color::Red);
 
   eng.add(&player);
 }
@@ -36,10 +35,7 @@ void initializeBush() {
 
 void handlePlayerMovement() { player.update(); }
 
-void customLoop() {
-  Engine &eng = Engine::getInstance();
-  handlePlayerMovement();
-}
+void customLoop() { handlePlayerMovement(); }
 
 std::array keyBinds{
     std::pair{sf::Keyboard::Key::W, Player::MoveDirection::north},

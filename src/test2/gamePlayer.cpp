@@ -113,9 +113,9 @@ GamePlayer::getAnimationTypeOf(MoveDirection moveDirection) const {
 }
 
 void GamePlayer::nextAnimationFrame() {
+  updateTextureRect();
   ++m_aninmationFrameIndicator;
   m_aninmationFrameIndicator %= getFrameCountOfAnimation(m_animationType);
-  updateTextureRect();
   // LOGINFO << "Frame: " << m_aninmationFrameIndicator
   //         << " Type: " << static_cast<int>(m_animationType) << '\n';
 };
