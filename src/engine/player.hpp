@@ -86,10 +86,7 @@ public:
    * @brief Returns the player's movement vector multiplied by speed.
   */
   Point2d getMoveVector() const;
-
-  /**
-   * @brief update???????????
-  */
+  
   virtual void update();
 };
 #endif // PLAYER_H_

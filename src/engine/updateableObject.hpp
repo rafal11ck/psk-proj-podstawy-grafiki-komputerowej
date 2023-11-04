@@ -6,7 +6,7 @@
 class UpdateableObject {
 public:
   /**
-   * @brief update?
+   * @brief Updates state of object.
   */
   virtual void update();
 };
