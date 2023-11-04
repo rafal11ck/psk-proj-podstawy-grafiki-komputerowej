@@ -7,13 +7,26 @@
 #include "point2d.hpp"
 #include <vector>
 
+/**
+ * @breif Animated object class.
+ * */
 class AnimatedObject : public GameObject,
                        public sf::Sprite,
                        public sf::Texture {
 
 public:
+  /**
+   * @brief Destructor.
+   */
   virtual ~AnimatedObject(){};
-
+  /**
+   * @brief Object position setter.
+   * @param pos Position to be set.
+   */
+  virtual void setPosition(Point2d pos);
+  /**
+   * @brief Animates object.
+   */
   virtual void animate();
 
   void setPosition(Point2d pos) override;

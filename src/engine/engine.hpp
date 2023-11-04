@@ -14,7 +14,7 @@
 #include <set>
 
 /**
- * @brief The god. */
+ * @brief The engine class. */
 class Engine {
 public:
   using Time = sf::Time;
@@ -57,7 +57,7 @@ private:
   std::array<eventHandler_t, Event::Count> m_eventHandlers;
 
   /**
-   *@brief Stuff that is drawn in window each frame
+   *@brief Stuff that is drawn in the window each frame.
    **/
   drawableCollection_t m_drawablesCollection{};
 
@@ -68,14 +68,13 @@ private:
   Clock m_clock{};
 
   /**
-   *@brief Duration of last frame.
+   *@brief Duration of the last frame.
    **/
   Time m_lastFrameDuration{};
 
 public:
   /**
-   * @brief Constructor
-   *
+   * @brief Constructor.
    **/
   Engine();
   ~Engine();
@@ -121,30 +120,60 @@ public:
    **/
   Engine &setEventHandler(Event::EventType eventType, eventHandler_t handler);
 
-  /** @brief Get resolution.
+  /** @brief Resolution getter.
    */
   Point2d getResolution() const;
 
-  /** @brief Build the window.
+  /** @brief Builds the window.
    */
   Engine &buildWindow();
-
+  /**
+   *@brief Handles events.
+   */
   void handleEvents();
+  /**
+   * @brief Clears window to a single color.
+   */
   void clear();
+  /**
+   * @brief Renders objects.
+   */
   void render();
+  /**
+   * @brief Displays rendered objects.
+   */
   void display();
-
+  /**
+   * @brief The main loop.
+   */
   void loop();
-
+  /**
+   * @brief Window getter.
+   */
   RenderWindow &getWindow();
-
+  /**
+   * @brief Adds drawable to  Collection.
+   * @param Drawable drawable shape.
+   */
   void add(Drawable *shape);
+  /**
+   * @brief Adds animated object to Collection.
+   * @param animatedObject animated object.
+   */
   void add(AnimatedObject *animatedObject);
-
+  /**
+   * @brief Last frame duration getter.
+   */
   Time getLastFrameDuration() const;
 
 private:
+  /**
+   * @brief Draws objects.
+   */
   void drawDrawables();
+  /**
+   * @brief Draws animated objects.
+   */
   void animateObjects();
 };
 
