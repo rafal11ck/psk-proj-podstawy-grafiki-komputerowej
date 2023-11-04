@@ -4,6 +4,8 @@
 #include "GameObject.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Texture.hpp"
+#include "point2d.hpp"
+#include <vector>
 
 class AnimatedObject : public GameObject,
                        public sf::Sprite,
@@ -12,9 +14,11 @@ class AnimatedObject : public GameObject,
 public:
   virtual ~AnimatedObject(){};
 
-  virtual void setPosition(Point2d pos);
-
   virtual void animate();
+
+  void setPosition(Point2d pos) override;
+
+private:
 };
 
 #endif // ANIMATEDOBJECT_H_

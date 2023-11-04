@@ -16,9 +16,17 @@ extern std::ostream &logstream;
 #define LOGWARNN LOGWARN << '\n'
 
 #define LOGWARN                                                                \
-  G::logstream << "\033[35m" << __FILE_NAME__ << " \033[36m"                   \
-               << __PRETTY_FUNCTION__ << "\033[34m"                            \
-               << " WARN"                                                      \
+  G::logstream << "\033[33m"                                                   \
+               << "WARN "                                                      \
+                  "\033[35m"                                                   \
+               << __FILE_NAME__ << " \033[36m" << __PRETTY_FUNCTION__          \
+               << "\033[0m "
+
+#define LOGERROR                                                               \
+  G::logstream << "\033[31m"                                                   \
+               << "ERROR "                                                     \
+                  "\033[35m"                                                   \
+               << __FILE_NAME__ << " \033[36m" << __PRETTY_FUNCTION__          \
                << "\033[0m "
 
 #ifdef TRACE
