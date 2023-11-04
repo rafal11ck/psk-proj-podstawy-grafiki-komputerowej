@@ -1,5 +1,6 @@
 #include "point2d.hpp"
 #include "SFML/System/Vector2.hpp"
+#include <istream>
 #include <optional>
 #include <ostream>
 
@@ -24,6 +25,12 @@ std::ostream &operator<<(std::ostream &os, const Point2d &point) {
   return os;
 }
 
+std::istream &operator>>(std::istream &is, Point2d &point) {
+  is >> point.m_x;
+  is >> point.m_y;
+  return is;
+}
+
 Point2d::cordinate_t Point2d::getX() const { return m_x; };
 Point2d::cordinate_t Point2d::getY() const { return m_y; };
 
@@ -32,7 +39,7 @@ void Point2d::setY(cordinate_t y) { m_y = y; };
 /**
  * @brief Swaps co-ordinates with another point.
  * @param b Point to swap co-ordinates with.
-*/
+ */
 void Point2d::swap(Point2d &b) {
   std::swap(m_x, b.m_x);
   std::swap(m_y, b.m_y);

@@ -29,8 +29,6 @@ public:
    */
   virtual void animate();
 
-  void setPosition(Point2d pos) override;
-
 private:
 };
 
