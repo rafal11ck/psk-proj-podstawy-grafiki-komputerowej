@@ -1,0 +1,4 @@
+#ifndef FIDGETSPINNER_H_
+#define FIDGETSPINNER_H_
+
+#endif // FIDGETSPINNER_H_

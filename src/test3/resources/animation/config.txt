@@ -1,0 +1,10 @@
+#Comment lines start with '#'
+#Config file starts with relative path (from config file) to the spritesheet.
+#<path>
+spritesheet.png
+#ANIMATION
+#Indicates new animation
+ANIMATION 
+#FRAME represents frame of aimation 
+#size x, sizey, pox x , pos y, duration
+FRAME 300 300 0 0 0.5 
