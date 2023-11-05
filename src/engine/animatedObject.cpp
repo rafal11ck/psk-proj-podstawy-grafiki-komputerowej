@@ -2,7 +2,9 @@
 #include "SFML/Graphics/Sprite.hpp"
 #include "log.hpp"
 
-void AnimatedObject::animate() { LOGINFON; };
+void AnimatedObject::animate() {
+  LOGWARN << "Not overloaded " << this << '\n';
+};
 
 void AnimatedObject::setPosition(Point2d pos) {
   GameObject::setPosition(pos);

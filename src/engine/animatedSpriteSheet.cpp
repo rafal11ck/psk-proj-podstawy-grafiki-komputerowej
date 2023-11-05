@@ -1,10 +1,12 @@
 #include "animatedSpriteSheet.hpp"
+#include "SFML/Graphics/Rect.hpp"
 #include "log.hpp"
 #include <fstream>
 #include <functional>
 #include <iostream>
 #include <limits>
 #include <string>
+#include <string_view>
 
 std::istream &operator>>(std::istream &is,
                          AnimatedSpriteSheet::AnimationFrameData &afd) {
@@ -15,30 +17,50 @@ std::istream &operator>>(std::istream &is,
 }
 
 AnimatedSpriteSheet::AnimatedSpriteSheet(std::string_view path) {
-  std::string configFilePath{static_cast<std::string>(path) + "/config.txt"};
+  loadFromConfigFile(path);
+};
 
+void AnimatedSpriteSheet::loadFrame(std::istream &stream,
+                                    animationData_t &animationData) {
+  LOGINFO << "loading frame data\n";
+  // load Frame data
+  AnimationFrameData fdat{};
+  stream >> fdat;
+  // LOGINFO << fdat.m_position << " " << fdat.m_size << " " <<
+  // fdat.m_duration
+  //         << '\n';
+
+  // add frame data to animation
+  animationData.push_back(fdat);
+  stream.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+};
+
+void AnimatedSpriteSheet::loadSpritesheet(
+    std::istream &stream, std::string_view configFileDirectoryPath) {
+  LOGINFO << "loading spritesheet data\n";
+  std::string spriteSheetRelPath{};
+  stream >> spriteSheetRelPath;
+  spriteSheetRelPath =
+      std::string(configFileDirectoryPath) + "/" + spriteSheetRelPath;
+
+  loadFromFile(spriteSheetRelPath);
+
+  stream.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+void AnimatedSpriteSheet::loadFromConfigFile(std::string_view pathToDir) {
+  std::string configFilePath{static_cast<std::string>(pathToDir) +
+                             "/config.txt"};
+  // open file
   std::fstream configFile{configFilePath};
-
   if (!configFile.is_open()) {
     LOGERROR << "opening config file failed it should be at " << configFilePath
              << "\n";
     return;
   }
 
-  int currentAnimationBeingLoaded{-1};
-  animationData_t animationDataBeingLoaded{};
+  animationData_t *animationDataBeingLoaded{NULL};
   std::string line{};
-
-  auto loadAnimation{[&]() {
-    LOGINFO << "loading animation data\n";
-    ++currentAnimationBeingLoaded;
-    if (currentAnimationBeingLoaded >= 0) {
-      // push the animation data and reset buffer for next animation.
-      m_animationsData.push_back(animationDataBeingLoaded);
-      animationDataBeingLoaded = {};
-    }
-    configFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  }};
 
   while (!configFile.eof()) {
     line = "";
@@ -47,48 +69,33 @@ AnimatedSpriteSheet::AnimatedSpriteSheet(std::string_view path) {
       std::getline(configFile, line);
     } while (line.starts_with("#"));
 
-    if (line.starts_with("ANIMATION")) {
-      // load animation
-      loadAnimation();
-    } else
-
-      // load frame
-      if (line.starts_with("FRAME")) {
-        LOGINFO << "loading frame data\n";
-        // if frame is loaded but no animation is being loaded
-        if (currentAnimationBeingLoaded == -1) {
-          LOGERROR << "corrupted config file FRAME before ANIMATION\n";
-          return;
-        }
-        // load Frame data
-        AnimationFrameData fdat{};
-        configFile >> fdat;
-        // LOGINFO << fdat.m_position << " " << fdat.m_size << " " <<
-        // fdat.m_duration
-        //         << '\n';
-
-        // add frame data to animation
-        animationDataBeingLoaded.push_back(fdat);
-        configFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      }
+    // load spritesheet
     if (line.starts_with("SPRITESHEET")) {
-      LOGINFO << "loading spritesheet data\n";
-      std::string spriteSheetRelPath{};
-      configFile >> spriteSheetRelPath;
-      spriteSheetRelPath = std::string(path) + "/" + spriteSheetRelPath;
-      int x{};
-      configFile >> x;
-      int y{};
-      configFile >> y;
-      LOGINFO << spriteSheetRelPath << " " << x << y << '\n';
+      loadSpritesheet(configFile, pathToDir);
+    } else if (line.starts_with("ANIMATION")) {
+      // Add new animation and change pointer
+      LOGINFO << "loading animation data\n";
+      m_animationsData.push_back({});
+      animationDataBeingLoaded = {&m_animationsData.back()};
       configFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    } else {
-      if (line == "")
+    }
+    // load frame
+    else if (line.starts_with("FRAME")) {
+      if (animationDataBeingLoaded == NULL)
+        LOGERROR << "config file is corrupted, FRAME before ANIMATION?";
+      loadFrame(configFile, *animationDataBeingLoaded);
+    }
+    // not known
+    else {
+      // empty line ignore
+      if (line == "") {
         continue;
+      }
+      // invalid line
       LOGWARN << "not recegnized config option: " << line
               << " in file: " << configFilePath << '\n';
     }
-  };
-
+  }
+  // close file
   configFile.close();
-};
+}

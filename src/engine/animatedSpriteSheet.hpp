@@ -3,6 +3,7 @@
 
 #include "animatedObject.hpp"
 #include <istream>
+#include <string_view>
 class AnimatedSpriteSheet : public AnimatedObject {
 
 public:
@@ -29,6 +30,16 @@ private:
   void addAnimation(animationData_t animationData);
 
   void nextFrame();
+
+  /**
+   * @brief load frame data from stream
+   */
+  void loadFrame(std::istream &stream, animationData_t &animationData);
+
+  void loadSpritesheet(std::istream &stream,
+                       std::string_view configFileDirectoryPath);
+
+  void loadFromConfigFile(std::string_view pathToDir);
 
 private:
   /**

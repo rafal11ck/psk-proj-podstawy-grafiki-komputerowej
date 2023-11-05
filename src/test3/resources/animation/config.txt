@@ -1,17 +1,26 @@
-SPRITESHEET
-spritesheet.png 900 300
 #Comment lines start with '#'
-#Config file starts with relative path (from config file) to the spritesheet and it's size
-#<path> <size x> <size y>
-#ANIMATION
+#SPRITESHEET should be followed with with relative path in the next line
+#(from config file directory) to the spritesheet
+
+#COMMENTS CAN NOT be in between INFO
+#example:
+#SPRITESHEET
+##SOMECOMMENT
+#filename.png
+#
+#is not allowed
+
+#<path>
+SPRITESHEET
+spritesheet.png
+
 #Indicates new animation
 ANIMATION
+
 #FRAME represents frame of animation
 #it is followed by line containing
 #<pos x> <pos y> <size x> <size y> <duration>
 FRAME
-0 0 300 300 0.5
+0 0 100 100 0.5
 FRAME
-300 0 300 300 0 0.5
-FRAME
-600 0 300 300 0.5
+100 0 100 100 0 0.5

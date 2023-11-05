@@ -4,14 +4,15 @@
 #include <iostream>
 
 namespace G {
-Engine &eng{Engine::getInstance()};
 std::string basePath = "resources/";
 }; // namespace G
 
+AnimatedSpriteSheet animation(G::basePath + "animation");
+
 int main() {
-  G::eng.getInstance().setMaxFps(75).setResolution({1000, 1000}).buildWindow();
+  Engine::getInstance().setMaxFps(75).setResolution({1000, 1000}).buildWindow();
 
-  AnimatedSpriteSheet animation(G::basePath + "animation");
+  Engine::getInstance().add(&animation);
 
-  G::eng.loop();
+  Engine::getInstance().loop();
 }
