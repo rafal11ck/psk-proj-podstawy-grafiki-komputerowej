@@ -1,6 +1,7 @@
 #ifndef ANIMATEDSPRITESHEET_H_
 #define ANIMATEDSPRITESHEET_H_
 
+#include "SFML/Graphics/Rect.hpp"
 #include "animatedObject.hpp"
 #include <istream>
 #include <string_view>
@@ -16,6 +17,8 @@ public:
     Point2d m_position;
 
     friend std::istream &operator>>(std::istream &is, AnimationFrameData &afd);
+
+    sf::IntRect toIntRect() const;
   };
 
   using animationData_t = std::vector<AnimationFrameData>;
@@ -23,13 +26,15 @@ public:
 public:
   AnimatedSpriteSheet(std::string_view path);
 
-private:
-  /**
-   *@brief Adds animation
-   **/
-  void addAnimation(animationData_t animationData);
+  virtual void animate() override;
 
+private:
   void nextFrame();
+  int getCurrentAnimationFrameCount() const;
+  sf::IntRect getCurrentAnimationFrameRect() const;
+  float getCurrentAnimationFrameDuration() const;
+  const AnimationFrameData &getCurrentAnimationFrameData() const;
+  void setFrame(const AnimationFrameData &frameData);
 
   /**
    * @brief load frame data from stream
@@ -51,9 +56,8 @@ private:
    * Indicates index of current animation in m_animationsData.
    * */
   int m_currentAnimationTypeIndex;
-
   int m_currentFrameId{};
-  float m_currentAnimationFrameDuration{};
+
   float m_animationTimer{};
 };
 

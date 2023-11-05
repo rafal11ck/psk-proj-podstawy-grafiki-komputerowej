@@ -1,5 +1,5 @@
 #include "animatedSpriteSheet.hpp"
-#include "SFML/Graphics/Rect.hpp"
+#include "engine.hpp"
 #include "log.hpp"
 #include <fstream>
 #include <functional>
@@ -10,19 +10,82 @@
 
 std::istream &operator>>(std::istream &is,
                          AnimatedSpriteSheet::AnimationFrameData &afd) {
+  LOGTRACEN;
   is >> afd.m_position;
   is >> afd.m_size;
   is >> afd.m_duration;
   return is;
 }
 
+sf::IntRect AnimatedSpriteSheet::AnimationFrameData::toIntRect() const {
+  LOGTRACEN;
+  return {static_cast<int>(m_position.getX()),
+          static_cast<int>(m_position.getY()), static_cast<int>(m_size.getX()),
+          static_cast<int>(m_size.getY())};
+}
+
 AnimatedSpriteSheet::AnimatedSpriteSheet(std::string_view path) {
+  std::string pathh{std::string(path) + "/spritesheet.png"};
+  LOGINFO << pathh << '\n';
   loadFromConfigFile(path);
+
+  setTexture(*this);
+  setColor(sf::Color::Cyan);
+  setFrame(getCurrentAnimationFrameData());
+  // setFrame(getCurrentAnimationFrameData());
 };
+
+void AnimatedSpriteSheet::animate() {
+  LOGTRACEN;
+  m_animationTimer += Engine::getInstance().getLastFrameDuration().asSeconds();
+  // if duration of frame not exhaused do nothing;
+  if (m_animationTimer < getCurrentAnimationFrameDuration())
+    return;
+  nextFrame();
+}
+
+void AnimatedSpriteSheet::nextFrame() {
+  LOGTRACEN;
+  // change frame
+  ++m_currentFrameId;
+  m_currentFrameId %= getCurrentAnimationFrameCount();
+  setFrame(getCurrentAnimationFrameData());
+}
+
+int AnimatedSpriteSheet::getCurrentAnimationFrameCount() const {
+  LOGTRACEN;
+  return m_animationsData[m_currentAnimationTypeIndex].size();
+}
+
+const AnimatedSpriteSheet::AnimationFrameData &
+AnimatedSpriteSheet::getCurrentAnimationFrameData() const {
+  LOGTRACEN;
+  if (m_animationsData.size() == 0 ||
+      m_animationsData.size() < m_currentAnimationTypeIndex) {
+    LOGWARN << "No animation data\n";
+  } else if (m_animationsData[m_currentAnimationTypeIndex].size() == 0 ||
+             m_animationsData[m_currentAnimationTypeIndex].size() <
+                 m_currentAnimationTypeIndex) {
+    LOGWARN << "No frame data in animation " << m_currentAnimationTypeIndex
+            << '\n';
+  }
+  return m_animationsData[m_currentAnimationTypeIndex][m_currentFrameId];
+}
+
+float AnimatedSpriteSheet::getCurrentAnimationFrameDuration() const {
+  LOGTRACEN;
+  return getCurrentAnimationFrameData().m_duration;
+};
+
+void AnimatedSpriteSheet::setFrame(const AnimationFrameData &frameData) {
+  LOGTRACEN;
+  setTextureRect(frameData.toIntRect());
+  m_animationTimer = 0;
+}
 
 void AnimatedSpriteSheet::loadFrame(std::istream &stream,
                                     animationData_t &animationData) {
-  LOGINFO << "loading frame data\n";
+  LOGTRACEN;
   // load Frame data
   AnimationFrameData fdat{};
   stream >> fdat;
@@ -74,7 +137,7 @@ void AnimatedSpriteSheet::loadFromConfigFile(std::string_view pathToDir) {
       loadSpritesheet(configFile, pathToDir);
     } else if (line.starts_with("ANIMATION")) {
       // Add new animation and change pointer
-      LOGINFO << "loading animation data\n";
+      //     LOGINFO << "loading animation data\n";
       m_animationsData.push_back({});
       animationDataBeingLoaded = {&m_animationsData.back()};
       configFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

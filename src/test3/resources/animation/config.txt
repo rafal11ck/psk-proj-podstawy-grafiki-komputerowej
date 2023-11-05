@@ -16,7 +16,6 @@ spritesheet.png
 
 #Indicates new animation
 ANIMATION
-
 #FRAME represents frame of animation
 #it is followed by line containing
 #<pos x> <pos y> <size x> <size y> <duration>

@@ -19,7 +19,7 @@ Engine &eng = Engine::getInstance();
 
 void initialziePlayer() {
   LOGINFON;
-  player.setMovementSpeed(150);
+  player.setMovementSpeed(50);
   player.setColor(sf::Color::Red);
 
   eng.add(&player);
