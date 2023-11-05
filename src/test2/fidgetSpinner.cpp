@@ -19,7 +19,7 @@ void FidgetSpinner::animate() {
   setRotation(m_angle);
 
   if (m_rotationspeed > 0) {
-    m_rotationspeed -= m_rotationResistance;
+    m_rotationspeed -= m_rotationResistance + m_rotationspeed / 500;
     if (m_rotationspeed < 0)
       m_rotationspeed = 0;
   }
