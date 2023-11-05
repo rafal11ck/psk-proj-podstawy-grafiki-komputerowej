@@ -30,7 +30,6 @@ AnimatedSpriteSheet::AnimatedSpriteSheet(std::string_view path) {
   loadFromConfigFile(path);
 
   setTexture(*this);
-  setColor(sf::Color::Cyan);
   setFrame(getCurrentAnimationFrameData());
   // setFrame(getCurrentAnimationFrameData());
 };
@@ -140,7 +139,6 @@ void AnimatedSpriteSheet::loadFromConfigFile(std::string_view pathToDir) {
       //     LOGINFO << "loading animation data\n";
       m_animationsData.push_back({});
       animationDataBeingLoaded = {&m_animationsData.back()};
-      configFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     // load frame
     else if (line.starts_with("FRAME")) {

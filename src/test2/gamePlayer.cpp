@@ -1,6 +1,7 @@
 
 #include "gamePlayer.hpp"
 #include "SFML/Graphics/Rect.hpp"
+#include "SFML/Graphics/Sprite.hpp"
 #include "animatedObject.hpp"
 #include "engine.hpp"
 #include "log.hpp"

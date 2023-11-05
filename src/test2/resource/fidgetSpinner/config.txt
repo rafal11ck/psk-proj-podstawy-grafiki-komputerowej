@@ -1,0 +1,5 @@
+SPRITESHEET
+fidgetSpinner.png
+ANIMATION
+FRAME
+0 0 150 150 1

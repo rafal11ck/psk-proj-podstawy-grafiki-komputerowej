@@ -38,10 +38,18 @@ public:
    */
   explicit Point2d(const sf::Vector2f &vector);
 
+  explicit Point2d(const sf::Vector2i &vector);
+
   friend Point2d operator+(const Point2d &a, const Point2d &b);
   friend Point2d &operator+=(Point2d &a, const Point2d &b);
 
+  friend Point2d operator-(const Point2d &a, const Point2d &b);
+
+  friend bool operator==(const Point2d &a, const Point2d &b);
+  friend bool operator!=(const Point2d &a, const Point2d &b);
+
   friend Point2d operator*(const Point2d &a, float b);
+  friend Point2d operator*(float b, const Point2d &a);
 
   friend std::ostream &operator<<(std::ostream &os, const Point2d &point);
 
@@ -69,6 +77,10 @@ public:
    * @brief Returns 2D vector containing point co-ordinates.
    */
   sf::Vector2f toVector2f() const;
+
+  cordinate_t length() const;
+
+  cordinate_t distanceTo(const Point2d &point) const;
 };
 
 #endif // POINT2D_HPP_

@@ -52,13 +52,7 @@ void Player::stopMoving(MoveDirection direction) {
 
 bool Player::isMoving() const {
   bool moving{};
-  for (auto it : m_isMoving) {
-    if (it) {
-      moving = true;
-      break;
-    }
-  }
-  return moving;
+  return getMoveVectorOrigin() != Point2d{0, 0};
 }
 
 bool Player::isMoving(MoveDirection direction) const {

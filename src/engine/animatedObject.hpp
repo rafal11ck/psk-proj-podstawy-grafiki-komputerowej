@@ -29,6 +29,8 @@ public:
    */
   virtual void animate();
 
+  virtual void move(Point2d vec);
+
 private:
 };
 

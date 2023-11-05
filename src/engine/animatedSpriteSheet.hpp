@@ -28,12 +28,14 @@ public:
 
   virtual void animate() override;
 
-private:
-  void nextFrame();
+protected:
   int getCurrentAnimationFrameCount() const;
   sf::IntRect getCurrentAnimationFrameRect() const;
   float getCurrentAnimationFrameDuration() const;
   const AnimationFrameData &getCurrentAnimationFrameData() const;
+
+protected:
+  void nextFrame();
   void setFrame(const AnimationFrameData &frameData);
 
   /**
