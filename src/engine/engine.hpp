@@ -79,7 +79,7 @@ public:
   Engine();
   /**
    * @brief Destructor.
-  */
+   */
   ~Engine();
 
   /** @brief Instance getter.
@@ -156,9 +156,9 @@ public:
   RenderWindow &getWindow();
   /**
    * @brief Adds drawable to  Collection.
-   * @param Drawable drawable shape.
+   * @param drawable Drawable shape.
    */
-  void add(Drawable *shape);
+  void add(Drawable *drawable);
   /**
    * @brief Adds animated object to Collection.
    * @param animatedObject animated object.

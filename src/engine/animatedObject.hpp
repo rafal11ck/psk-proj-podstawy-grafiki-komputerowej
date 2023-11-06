@@ -8,7 +8,7 @@
 #include <vector>
 
 /**
- * @breif Animated object class.
+ * @brief Animated object class.
  * */
 class AnimatedObject : public GameObject,
                        public sf::Sprite,
