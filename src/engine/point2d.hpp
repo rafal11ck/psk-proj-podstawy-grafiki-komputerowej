@@ -77,9 +77,14 @@ public:
    * @brief Returns 2D vector containing point co-ordinates.
    */
   sf::Vector2f toVector2f() const;
-
+  /**
+   * @brief Returns length from origin to point.
+  */
   cordinate_t length() const;
-
+  /**
+   * @brief Returns distance between two points.
+   * @param point Point to which distance is calculated.
+  */
   cordinate_t distanceTo(const Point2d &point) const;
 };
 

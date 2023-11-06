@@ -77,6 +77,9 @@ public:
    * @brief Constructor.
    **/
   Engine();
+  /**
+   * @brief Destructor.
+  */
   ~Engine();
 
   /** @brief Instance getter.
