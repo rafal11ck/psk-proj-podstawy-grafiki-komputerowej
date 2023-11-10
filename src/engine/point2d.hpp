@@ -74,12 +74,17 @@ public:
 
   void swap(Point2d &b);
   /**
-   * @brief Returns 2D vector containing point co-ordinates.
+   * @brief Convert to Vector2f.
    */
   sf::Vector2f toVector2f() const;
-
+  /**
+   * @brief Get length of vector.
+  */
   cordinate_t length() const;
-
+  /**
+   * @brief Get distance between two points.
+   * @param point Point to which distance is calculated.
+  */
   cordinate_t distanceTo(const Point2d &point) const;
 };
 
