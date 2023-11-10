@@ -1,4 +1,6 @@
 add_executable(test2
+ball.hpp
+ball.cpp
 main.cpp
 bush.hpp
 bush.cpp

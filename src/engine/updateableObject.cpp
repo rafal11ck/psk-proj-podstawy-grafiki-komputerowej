@@ -1,4 +1,4 @@
 #include "updateableObject.hpp"
 #include "log.hpp"
 
-void UpdateableObject::update() { LOGWARN << "not implemented\n"; };
+// void UpdateableObject::update() { LOGWARN << "not implemented\n"; };

@@ -124,6 +124,11 @@ void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
 void Engine::add(AnimatedObject *animatedObject) {
   m_animatedObjectsCollection.insert(animatedObject);
 }
+
+void Engine::remove(Engine::Drawable *drawable) {
+  m_drawablesCollection.erase(drawable);
+}
+
 Engine::Time Engine::getLastFrameDuration() const {
   return m_lastFrameDuration;
 }

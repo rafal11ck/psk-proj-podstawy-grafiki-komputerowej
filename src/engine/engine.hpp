@@ -127,40 +127,51 @@ public:
   /** @brief Builds the window.
    */
   Engine &buildWindow();
+
   /**
    *@brief Handles events.
    */
   void handleEvents();
+
   /**
    * @brief Clears window to a single color.
    */
   void clear();
+
   /**
    * @brief Renders objects.
    */
   void render();
+
   /**
    * @brief Displays rendered objects.
    */
   void display();
+
   /**
    * @brief The main loop.
    */
   void loop();
+
   /**
    * @brief Window getter.
    */
   RenderWindow &getWindow();
+
   /**
    * @brief Adds drawable to  Collection.
    * @param Drawable drawable shape.
    */
   void add(Drawable *shape);
+
   /**
    * @brief Adds animated object to Collection.
    * @param animatedObject animated object.
    */
   void add(AnimatedObject *animatedObject);
+
+  void remove(Drawable *);
+
   /**
    * @brief Last frame duration getter.
    */

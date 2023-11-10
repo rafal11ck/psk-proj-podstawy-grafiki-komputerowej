@@ -6,6 +6,7 @@
 #include "SFML/Window/Keyboard.hpp"
 #include "animatedObject.hpp"
 #include "animatedSpriteSheet.hpp"
+#include "ball.hpp"
 #include "bush.hpp"
 #include "engine.hpp"
 #include "fidgetSpinner.hpp"
@@ -13,6 +14,7 @@
 #include "log.hpp"
 #include "point2d.hpp"
 #include <iostream>
+#include <list>
 #include <utility>
 
 using sf::IntRect;
@@ -21,6 +23,17 @@ GamePlayer player{};
 std::array<Bush, 4> bush{};
 Engine &eng = Engine::getInstance();
 FidgetSpinner fidgetSpinner{"resource/fidgetSpinner"};
+std::list<Ball *> balls;
+
+Ball *ball = new Ball(30);
+
+void throwBall(Point2d pos, Point2d vector) {
+  Ball *bal = new Ball();
+  bal->setPositon(pos);
+  bal->setMoveVectorBase(vector);
+  balls.push_back({new Ball()});
+  eng.add(ball);
+}
 
 void initialziePlayer() {
   LOGINFON;
@@ -41,6 +54,17 @@ void initializeBush() {
 }
 
 void handlePlayerMovement() { player.update(); }
+
+void handleBalls() {
+  for (auto it{balls.begin()}; it != balls.end(); ++it) {
+    Ball *b = *it;
+    b->update();
+    if (b->wasRemovedFromEngine()) {
+      delete b;
+      balls.erase(it);
+    }
+  }
+}
 
 void customLoop() { handlePlayerMovement(); }
 
