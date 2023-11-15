@@ -3,6 +3,7 @@
 #include "SFML/Graphics/CircleShape.hpp"
 #include "SFML/Graphics/Transformable.hpp"
 #include "engine.hpp"
+#include "log.hpp"
 #include "point2d.hpp"
 
 Ball::Ball(float radius, std::size_t pointCount)
@@ -26,15 +27,17 @@ void Ball::setPositon(Point2d pos) {
   sf::Transformable::setPosition(pos.toVector2f());
 }
 
-bool Ball::wasRemovedFromEngine() const { return m_removedFromEngine; }
+bool Ball::isDead() const { return m_dead; }
 
 void Ball::update() {
-  move(getMoveVector());
-  m_timeToLife -= Engine::getInstance().getLastFrameDuration().asSeconds();
   if (m_timeToLife <= 0) {
-    Engine::getInstance().remove(this);
-    m_removedFromEngine = true;
+    m_dead = true;
+    return;
   }
+  m_timeToLife -= Engine::getInstance().getLastFrameDuration().asSeconds();
+
+  move(getMoveVector() *
+       Engine::getInstance().getLastFrameDuration().asSeconds());
 }
 
 Point2d Ball::getMoveVector() { return {m_moveVectorBase * m_movementSpeed}; }

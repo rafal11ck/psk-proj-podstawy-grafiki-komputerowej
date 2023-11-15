@@ -2,6 +2,7 @@
 #include "SFML/Graphics/Rect.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Texture.hpp"
+#include "SFML/System/Vector2.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include "animatedObject.hpp"
@@ -12,9 +13,12 @@
 #include "fidgetSpinner.hpp"
 #include "gamePlayer.hpp"
 #include "log.hpp"
+#include "player.hpp"
 #include "point2d.hpp"
+#include <cstdlib>
 #include <iostream>
 #include <list>
+#include <random>
 #include <utility>
 
 using sf::IntRect;
@@ -25,14 +29,31 @@ Engine &eng = Engine::getInstance();
 FidgetSpinner fidgetSpinner{"resource/fidgetSpinner"};
 std::list<Ball *> balls;
 
-Ball *ball = new Ball(30);
-
-void throwBall(Point2d pos, Point2d vector) {
+Ball *throwBall(Point2d pos, Point2d vector) {
   Ball *bal = new Ball();
   bal->setPositon(pos);
   bal->setMoveVectorBase(vector);
-  balls.push_back({new Ball()});
-  eng.add(ball);
+  balls.push_back(bal);
+  eng.add(bal);
+  return bal;
+}
+
+sf::Color getRandomColor() {
+  return {static_cast<sf::Uint8>(rand() % 256),
+          static_cast<sf::Uint8>(rand() % 256),
+          static_cast<sf::Uint8>(rand() % 256)};
+}
+
+void throwBallPlayer() {
+  Ball *bal{throwBall(
+      static_cast<Point2d>(
+          player.GameObject::getPosition() +
+          static_cast<Point2d>(player.sf::Sprite::getTextureRect().getSize()) *
+              0.5),
+      player.getMoveVectorOrigin())};
+
+  bal->setMovementSpeed(80);
+  bal->setFillColor(getRandomColor());
 }
 
 void initialziePlayer() {
@@ -56,17 +77,24 @@ void initializeBush() {
 void handlePlayerMovement() { player.update(); }
 
 void handleBalls() {
-  for (auto it{balls.begin()}; it != balls.end(); ++it) {
-    Ball *b = *it;
+
+  for (auto it{balls.begin()}; it != balls.end();) {
+    auto it2{it};
+    ++it;
+    Ball *b = *it2;
     b->update();
-    if (b->wasRemovedFromEngine()) {
+    if (b->isDead()) {
+      Engine::getInstance().remove(b);
+      balls.remove(b);
       delete b;
-      balls.erase(it);
     }
   }
 }
 
-void customLoop() { handlePlayerMovement(); }
+void customLoop() {
+  handlePlayerMovement();
+  handleBalls();
+}
 
 void spinTheFidget() {
 
@@ -83,12 +111,6 @@ void spinTheFidget() {
   }
 }
 
-std::array keyBinds{
-    std::pair{sf::Keyboard::Key::W, Player::MoveDirection::north},
-    std::pair{sf::Keyboard::Key::S, Player::MoveDirection::south},
-    std::pair{sf::Keyboard::Key::A, Player::MoveDirection::west},
-    std::pair{sf::Keyboard::Key::D, Player::MoveDirection::east}};
-
 void keyPressedEventHandler(const sf::Event &ev) {
   switch (ev.key.code) {
   case sf::Keyboard::W:
@@ -102,6 +124,10 @@ void keyPressedEventHandler(const sf::Event &ev) {
     break;
   case sf::Keyboard::D:
     player.setIsMoving(Player::MoveDirection::east);
+    break;
+
+  case sf::Keyboard::F:
+    throwBallPlayer();
     break;
   case sf::Keyboard::Space:
     spinTheFidget();
@@ -149,6 +175,7 @@ int main() {
   initialziePlayer();
   initializeBush();
   initializeFidgetSpinner();
+  throwBall({100, 0}, {1, 1});
 
   eng.loop();
 }

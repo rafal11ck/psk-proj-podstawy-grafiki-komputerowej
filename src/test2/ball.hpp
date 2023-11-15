@@ -20,16 +20,16 @@ public:
   virtual void move(Point2d vector);
   virtual void setPositon(Point2d pos);
 
-  bool wasRemovedFromEngine() const;
+  bool isDead() const;
 
 private:
   Point2d getMoveVector();
 
 private:
-  float m_movementSpeed{30};
-  Point2d m_moveVectorBase;
+  float m_movementSpeed{10};
+  Point2d m_moveVectorBase{};
   float m_timeToLife{15};
-  bool m_removedFromEngine{false};
+  bool m_dead{false};
 };
 
 #endif // BALL_HPP_

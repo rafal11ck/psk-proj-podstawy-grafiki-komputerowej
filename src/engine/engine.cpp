@@ -119,9 +119,13 @@ void Engine::loop() {
 
 Engine::RenderWindow &Engine::getWindow() { return m_window; }
 
-void Engine::add(Drawable *drawable) { m_drawablesCollection.insert(drawable); }
+void Engine::add(Drawable *drawable) {
+  LOGINFO << drawable << '\n';
+  m_drawablesCollection.insert(drawable);
+}
 
 void Engine::add(AnimatedObject *animatedObject) {
+  LOGINFO << animatedObject << '\n';
   m_animatedObjectsCollection.insert(animatedObject);
 }
 
