@@ -1,0 +1,33 @@
+#+title: Podstawy grafiki komputerwej 1 silnik do gier 2d
+#+language: pl
+#+author: Rafał Grot, Kamil Gunia, Piotr Górski
+#+latex_header: \usepackage[margin=2cm]{geometry}
+
+\newpage
+
+* DONE Wymagania systemowe
+- SFML
+- cmake
+
+* TODO Jak używać silnika
+** DONE Użycie bilbioteki =engine=
+Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy =engine.hpp=..
+** TODO Wybrane klasy wykorzystywanie przez silnik.
+*** DONE GameObject
+GameObject to klasa repezentująca obiekt w grze.
+*** DONE Drawable
+Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
+*** DONE AnimatedObject
+Jest to klasa zawierająca metodę wirtualną =animate()=, należy ją przeciążyć w celu realizacji animacji.
+*** TODO AnimatedSpriteSheet
+Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap.
+
+- Obiekty tej klasy wczytują informacje o animacji z plików.
+
+Konstruktor przyjmuje ścieżkę
+
+
+
+*** TODO UpdateableObject
+Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodoę =update= klasy =UpdateableObject=.
+Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
