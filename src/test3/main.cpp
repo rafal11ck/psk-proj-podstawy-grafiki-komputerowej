@@ -1,7 +1,6 @@
 #include "SFML/Graphics/Color.hpp"
 #include "animatedSpriteSheet.hpp"
 #include "engine.hpp"
-#include "log.hpp"
 #include <iostream>
 
 namespace G {
@@ -13,7 +12,6 @@ AnimatedSpriteSheet animation(G::basePath + "animation");
 int main() {
   Engine::getInstance().setMaxFps(3).setResolution({1000, 1000}).buildWindow();
 
-  // Engine::getInstance().add(&animation);
   animation.setPosition({300, 300});
   animation.setColor(sf::Color::Cyan);
 

@@ -1,7 +1,8 @@
 #+title: Podstawy grafiki komputerwej 1 silnik do gier 2d
-#+language: pl
+#+language: Polish
 #+author: Rafał Grot, Kamil Gunia, Piotr Górski
 #+latex_header: \usepackage[margin=2cm]{geometry}
+#+options: todo:nil
 
 \newpage
 
@@ -9,25 +10,59 @@
 - SFML
 - cmake
 
-* TODO Jak używać silnika
-** DONE Użycie bilbioteki =engine=
+* DONE Użycie bilbioteki =engine=
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy =engine.hpp=..
-** TODO Wybrane klasy wykorzystywanie przez silnik.
-*** DONE GameObject
+* DONE Wybrane klasy wykorzystywanie przez silnik.
+** DONE GameObject
 GameObject to klasa repezentująca obiekt w grze.
-*** DONE Drawable
+** DONE Drawable
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
-*** DONE AnimatedObject
+** DONE AnimatedObject
 Jest to klasa zawierająca metodę wirtualną =animate()=, należy ją przeciążyć w celu realizacji animacji.
-*** TODO AnimatedSpriteSheet
-Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap.
+** DONE AnimatedSpriteSheet
+Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziediczy po AnimatedObject.
 
 - Obiekty tej klasy wczytują informacje o animacji z plików.
 
-Konstruktor przyjmuje ścieżkę
+- Konstruktor przyjmuje ścieżkę do katalogu, który musi zaweirać plik =config.txt=
 
 
+Metadane animacji opisane w pliku konfiguracyjnym mają następujący format:
 
-*** TODO UpdateableObject
+#+begin_src example
+COMMAND
+ARGS
+#+end_src
+
+Bezpośrednio za linią z =COMMAND= musi znajdować się linia z argumentami oddzielanym spacją.
+Linie które mają być traktowane jako komentarze zaczynają się znakiem "#".
+
+*** DONE Command
+
+Prawidłowe opcje =COMMAND= to:
+- =SPRITESHEET= ::
+  Posiada jeden parametr -- scieżkę relatywną od katlagou, w którym znajduje się plik konfiguracyjny, do pliku zawierającego tablice spritów.
+
+- =ANIMATION= ::
+  Oznacza ładowanie animacji, kolejne wywołania oznaczają nowe typy animacji. Nie przyjmuje parametrów.
+
+- =FRAME= ::
+  Zawiera informacje o pojedyńczej klatce animacji.
+  Przyjmuje parametry oznaczające kolejno
+  + pozycje x lewego górnego rogu sprita.
+  + pozycje y lewego górnego rogu sprita.
+  + rozmiar w osi x sprita.
+  + rozmiar w osi y sprita.
+  + czas trwania klatki
+*** DONE Przykład
+#+include: ../src/test3/resources/animation/config.txt src txt
+
+
+** DONE UpdateableObject
 Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodoę =update= klasy =UpdateableObject=.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
+
+* DONE Przykład użycia silnika
+Program wyświetlający animację.
+
+#+include: ../src/test3/main.cpp src cpp

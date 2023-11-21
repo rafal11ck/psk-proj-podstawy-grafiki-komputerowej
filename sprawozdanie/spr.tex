@@ -1,4 +1,4 @@
-% Created 2023-11-16 Thu 15:12
+% Created 2023-11-21 Tue 10:57
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -29,24 +29,123 @@
 \tableofcontents
 
 \newpage
-\section{{\bfseries\sffamily DONE} Wymagania systemowe}
-\label{sec:orgb63ae14}
+\section{Wymagania systemowe}
+\label{sec:org7b065c9}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
-\section{{\bfseries\sffamily TODO} Jak używać silnika}
-\label{sec:orge06f6c1}
-\subsection{{\bfseries\sffamily TODO} użycie bilbioteki \texttt{engine}}
-\label{sec:org6b00b3a}
-\subsection{{\bfseries\sffamily TODO} Dodawnie obiektów do silnika}
-\label{sec:org6e73772}
-\subsubsection{{\bfseries\sffamily TODO} GameObject}
-\label{sec:org9174d34}
+\section{Użycie bilbioteki \texttt{engine}}
+\label{sec:org2f6b2f0}
+Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp}..
+\section{Wybrane klasy wykorzystywanie przez silnik.}
+\label{sec:org67393b2}
+\subsection{GameObject}
+\label{sec:org3ef4a7c}
 GameObject to klasa repezentująca obiekt w grze.
-\subsubsection{{\bfseries\sffamily TODO} Drawable}
-\label{sec:org9cebd53}
-Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować
-\subsubsection{{\bfseries\sffamily TODO} AnimatedObject}
-\label{sec:orga1f3cea}
+\subsection{Drawable}
+\label{sec:org8ad77fe}
+Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
+\subsection{AnimatedObject}
+\label{sec:org42dce6c}
+Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
+\subsection{AnimatedSpriteSheet}
+\label{sec:orgb54e728}
+Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziediczy po AnimatedObject.
+
+\begin{itemize}
+\item Obiekty tej klasy wczytują informacje o animacji z plików.
+
+\item Konstruktor przyjmuje ścieżkę do katalogu, który musi zaweirać plik \texttt{config.txt}
+\end{itemize}
+
+
+Metadane animacji opisane w pliku konfiguracyjnym mają następujący format:
+
+\begin{verbatim}
+COMMAND
+ARGS
+\end{verbatim}
+
+Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
+Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
+\subsubsection{Command}
+\label{sec:orgc8e5692}
+
+Prawidłowe opcje \texttt{COMMAND} to:
+\begin{description}
+\item[{\texttt{SPRITESHEET}}] Posiada jeden parametr -- scieżkę relatywną od katlagou, w którym znajduje się plik konfiguracyjny, do pliku zawierającego tablice spritów.
+
+\item[{\texttt{ANIMATION}}] Oznacza ładowanie animacji, kolejne wywołania oznaczają nowe typy animacji. Nie przyjmuje parametrów.
+
+\item[{\texttt{FRAME}}] Zawiera informacje o pojedyńczej klatce animacji.
+Przyjmuje parametry oznaczające kolejno
+\begin{itemize}
+\item pozycje x lewego górnego rogu sprita.
+\item pozycje y lewego górnego rogu sprita.
+\item rozmiar w osi x sprita.
+\item rozmiar w osi y sprita.
+\item czas trwania klatki
+\end{itemize}
+\end{description}
+\subsubsection{Przykład}
+\label{sec:org2f7f7a6}
+\begin{verbatim}
+#Comment lines start with '#'
+#SPRITESHEET should be followed with with relative path in the next line
+#(from config file directory) to the spritesheet
+
+#COMMENTS CAN NOT be in between INFO
+#example:
+#SPRITESHEET
+##SOMECOMMENT
+#filename.png
+#
+#is not allowed
+
+#<path>
+SPRITESHEET
+spritesheet.png
+
+#Indicates new animation
+ANIMATION
+#FRAME represents frame of animation
+#it is followed by line containing
+#<pos x> <pos y> <size x> <size y> <duration>
+FRAME
+0 0 100 100 0.5
+FRAME
+100 0 100 100 0 0.5
+\end{verbatim}
+\subsection{UpdateableObject}
+\label{sec:org2df8fac}
+Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodoę \texttt{update} klasy \texttt{UpdateableObject}.
+Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
+\section{Przykład użycia silnika}
+\label{sec:orgb867cad}
+Program wyświetlający animację.
+
+\begin{verbatim}
+#include "SFML/Graphics/Color.hpp"
+#include "animatedSpriteSheet.hpp"
+#include "engine.hpp"
+#include <iostream>
+
+namespace G {
+std::string basePath = "resources/";
+}; // namespace G
+
+AnimatedSpriteSheet animation(G::basePath + "animation");
+
+int main() {
+  Engine::getInstance().setMaxFps(3).setResolution({1000, 1000}).buildWindow();
+
+  animation.setPosition({300, 300});
+  animation.setColor(sf::Color::Cyan);
+
+  Engine::getInstance().add(&animation);
+
+  Engine::getInstance().loop();
+}
+\end{verbatim}
 \end{document}
