@@ -1,0 +1,10 @@
+<map id="throwBall" name="throwBall">
+<area shape="rect" id="Node000001" title=" " alt="" coords="632,5,740,39"/>
+<area shape="rect" id="Node000002" href="$d0/d8d/test2_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,73,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="615,23,584,22,352,20,121,22,73,23,73,18,121,17,352,15,584,17,615,17"/>
+<area shape="rect" id="Node000003" href="$d0/d8d/test2_2main_8cpp.html#aa37434f1e3b96de9f9499c8c46acc31f" title=" " alt="" coords="420,32,584,66"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="615,35,585,40,584,34,614,30"/>
+<area shape="rect" id="Node000004" href="$d0/d8d/test2_2main_8cpp.html#a84b9cc49e2afad9f99db3ce1f412ef01" title=" " alt="" coords="121,32,372,66"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="402,52,372,52,372,46,402,46"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="103,33,73,29,73,24,103,28"/>
+</map>

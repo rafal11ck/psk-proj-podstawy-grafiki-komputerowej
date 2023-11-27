@@ -1,0 +1,16 @@
+<map id="Point2d::getX" name="Point2d::getX">
+<area shape="rect" id="Node000001" title="X co&#45;ordinate getter." alt="" coords="662,61,809,95"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a02c2a593986272b2fdddee11420bc8ad" title="Builds the window." alt="" coords="122,5,338,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="654,59,614,51,471,35,339,27,339,22,471,30,615,46,656,54"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#ad1e8214e8ca9f436d27a7246dd908d9c" title="Handles events." alt="" coords="389,61,612,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="645,81,613,81,613,76,645,76"/>
+<area shape="rect" id="Node000006" href="$d1/d0c/structAnimatedSpriteSheet_1_1AnimationFrameData.html#a233fd12ae819923dfe42a3a37fc26024" title=" " alt="" coords="387,120,614,199"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="669,104,616,123,614,118,667,99"/>
+<area shape="rect" id="Node000003" href="$d4/d15/test_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,35,73,68"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,44,73,49,73,44,104,39"/>
+<area shape="rect" id="Node000005" href="$d1/db6/classEngine.html#a514f8d788ced7c6508b8b6f9ef66ccb1" title="The main loop." alt="" coords="162,63,298,96"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="371,81,299,82,299,76,371,76"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="144,70,73,59,73,54,144,64"/>
+<area shape="rect" id="Node000007" href="$d4/dcd/classAnimatedSpriteSheet.html#a220da560115e8b9b4b6a823deab4cce7" title=" " alt="" coords="121,131,339,188"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="369,162,339,162,339,157,369,157"/>
+</map>

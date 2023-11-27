@@ -13,7 +13,8 @@
 * DONE Użycie biblioteki =engine=
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy =engine.hpp= oraz zlinkować bibliotekę =engine=
 Klasa Engine jest singletonem.
-Po ustawieniu parametrów należy wywołać metodę =buildWindow()=
+Zaleca się zaposanie z dokumentacją techniczną.
+Po ustawieniu parametrów należy wywołać metodę =buildWindow()=.
 Następnie o ile potrzebna wykonać inicjalizację pętli użytkownika.
 Na koniec należy wywołać metodę silnika =loop()=.
 

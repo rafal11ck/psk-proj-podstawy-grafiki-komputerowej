@@ -1,0 +1,9 @@
+<map id="customLoopFunction" name="customLoopFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,218,68"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="314,5,520,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,39,296,31,297,36,219,44"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="266,63,568,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,59,248,61,248,67,218,64"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="616,5,777,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="521,20,598,20,598,25,521,25"/>
+</map>

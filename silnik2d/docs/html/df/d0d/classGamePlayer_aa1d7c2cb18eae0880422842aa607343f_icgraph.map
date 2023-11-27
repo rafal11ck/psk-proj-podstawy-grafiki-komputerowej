@@ -1,0 +1,9 @@
+<map id="GamePlayer::nextAnimationFrame" name="GamePlayer::nextAnimationFrame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="575,29,853,85"/>
+<area shape="rect" id="Node000002" href="$df/d0d/classGamePlayer.html#a5759a456d2640dabde57727de577350d" title="Animates object." alt="" coords="285,5,504,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="558,43,504,37,504,31,558,37"/>
+<area shape="rect" id="Node000003" href="$df/d0d/classGamePlayer.html#a659306ffde9d38e2a37f4fa3da5779cc" title=" " alt="" coords="262,63,527,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="558,76,528,80,527,74,557,71"/>
+<area shape="rect" id="Node000004" href="$df/d0d/classGamePlayer.html#a0e9a5ad85ea5b5ab13dd5c0a95552e8f" title="Updates state of object." alt="" coords="5,75,214,108"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="244,94,214,94,214,89,244,89"/>
+</map>

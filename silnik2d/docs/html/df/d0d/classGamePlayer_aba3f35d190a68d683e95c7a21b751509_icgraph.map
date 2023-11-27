@@ -1,0 +1,9 @@
+<map id="GamePlayer::getCurrentAnimationFrameSpriteRectangle" name="GamePlayer::getCurrentAnimationFrameSpriteRectangle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="655,29,973,85"/>
+<area shape="rect" id="Node000002" href="$df/d0d/classGamePlayer.html#af0314668e232831d2f9c263596dccde6" title=" " alt="" coords="342,5,597,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="638,42,597,38,597,32,638,36"/>
+<area shape="rect" id="Node000003" href="$df/d0d/classGamePlayer.html#a573a8771607a793889bd13431f26a674" title=" " alt="" coords="332,63,607,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="638,77,608,80,607,75,637,72"/>
+<area shape="rect" id="Node000004" href="$df/d0d/classGamePlayer.html#aa1d7c2cb18eae0880422842aa607343f" title=" " alt="" coords="5,63,284,120"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="314,94,284,94,284,89,314,89"/>
+</map>

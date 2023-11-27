@@ -1,0 +1,9 @@
+<map id="GamePlayer::nextAnimationFrame" name="GamePlayer::nextAnimationFrame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,284,103"/>
+<area shape="rect" id="Node000002" href="$df/d0d/classGamePlayer.html#a6f12f71676ebea5575d90e62b17090d8" title=" " alt="" coords="332,5,617,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="284,55,313,51,314,56,284,60"/>
+<area shape="rect" id="Node000003" href="$df/d0d/classGamePlayer.html#a573a8771607a793889bd13431f26a674" title=" " alt="" coords="337,87,612,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="284,89,320,94,319,99,284,95"/>
+<area shape="rect" id="Node000004" href="$df/d0d/classGamePlayer.html#aba3f35d190a68d683e95c7a21b751509" title=" " alt="" coords="665,87,983,143"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="612,112,647,112,647,118,612,118"/>
+</map>

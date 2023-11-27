@@ -1,0 +1,16 @@
+<map id="Engine::getWindow" name="Engine::getWindow">
+<area shape="rect" id="Node000001" title="Window getter." alt="" coords="511,109,711,143"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#ab87c318b38e62ced90a7b564c1ef17c6" title="Draws animated objects." alt="" coords="216,5,459,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="565,103,516,77,462,54,424,42,425,37,464,49,519,73,567,98"/>
+<area shape="rect" id="Node000006" href="$de/dc2/classobstacle_1_1LineSegment.html#ace0b97f27900396bbb2248c297698f49" title=" " alt="" coords="222,63,453,120"/>
+<area shape="poly" id="edge3_Node000001_Node000006" title=" " alt="" coords="493,114,453,109,454,104,494,109"/>
+<area shape="rect" id="Node000007" href="$d1/db6/classEngine.html#a66cd39b3396aaeebe23db0203c6aab4a" title="Draws objects." alt="" coords="217,144,458,178"/>
+<area shape="poly" id="edge4_Node000001_Node000007" title=" " alt="" coords="494,144,458,148,458,143,493,138"/>
+<area shape="rect" id="Node000008" href="$d0/d8d/test2_2main_8cpp.html#a84b9cc49e2afad9f99db3ce1f412ef01" title=" " alt="" coords="212,201,463,235"/>
+<area shape="poly" id="edge6_Node000001_Node000008" title=" " alt="" coords="560,153,464,193,427,203,425,198,462,188,558,148"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a7960743aefd62e846e7f3cd92c18bc73" title="Renders objects." alt="" coords="5,75,164,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="242,46,212,54,138,77,137,72,211,49,241,41"/>
+<area shape="poly" id="edge5_Node000007_Node000003" title=" " alt="" coords="241,142,211,134,137,111,138,106,212,129,242,137"/>
+<area shape="rect" id="Node000009" href="$d0/d8d/test2_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="51,201,118,235"/>
+<area shape="poly" id="edge7_Node000008_Node000009" title=" " alt="" coords="194,221,119,221,119,216,194,216"/>
+</map>

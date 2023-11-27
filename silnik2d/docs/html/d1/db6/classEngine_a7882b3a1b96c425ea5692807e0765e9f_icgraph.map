@@ -1,0 +1,26 @@
+<map id="Engine::getLastFrameDuration" name="Engine::getLastFrameDuration">
+<area shape="rect" id="Node000001" title="Last frame duration getter." alt="" coords="679,201,982,235"/>
+<area shape="rect" id="Node000002" href="$df/dd5/classBush.html#a435e5a6a66b3a1ae2fb2d3368a051033" title="Animates object." alt="" coords="436,5,591,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="801,191,728,121,681,85,630,54,591,39,593,34,633,49,684,80,731,117,804,187"/>
+<area shape="rect" id="Node000003" href="$d4/dcd/classAnimatedSpriteSheet.html#a9f0f6e23c33869b0caf4fdf68bddc9ba" title="Animates object." alt="" coords="405,63,623,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="776,196,630,134,601,123,603,118,632,129,778,191"/>
+<area shape="rect" id="Node000004" href="$de/dde/classFidgetSpinner.html#ac741721bd60be59fd5a2110589412326" title="Animates object." alt="" coords="396,144,631,178"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="716,200,610,181,611,176,717,195"/>
+<area shape="rect" id="Node000005" href="$df/d0d/classGamePlayer.html#a5759a456d2640dabde57727de577350d" title="Animates object." alt="" coords="405,201,623,235"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="662,221,623,221,623,216,662,216"/>
+<area shape="rect" id="Node000006" href="$d4/d15/test_2main_8cpp.html#a496cbcc7e499f89ecfc16bbee0c2d7c6" title=" " alt="" coords="408,259,620,292"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="717,241,611,261,610,255,716,236"/>
+<area shape="rect" id="Node000008" href="$d2/d4b/classPlayer.html#a6754159e7c29c0d21d05d3560b088cd3" title="Returns the player&#39;s movement vector multiplied by speed." alt="" coords="401,316,627,350"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="780,245,711,277,632,307,596,318,595,313,630,302,709,272,778,241"/>
+<area shape="rect" id="Node000015" href="$dc/df0/classBall.html#af30f4707d26a6e7ba0af1dd8cac37684" title="Updates state of object." alt="" coords="448,387,580,420"/>
+<area shape="poly" id="edge11_Node000001_Node000015" title=" " alt="" coords="798,249,725,306,680,337,633,365,575,389,573,384,630,360,677,332,722,302,795,244"/>
+<area shape="rect" id="Node000007" href="$d4/d15/test_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="244,245,312,279"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="390,271,312,267,312,261,390,266"/>
+<area shape="rect" id="Node000009" href="$d2/d4b/classPlayer.html#ad29f780f5ab349975b25f6b7ab49dd9d" title="Moves player on screen." alt="" coords="208,303,348,336"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="383,328,348,326,349,321,383,323"/>
+<area shape="rect" id="Node000010" href="$d2/d4b/classPlayer.html#a82c3476f3e65a4e2ac6bcd040771bdd4" title="Updates state of object." alt="" coords="5,331,160,364"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="383,349,348,351,278,353,208,351,160,351,160,346,208,346,278,347,348,346,383,344"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="191,335,161,339,160,334,190,329"/>
+<area shape="rect" id="Node000016" href="$d0/d8d/test2_2main_8cpp.html#adc4fc3d5c105079f45841fb74e7de7f3" title=" " alt="" coords="214,412,342,446"/>
+<area shape="poly" id="edge12_Node000015_Node000016" title=" " alt="" coords="431,415,343,425,342,419,430,410"/>
+</map>

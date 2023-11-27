@@ -1,0 +1,7 @@
+<map id="AnimatedSpriteSheet::getCurrentAnimationFrameCount" name="AnimatedSpriteSheet::getCurrentAnimationFrameCount">
+<area shape="rect" id="Node000001" title=" " alt="" coords="538,5,821,85"/>
+<area shape="rect" id="Node000002" href="$d4/dcd/classAnimatedSpriteSheet.html#a5d096d78c6d0246c1d39508bd4a13b7f" title=" " alt="" coords="272,17,490,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="521,48,491,48,491,43,521,43"/>
+<area shape="rect" id="Node000003" href="$d4/dcd/classAnimatedSpriteSheet.html#a9f0f6e23c33869b0caf4fdf68bddc9ba" title="Animates object." alt="" coords="5,17,224,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="254,48,224,48,224,43,254,43"/>
+</map>

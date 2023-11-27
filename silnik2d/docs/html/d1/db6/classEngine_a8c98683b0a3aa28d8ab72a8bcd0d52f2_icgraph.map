@@ -1,0 +1,44 @@
+<map id="Engine::Engine" name="Engine::Engine">
+<area shape="rect" id="Node000001" title="Constructor." alt="" coords="721,461,883,495"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="467,461,673,495"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="704,481,674,481,674,476,704,476"/>
+<area shape="rect" id="Node000003" href="$d4/d15/test_2main_8cpp.html#a29d061e3c586567c852ae7668294b68f" title=" " alt="" coords="189,373,412,407"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="503,458,418,429,359,410,360,405,420,424,505,453"/>
+<area shape="rect" id="Node000004" href="$d4/d15/test_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="36,428,103,462"/>
+<area shape="poly" id="edge15_Node000002_Node000004" title=" " alt="" coords="450,473,103,450,104,444,450,468"/>
+<area shape="rect" id="Node000005" href="$df/dd5/classBush.html#a435e5a6a66b3a1ae2fb2d3368a051033" title="Animates object." alt="" coords="223,120,378,154"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="560,445,544,384,517,309,498,271,475,233,448,198,417,168,399,156,377,148,379,143,401,152,421,164,452,195,480,230,503,268,522,307,549,383,565,443"/>
+<area shape="rect" id="Node000006" href="$d4/dcd/classAnimatedSpriteSheet.html#a9f0f6e23c33869b0caf4fdf68bddc9ba" title="Animates object." alt="" coords="191,178,410,235"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="554,446,533,402,503,348,464,295,417,248,401,237,404,233,421,244,469,291,508,346,538,399,558,444"/>
+<area shape="rect" id="Node000007" href="$de/dde/classFidgetSpinner.html#ac741721bd60be59fd5a2110589412326" title="Animates object." alt="" coords="183,259,418,292"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="548,448,526,414,496,375,459,337,418,306,396,295,398,290,420,301,463,333,500,372,530,411,553,445"/>
+<area shape="rect" id="Node000008" href="$df/d0d/classGamePlayer.html#a5759a456d2640dabde57727de577350d" title="Animates object." alt="" coords="191,316,410,350"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="538,451,485,406,452,383,418,363,391,353,393,348,420,358,455,378,488,401,542,447"/>
+<area shape="rect" id="Node000009" href="$d1/db6/classEngine.html#a02c2a593986272b2fdddee11420bc8ad" title="Builds the window." alt="" coords="192,620,409,654"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="545,510,491,562,457,589,420,611,395,622,393,617,418,606,454,584,487,558,541,506"/>
+<area shape="rect" id="Node000010" href="$d4/d15/test_2main_8cpp.html#a496cbcc7e499f89ecfc16bbee0c2d7c6" title=" " alt="" coords="194,677,407,711"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="554,512,532,549,502,591,464,633,420,668,399,679,397,675,418,664,461,629,498,588,528,546,550,509"/>
+<area shape="rect" id="Node000011" href="$de/dc2/classobstacle_1_1LineSegment.html#ace0b97f27900396bbb2248c297698f49" title=" " alt="" coords="185,482,416,539"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="450,495,417,499,416,494,449,490"/>
+<area shape="rect" id="Node000012" href="$d2/d4b/classPlayer.html#a6754159e7c29c0d21d05d3560b088cd3" title="Returns the player&#39;s movement vector multiplied by speed." alt="" coords="187,563,414,596"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="524,506,474,530,420,553,381,565,380,560,418,548,472,525,521,501"/>
+<area shape="rect" id="Node000019" href="$d0/d8d/test2_2main_8cpp.html#adc4fc3d5c105079f45841fb74e7de7f3" title=" " alt="" coords="5,873,134,907"/>
+<area shape="poly" id="edge14_Node000002_Node000019" title=" " alt="" coords="568,513,556,583,531,673,512,719,487,764,457,805,421,840,399,852,369,862,294,877,210,886,134,891,134,885,210,881,293,872,368,857,397,847,417,836,453,802,483,761,507,717,526,671,551,582,563,512"/>
+<area shape="rect" id="Node000020" href="$d1/db6/classEngine.html#aad2cd708d98e2ec28b3e1cabe1df8a96" title="Set Max FPS." alt="" coords="202,792,399,826"/>
+<area shape="poly" id="edge16_Node000002_Node000020" title=" " alt="" coords="565,513,548,572,520,645,501,683,479,720,452,754,421,783,400,795,398,791,417,779,448,750,474,717,497,680,516,643,543,570,559,512"/>
+<area shape="rect" id="Node000021" href="$d1/db6/classEngine.html#ab847a59b534359fee098a57a1f499fca" title="Set resolution." alt="" coords="190,735,411,768"/>
+<area shape="poly" id="edge18_Node000002_Node000021" title=" " alt="" coords="561,512,541,560,512,618,472,677,448,703,421,726,402,736,400,732,417,721,444,699,468,673,507,616,536,558,556,510"/>
+<area shape="rect" id="Node000024" href="$d4/d15/test_2main_8cpp.html#a838d12d1aa38735d394020c7850e7408" title=" " alt="" coords="196,5,405,39"/>
+<area shape="poly" id="edge19_Node000002_Node000024" title=" " alt="" coords="565,444,556,363,533,257,514,201,489,146,457,96,417,52,403,42,406,37,421,48,461,93,494,144,519,199,538,256,561,362,570,443"/>
+<area shape="rect" id="Node000025" href="$d1/db6/classEngine.html#ad95fcc3bf9cd939c7b0a2e2b8d9bf7e2" title="Set window title." alt="" coords="182,63,419,96"/>
+<area shape="poly" id="edge21_Node000002_Node000025" title=" " alt="" coords="563,444,551,373,525,283,506,235,482,189,453,146,417,110,402,99,405,95,421,105,457,143,487,186,511,233,530,281,556,372,568,443"/>
+<area shape="rect" id="Node000026" href="$dc/df0/classBall.html#af30f4707d26a6e7ba0af1dd8cac37684" title="Updates state of object." alt="" coords="234,901,367,935"/>
+<area shape="poly" id="edge23_Node000002_Node000026" title=" " alt="" coords="569,513,558,589,533,688,514,741,489,793,458,841,421,884,396,901,368,912,366,907,393,896,417,880,454,838,485,791,509,739,528,687,553,588,563,512"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="210,414,104,440,103,434,209,409"/>
+<area shape="poly" id="edge9_Node000009_Node000004" title=" " alt="" coords="185,614,180,611,142,576,112,535,89,495,75,463,80,461,94,492,116,532,146,573,183,607,188,610"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="183,670,180,668,156,645,135,619,103,560,83,504,72,462,77,461,88,503,108,558,139,616,160,642,183,664,186,666"/>
+<area shape="poly" id="edge17_Node000020_Node000004" title=" " alt="" coords="186,788,180,783,147,746,121,703,102,657,88,610,73,523,68,462,74,462,78,523,93,608,107,655,126,700,151,742,184,779,189,784"/>
+<area shape="poly" id="edge20_Node000024_Node000004" title=" " alt="" coords="184,52,184,52,147,96,119,147,99,201,86,257,74,358,73,428,67,428,68,358,81,256,94,200,115,145,143,93,180,48,180,48"/>
+<area shape="poly" id="edge22_Node000025_Node000004" title=" " alt="" coords="184,109,184,109,151,146,126,188,107,234,93,281,78,367,74,428,68,427,73,366,88,279,102,232,121,186,147,143,180,106,181,105"/>
+<area shape="poly" id="edge24_Node000026_Node000019" title=" " alt="" coords="216,911,134,901,135,895,217,905"/>
+</map>

@@ -1,0 +1,31 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,144,73,178"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#acbae76a45d771e910651c22f4860d82e" title="Adds drawable to Collection." alt="" coords="196,5,328,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,142,75,99,95,76,119,56,148,41,178,31,180,36,150,46,122,60,99,79,79,102,51,145"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="472,87,678,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="55,142,84,118,120,100,207,80,296,72,383,74,459,81,459,86,382,79,297,78,208,85,122,105,87,123,59,146"/>
+<area shape="rect" id="Node000005" href="$d1/db6/classEngine.html#a514f8d788ced7c6508b8b6f9ef66ccb1" title="The main loop." alt="" coords="194,229,330,263"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="61,176,89,197,122,216,177,233,176,238,120,221,86,201,58,180"/>
+<area shape="rect" id="Node000018" href="$d1/db6/classEngine.html#aad2cd708d98e2ec28b3e1cabe1df8a96" title="Set Max FPS." alt="" coords="164,115,360,148"/>
+<area shape="poly" id="edge9_Node000001_Node000018" title=" " alt="" coords="73,154,146,144,147,149,74,159"/>
+<area shape="rect" id="Node000019" href="$d7/d98/classAnimatedObject.html#a23735fe8dd7121de14e2c7862689de2f" title="Object position setter." alt="" coords="121,373,403,407"/>
+<area shape="poly" id="edge11_Node000001_Node000019" title=" " alt="" coords="53,177,82,222,123,274,173,321,223,361,220,365,170,325,119,277,78,225,48,180"/>
+<area shape="rect" id="Node000022" href="$d1/db6/classEngine.html#ab847a59b534359fee098a57a1f499fca" title="Set resolution." alt="" coords="151,172,373,206"/>
+<area shape="poly" id="edge14_Node000001_Node000022" title=" " alt="" coords="74,162,134,170,133,175,73,168"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="746,87,908,120"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="678,101,729,101,729,106,678,106"/>
+<area shape="rect" id="Node000006" href="$d1/db6/classEngine.html#a1a9fa8518369a908032660e43b364aa2" title="Clears window to a single color." alt="" coords="504,144,646,178"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="330,235,366,227,402,216,426,201,450,186,485,175,487,180,452,191,428,206,404,221,368,232,331,240"/>
+<area shape="rect" id="Node000007" href="$d1/db6/classEngine.html#afea89e532624fb7917f271c6bf22b58a" title="Displays rendered objects." alt="" coords="493,201,656,235"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="330,237,475,224,476,230,331,243"/>
+<area shape="rect" id="Node000008" href="$d1/db6/classEngine.html#ad1e8214e8ca9f436d27a7246dd908d9c" title="Handles events." alt="" coords="463,259,686,292"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="331,250,446,261,446,266,330,255"/>
+<area shape="rect" id="Node000013" href="$d1/db6/classEngine.html#a7960743aefd62e846e7f3cd92c18bc73" title="Renders objects." alt="" coords="496,316,654,350"/>
+<area shape="poly" id="edge8_Node000005_Node000013" title=" " alt="" coords="316,261,452,302,479,309,478,315,450,307,314,266"/>
+<area shape="poly" id="edge10_Node000018_Node000003" title=" " alt="" coords="360,120,454,112,454,117,361,125"/>
+<area shape="rect" id="Node000020" href="$de/d1c/classGameObject.html#ac8a2fe5f8491e4804ff43785c3be5d62" title="Object position setter." alt="" coords="451,373,698,407"/>
+<area shape="poly" id="edge12_Node000019_Node000020" title=" " alt="" coords="403,388,433,388,433,393,403,393"/>
+<area shape="rect" id="Node000021" href="$d5/d5c/classPoint2d.html#a67d1225067ee31870cd80f774ac8f0b3" title="Convert to Vector2f." alt="" coords="476,431,674,464"/>
+<area shape="poly" id="edge13_Node000019_Node000021" title=" " alt="" coords="358,405,462,424,461,430,357,410"/>
+<area shape="poly" id="edge15_Node000022_Node000003" title=" " alt="" coords="370,169,402,158,426,144,450,129,465,124,467,129,452,134,428,149,404,163,371,174"/>
+</map>

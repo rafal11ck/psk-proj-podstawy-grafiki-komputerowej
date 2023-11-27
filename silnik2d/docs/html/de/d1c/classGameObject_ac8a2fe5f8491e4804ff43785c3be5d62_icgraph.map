@@ -1,0 +1,13 @@
+<map id="GameObject::setPosition" name="GameObject::setPosition">
+<area shape="rect" id="Node000001" title="Object position setter." alt="" coords="609,92,856,126"/>
+<area shape="rect" id="Node000002" href="$d7/d98/classAnimatedObject.html#a23735fe8dd7121de14e2c7862689de2f" title="Object position setter." alt="" coords="279,63,561,96"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="592,98,561,95,562,90,592,93"/>
+<area shape="rect" id="Node000006" href="$dc/df0/classBall.html#a77f731cabaa2fdf06c96f3b11f2df2b5" title=" " alt="" coords="339,120,501,154"/>
+<area shape="poly" id="edge4_Node000001_Node000006" title=" " alt="" coords="592,124,502,132,501,127,591,119"/>
+<area shape="rect" id="Node000003" href="$d0/d8d/test2_2main_8cpp.html#a849ba9190b5ca833d4d046dc6327c9b4" title=" " alt="" coords="5,5,231,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="310,61,210,42,211,37,311,56"/>
+<area shape="rect" id="Node000005" href="$d8/d19/test3_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="84,63,152,96"/>
+<area shape="poly" id="edge3_Node000002_Node000005" title=" " alt="" coords="261,82,152,82,152,77,261,77"/>
+<area shape="rect" id="Node000007" href="$d0/d8d/test2_2main_8cpp.html#a319d411c82633d6148bab1419aa7bb18" title=" " alt="" coords="64,120,172,154"/>
+<area shape="poly" id="edge5_Node000006_Node000007" title=" " alt="" coords="321,140,172,140,172,134,321,134"/>
+</map>

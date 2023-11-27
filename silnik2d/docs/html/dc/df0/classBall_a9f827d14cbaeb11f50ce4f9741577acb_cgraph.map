@@ -1,0 +1,7 @@
+<map id="Ball::move" name="Ball::move">
+<area shape="rect" id="Node000001" title="Translates object in space." alt="" coords="5,35,124,68"/>
+<area shape="rect" id="Node000002" href="$de/d1c/classGameObject.html#a58f5eec3eb01d9cca9e9b93d950d41a8" title="Translates object in space." alt="" coords="172,5,370,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,40,154,36,155,41,125,46"/>
+<area shape="rect" id="Node000003" href="$d5/d5c/classPoint2d.html#a67d1225067ee31870cd80f774ac8f0b3" title="Convert to Vector2f." alt="" coords="172,63,370,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,57,155,61,154,66,124,62"/>
+</map>

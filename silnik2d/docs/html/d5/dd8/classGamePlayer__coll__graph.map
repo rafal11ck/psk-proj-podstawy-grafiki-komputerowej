@@ -1,0 +1,9 @@
+<map id="GamePlayer" name="GamePlayer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="126,169,258,202"/>
+<area shape="rect" id="Node000002" href="$d2/d4b/classPlayer.html" title="Player class." alt="" coords="153,87,231,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,138,195,168,189,168,189,138"/>
+<area shape="rect" id="Node000003" href="$d7/d98/classAnimatedObject.html" title="Animated object class." alt="" coords="5,5,176,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,48,173,84,170,89,123,52"/>
+<area shape="rect" id="Node000008" href="$de/dd3/classUpdateableObject.html" title="Updateable object class." alt="" coords="200,5,387,39"/>
+<area shape="poly" id="edge3_Node000002_Node000008" title=" " alt="" coords="261,52,214,89,211,84,258,48"/>
+</map>

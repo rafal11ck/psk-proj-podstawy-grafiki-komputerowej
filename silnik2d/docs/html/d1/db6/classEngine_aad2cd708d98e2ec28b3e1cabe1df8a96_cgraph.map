@@ -1,0 +1,7 @@
+<map id="Engine::setMaxFps" name="Engine::setMaxFps">
+<area shape="rect" id="Node000001" title="Set Max FPS." alt="" coords="5,5,202,39"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="250,5,456,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,20,232,20,232,25,202,25"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="504,5,665,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="456,20,486,20,486,25,456,25"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Engine::animateObjects" name="Engine::animateObjects">
+<area shape="rect" id="Node000001" title="Draws animated objects." alt="" coords="5,35,248,68"/>
+<area shape="rect" id="Node000002" href="$d7/d98/classAnimatedObject.html#a16ca16367721aa01d32a0b7cdf2b190f" title="Animates object." alt="" coords="296,5,553,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,37,278,34,278,39,249,42"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a19fa907d344031a4a1ff74e705d65c06" title="Window getter." alt="" coords="324,63,525,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,60,307,66,306,71,248,66"/>
+</map>

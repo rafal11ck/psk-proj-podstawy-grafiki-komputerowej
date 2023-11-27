@@ -1,0 +1,7 @@
+<map id="AnimatedObject::animate" name="AnimatedObject::animate">
+<area shape="rect" id="Node000001" title="Animates object." alt="" coords="502,5,759,39"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#ab87c318b38e62ced90a7b564c1ef17c6" title="Draws animated objects." alt="" coords="212,5,454,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="484,25,455,25,455,20,484,20"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a7960743aefd62e846e7f3cd92c18bc73" title="Renders objects." alt="" coords="5,5,164,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="194,25,164,25,164,20,194,20"/>
+</map>

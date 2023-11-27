@@ -1,0 +1,14 @@
+<map id="AnimatedSpriteSheet::getCurrentAnimationFrameData" name="AnimatedSpriteSheet::getCurrentAnimationFrameData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="603,133,929,190"/>
+<area shape="rect" id="Node000002" href="$d4/dcd/classAnimatedSpriteSheet.html#a2c54d17eea6a3e391e58b90d577dec48" title=" " alt="" coords="298,5,529,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="683,129,554,78,517,65,518,60,556,72,685,124"/>
+<area shape="rect" id="Node000003" href="$de/dde/classFidgetSpinner.html#a4bb5bab0c62c6cc9ba509d32d292ad04" title=" " alt="" coords="287,87,540,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="585,140,539,134,540,129,586,135"/>
+<area shape="rect" id="Node000004" href="$d4/dcd/classAnimatedSpriteSheet.html#acd27c156c318ea4cad90639d8d92d316" title=" " alt="" coords="272,167,555,247"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="586,188,556,191,555,186,585,182"/>
+<area shape="rect" id="Node000006" href="$d4/dcd/classAnimatedSpriteSheet.html#a5d096d78c6d0246c1d39508bd4a13b7f" title=" " alt="" coords="304,271,523,327"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="695,201,628,232,556,261,524,273,522,267,554,257,626,227,692,196"/>
+<area shape="rect" id="Node000005" href="$d4/dcd/classAnimatedSpriteSheet.html#a9f0f6e23c33869b0caf4fdf68bddc9ba" title="Animates object." alt="" coords="5,225,224,282"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="255,234,225,239,224,234,254,229"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="287,283,224,273,225,268,288,277"/>
+</map>

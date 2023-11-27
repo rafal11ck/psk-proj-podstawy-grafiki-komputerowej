@@ -1,0 +1,13 @@
+<map id="Player::move" name="Player::move">
+<area shape="rect" id="Node000001" title="Moves player on screen." alt="" coords="5,92,146,126"/>
+<area shape="rect" id="Node000002" href="$d2/d4b/classPlayer.html#a6754159e7c29c0d21d05d3560b088cd3" title="Returns the player&#39;s movement vector multiplied by speed." alt="" coords="194,63,420,96"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,97,176,93,177,99,146,103"/>
+<area shape="rect" id="Node000007" href="$de/d1c/classGameObject.html#a58f5eec3eb01d9cca9e9b93d950d41a8" title="Translates object in space." alt="" coords="208,120,406,154"/>
+<area shape="poly" id="edge5_Node000001_Node000007" title=" " alt="" coords="146,115,191,120,190,125,146,120"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="516,5,722,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,59,506,40,507,45,403,65"/>
+<area shape="rect" id="Node000005" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="468,63,770,96"/>
+<area shape="poly" id="edge3_Node000002_Node000005" title=" " alt="" coords="420,77,451,77,451,82,420,82"/>
+<area shape="rect" id="Node000006" href="$d2/d4b/classPlayer.html#ae1905c2212e75f18b7eefd91324fe3d9" title="Returns a 2D vector containing information on which cardinal directions the player is moving." alt="" coords="478,120,761,154"/>
+<area shape="poly" id="edge4_Node000002_Node000006" title=" " alt="" coords="403,94,507,114,506,119,402,100"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="FidgetSpinner" name="FidgetSpinner">
+<area shape="rect" id="Node000001" title=" " alt="" coords="40,169,189,202"/>
+<area shape="rect" id="Node000002" href="$d4/dcd/classAnimatedSpriteSheet.html" title=" " alt="" coords="5,87,224,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,138,117,168,112,168,112,138"/>
+<area shape="rect" id="Node000003" href="$d7/d98/classAnimatedObject.html" title="Animated object class." alt="" coords="29,5,200,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="117,57,117,87,112,87,112,57"/>
+</map>

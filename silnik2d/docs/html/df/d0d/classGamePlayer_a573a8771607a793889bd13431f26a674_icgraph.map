@@ -1,0 +1,9 @@
+<map id="GamePlayer::updateTextureRect" name="GamePlayer::updateTextureRect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="645,29,920,85"/>
+<area shape="rect" id="Node000002" href="$df/d0d/classGamePlayer.html#aa1d7c2cb18eae0880422842aa607343f" title=" " alt="" coords="319,29,597,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="627,60,598,60,598,54,627,54"/>
+<area shape="rect" id="Node000003" href="$df/d0d/classGamePlayer.html#a5759a456d2640dabde57727de577350d" title="Animates object." alt="" coords="29,5,247,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,43,247,37,248,31,302,37"/>
+<area shape="rect" id="Node000004" href="$df/d0d/classGamePlayer.html#a659306ffde9d38e2a37f4fa3da5779cc" title=" " alt="" coords="5,63,271,120"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="302,76,271,80,271,74,301,71"/>
+</map>

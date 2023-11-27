@@ -1,0 +1,5 @@
+<map id="Player::isMoving" name="Player::isMoving">
+<area shape="rect" id="Node000001" title="Checks if player is moving." alt="" coords="5,5,177,39"/>
+<area shape="rect" id="Node000002" href="$d2/d4b/classPlayer.html#ae1905c2212e75f18b7eefd91324fe3d9" title="Returns a 2D vector containing information on which cardinal directions the player is moving." alt="" coords="225,5,508,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,20,207,20,207,25,177,25"/>
+</map>

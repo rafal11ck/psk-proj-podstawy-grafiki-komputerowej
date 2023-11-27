@@ -1,0 +1,26 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="20,63,178,96"/>
+<area shape="rect" id="Node000001" href="$dc/df0/classBall.html" title=" " alt="" coords="298,63,354,96"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="196,77,298,77,298,82,196,82"/>
+<area shape="rect" id="Node000002" href="$de/d1c/classGameObject.html" title="Game object class." alt="" coords="31,120,167,154"/>
+<area shape="poly" id="edge8_Node000002_Node000001" title=" " alt="" coords="183,113,297,84,299,89,184,118"/>
+<area shape="rect" id="Node000003" href="$d7/d98/classAnimatedObject.html" title="Animated object class." alt="" coords="241,163,411,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="184,150,241,161,240,166,183,155"/>
+<area shape="rect" id="Node000004" href="$d4/dcd/classAnimatedSpriteSheet.html" title=" " alt="" coords="459,107,677,140"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="418,156,491,138,493,144,419,161"/>
+<area shape="rect" id="Node000006" href="$df/dd5/classBush.html" title=" " alt="" coords="534,164,602,198"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="429,177,534,178,534,183,429,183"/>
+<area shape="rect" id="Node000007" href="$d2/d4b/classPlayer.html" title="Player class." alt="" coords="529,21,607,55"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="365,150,458,92,530,53,533,58,460,96,368,155"/>
+<area shape="rect" id="Node000005" href="$de/dde/classFidgetSpinner.html" title=" " alt="" coords="725,107,875,140"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="695,121,725,121,725,126,695,126"/>
+<area shape="rect" id="Node000008" href="$df/d0d/classGamePlayer.html" title=" " alt="" coords="734,21,866,55"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="625,36,733,36,733,41,625,41"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="47,235,151,268"/>
+<area shape="poly" id="edge9_Node000010_Node000003" title=" " alt="" coords="167,229,192,221,272,194,274,199,193,226,168,234"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="41,177,157,211"/>
+<area shape="poly" id="edge10_Node000011_Node000003" title=" " alt="" coords="174,187,240,182,241,188,175,192"/>
+<area shape="rect" id="Node000009" href="$de/dd3/classUpdateableObject.html" title="Updateable object class." alt="" coords="5,5,193,39"/>
+<area shape="poly" id="edge11_Node000009_Node000001" title=" " alt="" coords="186,41,298,70,297,75,184,46"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="210,23,529,34,529,40,210,29"/>
+</map>

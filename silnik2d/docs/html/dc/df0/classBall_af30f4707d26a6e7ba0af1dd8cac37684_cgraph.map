@@ -1,0 +1,17 @@
+<map id="Ball::update" name="Ball::update">
+<area shape="rect" id="Node000001" title="Updates state of object." alt="" coords="5,92,138,126"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="234,5,440,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,89,139,67,185,48,216,38,217,44,187,53,141,72,102,94"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="186,63,488,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="138,99,168,96,168,101,138,104"/>
+<area shape="rect" id="Node000005" href="$dc/df0/classBall.html#a36286369a446b1daea755ddd2bc7a524" title=" " alt="" coords="235,120,439,154"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="138,113,217,122,217,127,138,118"/>
+<area shape="rect" id="Node000006" href="$dc/df0/classBall.html#a9f827d14cbaeb11f50ce4f9741577acb" title="Translates object in space." alt="" coords="278,177,396,211"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="103,124,142,145,187,164,261,182,260,187,185,169,140,150,100,129"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="555,5,716,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="440,20,537,20,537,25,440,25"/>
+<area shape="rect" id="Node000007" href="$de/d1c/classGameObject.html#a58f5eec3eb01d9cca9e9b93d950d41a8" title="Translates object in space." alt="" coords="536,148,734,182"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="396,186,518,174,519,179,397,191"/>
+<area shape="rect" id="Node000008" href="$d5/d5c/classPoint2d.html#a67d1225067ee31870cd80f774ac8f0b3" title="Convert to Vector2f." alt="" coords="536,205,734,239"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="397,197,519,209,518,214,396,202"/>
+</map>

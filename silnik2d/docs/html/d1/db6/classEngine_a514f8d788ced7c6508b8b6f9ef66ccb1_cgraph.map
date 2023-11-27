@@ -1,0 +1,23 @@
+<map id="Engine::loop" name="Engine::loop">
+<area shape="rect" id="Node000001" title="The main loop." alt="" coords="5,92,142,126"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a1a9fa8518369a908032660e43b364aa2" title="Clears window to a single color." alt="" coords="230,5,373,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,89,143,68,189,48,212,40,214,45,191,53,145,73,105,94"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#afea89e532624fb7917f271c6bf22b58a" title="Displays rendered objects." alt="" coords="220,63,383,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,97,202,90,203,95,142,103"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#ad1e8214e8ca9f436d27a7246dd908d9c" title="Handles events." alt="" coords="190,120,413,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="142,115,172,118,172,124,141,120"/>
+<area shape="rect" id="Node000009" href="$d1/db6/classEngine.html#a7960743aefd62e846e7f3cd92c18bc73" title="Renders objects." alt="" coords="222,235,381,268"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="104,124,260,223,257,227,101,129"/>
+<area shape="rect" id="Node000005" href="$d5/d5c/classPoint2d.html#a61607d6c6d2b37580e5a7fb9fd4469ce" title="X co&#45;ordinate getter." alt="" coords="509,5,655,39"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="391,117,411,107,426,93,435,78,443,63,460,48,491,33,493,38,462,52,448,66,439,81,431,96,415,111,393,122"/>
+<area shape="rect" id="Node000006" href="$d5/d5c/classPoint2d.html#a15d17205b944b35ecc564a84aa2f454e" title="Y co&#45;ordinate getter." alt="" coords="510,63,654,96"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="387,117,493,95,494,100,388,122"/>
+<area shape="rect" id="Node000007" href="$d5/d5c/classPoint2d.html#a5ac1eb40a6d9ed83ae6eeaf63c3bc9f8" title="X co&#45;ordinate setter." alt="" coords="510,120,654,154"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="413,134,492,134,492,140,413,140"/>
+<area shape="rect" id="Node000008" href="$d5/d5c/classPoint2d.html#adcbbc908d51e04cb1fe05a9f96e67340" title="Y co&#45;ordinate setter." alt="" coords="511,177,653,211"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="388,152,494,174,493,179,387,157"/>
+<area shape="rect" id="Node000010" href="$d1/db6/classEngine.html#ab87c318b38e62ced90a7b564c1ef17c6" title="Draws animated objects." alt="" coords="461,235,703,268"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="381,249,443,249,443,254,381,254"/>
+<area shape="rect" id="Node000013" href="$d1/db6/classEngine.html#a66cd39b3396aaeebe23db0203c6aab4a" title="Draws objects." alt="" coords="462,292,702,326"/>
+<area shape="poly" id="edge10_Node000009_Node000013" title=" " alt="" coords="381,265,480,285,479,291,380,270"/>
+</map>

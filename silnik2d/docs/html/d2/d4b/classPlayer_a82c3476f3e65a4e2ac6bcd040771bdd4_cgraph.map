@@ -1,0 +1,16 @@
+<map id="Player::update" name="Player::update">
+<area shape="rect" id="Node000001" title="Updates state of object." alt="" coords="5,91,160,124"/>
+<area shape="rect" id="Node000002" href="$d2/d4b/classPlayer.html#a6754159e7c29c0d21d05d3560b088cd3" title="Returns the player&#39;s movement vector multiplied by speed." alt="" coords="396,63,622,96"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,100,378,85,378,91,160,105"/>
+<area shape="rect" id="Node000007" href="$d2/d4b/classPlayer.html#ad29f780f5ab349975b25f6b7ab49dd9d" title="Moves player on screen." alt="" coords="208,117,348,151"/>
+<area shape="poly" id="edge5_Node000001_Node000007" title=" " alt="" coords="160,115,190,120,190,125,160,121"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="718,5,925,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="604,59,708,40,709,45,605,65"/>
+<area shape="rect" id="Node000005" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="670,63,973,96"/>
+<area shape="poly" id="edge3_Node000002_Node000005" title=" " alt="" coords="623,77,653,77,653,82,623,82"/>
+<area shape="rect" id="Node000006" href="$d2/d4b/classPlayer.html#ae1905c2212e75f18b7eefd91324fe3d9" title="Returns a 2D vector containing information on which cardinal directions the player is moving." alt="" coords="680,120,963,154"/>
+<area shape="poly" id="edge4_Node000002_Node000006" title=" " alt="" coords="605,94,709,114,708,119,604,100"/>
+<area shape="poly" id="edge6_Node000007_Node000002" title=" " alt="" coords="348,115,418,98,419,104,349,120"/>
+<area shape="rect" id="Node000008" href="$de/d1c/classGameObject.html#a58f5eec3eb01d9cca9e9b93d950d41a8" title="Translates object in space." alt="" coords="410,120,608,154"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="348,132,393,133,393,138,348,138"/>
+</map>

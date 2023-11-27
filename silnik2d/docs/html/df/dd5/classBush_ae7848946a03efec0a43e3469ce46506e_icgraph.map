@@ -1,0 +1,9 @@
+<map id="Bush::getCurrentSpriteRectangle" name="Bush::getCurrentSpriteRectangle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="433,23,667,80"/>
+<area shape="rect" id="Node000002" href="$df/dd5/classBush.html#a3387179351e853eb48e321254a09538c" title=" " alt="" coords="233,5,361,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="416,39,361,32,361,27,416,33"/>
+<area shape="rect" id="Node000003" href="$df/dd5/classBush.html#ad89287a274a2066a0263c6b6c2f0487d" title=" " alt="" coords="209,63,385,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="416,69,386,72,385,67,415,64"/>
+<area shape="rect" id="Node000004" href="$df/dd5/classBush.html#a435e5a6a66b3a1ae2fb2d3368a051033" title="Animates object." alt="" coords="5,63,161,96"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="191,82,161,82,161,77,191,77"/>
+</map>

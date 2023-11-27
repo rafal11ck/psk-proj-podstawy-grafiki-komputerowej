@@ -1,0 +1,7 @@
+<map id="AnimatedObject::setPosition" name="AnimatedObject::setPosition">
+<area shape="rect" id="Node000001" title="Object position setter." alt="" coords="5,35,288,68"/>
+<area shape="rect" id="Node000002" href="$de/d1c/classGameObject.html#ac8a2fe5f8491e4804ff43785c3be5d62" title="Object position setter." alt="" coords="336,5,583,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="288,36,318,33,318,38,288,41"/>
+<area shape="rect" id="Node000003" href="$d5/d5c/classPoint2d.html#a67d1225067ee31870cd80f774ac8f0b3" title="Convert to Vector2f." alt="" coords="360,63,559,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="288,61,343,66,343,72,288,67"/>
+</map>

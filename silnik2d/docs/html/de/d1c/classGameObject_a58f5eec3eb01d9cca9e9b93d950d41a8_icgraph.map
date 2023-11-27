@@ -1,0 +1,13 @@
+<map id="GameObject::move" name="GameObject::move">
+<area shape="rect" id="Node000001" title="Translates object in space." alt="" coords="489,63,687,96"/>
+<area shape="rect" id="Node000002" href="$d7/d98/classAnimatedObject.html#a5b162cbcdd8071e24b155f1318b9200f" title="Translates object in space." alt="" coords="208,5,441,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="490,61,405,42,406,37,491,56"/>
+<area shape="rect" id="Node000003" href="$d2/d4b/classPlayer.html#ad29f780f5ab349975b25f6b7ab49dd9d" title="Moves player on screen." alt="" coords="254,63,395,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="471,82,395,82,395,77,471,77"/>
+<area shape="rect" id="Node000009" href="$dc/df0/classBall.html#a9f827d14cbaeb11f50ce4f9741577acb" title="Translates object in space." alt="" coords="265,120,384,154"/>
+<area shape="poly" id="edge4_Node000001_Node000009" title=" " alt="" coords="491,103,385,127,383,121,490,98"/>
+<area shape="rect" id="Node000004" href="$d2/d4b/classPlayer.html#a82c3476f3e65a4e2ac6bcd040771bdd4" title="Updates state of object." alt="" coords="5,63,160,96"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="236,82,160,82,160,77,236,77"/>
+<area shape="rect" id="Node000010" href="$dc/df0/classBall.html#af30f4707d26a6e7ba0af1dd8cac37684" title="Updates state of object." alt="" coords="16,120,149,154"/>
+<area shape="poly" id="edge5_Node000009_Node000010" title=" " alt="" coords="248,140,149,140,149,134,248,134"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="AnimatedObject" name="AnimatedObject">
+<area shape="rect" id="Node000001" title="Animated object class." alt="" coords="132,193,302,227"/>
+<area shape="rect" id="Node000002" href="$de/d1c/classGameObject.html" title="Game object class." alt="" coords="5,110,141,144"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,150,190,190,187,195,116,155"/>
+<area shape="rect" id="Node000003" href="$d5/d5c/classPoint2d.html" title="Class containing 2D point co&#45;ordinates." alt="" coords="27,5,119,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,56,76,109,70,109,70,56"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="165,110,269,144"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="220,161,220,193,214,193,214,161"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="294,110,410,144"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="312,155,245,195,243,190,309,151"/>
+</map>

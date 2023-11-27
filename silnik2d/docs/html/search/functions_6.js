@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['gameplayer_0',['GamePlayer',['../df/d0d/classGamePlayer.html#af0314668e232831d2f9c263596dccde6',1,'GamePlayer']]],
+  ['getanimationtypeof_1',['getAnimationTypeOf',['../df/d0d/classGamePlayer.html#af709039fcfb17fbe3fee6ba14873e328',1,'GamePlayer']]],
+  ['getcenterpoint_2',['getCenterPoint',['../de/dde/classFidgetSpinner.html#a4bb5bab0c62c6cc9ba509d32d292ad04',1,'FidgetSpinner']]],
+  ['getcurrentanimationframecount_3',['getCurrentAnimationFrameCount',['../d4/dcd/classAnimatedSpriteSheet.html#abfe4ace3fb950887d0c97b77efcb933c',1,'AnimatedSpriteSheet']]],
+  ['getcurrentanimationframedata_4',['getCurrentAnimationFrameData',['../d4/dcd/classAnimatedSpriteSheet.html#a27332626ce4790c6bed611958fd416e3',1,'AnimatedSpriteSheet']]],
+  ['getcurrentanimationframeduration_5',['getCurrentAnimationFrameDuration',['../d4/dcd/classAnimatedSpriteSheet.html#acd27c156c318ea4cad90639d8d92d316',1,'AnimatedSpriteSheet']]],
+  ['getcurrentanimationframerect_6',['getCurrentAnimationFrameRect',['../d4/dcd/classAnimatedSpriteSheet.html#aa35c38e3d1756c1f3e820ff4b54aa3dc',1,'AnimatedSpriteSheet']]],
+  ['getcurrentanimationframespriterectangle_7',['getCurrentAnimationFrameSpriteRectangle',['../df/d0d/classGamePlayer.html#aba3f35d190a68d683e95c7a21b751509',1,'GamePlayer']]],
+  ['getcurrentspriterectangle_8',['getCurrentSpriteRectangle',['../df/dd5/classBush.html#ae7848946a03efec0a43e3469ce46506e',1,'Bush']]],
+  ['getend_9',['getEnd',['../de/dc2/classobstacle_1_1LineSegment.html#affb803cd83d6c0b59da91577e1151e35',1,'obstacle::LineSegment']]],
+  ['getframecountofanimation_10',['getFrameCountOfAnimation',['../df/d0d/classGamePlayer.html#a6f12f71676ebea5575d90e62b17090d8',1,'GamePlayer']]],
+  ['getinstance_11',['getInstance',['../d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128',1,'Engine']]],
+  ['getlastframeduration_12',['getLastFrameDuration',['../d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f',1,'Engine']]],
+  ['getmovementspeed_13',['getMovementSpeed',['../d2/d4b/classPlayer.html#a4c811c0a0b14f9171ae62ef8d44c1b5c',1,'Player']]],
+  ['getmovevector_14',['getmovevector',['../d2/d4b/classPlayer.html#a6754159e7c29c0d21d05d3560b088cd3',1,'Player::getMoveVector()'],['../dc/df0/classBall.html#a36286369a446b1daea755ddd2bc7a524',1,'Ball::getMoveVector()']]],
+  ['getmovevectororigin_15',['getMoveVectorOrigin',['../d2/d4b/classPlayer.html#ae1905c2212e75f18b7eefd91324fe3d9',1,'Player']]],
+  ['getposition_16',['getPosition',['../de/d1c/classGameObject.html#a999c67df289734318a5d37c4e15caa47',1,'GameObject']]],
+  ['getrandomcolor_17',['getRandomColor',['../d0/d8d/test2_2main_8cpp.html#a46047ae4bd282c3e03acad536aebf2ee',1,'main.cpp']]],
+  ['getresolution_18',['getResolution',['../d1/db6/classEngine.html#a5c50c23df38c0890594a9b7dfe3e9a3d',1,'Engine']]],
+  ['getrowofanimation_19',['getRowOfAnimation',['../df/d0d/classGamePlayer.html#a750d9cd6db87ab2f0a55237a286f46bb',1,'GamePlayer']]],
+  ['getstart_20',['getStart',['../de/dc2/classobstacle_1_1LineSegment.html#ac45b78afc572343287571fd65e514a13',1,'obstacle::LineSegment']]],
+  ['getwindow_21',['getWindow',['../d1/db6/classEngine.html#a19fa907d344031a4a1ff74e705d65c06',1,'Engine']]],
+  ['getx_22',['getX',['../d5/d5c/classPoint2d.html#a61607d6c6d2b37580e5a7fb9fd4469ce',1,'Point2d']]],
+  ['gety_23',['getY',['../d5/d5c/classPoint2d.html#a15d17205b944b35ecc564a84aa2f454e',1,'Point2d']]]
+];

@@ -1,0 +1,20 @@
+<map id="handleBalls" name="handleBalls">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,134,99"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="444,8,650,41"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,62,133,39,181,21,243,9,307,4,427,7,426,12,307,10,244,15,182,26,136,44,96,67"/>
+<area shape="rect" id="Node000004" href="$dc/df0/classBall.html#afbd7c9dfa0b1277f3d5afba76cd8496a" title=" " alt="" coords="200,36,330,69"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="134,70,182,62,183,68,134,75"/>
+<area shape="rect" id="Node000005" href="$d1/db6/classEngine.html#a817d73c49281e305e39bfb21c40f76ee" title=" " alt="" coords="182,93,348,127"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="134,88,165,93,164,98,134,94"/>
+<area shape="rect" id="Node000006" href="$dc/df0/classBall.html#af30f4707d26a6e7ba0af1dd8cac37684" title="Updates state of object." alt="" coords="199,150,331,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="102,97,183,137,194,141,192,146,181,142,100,102"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="746,8,908,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="651,22,729,22,729,27,651,27"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="328,148,346,137,361,123,370,109,379,94,394,79,426,60,459,45,462,50,428,64,398,83,383,97,374,111,365,126,350,141,330,152"/>
+<area shape="rect" id="Node000007" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="396,93,698,127"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="331,149,395,135,432,128,433,133,397,141,332,155"/>
+<area shape="rect" id="Node000008" href="$dc/df0/classBall.html#a36286369a446b1daea755ddd2bc7a524" title=" " alt="" coords="445,150,649,184"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="331,165,428,165,428,170,331,170"/>
+<area shape="rect" id="Node000009" href="$dc/df0/classBall.html#a9f827d14cbaeb11f50ce4f9741577acb" title="Translates object in space." alt="" coords="488,208,606,241"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="332,180,397,194,471,209,470,214,395,199,331,185"/>
+</map>

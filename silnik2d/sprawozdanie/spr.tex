@@ -1,4 +1,4 @@
-% Created 2023-11-25 Sat 09:45
+% Created 2023-11-27 Mon 12:19
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -28,16 +28,17 @@
 \maketitle
 \newpage
 \section{Wymagania systemowe}
-\label{sec:orgfd622d0}
+\label{sec:orgf1b5794}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
 \section{Użycie biblioteki \texttt{engine}}
-\label{sec:orgf41cd77}
+\label{sec:org64cef58}
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp} oraz zlinkować bibliotekę \texttt{engine}
 Klasa Engine jest singletonem.
-Po ustawieniu parametrów należy wywołać metodę \texttt{buildWindow()}
+Zaleca się zaposanie z dokumentacją techniczną.
+Po ustawieniu parametrów należy wywołać metodę \texttt{buildWindow()}.
 Następnie o ile potrzebna wykonać inicjalizację pętli użytkownika.
 Na koniec należy wywołać metodę silnika \texttt{loop()}.
 
@@ -51,23 +52,23 @@ Engine::getInstance().loop();
 }
 \end{verbatim}
 \section{Wybrane klasy wykorzystywanie przez silnik.}
-\label{sec:orgdfc93f2}
+\label{sec:org9ce2944}
 \subsection{Prymitywy}
-\label{sec:orgeb36976}
+\label{sec:org28e7670}
 Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po \texttt{sf::Drawable} oraz dodać je do silnika za pomocą metody silnika \texttt{Engine::add()}.
 \subsection{GameObject}
-\label{sec:org0acd6e2}
+\label{sec:orga69c67d}
 GameObject to klasa reprezentująca obiekt w grze.
 \subsection{Drawable}
-\label{sec:orged9142e}
+\label{sec:org13804bc}
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
 Dokładnie jest to alias do \texttt{sf::Drawable}.
 \subsection{AnimatedObject}
-\label{sec:orgc475e75}
+\label{sec:org807e0ea}
 Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
 Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 \subsection{AnimatedSpriteSheet}
-\label{sec:org6bab29c}
+\label{sec:org7740db3}
 Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 \begin{itemize}
@@ -86,7 +87,7 @@ ARGS
 Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
 Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
 \subsubsection{Command}
-\label{sec:orgc520eb8}
+\label{sec:orge921749}
 
 Prawidłowe kommendy \texttt{COMMAND} to:
 \begin{description}
@@ -105,7 +106,7 @@ Przyjmuje parametry oznaczające kolejno
 \end{itemize}
 \end{description}
 \subsubsection{Przykład}
-\label{sec:orgb4945a1}
+\label{sec:org9916a42}
 \begin{verbatim}
 #Comment lines start with '#'
 #SPRITESHEET should be followed with with relative path in the next line
@@ -134,11 +135,11 @@ FRAME
 100 0 100 100 0 0.5
 \end{verbatim}
 \subsection{UpdateableObject}
-\label{sec:orga439a14}
+\label{sec:org1e37079}
 Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę \texttt{update} klasy \texttt{UpdateableObject}.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 \section{Przykład użycia silnika}
-\label{sec:orgdd7d2f0}
+\label{sec:org062f28d}
 Program wyświetlający animację.
 
 \begin{verbatim}

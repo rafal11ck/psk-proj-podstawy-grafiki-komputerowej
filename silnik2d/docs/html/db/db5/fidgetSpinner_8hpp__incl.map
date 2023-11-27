@@ -1,0 +1,17 @@
+<map id="fidgetSpinner.hpp" name="fidgetSpinner.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="611,5,798,39"/>
+<area shape="rect" id="Node000002" href="$d7/db2/animatedSpriteSheet_8hpp.html" title=" " alt="" coords="409,87,667,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="672,42,588,82,586,77,670,37"/>
+<area shape="rect" id="Node000007" href="$d9/d03/point2d_8hpp.html" title=" " alt="" coords="516,250,650,284"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="720,38,744,70,766,112,774,136,777,159,774,182,764,204,745,225,721,240,669,260,667,255,719,236,741,221,760,201,769,181,772,159,769,137,761,115,739,73,716,41"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="624,169,750,202"/>
+<area shape="poly" id="edge8_Node000001_Node000014" title=" " alt="" coords="705,40,693,152,688,151,700,39"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,169,252,202"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="455,124,229,167,228,162,454,119"/>
+<area shape="rect" id="Node000004" href="$dc/d3e/animatedObject_8hpp.html" title=" " alt="" coords="275,169,486,202"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="507,124,429,163,426,158,505,119"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="510,169,600,202"/>
+<area shape="poly" id="edge5_Node000002_Node000013" title=" " alt="" coords="544,121,551,151,545,152,539,122"/>
+<area shape="poly" id="edge6_Node000002_Node000014" title=" " alt="" coords="569,119,643,158,640,162,567,124"/>
+<area shape="poly" id="edge4_Node000004_Node000007" title=" " alt="" coords="422,200,527,241,525,246,421,205"/>
+</map>

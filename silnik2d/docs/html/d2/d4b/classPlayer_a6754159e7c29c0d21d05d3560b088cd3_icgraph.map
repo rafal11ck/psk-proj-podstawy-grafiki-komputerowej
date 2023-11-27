@@ -1,0 +1,8 @@
+<map id="Player::getMoveVector" name="Player::getMoveVector">
+<area shape="rect" id="Node000001" title="Returns the player&#39;s movement vector multiplied by speed." alt="" coords="396,33,622,67"/>
+<area shape="rect" id="Node000002" href="$d2/d4b/classPlayer.html#ad29f780f5ab349975b25f6b7ab49dd9d" title="Moves player on screen." alt="" coords="208,5,348,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="378,37,348,33,349,28,379,32"/>
+<area shape="rect" id="Node000003" href="$d2/d4b/classPlayer.html#a82c3476f3e65a4e2ac6bcd040771bdd4" title="Updates state of object." alt="" coords="5,33,160,67"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="378,54,348,54,208,54,160,54,160,48,208,49,348,49,378,49"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="191,37,161,42,160,36,190,32"/>
+</map>

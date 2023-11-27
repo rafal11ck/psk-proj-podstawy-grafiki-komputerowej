@@ -1,0 +1,20 @@
+<map id="AnimatedSpriteSheet::animate" name="AnimatedSpriteSheet::animate">
+<area shape="rect" id="Node000001" title="Animates object." alt="" coords="5,117,224,173"/>
+<area shape="rect" id="Node000002" href="$d4/dcd/classAnimatedSpriteSheet.html#acd27c156c318ea4cad90639d8d92d316" title=" " alt="" coords="281,64,565,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,128,263,122,264,127,224,133"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="320,5,526,39"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,114,207,80,271,49,302,39,303,44,273,54,210,84,156,118"/>
+<area shape="rect" id="Node000006" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="272,168,574,202"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="224,156,271,163,271,168,224,162"/>
+<area shape="rect" id="Node000007" href="$d4/dcd/classAnimatedSpriteSheet.html#a5d096d78c6d0246c1d39508bd4a13b7f" title=" " alt="" coords="314,226,532,283"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="176,171,273,212,298,220,296,225,271,217,174,176"/>
+<area shape="rect" id="Node000003" href="$d4/dcd/classAnimatedSpriteSheet.html#a27332626ce4790c6bed611958fd416e3" title=" " alt="" coords="622,90,948,147"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="565,107,605,108,605,114,565,112"/>
+<area shape="rect" id="Node000005" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="705,5,866,39"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="526,20,687,20,687,25,526,25"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="532,226,573,212,597,199,621,185,695,151,697,156,623,190,600,204,575,217,533,231"/>
+<area shape="rect" id="Node000008" href="$d4/dcd/classAnimatedSpriteSheet.html#abfe4ace3fb950887d0c97b77efcb933c" title=" " alt="" coords="644,200,927,279"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="532,247,626,243,626,249,533,252"/>
+<area shape="rect" id="Node000009" href="$d4/dcd/classAnimatedSpriteSheet.html#a220da560115e8b9b4b6a823deab4cce7" title=" " alt="" coords="676,303,894,360"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="533,275,659,302,658,307,532,280"/>
+</map>

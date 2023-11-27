@@ -1,0 +1,15 @@
+<map id="GamePlayer::animate" name="GamePlayer::animate">
+<area shape="rect" id="Node000001" title="Animates object." alt="" coords="5,63,224,96"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="320,5,526,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,59,271,48,311,40,312,45,272,53,209,65"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="272,63,574,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="224,77,254,77,254,82,224,82"/>
+<area shape="rect" id="Node000005" href="$df/d0d/classGamePlayer.html#aa1d7c2cb18eae0880422842aa607343f" title=" " alt="" coords="284,121,562,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="194,94,278,114,277,119,192,100"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="684,5,845,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="526,20,666,20,666,25,526,25"/>
+<area shape="rect" id="Node000006" href="$df/d0d/classGamePlayer.html#a6f12f71676ebea5575d90e62b17090d8" title=" " alt="" coords="622,91,907,148"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="562,134,604,131,605,136,563,140"/>
+<area shape="rect" id="Node000007" href="$df/d0d/classGamePlayer.html#a573a8771607a793889bd13431f26a674" title=" " alt="" coords="627,173,902,229"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="563,167,610,175,609,180,562,173"/>
+</map>

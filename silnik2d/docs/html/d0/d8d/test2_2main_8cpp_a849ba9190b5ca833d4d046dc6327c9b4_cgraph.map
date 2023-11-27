@@ -1,0 +1,11 @@
+<map id="initializeFidgetSpinner" name="initializeFidgetSpinner">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,231,68"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#acbae76a45d771e910651c22f4860d82e" title="Adds drawable to Collection." alt="" coords="354,5,486,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,38,336,28,337,33,231,43"/>
+<area shape="rect" id="Node000003" href="$d7/d98/classAnimatedObject.html#a23735fe8dd7121de14e2c7862689de2f" title="Object position setter." alt="" coords="279,63,561,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,59,262,62,261,67,231,65"/>
+<area shape="rect" id="Node000004" href="$de/d1c/classGameObject.html#ac8a2fe5f8491e4804ff43785c3be5d62" title="Object position setter." alt="" coords="609,33,856,67"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="561,64,591,61,591,66,562,69"/>
+<area shape="rect" id="Node000005" href="$d5/d5c/classPoint2d.html#a67d1225067ee31870cd80f774ac8f0b3" title="Convert to Vector2f." alt="" coords="634,91,832,124"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="562,89,616,94,616,100,561,95"/>
+</map>

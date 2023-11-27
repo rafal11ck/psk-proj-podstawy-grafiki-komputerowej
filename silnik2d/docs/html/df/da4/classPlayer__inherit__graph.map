@@ -1,0 +1,15 @@
+<map id="Player" name="Player">
+<area shape="rect" id="Node000001" title="Player class." alt="" coords="279,169,358,202"/>
+<area shape="rect" id="Node000007" href="$df/d0d/classGamePlayer.html" title=" " alt="" coords="252,250,385,284"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="321,220,321,250,316,250,316,220"/>
+<area shape="rect" id="Node000002" href="$d7/d98/classAnimatedObject.html" title="Animated object class." alt="" coords="132,87,302,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,130,299,166,296,170,249,134"/>
+<area shape="rect" id="Node000003" href="$de/d1c/classGameObject.html" title="Game object class." alt="" coords="5,5,141,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="118,45,189,84,187,89,116,50"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="165,5,269,39"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,57,220,87,214,87,214,57"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="294,5,410,39"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="311,50,246,89,243,84,308,46"/>
+<area shape="rect" id="Node000006" href="$de/dd3/classUpdateableObject.html" title="Updateable object class." alt="" coords="326,87,513,121"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="387,134,340,170,337,166,384,130"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Engine::setWindowTitle" name="Engine::setWindowTitle">
+<area shape="rect" id="Node000001" title="Set window title." alt="" coords="5,5,243,39"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="291,5,497,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,20,273,20,273,25,243,25"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="545,5,706,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="497,20,527,20,527,25,497,25"/>
+</map>

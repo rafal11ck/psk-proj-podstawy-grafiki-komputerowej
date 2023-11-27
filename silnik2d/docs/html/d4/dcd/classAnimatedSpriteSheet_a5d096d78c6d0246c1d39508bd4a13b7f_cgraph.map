@@ -1,0 +1,11 @@
+<map id="AnimatedSpriteSheet::nextFrame" name="AnimatedSpriteSheet::nextFrame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,224,166"/>
+<area shape="rect" id="Node000002" href="$d4/dcd/classAnimatedSpriteSheet.html#abfe4ace3fb950887d0c97b77efcb933c" title=" " alt="" coords="293,5,577,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,106,276,88,278,93,217,111"/>
+<area shape="rect" id="Node000003" href="$d4/dcd/classAnimatedSpriteSheet.html#a27332626ce4790c6bed611958fd416e3" title=" " alt="" coords="272,109,598,166"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,135,254,135,254,140,224,140"/>
+<area shape="rect" id="Node000004" href="$d4/dcd/classAnimatedSpriteSheet.html#a220da560115e8b9b4b6a823deab4cce7" title=" " alt="" coords="326,190,544,247"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="225,162,272,175,309,184,308,189,271,180,223,168"/>
+<area shape="rect" id="Node000005" href="$d1/d0c/structAnimatedSpriteSheet_1_1AnimationFrameData.html#a233fd12ae819923dfe42a3a37fc26024" title=" " alt="" coords="646,179,873,258"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="544,216,628,216,628,221,544,221"/>
+</map>

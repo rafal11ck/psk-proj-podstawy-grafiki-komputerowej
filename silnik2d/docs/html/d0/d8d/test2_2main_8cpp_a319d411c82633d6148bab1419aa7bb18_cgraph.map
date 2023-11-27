@@ -1,0 +1,13 @@
+<map id="throwBall" name="throwBall">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,113,96"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#acbae76a45d771e910651c22f4860d82e" title="Adds drawable to Collection." alt="" coords="218,5,351,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,61,160,48,201,38,202,43,161,53,114,66"/>
+<area shape="rect" id="Node000003" href="$dc/df0/classBall.html#a19d6ae6f7a11024764e694f37956816c" title=" " alt="" coords="161,63,408,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,77,143,77,143,82,113,82"/>
+<area shape="rect" id="Node000004" href="$dc/df0/classBall.html#a77f731cabaa2fdf06c96f3b11f2df2b5" title=" " alt="" coords="203,120,366,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="114,93,161,106,188,113,187,118,160,111,113,98"/>
+<area shape="rect" id="Node000005" href="$de/d1c/classGameObject.html#ac8a2fe5f8491e4804ff43785c3be5d62" title="Object position setter." alt="" coords="456,91,703,124"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="366,126,438,119,439,124,366,131"/>
+<area shape="rect" id="Node000006" href="$d5/d5c/classPoint2d.html#a67d1225067ee31870cd80f774ac8f0b3" title="Convert to Vector2f." alt="" coords="481,148,679,182"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="366,142,463,151,462,156,366,147"/>
+</map>

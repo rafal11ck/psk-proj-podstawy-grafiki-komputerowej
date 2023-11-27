@@ -1,0 +1,5 @@
+<map id="Bush::nextSprite" name="Bush::nextSprite">
+<area shape="rect" id="Node000001" title=" " alt="" coords="209,5,385,39"/>
+<area shape="rect" id="Node000002" href="$df/dd5/classBush.html#a435e5a6a66b3a1ae2fb2d3368a051033" title="Animates object." alt="" coords="5,5,161,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,25,161,25,161,20,191,20"/>
+</map>

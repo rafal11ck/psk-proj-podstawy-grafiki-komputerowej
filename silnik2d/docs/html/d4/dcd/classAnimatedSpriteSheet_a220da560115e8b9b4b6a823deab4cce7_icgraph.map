@@ -1,0 +1,9 @@
+<map id="AnimatedSpriteSheet::setFrame" name="AnimatedSpriteSheet::setFrame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="550,47,768,103"/>
+<area shape="rect" id="Node000002" href="$d4/dcd/classAnimatedSpriteSheet.html#a2c54d17eea6a3e391e58b90d577dec48" title=" " alt="" coords="272,5,502,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="532,58,502,54,503,49,533,53"/>
+<area shape="rect" id="Node000003" href="$d4/dcd/classAnimatedSpriteSheet.html#a5d096d78c6d0246c1d39508bd4a13b7f" title=" " alt="" coords="278,87,496,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="533,96,497,102,496,96,532,91"/>
+<area shape="rect" id="Node000004" href="$d4/dcd/classAnimatedSpriteSheet.html#a9f0f6e23c33869b0caf4fdf68bddc9ba" title="Animates object." alt="" coords="5,87,224,143"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="260,118,224,118,224,112,260,112"/>
+</map>

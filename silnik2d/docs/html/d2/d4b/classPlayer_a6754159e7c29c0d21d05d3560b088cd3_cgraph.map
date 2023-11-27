@@ -1,0 +1,11 @@
+<map id="Player::getMoveVector" name="Player::getMoveVector">
+<area shape="rect" id="Node000001" title="Returns the player&#39;s movement vector multiplied by speed." alt="" coords="5,63,232,96"/>
+<area shape="rect" id="Node000002" href="$d1/db6/classEngine.html#a4fbdd2df29e30dd08de3c285cee8c128" title="Instance getter." alt="" coords="328,5,534,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,59,318,40,319,45,214,65"/>
+<area shape="rect" id="Node000004" href="$d1/db6/classEngine.html#a7882b3a1b96c425ea5692807e0765e9f" title="Last frame duration getter." alt="" coords="280,63,582,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,77,262,77,262,82,232,82"/>
+<area shape="rect" id="Node000005" href="$d2/d4b/classPlayer.html#ae1905c2212e75f18b7eefd91324fe3d9" title="Returns a 2D vector containing information on which cardinal directions the player is moving." alt="" coords="289,120,573,154"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="214,94,319,114,318,119,214,100"/>
+<area shape="rect" id="Node000003" href="$d1/db6/classEngine.html#a8c98683b0a3aa28d8ab72a8bcd0d52f2" title="Constructor." alt="" coords="630,5,791,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="535,20,612,20,612,25,535,25"/>
+</map>

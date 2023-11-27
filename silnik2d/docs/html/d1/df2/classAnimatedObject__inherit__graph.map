@@ -1,0 +1,19 @@
+<map id="AnimatedObject" name="AnimatedObject">
+<area shape="rect" id="Node000001" title="Animated object class." alt="" coords="197,87,368,121"/>
+<area shape="rect" id="Node000005" href="$d4/dcd/classAnimatedSpriteSheet.html" title=" " alt="" coords="5,169,224,202"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="234,131,150,171,147,166,232,126"/>
+<area shape="rect" id="Node000007" href="$df/dd5/classBush.html" title=" " alt="" coords="248,169,317,202"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="285,138,285,168,280,168,280,138"/>
+<area shape="rect" id="Node000008" href="$d2/d4b/classPlayer.html" title="Player class." alt="" coords="341,169,419,202"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="317,130,362,166,358,170,314,134"/>
+<area shape="rect" id="Node000002" href="$de/d1c/classGameObject.html" title="Game object class." alt="" coords="71,5,206,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,45,255,84,252,89,181,50"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="230,5,335,39"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="285,57,285,87,280,87,280,57"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="359,5,475,39"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="377,50,311,89,308,84,374,46"/>
+<area shape="rect" id="Node000006" href="$de/dde/classFidgetSpinner.html" title=" " alt="" coords="40,250,189,284"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="117,220,117,250,112,250,112,220"/>
+<area shape="rect" id="Node000009" href="$df/d0d/classGamePlayer.html" title=" " alt="" coords="314,250,446,284"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="383,220,383,250,377,250,377,220"/>
+</map>
