@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project("PSK_podsawy_grafiki_kompterowej" LANGUAGES CXX)
+project("PSK_podsawy_grafiki_kompterowej silnik 23" LANGUAGES CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CXX_STANDARD_REQUIRED C++20)
@@ -44,5 +44,7 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
   message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
+
+
 
 add_subdirectory(src)

@@ -2,7 +2,7 @@
 #+language: Polish
 #+author: Rafał Grot, Kamil Gunia, Piotr Górski
 #+latex_header: \usepackage[margin=2cm]{geometry}
-#+options: todo:nil
+#+options: todo:nil toc:nil
 
 \newpage
 
@@ -10,22 +10,41 @@
 - SFML
 - cmake
 
-* DONE Użycie bilbioteki =engine=
-Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy =engine.hpp=..
+* DONE Użycie biblioteki =engine=
+Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy =engine.hpp= oraz zlinkować bibliotekę =engine=
+Klasa Engine jest singletonem.
+Po ustawieniu parametrów należy wywołać metodę =buildWindow()=
+Następnie o ile potrzebna wykonać inicjalizację pętli użytkownika.
+Na koniec należy wywołać metodę silnika =loop()=.
+
+#+begin_src cpp
+int main(){
+Engine::getInstance().setMaxFps(3).setResolution({1000, 1000}).buildWindow();
+
+// ...
+
+Engine::getInstance().loop();
+}
+#+end_src
+
+
 * DONE Wybrane klasy wykorzystywanie przez silnik.
+** DONE Prymitywy
+Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po =sf::Drawable= oraz dodać je do silnika za pomocą metody silnika =Engine::add()=.
 ** DONE GameObject
-GameObject to klasa repezentująca obiekt w grze.
+GameObject to klasa reprezentująca obiekt w grze.
 ** DONE Drawable
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
+Dokładnie jest to alias do =sf::Drawable=.
 ** DONE AnimatedObject
 Jest to klasa zawierająca metodę wirtualną =animate()=, należy ją przeciążyć w celu realizacji animacji.
+Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 ** DONE AnimatedSpriteSheet
-Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziediczy po AnimatedObject.
+Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 - Obiekty tej klasy wczytują informacje o animacji z plików.
 
-- Konstruktor przyjmuje ścieżkę do katalogu, który musi zaweirać plik =config.txt=
-
+- Konstruktor przyjmuje ścieżkę do katalogu, który musi zawierać plik =config.txt=
 
 Metadane animacji opisane w pliku konfiguracyjnym mają następujący format:
 
@@ -39,15 +58,15 @@ Linie które mają być traktowane jako komentarze zaczynają się znakiem "#".
 
 *** DONE Command
 
-Prawidłowe opcje =COMMAND= to:
+Prawidłowe kommendy =COMMAND= to:
 - =SPRITESHEET= ::
-  Posiada jeden parametr -- scieżkę relatywną od katlagou, w którym znajduje się plik konfiguracyjny, do pliku zawierającego tablice spritów.
+  Posiada jeden parametr -- ścieżkę relatywną od katalogu, w którym znajduje się plik konfiguracyjny, do pliku zawierającego tablice spirtów.
 
 - =ANIMATION= ::
   Oznacza ładowanie animacji, kolejne wywołania oznaczają nowe typy animacji. Nie przyjmuje parametrów.
 
 - =FRAME= ::
-  Zawiera informacje o pojedyńczej klatce animacji.
+  Zawiera informacje o pojedynczej klatce animacji.
   Przyjmuje parametry oznaczające kolejno
   + pozycje x lewego górnego rogu sprita.
   + pozycje y lewego górnego rogu sprita.
@@ -59,10 +78,13 @@ Prawidłowe opcje =COMMAND= to:
 
 
 ** DONE UpdateableObject
-Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodoę =update= klasy =UpdateableObject=.
+Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę =update= klasy =UpdateableObject=.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 
 * DONE Przykład użycia silnika
 Program wyświetlający animację.
 
 #+include: ../src/test3/main.cpp src cpp
+
+#  LocalWords:  AnimatedSpriteSheet AnimatedObject GameObject Command
+#  LocalWords:  UpdateableObject

@@ -1,4 +1,4 @@
-% Created 2023-11-21 Tue 10:57
+% Created 2023-11-25 Sat 09:45
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -26,39 +26,55 @@
 \begin{document}
 
 \maketitle
-\tableofcontents
-
 \newpage
 \section{Wymagania systemowe}
-\label{sec:org7b065c9}
+\label{sec:orgfd622d0}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
-\section{Użycie bilbioteki \texttt{engine}}
-\label{sec:org2f6b2f0}
-Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp}..
+\section{Użycie biblioteki \texttt{engine}}
+\label{sec:orgf41cd77}
+Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp} oraz zlinkować bibliotekę \texttt{engine}
+Klasa Engine jest singletonem.
+Po ustawieniu parametrów należy wywołać metodę \texttt{buildWindow()}
+Następnie o ile potrzebna wykonać inicjalizację pętli użytkownika.
+Na koniec należy wywołać metodę silnika \texttt{loop()}.
+
+\begin{verbatim}
+int main(){
+Engine::getInstance().setMaxFps(3).setResolution({1000, 1000}).buildWindow();
+
+// ...
+
+Engine::getInstance().loop();
+}
+\end{verbatim}
 \section{Wybrane klasy wykorzystywanie przez silnik.}
-\label{sec:org67393b2}
+\label{sec:orgdfc93f2}
+\subsection{Prymitywy}
+\label{sec:orgeb36976}
+Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po \texttt{sf::Drawable} oraz dodać je do silnika za pomocą metody silnika \texttt{Engine::add()}.
 \subsection{GameObject}
-\label{sec:org3ef4a7c}
-GameObject to klasa repezentująca obiekt w grze.
+\label{sec:org0acd6e2}
+GameObject to klasa reprezentująca obiekt w grze.
 \subsection{Drawable}
-\label{sec:org8ad77fe}
+\label{sec:orged9142e}
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
+Dokładnie jest to alias do \texttt{sf::Drawable}.
 \subsection{AnimatedObject}
-\label{sec:org42dce6c}
+\label{sec:orgc475e75}
 Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
+Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 \subsection{AnimatedSpriteSheet}
-\label{sec:orgb54e728}
-Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziediczy po AnimatedObject.
+\label{sec:org6bab29c}
+Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 \begin{itemize}
 \item Obiekty tej klasy wczytują informacje o animacji z plików.
 
-\item Konstruktor przyjmuje ścieżkę do katalogu, który musi zaweirać plik \texttt{config.txt}
+\item Konstruktor przyjmuje ścieżkę do katalogu, który musi zawierać plik \texttt{config.txt}
 \end{itemize}
-
 
 Metadane animacji opisane w pliku konfiguracyjnym mają następujący format:
 
@@ -70,15 +86,15 @@ ARGS
 Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
 Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
 \subsubsection{Command}
-\label{sec:orgc8e5692}
+\label{sec:orgc520eb8}
 
-Prawidłowe opcje \texttt{COMMAND} to:
+Prawidłowe kommendy \texttt{COMMAND} to:
 \begin{description}
-\item[{\texttt{SPRITESHEET}}] Posiada jeden parametr -- scieżkę relatywną od katlagou, w którym znajduje się plik konfiguracyjny, do pliku zawierającego tablice spritów.
+\item[{\texttt{SPRITESHEET}}] Posiada jeden parametr -- ścieżkę relatywną od katalogu, w którym znajduje się plik konfiguracyjny, do pliku zawierającego tablice spirtów.
 
 \item[{\texttt{ANIMATION}}] Oznacza ładowanie animacji, kolejne wywołania oznaczają nowe typy animacji. Nie przyjmuje parametrów.
 
-\item[{\texttt{FRAME}}] Zawiera informacje o pojedyńczej klatce animacji.
+\item[{\texttt{FRAME}}] Zawiera informacje o pojedynczej klatce animacji.
 Przyjmuje parametry oznaczające kolejno
 \begin{itemize}
 \item pozycje x lewego górnego rogu sprita.
@@ -89,7 +105,7 @@ Przyjmuje parametry oznaczające kolejno
 \end{itemize}
 \end{description}
 \subsubsection{Przykład}
-\label{sec:org2f7f7a6}
+\label{sec:orgb4945a1}
 \begin{verbatim}
 #Comment lines start with '#'
 #SPRITESHEET should be followed with with relative path in the next line
@@ -118,11 +134,11 @@ FRAME
 100 0 100 100 0 0.5
 \end{verbatim}
 \subsection{UpdateableObject}
-\label{sec:org2df8fac}
-Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodoę \texttt{update} klasy \texttt{UpdateableObject}.
+\label{sec:orga439a14}
+Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę \texttt{update} klasy \texttt{UpdateableObject}.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 \section{Przykład użycia silnika}
-\label{sec:orgb867cad}
+\label{sec:orgdd7d2f0}
 Program wyświetlający animację.
 
 \begin{verbatim}
