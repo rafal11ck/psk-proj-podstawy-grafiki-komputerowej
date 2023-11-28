@@ -1,4 +1,4 @@
-% Created 2023-11-27 Mon 12:19
+% Created 2023-11-27 Mon 12:53
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -28,13 +28,13 @@
 \maketitle
 \newpage
 \section{Wymagania systemowe}
-\label{sec:orgf1b5794}
+\label{sec:org3ab9263}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
 \section{Użycie biblioteki \texttt{engine}}
-\label{sec:org64cef58}
+\label{sec:org8aecf21}
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp} oraz zlinkować bibliotekę \texttt{engine}
 Klasa Engine jest singletonem.
 Zaleca się zaposanie z dokumentacją techniczną.
@@ -52,23 +52,23 @@ Engine::getInstance().loop();
 }
 \end{verbatim}
 \section{Wybrane klasy wykorzystywanie przez silnik.}
-\label{sec:org9ce2944}
+\label{sec:org6c24534}
 \subsection{Prymitywy}
-\label{sec:org28e7670}
+\label{sec:orga445089}
 Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po \texttt{sf::Drawable} oraz dodać je do silnika za pomocą metody silnika \texttt{Engine::add()}.
 \subsection{GameObject}
-\label{sec:orga69c67d}
+\label{sec:org4cd0d18}
 GameObject to klasa reprezentująca obiekt w grze.
 \subsection{Drawable}
-\label{sec:org13804bc}
+\label{sec:org9cdfaa4}
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
 Dokładnie jest to alias do \texttt{sf::Drawable}.
 \subsection{AnimatedObject}
-\label{sec:org807e0ea}
+\label{sec:orgeb1fcfc}
 Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
 Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 \subsection{AnimatedSpriteSheet}
-\label{sec:org7740db3}
+\label{sec:orge7e1249}
 Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 \begin{itemize}
@@ -87,7 +87,7 @@ ARGS
 Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
 Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
 \subsubsection{Command}
-\label{sec:orge921749}
+\label{sec:org7879002}
 
 Prawidłowe kommendy \texttt{COMMAND} to:
 \begin{description}
@@ -106,7 +106,7 @@ Przyjmuje parametry oznaczające kolejno
 \end{itemize}
 \end{description}
 \subsubsection{Przykład}
-\label{sec:org9916a42}
+\label{sec:orgea87266}
 \begin{verbatim}
 #Comment lines start with '#'
 #SPRITESHEET should be followed with with relative path in the next line
@@ -135,11 +135,11 @@ FRAME
 100 0 100 100 0 0.5
 \end{verbatim}
 \subsection{UpdateableObject}
-\label{sec:org1e37079}
+\label{sec:orgef1bc6b}
 Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę \texttt{update} klasy \texttt{UpdateableObject}.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 \section{Przykład użycia silnika}
-\label{sec:org062f28d}
+\label{sec:org5077af7}
 Program wyświetlający animację.
 
 \begin{verbatim}
@@ -165,4 +165,28 @@ int main() {
   Engine::getInstance().loop();
 }
 \end{verbatim}
+\section{Z wymagań}
+\label{sec:orgac22fe5}
+\subsection{Obsługa klawiatury i myszy}
+\label{sec:org7051f2d}
+Wykorzystaj \texttt{setEventHandler()}. Po szczegóły zajrzyj do dokumentacji.
+\subsection{Obsługa współrzędnych (Point2D)}
+\label{sec:org5c34cc2}
+Klasa \texttt{Point2d}. Po szczegóły zajrzyj do dokumentacji.
+\subsection{Rysowanie prymitywów}
+\label{sec:orgaf6f775}
+Przy użyciu klass z bilbioteki SFML oraz metod \texttt{Engine::add()} i \texttt{Engine::remove()}.
+Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
+\subsection{Wypełnianie prymitywów kolorem}
+\label{sec:orgc100e8e}
+Przy użyciu metod obiektów z biblioteki SFML.
+\subsection{Przekształcenia geometryczne}
+\label{sec:org2f66ac4}
+Przy użyciu SFML.
+\subsection{Obsługa bitmap}
+\label{sec:org06419c2}
+Przy użyciu biblioteki SFML tak jak z primitywami.
+\subsection{Animowanie bitmap}
+\label{sec:org50332ef}
+Przy użyciu klasy \texttt{AnimatedSpriteSheet}. Szecgóły w dokumetnacji technicznej.
 \end{document}

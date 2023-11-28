@@ -89,3 +89,19 @@ Program wyświetlający animację.
 
 #  LocalWords:  AnimatedSpriteSheet AnimatedObject GameObject Command
 #  LocalWords:  UpdateableObject
+* DONE Z wymagań
+** Obsługa klawiatury i myszy
+Wykorzystaj =setEventHandler()=. Po szczegóły zajrzyj do dokumentacji.
+** Obsługa współrzędnych (Point2D)
+Klasa =Point2d=. Po szczegóły zajrzyj do dokumentacji.
+** Rysowanie prymitywów
+Przy użyciu klass z bilbioteki SFML oraz metod =Engine::add()= i =Engine::remove()=.
+Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
+** Wypełnianie prymitywów kolorem
+Przy użyciu metod obiektów z biblioteki SFML.
+** Przekształcenia geometryczne
+Przy użyciu SFML.
+** Obsługa bitmap
+Przy użyciu biblioteki SFML tak jak z primitywami.
+** Animowanie bitmap
+Przy użyciu klasy =AnimatedSpriteSheet=. Szecgóły w dokumetnacji technicznej.
