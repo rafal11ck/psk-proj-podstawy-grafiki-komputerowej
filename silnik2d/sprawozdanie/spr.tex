@@ -1,4 +1,4 @@
-% Created 2023-11-27 Mon 12:53
+% Created 2023-11-30 Thu 16:57
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -28,13 +28,13 @@
 \maketitle
 \newpage
 \section{Wymagania systemowe}
-\label{sec:org3ab9263}
+\label{sec:orga4224dc}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
 \section{Użycie biblioteki \texttt{engine}}
-\label{sec:org8aecf21}
+\label{sec:org4590a0b}
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp} oraz zlinkować bibliotekę \texttt{engine}
 Klasa Engine jest singletonem.
 Zaleca się zaposanie z dokumentacją techniczną.
@@ -52,23 +52,23 @@ Engine::getInstance().loop();
 }
 \end{verbatim}
 \section{Wybrane klasy wykorzystywanie przez silnik.}
-\label{sec:org6c24534}
+\label{sec:org1db87f1}
 \subsection{Prymitywy}
-\label{sec:orga445089}
+\label{sec:org65b32db}
 Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po \texttt{sf::Drawable} oraz dodać je do silnika za pomocą metody silnika \texttt{Engine::add()}.
 \subsection{GameObject}
-\label{sec:org4cd0d18}
+\label{sec:org0af1d92}
 GameObject to klasa reprezentująca obiekt w grze.
 \subsection{Drawable}
-\label{sec:org9cdfaa4}
+\label{sec:orgcf0a222}
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
 Dokładnie jest to alias do \texttt{sf::Drawable}.
 \subsection{AnimatedObject}
-\label{sec:orgeb1fcfc}
+\label{sec:org9a2b6fe}
 Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
 Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 \subsection{AnimatedSpriteSheet}
-\label{sec:orge7e1249}
+\label{sec:orgc117c95}
 Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 \begin{itemize}
@@ -87,7 +87,7 @@ ARGS
 Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
 Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
 \subsubsection{Command}
-\label{sec:org7879002}
+\label{sec:orga941f1e}
 
 Prawidłowe kommendy \texttt{COMMAND} to:
 \begin{description}
@@ -106,7 +106,7 @@ Przyjmuje parametry oznaczające kolejno
 \end{itemize}
 \end{description}
 \subsubsection{Przykład}
-\label{sec:orgea87266}
+\label{sec:orga2a986e}
 \begin{verbatim}
 #Comment lines start with '#'
 #SPRITESHEET should be followed with with relative path in the next line
@@ -135,11 +135,11 @@ FRAME
 100 0 100 100 0 0.5
 \end{verbatim}
 \subsection{UpdateableObject}
-\label{sec:orgef1bc6b}
+\label{sec:orgba3956d}
 Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę \texttt{update} klasy \texttt{UpdateableObject}.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 \section{Przykład użycia silnika}
-\label{sec:org5077af7}
+\label{sec:org5220c91}
 Program wyświetlający animację.
 
 \begin{verbatim}
@@ -166,27 +166,45 @@ int main() {
 }
 \end{verbatim}
 \section{Z wymagań}
-\label{sec:orgac22fe5}
+\label{sec:orgb006597}
 \subsection{Obsługa klawiatury i myszy}
-\label{sec:org7051f2d}
+\label{sec:org43269a6}
 Wykorzystaj \texttt{setEventHandler()}. Po szczegóły zajrzyj do dokumentacji.
+
+\begin{verbatim}
+#include "engine.hpp"
+#include <iostream>
+
+int main() {
+  Engine &eng = Engine::getInstance().setWindowTitle("dev").buildWindow();
+
+  eng.setEventHandler(
+      Engine::Event::MouseButtonPressed, [](const Engine::Event &ev) {
+        std::cout << "Custom event handler Mouse button press "
+                  << ev.mouseButton.button << '\t' << ev.mouseButton.x << '\t'
+                  << ev.mouseButton.y << "\n";
+      });
+
+  eng.loop();
+}
+\end{verbatim}
 \subsection{Obsługa współrzędnych (Point2D)}
-\label{sec:org5c34cc2}
+\label{sec:org9666499}
 Klasa \texttt{Point2d}. Po szczegóły zajrzyj do dokumentacji.
 \subsection{Rysowanie prymitywów}
-\label{sec:orgaf6f775}
+\label{sec:orgdeb4bf1}
 Przy użyciu klass z bilbioteki SFML oraz metod \texttt{Engine::add()} i \texttt{Engine::remove()}.
 Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
 \subsection{Wypełnianie prymitywów kolorem}
-\label{sec:orgc100e8e}
+\label{sec:orgfabc6a9}
 Przy użyciu metod obiektów z biblioteki SFML.
 \subsection{Przekształcenia geometryczne}
-\label{sec:org2f66ac4}
+\label{sec:org52973b8}
 Przy użyciu SFML.
 \subsection{Obsługa bitmap}
-\label{sec:org06419c2}
+\label{sec:org998f764}
 Przy użyciu biblioteki SFML tak jak z primitywami.
 \subsection{Animowanie bitmap}
-\label{sec:org50332ef}
+\label{sec:orgd573061}
 Przy użyciu klasy \texttt{AnimatedSpriteSheet}. Szecgóły w dokumetnacji technicznej.
 \end{document}

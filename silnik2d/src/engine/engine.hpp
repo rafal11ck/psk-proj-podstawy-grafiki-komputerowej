@@ -1,6 +1,5 @@
 #ifndef ENGINE_HPP_
 #define ENGINE_HPP_
-
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/Shape.hpp"
 #include "SFML/System/Clock.hpp"

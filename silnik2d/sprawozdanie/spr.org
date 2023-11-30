@@ -92,10 +92,16 @@ Program wyświetlający animację.
 * DONE Z wymagań
 ** Obsługa klawiatury i myszy
 Wykorzystaj =setEventHandler()=. Po szczegóły zajrzyj do dokumentacji.
+
+#+include: ../src/test4/main.cpp src cpp
+
 ** Obsługa współrzędnych (Point2D)
 Klasa =Point2d=. Po szczegóły zajrzyj do dokumentacji.
 ** Rysowanie prymitywów
 Przy użyciu klass z bilbioteki SFML oraz metod =Engine::add()= i =Engine::remove()=.
+
+
+
 Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
 ** Wypełnianie prymitywów kolorem
 Przy użyciu metod obiektów z biblioteki SFML.
