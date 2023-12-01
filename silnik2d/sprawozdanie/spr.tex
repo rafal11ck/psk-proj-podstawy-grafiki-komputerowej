@@ -1,4 +1,4 @@
-% Created 2023-12-01 Fri 14:47
+% Created 2023-12-01 Fri 15:33
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -27,16 +27,16 @@
 
 \maketitle
 \newpage
-\section{Wymagania systemowe}
-\label{sec:org8d8e0e6}
+\section{Wymagania systemowe.}
+\label{sec:org934f79c}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
 \section{Z wymagań}
-\label{sec:orged4aa2d}
+\label{sec:orga7a6f07}
 \subsection{Obsługa klawiatury i myszy}
-\label{sec:org33c34ec}
+\label{sec:orga83a5de}
 Wykorzystaj \texttt{setEventHandler()}. Po szczegóły zajrzyj do dokumentacji.
 
 \begin{itemize}
@@ -60,15 +60,15 @@ int main() {
 }
 \end{verbatim}
 \subsection{Obsługa współrzędnych (Point2D)}
-\label{sec:org79b33ff}
+\label{sec:org311082e}
 Klasa \texttt{Point2d}. Po szczegóły zajrzyj do dokumentacji.
 \subsection{Rysowanie prymitywów}
-\label{sec:org7402ac5}
-Przy użyciu klass z bilbioteki SFML oraz metod \texttt{Engine::add()} i \texttt{Engine::remove()}.
+\label{sec:orgd4aba17}
+Przy użyciu klass z biblioteki SFML oraz metod \texttt{Engine::add()} i \texttt{Engine::remove()}.
 
-Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
+Szczegóły w dokumentacji technicznej oraz dokumentacji SFML.
 \subsubsection{Przykład}
-\label{sec:org3c0a5df}
+\label{sec:org96bf344}
 \begin{verbatim}
 #include "SFML/Graphics/CircleShape.hpp"
 #include "engine.hpp"
@@ -87,10 +87,10 @@ int main() {
 }
 \end{verbatim}
 \subsection{Wypełnianie prymitywów kolorem}
-\label{sec:orgbac75d8}
+\label{sec:org820a780}
 Przy użyciu metod obiektów z biblioteki SFML.
 \subsubsection{Przykład}
-\label{sec:org7046b3b}
+\label{sec:org1ca8fe5}
 \begin{verbatim}
 #include "SFML/Graphics/CircleShape.hpp"
 #include "SFML/Graphics/Color.hpp"
@@ -137,10 +137,10 @@ int main() {
 }
 \end{verbatim}
 \subsection{Przekształcenia geometryczne}
-\label{sec:org911a2e1}
+\label{sec:org4d4b31e}
 Przy użyciu SFML.
 \subsubsection{Przykład}
-\label{sec:org6658196}
+\label{sec:org9f34f5f}
 
 \begin{verbatim}
 #include "SFML/Graphics/RectangleShape.hpp"
@@ -216,10 +216,10 @@ int main() {
 }
 \end{verbatim}
 \subsection{Obsługa bitmap}
-\label{sec:orgcdbd3b8}
-Przy użyciu biblioteki SFML tak jak z primitywami.
+\label{sec:org7575cd0}
+Przy użyciu biblioteki SFML tak jak z prymitywami.
 \subsubsection{Przykład (\texttt{test8})}
-\label{sec:orge72370f}
+\label{sec:orgf9b84c6}
 
 \begin{verbatim}
 #include "SFML/Graphics/Sprite.hpp"
@@ -245,8 +245,8 @@ int main() {
 }
 \end{verbatim}
 \subsection{Animowanie bitmap}
-\label{sec:org6680f52}
-Przy użyciu klasy \texttt{AnimatedSpriteSheet}. Szecgóły w dokumetnacji technicznej oraz w dalszej częsci sprawozdania.
+\label{sec:org6a5bec1}
+Przy użyciu klasy \texttt{AnimatedSpriteSheet}. Szczegóły w dokumentacji technicznej oraz w dalszej częsci sprawozdania.
 
 \begin{verbatim}
 #include "SFML/Graphics/Color.hpp"
@@ -272,7 +272,7 @@ int main() {
 }
 \end{verbatim}
 \section{Użycie biblioteki \texttt{engine}}
-\label{sec:org6940c44}
+\label{sec:org9f8e8c1}
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp} oraz zlinkować bibliotekę \texttt{engine}
 Klasa Engine jest singletonem.
 Zaleca się zaposanie z dokumentacją techniczną.
@@ -290,23 +290,23 @@ Engine::getInstance().loop();
 }
 \end{verbatim}
 \section{Wybrane klasy wykorzystywanie przez silnik.}
-\label{sec:org8847283}
+\label{sec:orgf4261ec}
 \subsection{Prymitywy}
-\label{sec:orgacdf54f}
+\label{sec:orgdaf9e9b}
 Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po \texttt{sf::Drawable} oraz dodać je do silnika za pomocą metody silnika \texttt{Engine::add()}.
 \subsection{GameObject}
-\label{sec:orgbbacc67}
+\label{sec:org9f15a33}
 GameObject to klasa reprezentująca obiekt w grze.
 \subsection{Drawable}
-\label{sec:orgbfbd0f7}
+\label{sec:org55a1256}
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
 Dokładnie jest to alias do \texttt{sf::Drawable}.
 \subsection{AnimatedObject}
-\label{sec:org0d80b3e}
+\label{sec:org4e2a8d6}
 Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
 Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 \subsection{AnimatedSpriteSheet}
-\label{sec:orgcc1f4b2}
+\label{sec:orgf8b27f3}
 Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 \begin{itemize}
@@ -325,7 +325,7 @@ ARGS
 Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
 Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
 \subsubsection{Command}
-\label{sec:org91d437f}
+\label{sec:orgd1df8d0}
 
 Prawidłowe kommendy \texttt{COMMAND} to:
 \begin{description}
@@ -344,7 +344,7 @@ Przyjmuje parametry oznaczające kolejno
 \end{itemize}
 \end{description}
 \subsubsection{Przykład}
-\label{sec:org79e4ddf}
+\label{sec:org9096b63}
 \begin{verbatim}
 #Comment lines start with '#'
 #SPRITESHEET should be followed with with relative path in the next line
@@ -373,11 +373,11 @@ FRAME
 100 0 100 100 0 0.5
 \end{verbatim}
 \subsection{UpdateableObject}
-\label{sec:orgb68f463}
+\label{sec:org5aac746}
 Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę \texttt{update} klasy \texttt{UpdateableObject}.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 \section{Przykład użycia silnika}
-\label{sec:orgb901082}
+\label{sec:org1168046}
 Program wyświetlający animację.
 
 \begin{verbatim}

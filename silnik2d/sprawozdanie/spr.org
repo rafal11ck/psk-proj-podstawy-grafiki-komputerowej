@@ -23,9 +23,9 @@ Wykorzystaj =setEventHandler()=. Po szczegóły zajrzyj do dokumentacji.
 Klasa =Point2d=. Po szczegóły zajrzyj do dokumentacji.
 
 ** DONE Rysowanie prymitywów
-Przy użyciu klass z bilbioteki SFML oraz metod =Engine::add()= i =Engine::remove()=.
+Przy użyciu klass z biblioteki SFML oraz metod =Engine::add()= i =Engine::remove()=.
 
-Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
+Szczegóły w dokumentacji technicznej oraz dokumentacji SFML.
 
 *** DONE Przykład
 #+include: ../src/test5/main.cpp src cpp
@@ -44,7 +44,7 @@ Przy użyciu SFML.
 #+include: ../src/test7/main.cpp src cpp
 
 ** DONE Obsługa bitmap
-Przy użyciu biblioteki SFML tak jak z primitywami.
+Przy użyciu biblioteki SFML tak jak z prymitywami.
 
 *** Przykład (=test8=)
 
@@ -52,7 +52,7 @@ Przy użyciu biblioteki SFML tak jak z primitywami.
 
 
 ** DONE Animowanie bitmap
-Przy użyciu klasy =AnimatedSpriteSheet=. Szecgóły w dokumetnacji technicznej oraz w dalszej częsci sprawozdania.
+Przy użyciu klasy =AnimatedSpriteSheet=. Szczegóły w dokumentacji technicznej oraz w dalszej częsci sprawozdania.
 
 #+include: ../src/test3/main.cpp src cpp
 
