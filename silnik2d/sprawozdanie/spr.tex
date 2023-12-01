@@ -1,4 +1,4 @@
-% Created 2023-11-30 Thu 16:57
+% Created 2023-12-01 Fri 14:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -28,13 +28,251 @@
 \maketitle
 \newpage
 \section{Wymagania systemowe}
-\label{sec:orga4224dc}
+\label{sec:org8d8e0e6}
 \begin{itemize}
 \item SFML
 \item cmake
 \end{itemize}
+\section{Z wymagań}
+\label{sec:orged4aa2d}
+\subsection{Obsługa klawiatury i myszy}
+\label{sec:org33c34ec}
+Wykorzystaj \texttt{setEventHandler()}. Po szczegóły zajrzyj do dokumentacji.
+
+\begin{itemize}
+\item Przykład
+\end{itemize}
+\begin{verbatim}
+#include "engine.hpp"
+#include <iostream>
+
+int main() {
+  Engine &eng = Engine::getInstance().setWindowTitle("dev").buildWindow();
+
+  eng.setEventHandler(
+      Engine::Event::MouseButtonPressed, [](const Engine::Event &ev) {
+        std::cout << "Custom event handler Mouse button press "
+                  << ev.mouseButton.button << '\t' << ev.mouseButton.x << '\t'
+                  << ev.mouseButton.y << "\n";
+      });
+
+  eng.loop();
+}
+\end{verbatim}
+\subsection{Obsługa współrzędnych (Point2D)}
+\label{sec:org79b33ff}
+Klasa \texttt{Point2d}. Po szczegóły zajrzyj do dokumentacji.
+\subsection{Rysowanie prymitywów}
+\label{sec:org7402ac5}
+Przy użyciu klass z bilbioteki SFML oraz metod \texttt{Engine::add()} i \texttt{Engine::remove()}.
+
+Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
+\subsubsection{Przykład}
+\label{sec:org3c0a5df}
+\begin{verbatim}
+#include "SFML/Graphics/CircleShape.hpp"
+#include "engine.hpp"
+#include <iostream>
+
+int main() {
+  Engine &eng = Engine::getInstance().setWindowTitle("dev").buildWindow();
+
+  sf::CircleShape *circle = new sf::CircleShape(100);
+
+  circle->setPosition(100, 100);
+
+  eng.add(circle);
+
+  eng.loop();
+}
+\end{verbatim}
+\subsection{Wypełnianie prymitywów kolorem}
+\label{sec:orgbac75d8}
+Przy użyciu metod obiektów z biblioteki SFML.
+\subsubsection{Przykład}
+\label{sec:org7046b3b}
+\begin{verbatim}
+#include "SFML/Graphics/CircleShape.hpp"
+#include "SFML/Graphics/Color.hpp"
+#include "engine.hpp"
+#include <cstdlib>
+#include <iostream>
+#include <random>
+
+sf::CircleShape *circle = new sf::CircleShape(100);
+
+void customLoop() {
+  // count to second
+  static float dt{};
+  dt += Engine::getInstance().getLastFrameDuration().asSeconds();
+
+  // Do not change color if less then scond elapsed.
+  if (dt < 1)
+    return;
+  dt = 0;
+
+  // Set color based on random RGB values
+  sf::Color randomColor{static_cast<sf::Uint8>(rand() % 265),
+                        static_cast<sf::Uint8>(rand() % 256),
+                        static_cast<sf::Uint8>(rand() % 256)};
+  // Set fill color
+  circle->setFillColor(randomColor);
+}
+
+int main() {
+  // initalize random number generator in order to randomize colors.
+  srand(time(0));
+
+  Engine &eng =
+      Engine::getInstance().setMaxFps(75).setWindowTitle("dev").buildWindow();
+
+  circle->setPosition(100, 100);
+
+  // set custom loop function to change color.
+  eng.setLoopFunction(customLoop);
+
+  eng.add(circle);
+
+  eng.loop();
+}
+\end{verbatim}
+\subsection{Przekształcenia geometryczne}
+\label{sec:org911a2e1}
+Przy użyciu SFML.
+\subsubsection{Przykład}
+\label{sec:org6658196}
+
+\begin{verbatim}
+#include "SFML/Graphics/RectangleShape.hpp"
+#include "engine.hpp"
+#include <iostream>
+
+// This is example of transformation usate.
+// Consider using AnimatedObject class if you want to do animations based on
+// time elapsed
+
+sf::RectangleShape *rect = new sf::RectangleShape({100, 100});
+
+void customLoop() {
+  static float dt{};
+  dt += Engine::getInstance().getLastFrameDuration().asSeconds();
+
+  // after some time execute step
+  if (dt < 0.3)
+    return;
+
+  dt = 0;
+  static int step{};
+
+  // each second do one of following
+  switch (step) {
+    // step 0 move right by 100
+  case 0:
+    rect->move(100, 0);
+    ++step;
+    break;
+  case 1:
+    // make rectangle 2 times bigger
+    rect->scale(2, 2);
+    ++step;
+    break;
+  case 2:
+    // rotate it
+    // Check SFML documentation
+    rect->setOrigin(rect->getSize().x / 2, rect->getSize().y / 2);
+
+    // rotate by 45 degress
+    rect->rotate(45);
+    ++step;
+    break;
+
+  case 3:
+    // Shrink it
+    rect->scale(0.5, 0.5);
+    ++step;
+    break;
+  case 4:
+    // Move it to starting position
+    rect->move(-100, 0);
+    ++step;
+    break;
+
+  default:
+    // reset step
+    step = 0;
+  }
+}
+
+int main() {
+  Engine &eng = Engine::getInstance().setWindowTitle("dev").buildWindow();
+
+  rect->setPosition(100, 300);
+
+  eng.add(rect);
+
+  eng.setLoopFunction(customLoop);
+
+  eng.loop();
+}
+\end{verbatim}
+\subsection{Obsługa bitmap}
+\label{sec:orgcdbd3b8}
+Przy użyciu biblioteki SFML tak jak z primitywami.
+\subsubsection{Przykład (\texttt{test8})}
+\label{sec:orge72370f}
+
+\begin{verbatim}
+#include "SFML/Graphics/Sprite.hpp"
+#include "engine.hpp"
+#include <iostream>
+
+sf::Sprite *sprite = new sf::Sprite{};
+
+int main() {
+  Engine &eng = Engine::getInstance().setWindowTitle("dev").buildWindow();
+
+  sf::Texture texture;
+
+  // texture file paths are relative to executable file, not source file.
+  if (!texture.loadFromFile("textureFile.png", sf::IntRect(0, 0, 200, 200))) {
+    std::cout << "Could not find texture file";
+  }
+
+  sprite->setTexture(texture);
+  eng.add(sprite);
+
+  eng.loop();
+}
+\end{verbatim}
+\subsection{Animowanie bitmap}
+\label{sec:org6680f52}
+Przy użyciu klasy \texttt{AnimatedSpriteSheet}. Szecgóły w dokumetnacji technicznej oraz w dalszej częsci sprawozdania.
+
+\begin{verbatim}
+#include "SFML/Graphics/Color.hpp"
+#include "animatedSpriteSheet.hpp"
+#include "engine.hpp"
+#include <iostream>
+
+namespace G {
+std::string basePath = "resources/";
+}; // namespace G
+
+AnimatedSpriteSheet animation(G::basePath + "animation");
+
+int main() {
+  Engine::getInstance().setMaxFps(3).setResolution({1000, 1000}).buildWindow();
+
+  animation.setPosition({300, 300});
+  animation.setColor(sf::Color::Cyan);
+
+  Engine::getInstance().add(&animation);
+
+  Engine::getInstance().loop();
+}
+\end{verbatim}
 \section{Użycie biblioteki \texttt{engine}}
-\label{sec:org4590a0b}
+\label{sec:org6940c44}
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy \texttt{engine.hpp} oraz zlinkować bibliotekę \texttt{engine}
 Klasa Engine jest singletonem.
 Zaleca się zaposanie z dokumentacją techniczną.
@@ -52,23 +290,23 @@ Engine::getInstance().loop();
 }
 \end{verbatim}
 \section{Wybrane klasy wykorzystywanie przez silnik.}
-\label{sec:org1db87f1}
+\label{sec:org8847283}
 \subsection{Prymitywy}
-\label{sec:org65b32db}
+\label{sec:orgacdf54f}
 Przy wykorzystaniu Klasa z biblioteki SFML stworzyć obiekty dziedziczące po \texttt{sf::Drawable} oraz dodać je do silnika za pomocą metody silnika \texttt{Engine::add()}.
 \subsection{GameObject}
-\label{sec:org0af1d92}
+\label{sec:orgbbacc67}
 GameObject to klasa reprezentująca obiekt w grze.
 \subsection{Drawable}
-\label{sec:orgcf0a222}
+\label{sec:orgbfbd0f7}
 Drawable jest to abstrakcyjna klasa bazowa wszystkich klas, które można narysować.
 Dokładnie jest to alias do \texttt{sf::Drawable}.
 \subsection{AnimatedObject}
-\label{sec:org9a2b6fe}
+\label{sec:org0d80b3e}
 Jest to klasa zawierająca metodę wirtualną \texttt{animate()}, należy ją przeciążyć w celu realizacji animacji.
 Powinna być użyta w dla animacji jeśli inna klasa obsługująca animacje nie jest odpowiednia.
 \subsection{AnimatedSpriteSheet}
-\label{sec:orgc117c95}
+\label{sec:orgcc1f4b2}
 Klasa reprezentująca obiekty, które są animowane przy użyciu bitmap. Dziedziczy po AnimatedObject.
 
 \begin{itemize}
@@ -87,7 +325,7 @@ ARGS
 Bezpośrednio za linią z \texttt{COMMAND} musi znajdować się linia z argumentami oddzielanym spacją.
 Linie które mają być traktowane jako komentarze zaczynają się znakiem "\#".
 \subsubsection{Command}
-\label{sec:orga941f1e}
+\label{sec:org91d437f}
 
 Prawidłowe kommendy \texttt{COMMAND} to:
 \begin{description}
@@ -106,7 +344,7 @@ Przyjmuje parametry oznaczające kolejno
 \end{itemize}
 \end{description}
 \subsubsection{Przykład}
-\label{sec:orga2a986e}
+\label{sec:org79e4ddf}
 \begin{verbatim}
 #Comment lines start with '#'
 #SPRITESHEET should be followed with with relative path in the next line
@@ -135,11 +373,11 @@ FRAME
 100 0 100 100 0 0.5
 \end{verbatim}
 \subsection{UpdateableObject}
-\label{sec:orgba3956d}
+\label{sec:orgb68f463}
 Obiekty których stan logiczny się zmienia powinny przeciążać wirtualną metodę \texttt{update} klasy \texttt{UpdateableObject}.
 Silnik nie wywołuje tej metody, należy zadbać aby była ona wywoływana np. przy użyciu własnej pętli gry.
 \section{Przykład użycia silnika}
-\label{sec:org5220c91}
+\label{sec:orgb901082}
 Program wyświetlający animację.
 
 \begin{verbatim}
@@ -165,46 +403,4 @@ int main() {
   Engine::getInstance().loop();
 }
 \end{verbatim}
-\section{Z wymagań}
-\label{sec:orgb006597}
-\subsection{Obsługa klawiatury i myszy}
-\label{sec:org43269a6}
-Wykorzystaj \texttt{setEventHandler()}. Po szczegóły zajrzyj do dokumentacji.
-
-\begin{verbatim}
-#include "engine.hpp"
-#include <iostream>
-
-int main() {
-  Engine &eng = Engine::getInstance().setWindowTitle("dev").buildWindow();
-
-  eng.setEventHandler(
-      Engine::Event::MouseButtonPressed, [](const Engine::Event &ev) {
-        std::cout << "Custom event handler Mouse button press "
-                  << ev.mouseButton.button << '\t' << ev.mouseButton.x << '\t'
-                  << ev.mouseButton.y << "\n";
-      });
-
-  eng.loop();
-}
-\end{verbatim}
-\subsection{Obsługa współrzędnych (Point2D)}
-\label{sec:org9666499}
-Klasa \texttt{Point2d}. Po szczegóły zajrzyj do dokumentacji.
-\subsection{Rysowanie prymitywów}
-\label{sec:orgdeb4bf1}
-Przy użyciu klass z bilbioteki SFML oraz metod \texttt{Engine::add()} i \texttt{Engine::remove()}.
-Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
-\subsection{Wypełnianie prymitywów kolorem}
-\label{sec:orgfabc6a9}
-Przy użyciu metod obiektów z biblioteki SFML.
-\subsection{Przekształcenia geometryczne}
-\label{sec:org52973b8}
-Przy użyciu SFML.
-\subsection{Obsługa bitmap}
-\label{sec:org998f764}
-Przy użyciu biblioteki SFML tak jak z primitywami.
-\subsection{Animowanie bitmap}
-\label{sec:orgd573061}
-Przy użyciu klasy \texttt{AnimatedSpriteSheet}. Szecgóły w dokumetnacji technicznej.
 \end{document}

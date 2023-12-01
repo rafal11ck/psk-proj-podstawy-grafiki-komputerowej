@@ -3,12 +3,58 @@
 #+author: Rafał Grot, Kamil Gunia, Piotr Górski
 #+latex_header: \usepackage[margin=2cm]{geometry}
 #+options: todo:nil toc:nil
+#  LocalWords:  AnimatedSpriteSheet AnimatedObject GameObject Command
+#  LocalWords:  UpdateableObject
 
 \newpage
 
 * DONE Wymagania systemowe
 - SFML
 - cmake
+
+* DONE Z wymagań
+** DONE Obsługa klawiatury i myszy
+Wykorzystaj =setEventHandler()=. Po szczegóły zajrzyj do dokumentacji.
+
+- Przykład
+#+include: ../src/test4/main.cpp src cpp
+
+** DONE Obsługa współrzędnych (Point2D)
+Klasa =Point2d=. Po szczegóły zajrzyj do dokumentacji.
+
+** DONE Rysowanie prymitywów
+Przy użyciu klass z bilbioteki SFML oraz metod =Engine::add()= i =Engine::remove()=.
+
+Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
+
+*** DONE Przykład
+#+include: ../src/test5/main.cpp src cpp
+
+** DONE Wypełnianie prymitywów kolorem
+Przy użyciu metod obiektów z biblioteki SFML.
+
+*** Przykład
+#+include: ../src/test6/main.cpp src cpp
+
+** DONE Przekształcenia geometryczne
+Przy użyciu SFML.
+
+*** Przykład
+
+#+include: ../src/test7/main.cpp src cpp
+
+** DONE Obsługa bitmap
+Przy użyciu biblioteki SFML tak jak z primitywami.
+
+*** Przykład (=test8=)
+
+#+include: ../src/test8/main.cpp src cpp
+
+
+** DONE Animowanie bitmap
+Przy użyciu klasy =AnimatedSpriteSheet=. Szecgóły w dokumetnacji technicznej oraz w dalszej częsci sprawozdania.
+
+#+include: ../src/test3/main.cpp src cpp
 
 * DONE Użycie biblioteki =engine=
 Aby mieć dostęp do silnika gry należy wykorzystać plik nagłówkowy =engine.hpp= oraz zlinkować bibliotekę =engine=
@@ -87,27 +133,4 @@ Program wyświetlający animację.
 
 #+include: ../src/test3/main.cpp src cpp
 
-#  LocalWords:  AnimatedSpriteSheet AnimatedObject GameObject Command
-#  LocalWords:  UpdateableObject
-* DONE Z wymagań
-** Obsługa klawiatury i myszy
-Wykorzystaj =setEventHandler()=. Po szczegóły zajrzyj do dokumentacji.
 
-#+include: ../src/test4/main.cpp src cpp
-
-** Obsługa współrzędnych (Point2D)
-Klasa =Point2d=. Po szczegóły zajrzyj do dokumentacji.
-** Rysowanie prymitywów
-Przy użyciu klass z bilbioteki SFML oraz metod =Engine::add()= i =Engine::remove()=.
-
-
-
-Szeczóły w dokumentacji technicznej oraz dokumentacji SFML.
-** Wypełnianie prymitywów kolorem
-Przy użyciu metod obiektów z biblioteki SFML.
-** Przekształcenia geometryczne
-Przy użyciu SFML.
-** Obsługa bitmap
-Przy użyciu biblioteki SFML tak jak z primitywami.
-** Animowanie bitmap
-Przy użyciu klasy =AnimatedSpriteSheet=. Szecgóły w dokumetnacji technicznej.
