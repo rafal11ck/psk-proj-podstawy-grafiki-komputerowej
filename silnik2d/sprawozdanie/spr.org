@@ -1,5 +1,5 @@
 #+title: Podstawy grafiki komputerwej 1 silnik do gier 2d
-#+language: Polish
+#+language: polish
 #+author: Rafał Grot, Kamil Gunia, Piotr Górski
 #+latex_header: \usepackage[margin=2cm]{geometry}
 #+options: todo:nil toc:nil
@@ -8,7 +8,7 @@
 
 \newpage
 
-* DONE Wymagania systemowe
+* DONE Wymagania systemowe.
 - SFML
 - cmake
 
