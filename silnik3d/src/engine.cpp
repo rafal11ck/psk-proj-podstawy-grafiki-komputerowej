@@ -1,11 +1,20 @@
+#include "SFML/Window/ContextSettings.hpp"
 #include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
 
 int main() {
+
+  sf::ContextSettings settings;
+  settings.depthBits = 24;
+  settings.stencilBits = 8;
+  settings.antialiasingLevel = 4;
+  settings.majorVersion = 3;
+  settings.minorVersion = 3;
+
   // create the window
   sf::Window window(sf::VideoMode(800, 600), "OpenGL", sf::Style::Default,
-                    sf::ContextSettings(32));
+                    settings);
   window.setVerticalSyncEnabled(true);
 
   // activate the window
@@ -28,18 +37,13 @@ int main() {
       }
     }
 
+    // color
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+
     // clear the buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // draw...
-
-    GLuint vertexArrayId;
-    glGenVertexArrays(1, &vertexArrayId);
-    glBegin(GL_TRIANGLES);
-    glVertex2f(-0.5f, -0.5f);
-    glVertex2f(0.0f, 0.5f);
-    glVertex2f(0.5f, -0.5f);
-    glEnd();
 
     // end the current frame (internally swaps the front and back buffers)
     window.display();
