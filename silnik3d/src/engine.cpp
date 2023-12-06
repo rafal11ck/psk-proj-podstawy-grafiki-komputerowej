@@ -82,21 +82,34 @@ int main() {
 
   // set up vertex data (and buffer(s)) and configure vertex attributes
   // ------------------------------------------------------------------
+  // clang-format off
   float vertices[] = {
-      -0.5f, -0.5f, 0.0f, // left
-      0.5f,  -0.5f, 0.0f, // right
-      0.0f,  0.5f,  0.0f  // top
+      0.5f, 0.5f, 0.0f, // tr
+      0.5f,  -0.5f, 0.0f, // br
+      -0.5f,  -0.5f,  0.0f  // bl
+      -0.5f, 0.5f, 0.0f   // tl
   };
 
-  unsigned int VBO, VAO;
+  unsigned int indices[] = {
+    0,1,2,
+    1,2,4
+  };
+  // clang-format on
+
+  unsigned int VBO, VAO, EBO;
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
+  glGenBuffers(1, &EBO);
   // bind the Vertex Array Object first, then bind and set vertex buffer(s), and
   // then configure vertex attributes(s).
   glBindVertexArray(VAO);
 
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+               GL_STATIC_DRAW);
 
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
@@ -129,8 +142,6 @@ int main() {
 
     // color
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-
-    std::cout << "Hi\n";
     // clear the buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -140,7 +151,8 @@ int main() {
     // seeing as we only have a single VAO there's no need to bind it
     // every time, but we'll do so to keep things a bit more organized
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    // glBindVertexArray(0);
 
     // end the current frame (internally swaps the front and back buffers)
     window.display();
@@ -151,6 +163,7 @@ int main() {
   // ------------------------------------------------------------------------
   glDeleteVertexArrays(1, &VAO);
   glDeleteBuffers(1, &VBO);
+  glDeleteBuffers(1, &EBO);
   glDeleteProgram(shaderProgram);
 
   return 0;
