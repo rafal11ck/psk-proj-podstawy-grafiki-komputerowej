@@ -1,5 +1,5 @@
 build
 compile_commands.json
-/.cache/
 /silnik2d/.cache/
-silnik3d/.cache
+/silnik3d/.cache/
+.cache
