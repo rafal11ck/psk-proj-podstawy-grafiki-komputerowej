@@ -86,13 +86,13 @@ int main() {
   float vertices[] = {
       0.5f, 0.5f, 0.0f, // tr
       0.5f,  -0.5f, 0.0f, // br
-      -0.5f,  -0.5f,  0.0f  // bl
+      -0.5f,  -0.5f,  0.0f,  // bl
       -0.5f, 0.5f, 0.0f   // tl
   };
 
   unsigned int indices[] = {
-    0,1,2,
-    1,2,4
+    0,1,3,
+    1,2,3,
   };
   // clang-format on
 

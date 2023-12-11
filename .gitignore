@@ -3,3 +3,4 @@ compile_commands.json
 /silnik2d/.cache/
 /silnik3d/.cache/
 .cache
+silnik3d/.cache
