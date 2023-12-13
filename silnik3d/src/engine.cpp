@@ -82,47 +82,41 @@ int main() {
 
   // set up vertex data (and buffer(s)) and configure vertex attributes
   // ------------------------------------------------------------------
-  // clang-format off
-  float vertices[] = {
-      0.5f, 0.5f, 0.0f, // tr
-      0.5f,  -0.5f, 0.0f, // br
-      -0.5f,  -0.5f,  0.0f,  // bl
-      -0.5f, 0.5f, 0.0f   // tl
+  float verticesA[] = {
+      -0.8f, 0.0f,
+      0.0f, // ll
+      -0.4f, 0.8f,
+      0.0f, // lt
+      0.0f,  -0.0f,
+      0.0f // center
   };
 
-  unsigned int indices[] = {
-    0,1,3,
-    1,2,3,
+  float verticesB[] = {
+      0.0f, -0.0f,
+      0.0f, // center
+      0.8f, 0.0f,
+      0.0f, // rr
+      0.4,  0.8,
+      0.0f // rt
   };
-  // clang-format on
 
-  unsigned int VBO, VAO, EBO;
-  glGenVertexArrays(1, &VAO);
-  glGenBuffers(1, &VBO);
-  glGenBuffers(1, &EBO);
-  // bind the Vertex Array Object first, then bind and set vertex buffer(s), and
-  // then configure vertex attributes(s).
-  glBindVertexArray(VAO);
+  unsigned int VAOs[2];
+  glGenVertexArrays(2, VAOs);
+  unsigned int VBOs[2];
+  glGenBuffers(2, VBOs);
 
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-               GL_STATIC_DRAW);
-
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+  glBindVertexArray(VAOs[0]);
+  glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(verticesA), verticesA, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
   glEnableVertexAttribArray(0);
+  glBindVertexArray(0);
 
-  // note that this is allowed, the call to glVertexAttribPointer registered VBO
-  // as the vertex attribute's bound vertex buffer object so afterwards we can
-  // safely unbind
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-  // You can unbind the VAO afterwards so other VAO calls won't accidentally
-  // modify this VAO, but this rarely happens. Modifying other VAOs requires a
-  // call to glBindVertexArray anyways so we generally don't unbind VAOs (nor
-  // VBOs) when it's not directly necessary.
+  glBindVertexArray(VAOs[1]);
+  glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(verticesB), verticesB, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+  glEnableVertexAttribArray(0);
   glBindVertexArray(0);
 
   // run the main loop
@@ -150,8 +144,11 @@ int main() {
     glUseProgram(shaderProgram);
     // seeing as we only have a single VAO there's no need to bind it
     // every time, but we'll do so to keep things a bit more organized
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(VAOs[0]);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindVertexArray(VAOs[1]);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+
     // glBindVertexArray(0);
 
     // end the current frame (internally swaps the front and back buffers)
@@ -161,9 +158,8 @@ int main() {
   // release resources...
   // optional: de-allocate all resources once they've outlived their purpose:
   // ------------------------------------------------------------------------
-  glDeleteVertexArrays(1, &VAO);
-  glDeleteBuffers(1, &VBO);
-  glDeleteBuffers(1, &EBO);
+  glDeleteVertexArrays(2, VAOs);
+  glDeleteBuffers(2, VBOs);
   glDeleteProgram(shaderProgram);
 
   return 0;
