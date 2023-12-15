@@ -10,6 +10,7 @@
   + czworościan (ostrosłup)
   + sfera
   + torus
+  
 - Obsługa kamery
 
 - Hierarchia klas
