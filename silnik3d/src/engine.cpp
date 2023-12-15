@@ -119,6 +119,9 @@ int main() {
   glEnableVertexAttribArray(0);
   glBindVertexArray(0);
 
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  glLineWidth(5);
+
   // run the main loop
   bool running = true;
   while (running) {
