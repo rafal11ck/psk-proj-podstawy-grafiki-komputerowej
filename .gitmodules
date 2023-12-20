@@ -1,0 +1,3 @@
+[submodule "silnik3d/src/stb"]
+	path = silnik3d/src/stb
+	url = https://github.com/nothings/stb.git
