@@ -3,33 +3,27 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 include(FetchContent)
 
+# sfml
+FetchContent_Declare(SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.6.x)
+FetchContent_MakeAvailable(SFML)
 
-FetchContent_Declare(
-    glad
-    GIT_REPOSITORY https://github.com/Dav1dde/glad.git
-    GIT_TAG        master
-)
+if(WIN32)
+    add_custom_command(
+        TARGET CMakeSFMLProject
+        COMMENT "Copy OpenAL DLL"
+        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:CMakeSFMLProject>
+        VERBATIM)
+endif()
 
-FetchContent_MakeAvailable(glad)
 
-FetchContent_Declare(
-    glm
-    GIT_REPOSITORY https://github.com/g-truc/glm.git
-    GIT_TAG        master
-)
+# glew
+find_package(GLEW REQUIRED)
+include_directories(${GLEW_INCLUDE_DIRS})
+link_libraries(${GLEW_LIBRARIES})
 
-FetchContent_MakeAvailable(glm)
-
-FetchContent_Declare(
-  stb_image
-  GIT_REPOSITORY https://github.com/nothings/stb.git
-  GIT_TAG master
-)
-
-add_executable(engine engine.cpp shader.hpp shader.cpp)
-target_link_libraries(engine glad)
-target_link_libraries(engine glm)
-target_link_libraries(engine sfml-graphics)
+add_executable(engine engine.cpp )
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine ${GLEW_LIBRARIES})
-target_compile_features(engine PRIVATE cxx_std_20)
+target_link_libraries(engine sfml-graphics)
