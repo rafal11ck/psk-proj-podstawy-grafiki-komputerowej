@@ -25,9 +25,11 @@ link_libraries(${GLEW_LIBRARIES})
 
 
 include_directories(stb)
+include_directories(include)
 
-add_executable(engine engine.cpp shader.hpp shader.cpp stb/stb_image.h stb_image.cpp)
+#file(COPY resources DESTINATION resources)
+
+add_executable(engine engine.cpp include/shader.hpp shader.cpp stb/stb_image.h stb_image.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine ${GLEW_LIBRARIES})
 target_link_libraries(engine sfml-graphics)
-target_link_libraries(engine stb_image)

@@ -6,7 +6,6 @@
 #include "shader.hpp"
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
-#include <filesystem>
 #include <iostream>
 #include <stb_image.h>
 
@@ -28,8 +27,9 @@ int main() {
   // build and compile our shader program
   // ------------------------------------
   Shader ourShader(
-      "vertex.glsl",
-      "fragment.glsl"); // you can name your shader files however you like
+      "resources/shaders/vertex.glsl",
+      "resources/shaders/fragment.glsl"); // you can name your shader files
+                                          // however you like
 
   // set up vertex data (and buffer(s)) and configure vertex attributes
   // ------------------------------------------------------------------
@@ -92,9 +92,8 @@ int main() {
   int width, height, nrChannels;
   // The FileSystem::getPath(...) is part of the GitHub repository so we can
   // find files on any IDE/platform; replace it with your own image path.
-  unsigned char *data =
-      stbi_load(FileSystem::getPath("resources/textures/container.jpg").c_str(),
-                &width, &height, &nrChannels, 0);
+  unsigned char *data = stbi_load("resources/textures/container.jpg", &width,
+                                  &height, &nrChannels, 0);
   if (data) {
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
                  GL_UNSIGNED_BYTE, data);
@@ -122,14 +121,18 @@ int main() {
       }
     }
 
-    // color
+    // render
+    // ------
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    // clear the buffers
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
+    // bind Texture
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    // render container
     ourShader.use();
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     // end the current frame (internally swaps the front and back buffers)
     window.display();
