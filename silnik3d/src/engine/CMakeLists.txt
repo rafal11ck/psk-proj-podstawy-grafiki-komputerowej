@@ -24,9 +24,9 @@ include_directories(${GLEW_INCLUDE_DIRS})
 link_libraries(${GLEW_LIBRARIES})
 
 
+include_directories(stb)
 
-
-add_executable(engine engine.cpp )
+add_executable(engine engine.cpp shader.hpp shader.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine ${GLEW_LIBRARIES})
 target_link_libraries(engine sfml-graphics)

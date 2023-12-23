@@ -1,8 +1,7 @@
 #+title: Spr
 #+language: pl
 
-* Biblioteki
-Biblioteki nie powinny wymagać manualnego pobierania, cmake powinnien je zorganizować.
+* Libaries
 - SFML
 - GLAD -- SFML zawiera GLAD
 - GLEW

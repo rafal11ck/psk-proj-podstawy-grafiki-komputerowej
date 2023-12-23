@@ -1,8 +1,11 @@
 #ifndef SHADER_HPP_
 #define SHADER_HPP_
 
+// @clang-format off
+#include <GL/glew.h>
+// @clang-format on
+#include <SFML/OpenGL.hpp>
 #include <fstream>
-#include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <iostream>
 #include <sstream>

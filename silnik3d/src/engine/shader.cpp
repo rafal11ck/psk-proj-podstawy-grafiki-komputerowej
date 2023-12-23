@@ -1,4 +1,5 @@
 #include "shader.hpp"
+#include <GL/glew.h>
 
 std::string Shader::loadShaderFromFile(const char *path) {
   std::string shaderCode;
