@@ -1,6 +1,8 @@
+// @clang-format off
+#include <GL/glew.h>
+// @clang-format on
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/Window/Event.hpp"
-#include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
