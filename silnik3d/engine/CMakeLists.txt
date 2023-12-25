@@ -17,7 +17,6 @@ if(WIN32)
         VERBATIM)
 endif()
 
-
 # glew
 find_package(GLEW REQUIRED)
 include_directories(${GLEW_INCLUDE_DIRS})
@@ -36,7 +35,7 @@ include_directories(/usr/include/stb REQUIRED)
 include_directories(include)
 include_directories(${GLM_INCLUDE_DIRS})
 
-add_executable(engine engine.cpp include/shader.hpp shader.cpp stb_image.cpp)
+add_executable(engine engine.cpp stb_image.cpp include/shader_m.hpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine glm)
 target_link_libraries(engine ${GLEW_LIBRARIES})
