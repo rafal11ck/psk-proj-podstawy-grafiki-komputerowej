@@ -6,6 +6,7 @@
 #include "shader.hpp"
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <stb_image.h>
 

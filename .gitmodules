@@ -1,3 +1,0 @@
-[submodule "silnik3d/engine/stb"]
-	path = silnik3d/engine/stb
-	url = git@github.com:nothings/stb.git
