@@ -24,9 +24,11 @@ include_directories(${GLEW_INCLUDE_DIRS})
 link_libraries(${GLEW_LIBRARIES})
 
 # glm
+# System has to have GLM installed
 find_package(glm REQUIRED)
 
 # stb
+# System has to have STB installed
 include_directories(/usr/include/stb REQUIRED)
 
 # file(COPY resources DESTINATION resources)
@@ -34,7 +36,7 @@ include_directories(/usr/include/stb REQUIRED)
 include_directories(include)
 include_directories(${GLM_INCLUDE_DIRS})
 
-add_executable(engine engine.cpp include/shader.hpp shader.cpp stb/stb_image.h stb_image.cpp)
+add_executable(engine engine.cpp include/shader.hpp shader.cpp stb_image.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine glm)
 target_link_libraries(engine ${GLEW_LIBRARIES})
