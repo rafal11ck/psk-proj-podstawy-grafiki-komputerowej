@@ -7,6 +7,7 @@
 #include "include/shader_m.hpp"
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
+#include <glm/ext/matrix_transform.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -151,11 +152,17 @@ int main() {
   ourShader.use();
   ourShader.setInt("texture1", 0);
   ourShader.setInt("texture2", 1);
+
   // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   // glLineWidth(5);
 
   sf::Clock clock = {};
   glEnable(GL_DEPTH_TEST);
+
+  sf::Clock cubeClock = {};
+  bool cameradir = 1;
+
+  sf::Clock cameraClock{};
 
   // run the main loop
   bool running = true;
@@ -187,9 +194,19 @@ int main() {
     // activate shader
     ourShader.use();
 
-    // create transformations
-    glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+    if (cubeClock.getElapsedTime().asSeconds() > 6) {
+      cubeClock.restart().asSeconds();
+      cameradir = !cameradir;
+    }
+
+    constexpr float radius = 10.f;
+
+    float camX = sin(cameraClock.getElapsedTime().asSeconds()) * radius;
+    float camZ = cos(cameraClock.getElapsedTime().asSeconds()) * radius;
+
+    glm::mat4 view =
+        glm::lookAt(glm::vec3(camX, 0.0, camZ), {0, 0, 0}, {0, 1, 0});
+
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(
         glm::radians(45.0f), window.getSize().x / (float)window.getSize().y,
@@ -215,7 +232,7 @@ int main() {
       float angle = 20.0f;
       model = glm::rotate(model,
                           clock.getElapsedTime().asSeconds() *
-                                  glm::radians(angle) * (i + 1) / 3 +
+                                  glm::radians(angle) * (10 - i + 1) / 3 +
                               0.5f + i * 2,
                           glm::vec3(1.0f, 0.3f, 0.5f));
       ourShader.setMat4("model", model);
