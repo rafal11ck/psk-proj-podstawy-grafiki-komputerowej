@@ -1,10 +1,13 @@
 #include "engine.hpp"
+#include "log.hpp"
 #include "shader.hpp"
 #include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
 #include <glm/glm.hpp>
 #include <iostream>
 #include <stb/stb_image.h>
+
+Engine &engine{Engine::getInstance()};
 
 unsigned int texture1, texture2;
 
@@ -133,9 +136,7 @@ void loopFun() {
 
 int main() {
 
-  Engine engine{};
-
-  engine.buildWindow();
+  LOGTRACEN;
 
   init();
   std::cout << "Init done\n";

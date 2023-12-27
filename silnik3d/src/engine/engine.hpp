@@ -6,6 +6,10 @@
 #include "SFML/Window/ContextSettings.hpp"
 #include <functional>
 
+/**
+ *@class
+ *@brief Singleton
+ **/
 class Engine {
 
 public:
@@ -13,10 +17,7 @@ public:
   using Event = sf::Event;
   using eventHandler_t = std::function<void(const Event &)>;
 
-  /** @brief Builds the window.
-   */
-  Engine &buildWindow(sf::ContextSettings settings = sf::ContextSettings{
-                          24, 8, 4, 3, 3, sf::ContextSettings::Core});
+  static Engine &getInstance();
 
   float getLastFrameDuration() const;
 
@@ -41,6 +42,8 @@ public:
   void loop();
 
 private:
+  static Engine *s_instance;
+
   bool isLoopRunning{false};
 
   sf::Clock m_clock{};
@@ -57,7 +60,14 @@ private:
   std::array<eventHandler_t, Event::Count> m_eventHandlers;
 
 private:
+  Engine();
+
   void handleEvents();
+
+  /** @brief Builds the window with openGl context
+   */
+  Engine &buildWindow(sf::ContextSettings settings = sf::ContextSettings{
+                          24, 8, 4, 3, 3, sf::ContextSettings::Core});
 };
 
 #endif // ENGINE_HPP_

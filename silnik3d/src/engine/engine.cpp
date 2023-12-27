@@ -1,8 +1,21 @@
 #include "engine.hpp"
 #include <GL/glew.h>
 #include <iostream>
+#define TRACE
+#include <log.hpp>
+
+Engine *Engine::s_instance{nullptr};
+
+Engine &Engine::getInstance() {
+
+  if (s_instance == nullptr) {
+    s_instance = new Engine;
+  }
+  return *s_instance;
+};
 
 Engine &Engine::buildWindow(sf::ContextSettings settings) {
+  LOGTRACEN;
   // create the window
   m_window.create(sf::VideoMode(800, 600), "OpenGL", sf::Style::Default,
                   settings);
@@ -19,6 +32,7 @@ Engine &Engine::buildWindow(sf::ContextSettings settings) {
 }
 
 void Engine::loop() {
+  LOGTRACEN;
   // run the main loop
   isLoopRunning = true;
   while (isLoopRunning) {
@@ -36,6 +50,8 @@ void Engine::loop() {
     m_window.display();
   }
 }
+
+Engine::Engine() { buildWindow(); }
 
 void Engine::handleEvents() {
   sf::Event event;
