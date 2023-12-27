@@ -1,14 +1,16 @@
 #include "engine.hpp"
 #include <GL/glew.h>
+#include <iostream>
 
 Engine &Engine::buildWindow(sf::ContextSettings settings) {
   // create the window
-  sf::Window window(sf::VideoMode(800, 600), "OpenGL", sf::Style::Default,
-                    settings);
-  window.setVerticalSyncEnabled(true);
+  m_window.create(sf::VideoMode(800, 600), "OpenGL", sf::Style::Default,
+                  settings);
+
+  m_window.setVerticalSyncEnabled(true);
 
   // activate the window
-  window.setActive(true);
+  m_window.setActive(true);
 
   // Opengl extension load
   glewInit();
@@ -18,8 +20,8 @@ Engine &Engine::buildWindow(sf::ContextSettings settings) {
 
 void Engine::loop() {
   // run the main loop
-  bool running = true;
-  while (running) {
+  isLoopRunning = true;
+  while (isLoopRunning) {
 
     // handle events
     handleEvents();
