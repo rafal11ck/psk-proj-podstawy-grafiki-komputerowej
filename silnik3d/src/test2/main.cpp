@@ -1,13 +1,25 @@
+#include "SFML/Window/Event.hpp"
+#include "SFML/Window/Keyboard.hpp"
 #include "engine.hpp"
+
+#define TRACE
 #include "log.hpp"
+
 #include "shader.hpp"
 #include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
+#include <camera.hpp>
+#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/fwd.hpp>
 #include <glm/glm.hpp>
+
 #include <iostream>
 #include <stb/stb_image.h>
 
 Engine &engine{Engine::getInstance()};
+
+Camera camera{{0.f, 0.f, 3.f}};
 
 unsigned int texture1, texture2;
 
@@ -29,7 +41,6 @@ float vertices[] = {
     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f,
     0.5f,  -0.5f, -0.5f, 0.0f, 1.0f, 0.5f,  -0.5f, -0.5f, 0.0f, 1.0f,
     0.5f,  -0.5f, 0.5f,  0.0f, 0.0f, 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
     -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.5f,  -0.5f, -0.5f, 1.0f, 1.0f,
     0.5f,  -0.5f, 0.5f,  1.0f, 0.0f, 0.5f,  -0.5f, 0.5f,  1.0f, 0.0f,
     -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
@@ -45,6 +56,40 @@ glm::vec3 cubePositions[] = {
     glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
     glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 unsigned int VBO, VAO;
+
+void init();
+void loopFun();
+
+int main() {
+
+  LOGTRACEN;
+
+  init();
+  std::cout << "Init done\n";
+
+  engine.setLoopFunction(loopFun);
+  engine.loop();
+}
+
+void handleCamera() {
+  // Only accept one diretion movement on axis
+  auto handle{[](sf::Keyboard::Key key1, sf::Keyboard::Key key2,
+                 Camera::Camera_Movement dir1, Camera::Camera_Movement dir2) {
+    if (sf::Keyboard::isKeyPressed(key1) ^ sf::Keyboard::isKeyPressed(key2)) {
+      if (sf::Keyboard::isKeyPressed(key1)) {
+        camera.ProcessKeyboard(dir1, engine.getLastFrameDuration().asSeconds());
+      } else if (sf::Keyboard::isKeyPressed(key2)) {
+        camera.ProcessKeyboard(dir2, engine.getLastFrameDuration().asSeconds());
+      }
+    }
+  }};
+
+  handle(sf::Keyboard::Key::W, sf::Keyboard::Key::S,
+         Camera::Camera_Movement::FORWARD, Camera::Camera_Movement::BACKWARD);
+
+  handle(sf::Keyboard::Key::A, sf::Keyboard::Key::D,
+         Camera::Camera_Movement::LEFT, Camera::Camera_Movement::RIGHT);
+}
 
 void init() {
   // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -108,8 +153,8 @@ void init() {
                    &height, &nrChannels, 0);
 
   if (data) {
-    // note that the awesomeface.png has transparency and thus an alpha channel,
-    // so make sure to tell OpenGL the data type is of GL_RGBA
+    // note that the awesomeface.png has transparency and thus an alpha
+    // channel, so make sure to tell OpenGL the data type is of GL_RGBA
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA,
                  GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
@@ -118,28 +163,60 @@ void init() {
   }
   stbi_image_free(data);
 
-  // tell opengl for each sampler to which texture unit it belongs to (only has
-  // to be done once)
+  // tell opengl for each sampler to which texture unit it belongs to (only
+  // has to be done once)
   // -------------------------------------------------------------------------------------------
   ourShader.use();
   ourShader.setInt("texture1", 0);
   ourShader.setInt("texture2", 1);
+
+  camera.m_movementSpeed = 250;
+
+  engine.setMaxFps(75);
 }
 
 void loopFun() {
+
+  handleCamera();
+
   // bind textures on corresponding texture units
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texture1);
   glActiveTexture(GL_TEXTURE1);
   glBindTexture(GL_TEXTURE_2D, texture2);
-}
 
-int main() {
+  glClearColor(0.0, 0.2f, 0.3f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  LOGTRACEN;
+  ourShader.use();
 
-  init();
-  std::cout << "Init done\n";
+  // pass projection matrix to shader (note that in this case it could change
+  // every frame)
+  glm::mat4 projection =
+      glm::perspective(glm::radians(camera.m_zoom),
+                       static_cast<float>(engine.getWindow().getSize().x) /
+                           static_cast<float>(engine.getWindow().getSize().y),
+                       0.1f, 100.0f);
 
-  engine.loop();
+  ourShader.setMat4("projection", projection);
+
+  // camera/view transformation
+  glm::mat4 view = camera.GetViewMatrix();
+  ourShader.setMat4("view", view);
+
+  // render boxes
+  glBindVertexArray(VAO);
+  for (unsigned int i = 0; i < 10; i++) {
+    // calculate the model matrix for each object and pass it to shader before
+    // drawing
+    glm::mat4 model = glm::mat4(
+        1.0f); // make sure to initialize matrix to identity matrix first
+    model = glm::translate(model, cubePositions[i]);
+    float angle = 20.0f * i;
+    model =
+        glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+    ourShader.setMat4("model", model);
+
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+  }
 }
