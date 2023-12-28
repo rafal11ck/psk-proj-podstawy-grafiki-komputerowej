@@ -26,3 +26,7 @@
 - Demo technologiczne (do obrony)
 
 - Sprawozdanie i dokumentacja
+
+# How to use tests
+
+Build them and run in their respective source directory.
