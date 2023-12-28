@@ -4,6 +4,8 @@
 #include "SFML/System/Clock.hpp"
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
+#include "SFML/Window/Window.hpp"
+#include "log.hpp"
 #include <functional>
 
 /**
@@ -19,7 +21,7 @@ public:
 
   static Engine &getInstance();
 
-  float getLastFrameDuration() const;
+  Time getLastFrameDuration() const;
 
   /** @brief Set function that is invoked in the main loop.
    *  @param function Function that will be called in loop.
@@ -41,12 +43,17 @@ public:
    */
   void loop();
 
+  const sf::Window &getWindow() const;
+
+  Engine &setMaxFps(int fps);
+
 private:
   static Engine *s_instance;
 
   bool isLoopRunning{false};
 
-  sf::Clock m_clock{};
+  sf::Time m_lastFrameDuration{};
+  sf::Clock m_clockFrame{};
 
   sf::Window m_window{};
 

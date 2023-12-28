@@ -14,11 +14,14 @@ Engine &Engine::getInstance() {
   return *s_instance;
 };
 
+sf::Time Engine::getLastFrameDuration() const {
+  return m_clockFrame.getElapsedTime();
+}
+
 Engine &Engine::buildWindow(sf::ContextSettings settings) {
   LOGTRACEN;
   // create the window
-  m_window.create(sf::VideoMode(800, 600), "OpenGL", sf::Style::Default,
-                  settings);
+  m_window.create(sf::VideoMode(800, 600), "dev", sf::Style::Default, settings);
 
   m_window.setVerticalSyncEnabled(true);
 
@@ -28,30 +31,46 @@ Engine &Engine::buildWindow(sf::ContextSettings settings) {
   // Opengl extension load
   glewInit();
 
+  // Enable Z buffer
+  glEnable(GL_DEPTH_TEST);
+
   return *this;
 }
 
 void Engine::loop() {
-  LOGTRACEN;
+  LOGINFO << "Main loop is now running\n.";
   // run the main loop
   isLoopRunning = true;
   while (isLoopRunning) {
-
+    m_lastFrameDuration = m_clockFrame.restart();
     // handle events
     handleEvents();
 
-    // render
-    // ------
-
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    m_loopFunction();
 
     //  end the current frame (internally swaps the front and back buffers)
     m_window.display();
   }
 }
 
-Engine::Engine() { buildWindow(); }
+const sf::Window &Engine::getWindow() const { return m_window; };
+
+Engine &Engine::setEventHandler(sf::Event::EventType eventType,
+                                eventHandler_t handler) {
+  m_eventHandlers[eventType] = handler;
+  return *this;
+}
+
+Engine &Engine::setMaxFps(int fps) {
+  m_window.setFramerateLimit(fps);
+  return *this;
+}
+
+Engine::Engine() {
+  LOGTRACEN;
+  m_eventHandlers.fill([](const sf::Event &event) {});
+  buildWindow();
+}
 
 void Engine::handleEvents() {
   sf::Event event;
@@ -63,5 +82,7 @@ void Engine::handleEvents() {
       // adjust the viewport when the window is resized
       glViewport(0, 0, event.size.width, event.size.height);
     }
+
+    m_eventHandlers[event.type](event);
   }
 }
