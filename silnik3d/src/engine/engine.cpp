@@ -38,7 +38,7 @@ Engine &Engine::buildWindow(sf::ContextSettings settings) {
 }
 
 void Engine::loop() {
-  LOGINFO << "Main loop is now running\n.";
+  LOGINFO << "Main loop is now running\n";
   // run the main loop
   isLoopRunning = true;
   while (isLoopRunning) {
