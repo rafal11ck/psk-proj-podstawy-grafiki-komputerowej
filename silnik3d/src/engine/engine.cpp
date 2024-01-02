@@ -54,6 +54,7 @@ void Engine::loop() {
 }
 
 const sf::Window &Engine::getWindow() const { return m_window; };
+sf::Window &Engine::getWindow() { return m_window; };
 
 Engine &Engine::setEventHandler(sf::Event::EventType eventType,
                                 eventHandler_t handler) {

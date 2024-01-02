@@ -44,6 +44,7 @@ public:
   void loop();
 
   const sf::Window &getWindow() const;
+  sf::Window &getWindow();
 
   Engine &setMaxFps(int fps);
 
