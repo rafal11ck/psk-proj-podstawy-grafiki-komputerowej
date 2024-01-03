@@ -1,6 +1,9 @@
+#include "SFML/System/Vector2.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
+#include "SFML/Window/Mouse.hpp"
 #include "engine.hpp"
+#include <glm/geometric.hpp>
 
 #define TRACE
 #include "log.hpp"
@@ -24,6 +27,9 @@ Camera camera{{0.f, 0.f, 3.f}};
 unsigned int texture1, texture2;
 
 Shader ourShader{"vertex.glsl", "fragment.glsl"};
+
+float lastX{};
+float lastY{};
 
 // cube vertices
 float vertices[] = {
@@ -59,8 +65,11 @@ glm::vec3 cubePositions[] = {
     glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 unsigned int VBO, VAO;
 
+sf::Vector2i lastMousePos{};
+
 void init();
 void loopFun();
+void cameraMouseHandle(const sf::Event ev);
 
 int main() {
 
@@ -69,8 +78,17 @@ int main() {
   init();
   std::cout << "Init done\n";
 
+  engine.setEventHandler(sf::Event::EventType::MouseMoved, cameraMouseHandle);
+
+  engine.getWindow().setMouseCursorGrabbed(true);
+
+  lastMousePos = sf::Mouse::getPosition(engine.getWindow());
+
   engine.setLoopFunction(loopFun);
+
   engine.loop();
+
+  engine.getWindow().setMouseCursorGrabbed(false);
 }
 
 // Move camera around
@@ -222,4 +240,37 @@ void loopFun() {
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
   }
+}
+
+void cameraMouseHandle(const sf::Event ev) {
+
+  static float yaw{};
+  static float pitch{};
+
+  float xOffset{static_cast<float>(ev.mouseMove.x) - lastMousePos.x};
+  float yOffset{static_cast<float>(lastMousePos.y - ev.mouseMove.y)};
+
+  sf::Vector2i middle{static_cast<int>(engine.getWindow().getSize().x * 0.5f),
+                      static_cast<int>(engine.getWindow().getSize().y * 0.5f)};
+
+  // sf::Mouse::setPosition(middle, engine.getWindow());
+
+  lastMousePos = sf::Mouse::getPosition(engine.getWindow());
+
+  static constexpr float sensitivity = 0.3f;
+  xOffset *= sensitivity;
+  yOffset *= sensitivity;
+
+  camera.m_yaw += xOffset;
+  camera.m_pitch += yOffset;
+
+  if (pitch > 89.0f) {
+    pitch = 89.0f;
+  }
+
+  if (pitch < -89.0f) {
+    pitch = 89.0f;
+  }
+
+  camera.updateCameraVectors();
 }

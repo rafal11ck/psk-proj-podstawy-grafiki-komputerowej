@@ -25,6 +25,7 @@ public:
   glm::vec3 m_up;
   glm::vec3 m_right;
   glm::vec3 m_worldUp;
+
   // euler Angles
   float m_yaw;
   float m_pitch;
@@ -59,7 +60,6 @@ public:
   // input on the vertical wheel-axis
   void ProcessMouseScroll(float yoffset);
 
-private:
   // calculates the front vector from the Camera's (updated) Euler Angles
   void updateCameraVectors();
 };
