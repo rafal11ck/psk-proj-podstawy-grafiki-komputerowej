@@ -23,14 +23,14 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY,
 }
 
 // returns the view matrix calculated using Euler Angles and the LookAt Matrix
-glm::mat4 Camera::GetViewMatrix() {
+glm::mat4 Camera::getViewMatrix() {
   return glm::lookAt(m_position, m_position + m_front, m_up);
 }
 
 // processes input received from any keyboard-like input system. Accepts input
 // parameter in the form of camera defined ENUM (to abstract it from windowing
 // systems)
-void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime) {
+void Camera::processKeyboard(Camera_Movement direction, float deltaTime) {
   float velocity = m_movementSpeed * deltaTime;
   if (direction == FORWARD)
     m_position += m_front * velocity;
@@ -44,7 +44,7 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime) {
 
 // processes input received from a mouse input system. Expects the offset
 // value in both the x and y direction.
-void Camera::ProcessMouseMovement(float xoffset, float yoffset,
+void Camera::processMouseMovement(float xoffset, float yoffset,
                                   GLboolean constrainPitch) {
   xoffset *= m_mouseSensitivity;
   yoffset *= m_mouseSensitivity;
@@ -66,7 +66,7 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset,
 
 // processes input received from a mouse scroll-wheel event. Only requires
 // input on the vertical wheel-axis
-void Camera::ProcessMouseScroll(float yoffset) {
+void Camera::processMouseScroll(float yoffset) {
   m_zoom -= (float)yoffset;
   if (m_zoom < 1.0f)
     m_zoom = 1.0f;

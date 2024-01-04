@@ -77,9 +77,9 @@ void handleCamera() {
                  Camera::Camera_Movement dir1, Camera::Camera_Movement dir2) {
     if (sf::Keyboard::isKeyPressed(key1) ^ sf::Keyboard::isKeyPressed(key2)) {
       if (sf::Keyboard::isKeyPressed(key1)) {
-        camera.ProcessKeyboard(dir1, engine.getLastFrameDuration().asSeconds());
+        camera.processKeyboard(dir1, engine.getLastFrameDuration().asSeconds());
       } else if (sf::Keyboard::isKeyPressed(key2)) {
-        camera.ProcessKeyboard(dir2, engine.getLastFrameDuration().asSeconds());
+        camera.processKeyboard(dir2, engine.getLastFrameDuration().asSeconds());
       }
     }
   }};
@@ -144,7 +144,7 @@ void loopFun() {
   ourShader.setMat4("projection", projection);
 
   // camera/view transformation
-  glm::mat4 view = camera.GetViewMatrix();
+  glm::mat4 view = camera.getViewMatrix();
   ourShader.setMat4("view", view);
 
   // render boxes

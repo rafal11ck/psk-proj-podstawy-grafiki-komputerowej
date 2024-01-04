@@ -20,29 +20,42 @@
 
 Engine &engine{Engine::getInstance()};
 
-Camera camera{{0.f, 0.f, 3.f}};
+Camera camera{{-0.0f, 0.f, -4.f}};
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 sf::Vector2i lastMousePos{};
 
 // cube vertices
 float vertices[] = {
-    -0.5f, -0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f,  0.5f,  -0.5f,
-    0.5f,  0.5f,  -0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  -1.0f, 0.5f,  -0.5f, -0.5f,
+    0.0f,  0.0f,  -1.0f, 0.5f,  0.5f,  -0.5f, 0.0f,  0.0f,  -1.0f,
+    0.5f,  0.5f,  -0.5f, 0.0f,  0.0f,  -1.0f, -0.5f, 0.5f,  -0.5f,
+    0.0f,  0.0f,  -1.0f, -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  -1.0f,
 
-    -0.5f, -0.5f, 0.5f,  0.5f,  -0.5f, 0.5f,  0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,  -0.5f, 0.5f,  0.5f,  -0.5f, -0.5f, 0.5f,
+    -0.5f, -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,  0.5f,  -0.5f, 0.5f,
+    0.0f,  0.0f,  1.0f,  0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  -0.5f, 0.5f,  0.5f,
+    0.0f,  0.0f,  1.0f,  -0.5f, -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,
 
-    -0.5f, 0.5f,  0.5f,  -0.5f, 0.5f,  -0.5f, -0.5f, -0.5f, -0.5f,
-    -0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f,  -0.5f, 0.5f,  0.5f,
+    -0.5f, 0.5f,  0.5f,  -1.0f, 0.0f,  0.0f,  -0.5f, 0.5f,  -0.5f,
+    -1.0f, 0.0f,  0.0f,  -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,  -0.5f, -0.5f, 0.5f,
+    -1.0f, 0.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  -1.0f, 0.0f,  0.0f,
 
-    0.5f,  0.5f,  0.5f,  0.5f,  0.5f,  -0.5f, 0.5f,  -0.5f, -0.5f,
-    0.5f,  -0.5f, -0.5f, 0.5f,  -0.5f, 0.5f,  0.5f,  0.5f,  0.5f,
-    -0.5f, -0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f,  -0.5f, 0.5f,
-    0.5f,  -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, -0.5f,
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.5f,  0.5f,  -0.5f,
+    1.0f,  0.0f,  0.0f,  0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,
+    0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,  0.5f,  -0.5f, 0.5f,
+    1.0f,  0.0f,  0.0f,  0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
 
-    -0.5f, 0.5f,  -0.5f, 0.5f,  0.5f,  -0.5f, 0.5f,  0.5f,  0.5f,
-    0.5f,  0.5f,  0.5f,  -0.5f, 0.5f,  0.5f,  -0.5f, 0.5f,  -0.5f};
+    -0.5f, -0.5f, -0.5f, 0.0f,  -1.0f, 0.0f,  0.5f,  -0.5f, -0.5f,
+    0.0f,  -1.0f, 0.0f,  0.5f,  -0.5f, 0.5f,  0.0f,  -1.0f, 0.0f,
+    0.5f,  -0.5f, 0.5f,  0.0f,  -1.0f, 0.0f,  -0.5f, -0.5f, 0.5f,
+    0.0f,  -1.0f, 0.0f,  -0.5f, -0.5f, -0.5f, 0.0f,  -1.0f, 0.0f,
+
+    -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f,  0.5f,  0.5f,  -0.5f,
+    0.0f,  1.0f,  0.0f,  0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  0.5f,
+    0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f};
 
 unsigned int VBO, cubeVAO;
 unsigned int lightCubeVAO;
@@ -63,6 +76,9 @@ int main() {
 
   engine.setLoopFunction(loopFun);
   engine.loop();
+  glDeleteVertexArrays(1, &cubeVAO);
+  glDeleteVertexArrays(1, &lightCubeVAO);
+  glDeleteBuffers(1, &VBO);
 }
 
 // Move camera around
@@ -72,9 +88,9 @@ void handleCamera() {
                  Camera::Camera_Movement dir1, Camera::Camera_Movement dir2) {
     if (sf::Keyboard::isKeyPressed(key1) ^ sf::Keyboard::isKeyPressed(key2)) {
       if (sf::Keyboard::isKeyPressed(key1)) {
-        camera.ProcessKeyboard(dir1, engine.getLastFrameDuration().asSeconds());
+        camera.processKeyboard(dir1, engine.getLastFrameDuration().asSeconds());
       } else if (sf::Keyboard::isKeyPressed(key2)) {
-        camera.ProcessKeyboard(dir2, engine.getLastFrameDuration().asSeconds());
+        camera.processKeyboard(dir2, engine.getLastFrameDuration().asSeconds());
       }
     }
   }};
@@ -97,8 +113,13 @@ void init() {
   glBindVertexArray(cubeVAO);
 
   // position attribute
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
+  // normal attribute
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
+                        (void *)(3 * sizeof(float)));
+
+  glEnableVertexAttribArray(1);
 
   // second, configure the light's VAO (VBO stays the same; the vertices are the
   // same for the light object which is also a 3D cube)
@@ -110,7 +131,7 @@ void init() {
   // bound, but we do it again for educational purposes)
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
   camera.m_movementSpeed = 250;
@@ -134,24 +155,18 @@ void loopFun() {
   // be sure to activate shader when setting uniforms/drawing objects
   lightingShader.use();
   lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+  lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+  lightingShader.setVec3("lightPos", lightPos);
+  lightingShader.setVec3("viewPos", camera.m_position);
 
-  static sf::Clock colorTimer{};
-
-  if (colorTimer.getElapsedTime().asSeconds() > 10)
-    colorTimer.restart();
-
-  lightingShader.setVec3("lightColor",
-                         sin(colorTimer.getElapsedTime().asSeconds() / 10),
-                         sin(colorTimer.getElapsedTime().asSeconds() / 10),
-                         sin(colorTimer.getElapsedTime().asSeconds() / 10));
+  const sf::Vector2u screenSize = engine.getWindow().getSize();
 
   // view/projection transformations
-  glm::mat4 projection =
-      glm::perspective(glm::radians(camera.m_zoom),
-                       static_cast<float>(engine.getWindow().getSize().x) /
-                           static_cast<float>(engine.getWindow().getSize().y),
-                       0.1f, 100.0f);
-  glm::mat4 view = camera.GetViewMatrix();
+  glm::mat4 projection = glm::perspective(glm::radians(camera.m_zoom),
+                                          static_cast<float>(screenSize.x) /
+                                              static_cast<float>(screenSize.y),
+                                          0.1f, 100.0f);
+  glm::mat4 view = camera.getViewMatrix();
   lightingShader.setMat4("projection", projection);
   lightingShader.setMat4("view", view);
 
@@ -167,7 +182,6 @@ void loopFun() {
   lightSourceShader.use();
   lightSourceShader.setMat4("projection", projection);
   lightSourceShader.setMat4("view", view);
-
   model = glm::mat4(1.0f);
   model = glm::translate(model, lightPos);
   model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
@@ -191,21 +205,5 @@ void cameraMouseHandle(const sf::Event ev) {
   // sf::Mouse::setPosition(middle, engine.getWindow());
 
   lastMousePos = sf::Mouse::getPosition(engine.getWindow());
-
-  static constexpr float sensitivity = 0.3f;
-  xOffset *= sensitivity;
-  yOffset *= sensitivity;
-
-  camera.m_yaw += xOffset;
-  camera.m_pitch += yOffset;
-
-  if (pitch > 89.0f) {
-    pitch = 89.0f;
-  }
-
-  if (pitch < -89.0f) {
-    pitch = 89.0f;
-  }
-
-  camera.updateCameraVectors();
+  camera.processMouseMovement(xOffset, yOffset);
 }
