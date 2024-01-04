@@ -1,6 +1,7 @@
 #ifndef CAMERA_HPP_
 #define CAMERA_HPP_
 
+#include "SFML/Window/Event.hpp"
 #include <SFML/OpenGL.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/glm.hpp>

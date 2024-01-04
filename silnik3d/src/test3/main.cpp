@@ -81,6 +81,7 @@ int main() {
   engine.setEventHandler(sf::Event::EventType::MouseMoved, cameraMouseHandle);
 
   engine.getWindow().setMouseCursorGrabbed(true);
+  engine.getWindow().setMouseCursorVisible(false);
 
   lastMousePos = sf::Mouse::getPosition(engine.getWindow());
 
@@ -193,6 +194,9 @@ void init() {
 
   camera.m_movementSpeed = 250;
 
+  engine.getWindow().setMouseCursorGrabbed(true);
+  engine.getWindow().setMouseCursorVisible(false);
+
   engine.setMaxFps(75);
 }
 
@@ -242,6 +246,7 @@ void loopFun() {
   }
 }
 
+// engine.setEventHandler(sf::Event::EventType::MouseMoved, cameraMouseHandle);
 void cameraMouseHandle(const sf::Event ev) {
 
   static float yaw{};

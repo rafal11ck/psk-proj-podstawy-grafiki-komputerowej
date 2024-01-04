@@ -23,6 +23,8 @@ Engine &engine{Engine::getInstance()};
 Camera camera{{0.f, 0.f, 3.f}};
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
+sf::Vector2i lastMousePos{};
+
 // cube vertices
 float vertices[] = {
     -0.5f, -0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f,  0.5f,  -0.5f,
@@ -47,9 +49,10 @@ unsigned int lightCubeVAO;
 
 void init();
 void loopFun();
+void cameraMouseHandle(const sf::Event ev);
 
-Shader lightingShader("vertexColors.glsl", "fragmentColors.glsl");
-Shader lightCubeShader("vertexLight.glsl", "fragmentLight.glsl");
+Shader lightingShader("vertexLighting.glsl", "fragmentLighting.glsl");
+Shader lightSourceShader("vertexLightSource.glsl", "fragmentLightSource.glsl");
 
 int main() {
 
@@ -111,6 +114,13 @@ void init() {
   glEnableVertexAttribArray(0);
 
   camera.m_movementSpeed = 250;
+
+  lastMousePos = sf::Mouse::getPosition(engine.getWindow());
+
+  engine.getWindow().setMouseCursorGrabbed(true);
+  engine.getWindow().setMouseCursorVisible(false);
+
+  engine.setEventHandler(sf::Event::EventType::MouseMoved, cameraMouseHandle);
   engine.setMaxFps(75);
 }
 
@@ -154,15 +164,48 @@ void loopFun() {
   glDrawArrays(GL_TRIANGLES, 0, 36);
 
   // also draw the lamp object
-  lightCubeShader.use();
-  lightCubeShader.setMat4("projection", projection);
-  lightCubeShader.setMat4("view", view);
+  lightSourceShader.use();
+  lightSourceShader.setMat4("projection", projection);
+  lightSourceShader.setMat4("view", view);
 
   model = glm::mat4(1.0f);
   model = glm::translate(model, lightPos);
   model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-  lightCubeShader.setMat4("model", model);
+  lightSourceShader.setMat4("model", model);
 
   glBindVertexArray(lightCubeVAO);
   glDrawArrays(GL_TRIANGLES, 0, 36);
+}
+
+void cameraMouseHandle(const sf::Event ev) {
+
+  static float yaw{};
+  static float pitch{};
+
+  float xOffset{static_cast<float>(ev.mouseMove.x) - lastMousePos.x};
+  float yOffset{static_cast<float>(lastMousePos.y - ev.mouseMove.y)};
+
+  sf::Vector2i middle{static_cast<int>(engine.getWindow().getSize().x * 0.5f),
+                      static_cast<int>(engine.getWindow().getSize().y * 0.5f)};
+
+  // sf::Mouse::setPosition(middle, engine.getWindow());
+
+  lastMousePos = sf::Mouse::getPosition(engine.getWindow());
+
+  static constexpr float sensitivity = 0.3f;
+  xOffset *= sensitivity;
+  yOffset *= sensitivity;
+
+  camera.m_yaw += xOffset;
+  camera.m_pitch += yOffset;
+
+  if (pitch > 89.0f) {
+    pitch = 89.0f;
+  }
+
+  if (pitch < -89.0f) {
+    pitch = 89.0f;
+  }
+
+  camera.updateCameraVectors();
 }
