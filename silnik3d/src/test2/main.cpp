@@ -1,21 +1,14 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include "engine.hpp"
+#include <glm/ext/matrix_clip_space.hpp>
 
 #define TRACE
 #include "log.hpp"
 
 #include "shader.hpp"
-#include <GL/glew.h>
-#include <SFML/OpenGL.hpp>
 #include <camera.hpp>
-#include <glm/ext/matrix_clip_space.hpp>
-#include <glm/ext/matrix_transform.hpp>
-#include <glm/fwd.hpp>
 #include <glm/glm.hpp>
-
-#include <iostream>
-#include <stb/stb_image.h>
 
 Engine &engine{Engine::getInstance()};
 
@@ -179,20 +172,5 @@ void cameraMouseHandle(const sf::Event ev) {
 
   lastMousePos = sf::Mouse::getPosition(engine.getWindow());
 
-  static constexpr float sensitivity = 0.3f;
-  xOffset *= sensitivity;
-  yOffset *= -sensitivity;
-
-  camera.m_yaw += xOffset;
-  camera.m_pitch += yOffset;
-
-  if (pitch > 89.0f) {
-    pitch = 89.0f;
-  }
-
-  if (pitch < -89.0f) {
-    pitch = 89.0f;
-  }
-
-  camera.updateCameraVectors();
+  camera.processMouseMovement(xOffset, yOffset);
 }
