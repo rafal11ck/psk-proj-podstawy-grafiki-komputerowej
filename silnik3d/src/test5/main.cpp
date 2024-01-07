@@ -13,6 +13,8 @@
 
 #include <assimp/Importer.hpp>
 
+#include <resources.hpp>
+
 Engine &engine{Engine::getInstance()};
 
 Camera camera{{0.f, 0.f, 3.f}};
@@ -56,7 +58,6 @@ void loopFun();
 void cameraMouseHandle(const sf::Event ev);
 
 int main() {
-
   LOGTRACEN;
 
   init();
@@ -88,6 +89,9 @@ void handleCamera() {
 }
 
 void init() {
+
+  LOGINFO << getResourcesPath() << '\n';
+
   // set up vertex data (and buffer(s)) and configure vertex attributes
   // ------------------------------------------------------------------
   glGenVertexArrays(1, &VAO);

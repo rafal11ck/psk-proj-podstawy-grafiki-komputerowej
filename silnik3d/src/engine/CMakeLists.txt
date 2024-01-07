@@ -35,8 +35,15 @@ include_directories(/usr/include/stb REQUIRED)
 include_directories(include)
 include_directories(${GLM_INCLUDE_DIRS})
 
-add_library(engine engine.cpp engine.hpp stb_image.cpp camera.cpp shader.cpp include/shader.hpp log.hpp log.cpp)
+add_library(engine
+    engine.cpp engine.hpp
+    stb_image.cpp
+    camera.cpp include/camera.hpp
+    shader.cpp include/shader.hpp
+    model.cpp include/model.hpp
+    log.hpp log.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine glm)
 target_link_libraries(engine ${GLEW_LIBRARIES})
 target_link_libraries(engine sfml-graphics)
+target_link_libraries(engine assimp)
