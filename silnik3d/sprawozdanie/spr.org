@@ -1,7 +1,9 @@
 #+title: Spr
 #+language: pl
 
-* Libaries
-- SFML
-- GLAD -- SFML zawiera GLAD
+* Wymagania
+- SFML (+ GLAD)
 - GLEW
+- GLM
+- stb_image (część stb)
+- assimp
