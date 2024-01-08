@@ -35,6 +35,8 @@ include_directories(/usr/include/stb REQUIRED)
 include_directories(include)
 include_directories(${GLM_INCLUDE_DIRS})
 
+find_package(assimp REQUIRED)
+
 add_library(engine
     engine.cpp engine.hpp
     stb_image.cpp
