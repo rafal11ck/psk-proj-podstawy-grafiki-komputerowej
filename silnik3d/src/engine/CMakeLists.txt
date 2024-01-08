@@ -17,11 +17,7 @@ if(WIN32)
         VERBATIM)
 endif()
 
-
-FetchContent_Declare(ASSIMP
-    GIT_REPOSITORY https://github.com/assimp/assimp.git)
-FetchContent_MakeAvailable(ASSIMP)
-#add_subdirectory(${})
+find_package(assimp REQUIRED)
 
 # glew
 find_package(GLEW REQUIRED)

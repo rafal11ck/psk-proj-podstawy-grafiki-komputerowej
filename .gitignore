@@ -4,3 +4,5 @@ compile_commands.json
 /silnik3d/.cache/
 .cache
 silnik3d/.cache
+silnik3d/.kdev4
+silnik3d/silnik3d.kdev4
