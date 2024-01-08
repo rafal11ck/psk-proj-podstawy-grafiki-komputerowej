@@ -17,6 +17,12 @@ if(WIN32)
         VERBATIM)
 endif()
 
+
+FetchContent_Declare(ASSIMP
+    GIT_REPOSITORY https://github.com/assimp/assimp.git)
+FetchContent_MakeAvailable(ASSIMP)
+#add_subdirectory(${})
+
 # glew
 find_package(GLEW REQUIRED)
 include_directories(${GLEW_INCLUDE_DIRS})
@@ -42,6 +48,7 @@ add_library(engine
     stb_image.cpp
     camera.cpp include/camera.hpp
     shader.cpp include/shader.hpp
+    mesh.cpp include/mesh.hpp
     model.cpp include/model.hpp
     log.hpp log.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
