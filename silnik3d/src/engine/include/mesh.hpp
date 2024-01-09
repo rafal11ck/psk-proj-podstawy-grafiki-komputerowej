@@ -17,11 +17,11 @@ class Mesh : public Drawable,
              public Rotatable,
              public Movable {
 protected:
-  std::vector<Vertex> m_vertices;
-  std::vector<GLuint> m_indices;
-  VertexArray m_vao;
-  Texture m_diffuse;
-  Texture m_specular;
+  std::vector<Vertex> m_vertices{};
+  std::vector<GLuint> m_indices{};
+  VertexArray *m_vao{nullptr};
+  Texture *m_diffuse;
+  Texture *m_specular;
   GLfloat m_shininess;
 
 public:
