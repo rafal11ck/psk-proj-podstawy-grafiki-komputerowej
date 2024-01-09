@@ -1,4 +1,4 @@
-#include "include/scaleable.hpp"
+#include "scaleable.hpp"
 
 #include <glm/ext/matrix_transform.hpp>
 

@@ -39,37 +39,50 @@ include_directories(${GLM_INCLUDE_DIRS})
 
 find_package(assimp REQUIRED)
 
+
+include_directories(${CMAKE_BINARY_DIR}/generated/)
+
 add_library(engine
 camera.cpp
+cube.cpp
 engine.cpp
 engine.hpp
 include/camera.hpp
+include/cube.hpp
 include/drawable.hpp
+include/light.hpp
 include/mesh.hpp
-include/movable.hpp
-include/rotateable.hpp
-include/scaleable.hpp
+include/resources.hpp
 include/shader.hpp
 include/shader_m.hpp
+include/shape.hpp
 include/texture.hpp
-include/transformable.hpp
 include/vertex.hpp
 include/vertexArray.hpp
 include/vertexBuffer.hpp
+light.cpp
 log.cpp
 log.hpp
 mesh.cpp
 movable.cpp
+movable.hpp
 rotateable.cpp
+rotateable.hpp
 scaleable.cpp
+scaleable.hpp
 shader.cpp
+shape.cpp
 stb_image.cpp
+transformable.hpp
+updateable.hpp
 vertexArray.cpp
 vertexBuffer.cpp
+${CMAKE_BINARY_DIR}/generated/resources.hpp
 )
 
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine glm)
 target_link_libraries(engine ${GLEW_LIBRARIES})
 target_link_libraries(engine sfml-graphics)
-target_link_libraries(engine assimp)
+
+include_directories(${CMAKE_BINARY_DIR}/generated/)

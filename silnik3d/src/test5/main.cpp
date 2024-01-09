@@ -129,6 +129,7 @@ int main() {
 void init() {
 
   LOGINFO << getResourcesPath() << '\n';
+  LOGINFO << getResourcesPath() << '\n';
 
   camera.m_movementSpeed = 250;
 
