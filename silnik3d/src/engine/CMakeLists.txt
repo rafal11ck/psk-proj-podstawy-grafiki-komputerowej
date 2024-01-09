@@ -45,7 +45,10 @@ add_library(engine
     camera.cpp include/camera.hpp
     shader.cpp include/shader.hpp
     mesh.cpp include/mesh.hpp
-    model.cpp include/model.hpp
+    include/vertex.hpp
+    include/texture.hpp
+
+    #model.cpp include/model.hpp
     log.hpp log.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine glm)
