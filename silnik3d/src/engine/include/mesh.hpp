@@ -25,10 +25,6 @@ protected:
   GLfloat m_shininess;
 
 public:
-  Mesh(const Mesh &) = default;
-  Mesh(Mesh &&) = delete;
-  Mesh &operator=(const Mesh &) = default;
-  Mesh &operator=(Mesh &&) = delete;
   Mesh(std::vector<Vertex> &vertices, std::vector<GLuint> &indices);
   ~Mesh();
 
