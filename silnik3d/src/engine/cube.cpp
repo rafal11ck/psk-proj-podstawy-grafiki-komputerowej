@@ -1,4 +1,6 @@
 #include "cube.hpp"
+#include "log.hpp"
+#include "shape.hpp"
 
 void Cube::populateVertices() {
   m_vertices = {{glm::vec3(-1.0, -1.0, 1.0), glm::vec3(0.0f, 0.0f, 1.0f),
@@ -65,4 +67,5 @@ void Cube::populateIndices() {
 Cube::Cube() : Shape(m_vertices, m_indices) {
   populateVertices();
   populateIndices();
+  LOGINFO << "Cube verici C " << m_vertices.size();
 }
