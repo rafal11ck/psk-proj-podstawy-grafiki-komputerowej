@@ -11,7 +11,11 @@
 #include <stb_image.h>
 
 #include "mesh.hpp"
+#include "shader.hpp"
 
+#include <fstream>
+#include <iostream>
+#include <map>
 #include <sstream>
 #include <string>
 #include <vector>
