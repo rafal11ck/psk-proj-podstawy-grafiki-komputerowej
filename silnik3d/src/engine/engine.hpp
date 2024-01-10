@@ -1,7 +1,6 @@
 #ifndef ENGINE_HPP_
 #define ENGINE_HPP_
 
-#include "SFML/System/Clock.hpp"
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/Window/Window.hpp"
