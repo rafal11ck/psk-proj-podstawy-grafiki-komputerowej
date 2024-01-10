@@ -2,16 +2,13 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include "engine.hpp"
-#include "mesh.hpp"
-#include "shader.hpp"
-#include "vertex.hpp"
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/fwd.hpp>
-#include <vector>
 
 #define TRACE
 #include "log.hpp"
 
+#include "model.hpp"
 #include <camera.hpp>
 
 #include <resources.hpp>
@@ -20,101 +17,14 @@ Engine &engine{Engine::getInstance()};
 
 Camera camera{{0.f, 0.f, 3.f}};
 
+Model ourModel(std::string(getResourcesPath()) +
+               "/objects/backpack/backpack.obj");
+
 Shader ourShader("vertex.glsl", "fragment.glsl");
 
 void init();
 void loopFun();
 void cameraMouseHandle(const sf::Event ev);
-
-namespace cube {
-// clang-format off
-
-  std::vector<Vertex> data[] {
-  {
-  Vertex{{-0.5f, -0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0.0f, 0.0f}}
-/**
-,{0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 1.0f, 0.0f}
-
-,{0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 1.0f, 1.0f}
-
-,{0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 1.0f, 1.0f}
-
-,{-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.0f, 1.0f}
-
-,{-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f, 0.0f, 0.0f}
-
-
-,{-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 0.0f, 0.0f}
-
-,{0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 1.0f, 0.0f}
-
-,{0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 1.0f, 1.0f}
-
-,{0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 1.0f, 1.0f}
-
-,{-0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 0.0f, 1.0f}
-
-,{-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f, 0.0f, 0.0f}
-
-
-,{-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f, 0.0f, 0.0f}
-
-,{-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f, 1.0f, 0.0f}
-
-,{-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f, 1.0f, 1.0f}
-
-,{-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f, 1.0f, 1.0f}
-
-,{-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f, 0.0f, 1.0f}
-
-,{-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f, 0.0f, 0.0f}
-
-
-,{0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 0.0f, 0.0f}
-
-,{0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 1.0f, 0.0f}
-
-,{0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 1.0f, 1.0f}
-
-,{0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f, 1.0f, 1.0f}
-
-,{0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 0.0f, 1.0f}
-
-,{0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f, 0.0f, 0.0f}
-
-
-,{-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 0.0f, 0.0f}
-
-,{0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 1.0f, 0.0f}
-
-,{0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 1.0f, 1.0f}
-
-,{0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 1.0f, 1.0f}
-
-,{-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f, 0.0f, 1.0f}
-
-,{-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f, 0.0f, 0.0f}
-
-
-,{-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 0.0f, 0.0f}
-
-,{0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 1.0f, 0.0f}
-
-,{0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f, 1.0f, 1.0f}
-
-,{0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f, 1.0f, 1.0f}
-
-,{-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f, 0.0f, 1.0f}
-
-,{-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f, 0.0f, 0.0f}
-*/
-}
-};
-
-    std::vector<unsigned int>indicies {{}};
-
-// clang-format on
-}; // namespace cube
 
 int main() {
   LOGTRACEN;
@@ -133,7 +43,7 @@ void init() {
   camera.m_movementSpeed = 250;
 
   // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  // stbi_set_flip_vertically_on_load(true);
+  stbi_set_flip_vertically_on_load(true);
 
   engine.setMaxFps(75);
 }
@@ -153,13 +63,23 @@ void loopFun() {
                            static_cast<float>(engine.getWindow().getSize().y),
                        0.1f, 100.0f);
 
+  // camera/view transformation
+  //
+
+  static float dic{};
+  if (dic > 20)
+    dic = 0;
+  dic += engine.getLastFrameDuration().asSeconds();
+
   glm::mat4 view = camera.getViewMatrix();
 
   ourShader.setMat4("projection", view);
   ourShader.setMat4("view", view);
 
   glm::mat4 model = glm::mat4(1.0f);
-  // model = glm::translate(model, glm::vec3(0.f, 0.f, 0.f));
-  // model = glm::scale(model, glm::vec3(1.f, 1.0f, 1.0f));
+  model = glm::translate(model, glm::vec3(0.f, 0.f, 0.f));
+  model = glm::scale(model, glm::vec3(1.f, 1.0f, 1.0f));
   ourShader.setMat4("model", model);
+
+  ourModel.Draw(ourShader);
 }
