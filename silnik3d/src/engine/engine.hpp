@@ -5,6 +5,7 @@
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/Window/Window.hpp"
 #include "light.hpp"
+#define TRACE
 #include "log.hpp"
 #include "shape.hpp"
 #include <functional>
@@ -78,7 +79,7 @@ private:
   Engine();
 
   void handleEvents();
-  void render(Shader &basicShader, Shader lightShader);
+  void render(Shader &basicShader, Shader &lightShader);
 
   /** @brief Builds the window with openGl context
    */

@@ -1,14 +1,21 @@
 #include "mesh.hpp"
 
 #include "elementBuffer.hpp"
+#include "log.hpp"
 #include "vertexBuffer.hpp"
 
 Mesh::Mesh(std::vector<Vertex> &vertices, std::vector<GLuint> &indices) {
+  if (vertices.empty())
+    LOGWARN << "empty verticies\n";
+  if (indices.empty())
+    LOGWARN << "empty verticies\n";
+
   this->m_vertices = vertices;
   this->m_indices = indices;
 }
 
 void Mesh::initialize() {
+  LOGINFO << "initializing\n";
   VertexBuffer vbo;
   ElementBuffer ebo;
   m_vao = new VertexArray;
@@ -30,6 +37,7 @@ void Mesh::initialize() {
 
   m_diffuse->initialize();
   m_specular->initialize();
+  LOGINFO << "Done\n";
 }
 
 Mesh::~Mesh() {

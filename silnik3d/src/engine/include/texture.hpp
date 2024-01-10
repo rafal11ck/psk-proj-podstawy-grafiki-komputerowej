@@ -19,7 +19,8 @@ private:
 
 public:
   Texture(TextureType type = DIFFUSE,
-          std::string = std::string(getResourcesPath()),
+          std::string = (std::string(getResourcesPath()) +
+                         "/textures/default.png"),
           GLenum wrapping = GL_REPEAT);
   ~Texture();
 
