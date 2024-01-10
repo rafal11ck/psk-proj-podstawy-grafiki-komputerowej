@@ -5,7 +5,7 @@
 
 // clang-format off
 
-#define RESOURCES_PATH "@CMAKE_CURRENT_SOURCE_DIR@"
+#define RESOURCES_PATH "@CMAKE_CURRENT_SOURCE_DIR@/"
 
 // clang-format on
 

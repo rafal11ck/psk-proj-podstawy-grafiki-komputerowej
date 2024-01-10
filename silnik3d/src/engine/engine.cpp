@@ -41,12 +41,15 @@ Engine &Engine::buildWindow(sf::ContextSettings settings) {
 }
 
 void Engine::loop() {
-  LOGINFO << "Main loop is now running\n";
+  LOGINFO << "Engine::loop\n";
   // run the main loop
   isLoopRunning = true;
 
   const std::string basicShaderPath{std::string(getResourcesPath()) +
                                     "/shaders/basic/"};
+
+  LOGINFO << "Engine::loop basic shader path " << basicShaderPath << '\n';
+
   Shader basicShader{
       std::string(basicShaderPath + "basic_vertex.glsl").c_str(),
       std::string(basicShaderPath + "basic_fragment.glsl").c_str()};
@@ -54,9 +57,13 @@ void Engine::loop() {
   const std::string lightShaderPath{std::string(getResourcesPath()) +
                                     "shaders/light/"};
 
+  LOGINFO << "Engine::loop light shader path " << lightShaderPath << '\n';
+
   Shader lighthader{
       std::string(basicShaderPath + "light_vertex.glsl").c_str(),
       std::string(basicShaderPath + "light_fragment.glsl").c_str()};
+
+  LOGINFO << "Compiled builtin shades\n";
 
   while (isLoopRunning) {
     m_lastFrameDuration = m_clockFrame.restart();
