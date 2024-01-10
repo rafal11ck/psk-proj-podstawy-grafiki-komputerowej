@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #define TRACE
+#include "resources.hpp"
 #include "transformable.hpp"
 #include <log.hpp>
 

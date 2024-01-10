@@ -54,7 +54,7 @@ include/elementBuffer.cpp
 include/elementBuffer.hpp
 include/light.hpp
 include/mesh.hpp
-#include/resources.hpp
+include/resources.hpp
 include/shader.hpp
 include/shader_m.hpp
 include/shape.hpp
