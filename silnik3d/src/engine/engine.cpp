@@ -1,11 +1,7 @@
 #include "engine.hpp"
-#include "shader.hpp"
 #include <GL/glew.h>
 #include <iostream>
-#include <string>
 #define TRACE
-#include "resources.hpp"
-#include "transformable.hpp"
 #include <log.hpp>
 
 Engine *Engine::s_instance{nullptr};
@@ -45,28 +41,12 @@ void Engine::loop() {
   LOGINFO << "Main loop is now running\n";
   // run the main loop
   isLoopRunning = true;
-
-  const std::string basicShaderPath{std::string(getResourcesPath()) +
-                                    "/shaders/basic/"};
-  Shader basicShader{
-      std::string(basicShaderPath + "basic_vertex.glsl").c_str(),
-      std::string(basicShaderPath + "basic_fragment.glsl").c_str()};
-
-  const std::string lightShaderPath{std::string(getResourcesPath()) +
-                                    "shaders/light/"};
-
-  Shader lighthader{
-      std::string(basicShaderPath + "light_vertex.glsl").c_str(),
-      std::string(basicShaderPath + "light_fragment.glsl").c_str()};
-
   while (isLoopRunning) {
     m_lastFrameDuration = m_clockFrame.restart();
     // handle events
     handleEvents();
 
     m_loopFunction();
-
-    render(basicShader, lighthader);
 
     //  end the current frame (internally swaps the front and back buffers)
     m_window.display();
@@ -87,8 +67,6 @@ Engine &Engine::setMaxFps(int fps) {
   return *this;
 }
 
-void Engine::addShape(Shape *shape) { m_shapes.push_back(shape); };
-
 Engine::Engine() {
   LOGTRACEN;
   m_eventHandlers.fill([](const sf::Event &event) {});
@@ -107,12 +85,5 @@ void Engine::handleEvents() {
     }
 
     m_eventHandlers[event.type](event);
-  }
-}
-
-void Engine::render(Shader &shader, Shader lightShader) {
-
-  for (const auto &shape : m_shapes) {
-    shape->draw(shader);
   }
 }

@@ -5,11 +5,8 @@
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/Window/Window.hpp"
-#include "light.hpp"
 #include "log.hpp"
-#include "shape.hpp"
 #include <functional>
-#include <vector>
 
 /**
  *@class
@@ -51,8 +48,6 @@ public:
 
   Engine &setMaxFps(int fps);
 
-  void addShape(Shape *shape);
-
 private:
   static Engine *s_instance;
 
@@ -72,14 +67,10 @@ private:
    **/
   std::array<eventHandler_t, Event::Count> m_eventHandlers;
 
-  std::vector<Shape *> m_shapes{};
-  std::vector<Light *> m_lights{};
-
 private:
   Engine();
 
   void handleEvents();
-  void render(Shader &basicShader, Shader lightShader);
 
   /** @brief Builds the window with openGl context
    */

@@ -33,7 +33,6 @@ else (DOXYGEN_FOUND)
 endif (DOXYGEN_FOUND)
 
 
-include_directories(${CMAKE_BINARY_DIR}/generated/)
 #include_directories(resources)
 #
 add_subdirectory(resources)
