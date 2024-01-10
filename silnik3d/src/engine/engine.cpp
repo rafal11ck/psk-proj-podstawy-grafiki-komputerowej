@@ -112,10 +112,6 @@ void Engine::handleEvents() {
 
 void Engine::render(Shader &shader, Shader lightShader) {
 
-  for (int i = 0; i < m_lights.size(); i++) {
-    m_lights[i]->update(shader, i);
-  }
-
   for (const auto &shape : m_shapes) {
     shape->draw(shader);
   }
