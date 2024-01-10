@@ -1,5 +1,4 @@
 #include "texture.hpp"
-#include "log.hpp"
 #include <stb_image.h>
 
 void Texture::loadImage(const char *path) {
@@ -24,11 +23,9 @@ Texture::Texture(TextureType type, std::string path, GLenum wrapping) {
   this->path = path;
   this->wrapping = wrapping;
   this->type = type;
-  initialize();
 }
 
 void Texture::initialize() {
-  LOGINFO << "Initializing\n";
   glGenTextures(1, &id);
   bind();
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapping);
@@ -38,7 +35,6 @@ void Texture::initialize() {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   loadImage(path.c_str());
   unbind();
-  LOGINFO << "Initialized\n";
 }
 
 Texture::~Texture() { glDeleteTextures(1, &id); }
