@@ -1,47 +1,28 @@
 #ifndef MESH_HPP_
 #define MESH_HPP_
 
-#include "drawable.hpp"
-#include "movable.hpp"
-#include "rotateable.hpp"
-#include "scaleable.hpp"
 #include "shader.hpp"
 #include "texture.hpp"
 #include "vertex.hpp"
-#include "vertexArray.hpp"
-
 #include <vector>
 
-class Mesh : public Drawable,
-             public Scalable,
-             public Rotatable,
-             public Movable {
-protected:
-  std::vector<Vertex> m_vertices;
-  std::vector<GLuint> m_indices;
-  VertexArray m_vao;
-  Texture m_diffuse;
-  Texture m_specular;
-  GLfloat m_shininess;
-
+class Mesh {
 public:
-  Mesh(const Mesh &) = default;
-  Mesh(Mesh &&) = delete;
-  Mesh &operator=(const Mesh &) = default;
-  Mesh &operator=(Mesh &&) = delete;
-  Mesh(std::vector<Vertex> &vertices, std::vector<GLuint> &indices);
-  ~Mesh();
+  // mesh data
+  std::vector<Vertex> vertices;
+  std::vector<unsigned int> indices;
+  std::vector<Texture> textures;
 
-  void setDiffuseTexture(const char *path);
-  void setSpecularTexture(const char *path);
-  void setShininess(GLfloat shininess);
+  Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices,
+       std::vector<Texture> textures);
 
-  Texture *getDiffuseTexture();
-  Texture *getSpecularTexture();
-  GLfloat getShininess();
+  void Draw(Shader &shader);
 
-  void initialize();
-  void draw(Shader &shader) override;
+private:
+  //  render data
+  unsigned int VAO, VBO, EBO;
+
+  void setupMesh();
 };
 
 #endif

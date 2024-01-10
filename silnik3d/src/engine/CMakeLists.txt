@@ -40,34 +40,16 @@ include_directories(${GLM_INCLUDE_DIRS})
 find_package(assimp REQUIRED)
 
 add_library(engine
-camera.cpp
-engine.cpp
-engine.hpp
-include/camera.hpp
-include/drawable.hpp
-include/mesh.hpp
-include/movable.hpp
-include/rotateable.hpp
-include/scaleable.hpp
-include/shader.hpp
-include/shader_m.hpp
-include/texture.hpp
-include/transformable.hpp
-include/vertex.hpp
-include/vertexArray.hpp
-include/vertexBuffer.hpp
-log.cpp
-log.hpp
-mesh.cpp
-movable.cpp
-rotateable.cpp
-scaleable.cpp
-shader.cpp
-stb_image.cpp
-vertexArray.cpp
-vertexBuffer.cpp
-)
+    engine.cpp engine.hpp
+    stb_image.cpp
+    camera.cpp include/camera.hpp
+    shader.cpp include/shader.hpp
+    mesh.cpp include/mesh.hpp
+    include/vertex.hpp
+    include/texture.hpp
 
+    #model.cpp include/model.hpp
+    log.hpp log.cpp)
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
 target_link_libraries(engine glm)
 target_link_libraries(engine ${GLEW_LIBRARIES})
