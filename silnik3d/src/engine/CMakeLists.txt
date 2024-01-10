@@ -50,8 +50,6 @@ engine.hpp
 include/camera.hpp
 include/cube.hpp
 include/drawable.hpp
-include/elementBuffer.cpp
-include/elementBuffer.hpp
 include/light.hpp
 include/mesh.hpp
 include/resources.hpp
@@ -75,7 +73,6 @@ scaleable.hpp
 shader.cpp
 shape.cpp
 stb_image.cpp
-texture.cpp
 transformable.hpp
 updateable.hpp
 vertexArray.cpp

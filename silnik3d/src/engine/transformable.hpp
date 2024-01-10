@@ -16,7 +16,7 @@ protected:
   glm::mat4 m_model{1.0f};
 
 public:
-  Transformable(){};
+  Transformable();
 };
 
 #endif // TRANSFORMABLE_HPP_

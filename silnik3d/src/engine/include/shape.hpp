@@ -16,7 +16,7 @@ protected:
 public:
   Shape(std::vector<Vertex> &vertices, std::vector<GLuint> &indices);
 
-  virtual ~Shape(){};
+  virtual ~Shape() = 0;
 };
 
 #endif // SHAPE_HPP_
