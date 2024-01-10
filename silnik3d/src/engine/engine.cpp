@@ -97,13 +97,7 @@ Engine &Engine::setMaxFps(int fps) {
   return *this;
 }
 
-void Engine::addShape(Shape *shape) {
-  if (shape == nullptr)
-    LOGWARN << "Null pointer passed as shape\n";
-
-  m_shapes.push_back(shape);
-  shape->initialize();
-};
+void Engine::addShape(Shape *shape) { m_shapes.push_back(shape); };
 
 Engine::Engine() {
   LOGTRACEN;
@@ -126,14 +120,13 @@ void Engine::handleEvents() {
   }
 }
 
-void Engine::render(Shader &shader, Shader &lightShader) {
-  LOGTRACEN;
+void Engine::render(Shader &shader, Shader lightShader) {
 
   for (int i = 0; i < m_lights.size(); i++) {
     m_lights[i]->update(shader, i);
   }
 
-  for (Shape *shape : m_shapes) {
+  for (const auto &shape : m_shapes) {
     shape->draw(shader);
   }
 }
