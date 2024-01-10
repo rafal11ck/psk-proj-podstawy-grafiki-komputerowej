@@ -55,15 +55,19 @@ void Engine::loop() {
       std::string(basicShaderPath + "basic_fragment.glsl").c_str()};
 
   const std::string lightShaderPath{std::string(getResourcesPath()) +
-                                    "shaders/light/"};
+                                    "/shaders/light/"};
+
+  LOGINFO << "Compiled basic shader\n";
 
   LOGINFO << "Engine::loop light shader path " << lightShaderPath << '\n';
 
   Shader lighthader{
-      std::string(basicShaderPath + "light_vertex.glsl").c_str(),
-      std::string(basicShaderPath + "light_fragment.glsl").c_str()};
+      std::string(lightShaderPath + "light_vertex.glsl").c_str(),
+      std::string(lightShaderPath + "light_fragment.glsl").c_str()};
 
-  LOGINFO << "Compiled builtin shades\n";
+  LOGINFO << "Compiled light shader\n";
+
+  LOGINFO << "Engine::loop Loop is now running\n";
 
   while (isLoopRunning) {
     m_lastFrameDuration = m_clockFrame.restart();
