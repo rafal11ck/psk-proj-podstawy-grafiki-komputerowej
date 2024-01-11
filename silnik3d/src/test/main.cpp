@@ -1,5 +1,8 @@
-#include "engine.hpp"
+
+#define TRACE
 #include "log.hpp"
+
+#include "engine.hpp"
 #include "shader.hpp"
 #include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
@@ -15,13 +18,16 @@ struct Vertex {
   glm::vec3 m_position{0.f};
 };
 
-namespace meshHelper {
 class VertexArray {
   /// @brief Vertex array id;
   GLuint m_VAOid{};
 
 public:
-  VertexArray() { glGenVertexArrays(1, &m_VAOid); }
+  VertexArray() {
+
+    LOGTRACEN;
+    glGenVertexArrays(1, &m_VAOid);
+  }
 
   void bind() { glBindVertexArray(m_VAOid); };
 
@@ -40,10 +46,19 @@ class VertexBuffer {
   GLuint m_VBO;
 
 public:
-  VertexBuffer() { glGenBuffers(1, &m_VBO); };
+  VertexBuffer() {
+    LOGTRACEN;
+    glGenBuffers(1, &m_VBO);
+  };
+
+  void bind() {
+    LOGTRACEN;
+    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+  }
 
   void setData(std::vector<Vertex> verticies) {
-    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+    LOGTRACEN;
+    bind();
     glBufferData(GL_ARRAY_BUFFER, verticies.size() * sizeof(Vertex),
                  verticies.data(), GL_STATIC_DRAW);
   }
@@ -54,15 +69,23 @@ class ElementBuffer {
   GLuint m_EBO;
 
 public:
-  ElementBuffer() { glGenBuffers(1, &m_EBO); };
+  ElementBuffer() {
+    LOGTRACEN;
+    glGenBuffers(1, &m_EBO);
+  };
+
+  void bind() {
+    LOGTRACEN;
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+  };
 
   void setData(std::vector<GLuint> inicies) {
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+    bind();
+    LOGTRACEN;
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, inicies.size() * sizeof(GLint),
                  inicies.data(), GL_STATIC_DRAW);
   }
 };
-}; // namespace meshHelper
 
 class BasicMesh {
 public:
@@ -71,24 +94,61 @@ public:
 
 private:
   /// @brief Vertex array object.
-  meshHelper::VertexArray *m_VAO{nullptr};
+  VertexArray *m_VAO{nullptr};
+
+  VertexBuffer *m_VBO{nullptr};
+
+  ElementBuffer *m_EBO{nullptr};
   /// @biref Vericies collection.
   verticies_t m_verticies;
-  /// @brief Elements collection.
-  indicies_t m_elements;
+  /// @brief Elements  inidcies collection.
+  indicies_t m_indicies;
 
 protected:
   void initialize(verticies_t veritices, indicies_t indicies) {
+    LOGTRACEN;
     if (veritices.empty()) {
       LOGWARN << "Empty verticies";
     }
+    m_verticies = veritices;
+
     if (indicies.empty()) {
       LOGWARN << "Empty indicies";
     }
+    m_indicies = indicies;
+
+    m_VAO = new VertexArray{};
+
+    m_VBO = new VertexBuffer{};
+    m_EBO = new ElementBuffer{};
+
+    m_VAO->bind();
+
+    m_VBO->setData(m_verticies);
+    // Set vericies attrib pointer
+
+    m_EBO->setData(m_indicies);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
+                          (void *)0);
+    glEnableVertexAttribArray(0);
   }
 
 public:
   BasicMesh(){};
+  BasicMesh(verticies_t veritices, indicies_t indicies) {
+    LOGTRACEN;
+    initialize(veritices, indicies);
+  }
+
+  ~BasicMesh() { delete m_VAO; }
+
+  void drawElements(Shader &shader) {
+    shader.use();
+    m_VAO->bind();
+    glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, 0);
+    m_VAO->unBind();
+  };
 };
 
 std::vector<Vertex> verticies{
@@ -104,26 +164,26 @@ Shader shader("vertex.glsl", "fragment.glsl");
 
 int main() {
 
-  meshHelper::VertexArray VAO{};
-  VAO.bind();
+  // VertexArray VAO{};
+  // VAO.bind();
 
-  meshHelper::VertexBuffer VBO{};
-  VBO.setData(verticies);
+  // VertexBuffer VBO{};
+  // VBO.setData(verticies);
 
-  meshHelper::ElementBuffer EBO{};
-  EBO.setData(indicies);
+  // ElementBuffer EBO{};
+  // EBO.setData(indicies);
 
-  VAO.setAttribPointer(0, 3, offsetof(Vertex, m_position));
+  // VAO.setAttribPointer(0, 3, offsetof(Vertex, m_position));
 
-  VAO.unBind();
+  // VAO.unBind();
+
+  BasicMesh rectangle{verticies, indicies};
 
   engine.setLoopFunction([&]() {
     glClearColor(0.0, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    shader.use();
-    VAO.bind();
-    glDrawElements(GL_TRIANGLES, indicies.size(), GL_UNSIGNED_INT, 0);
+    rectangle.drawElements(shader);
   });
 
   engine.loop();
