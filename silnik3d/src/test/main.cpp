@@ -35,10 +35,16 @@ public:
 
   static void unBind() { glBindVertexArray(0); };
 
-  void setAttribPointer(GLuint layout, GLuint numOfValues, GLuint pointerVal) {
+  /**
+   *
+   *@param layout layout number that shader uses to access data.
+   *@param size How many values are in one struct ex. (*3* floats).
+   *@param offset offset in values count. (use offsetof())
+   **/
+  void setAttribPointer(GLuint layout, GLuint size, GLuint offset = 0) {
     bind();
-    glVertexAttribPointer(layout, numOfValues, GL_FLOAT, GL_FALSE,
-                          sizeof(Vertex), reinterpret_cast<void *>(pointerVal));
+    glVertexAttribPointer(layout, size, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+                          reinterpret_cast<void *>(offset));
     glEnableVertexAttribArray(layout);
   }
 };
@@ -107,6 +113,12 @@ private:
   indicies_t m_indicies;
 
 protected:
+  /**
+   *@brief
+   *
+   * Because openGL vertex attrib pointers are set all shaders have to use same
+   * layout.
+   * */
   void initialize(verticies_t veritices, indicies_t indicies) {
     LOGTRACEN;
     if (veritices.empty()) {
@@ -127,12 +139,12 @@ protected:
     m_VAO->bind();
 
     m_VBO->setData(m_verticies);
-    // Set vericies attrib pointer
-
     m_EBO->setData(m_indicies);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)0);
-    glEnableVertexAttribArray(0);
+    // setup attrib pointers
+    m_VAO->setAttribPointer(0, 3, offsetof(Vertex, m_position));
+    m_VAO->setAttribPointer(1, 3, offsetof(Vertex, m_normal));
+    m_VAO->setAttribPointer(2, 2, offsetof(Vertex, m_texCord));
   }
 
 public:
@@ -149,7 +161,7 @@ public:
     m_VAO->bind();
     glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, 0);
     m_VAO->unBind();
-  };
+  }
 };
 
 std::vector<Vertex> verticies{
