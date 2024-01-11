@@ -1,4 +1,5 @@
 #include "engine.hpp"
+#include "log.hpp"
 #include "shader.hpp"
 #include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
@@ -14,6 +15,7 @@ struct Vertex {
   glm::vec3 m_position{0.f};
 };
 
+namespace meshHelper {
 class VertexArray {
   /// @brief Vertex array id;
   GLuint m_VAOid{};
@@ -60,6 +62,34 @@ public:
                  inicies.data(), GL_STATIC_DRAW);
   }
 };
+}; // namespace meshHelper
+
+class BasicMesh {
+public:
+  using verticies_t = std::vector<Vertex>;
+  using indicies_t = std::vector<GLuint>;
+
+private:
+  /// @brief Vertex array object.
+  meshHelper::VertexArray *m_VAO{nullptr};
+  /// @biref Vericies collection.
+  verticies_t m_verticies;
+  /// @brief Elements collection.
+  indicies_t m_elements;
+
+protected:
+  void initialize(verticies_t veritices, indicies_t indicies) {
+    if (veritices.empty()) {
+      LOGWARN << "Empty verticies";
+    }
+    if (indicies.empty()) {
+      LOGWARN << "Empty indicies";
+    }
+  }
+
+public:
+  BasicMesh(){};
+};
 
 std::vector<Vertex> verticies{
     {glm::vec3{0.5f, 0.5f, 0.0f}},   // top right
@@ -74,13 +104,13 @@ Shader shader("vertex.glsl", "fragment.glsl");
 
 int main() {
 
-  VertexArray VAO{};
+  meshHelper::VertexArray VAO{};
   VAO.bind();
 
-  VertexBuffer VBO{};
+  meshHelper::VertexBuffer VBO{};
   VBO.setData(verticies);
 
-  ElementBuffer EBO{};
+  meshHelper::ElementBuffer EBO{};
   EBO.setData(indicies);
 
   VAO.setAttribPointer(0, 3, offsetof(Vertex, m_position));
