@@ -33,5 +33,6 @@ else (DOXYGEN_FOUND)
 endif (DOXYGEN_FOUND)
 
 
+add_subdirectory(resources)
 
 add_subdirectory(src)

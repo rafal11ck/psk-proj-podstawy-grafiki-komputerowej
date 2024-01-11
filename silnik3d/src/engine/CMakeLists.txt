@@ -55,6 +55,7 @@ shader.cpp
 stb_image.cpp
 vertexArray.cpp
 vertexBuffer.cpp
+${CMAKE_BINARY_DIR}/generated/resources.cpp
 )
 
 target_link_libraries(engine ${OPENGL_gl_LIBRARY})
