@@ -6,16 +6,15 @@
 #include <vector>
 
 class VertexBuffer {
-private:
-  GLuint id;
+  /// @brief Vertex buffer object id
+  GLuint m_VBO;
 
 public:
   VertexBuffer();
-  ~VertexBuffer();
 
-  void setData(std::vector<Vertex> &vertices, GLenum usage = GL_STATIC_DRAW);
   void bind();
-  void unbind();
+
+  void setData(std::vector<Vertex> verticies);
 };
 
 #endif // VERTEXBUFFER_HPP_

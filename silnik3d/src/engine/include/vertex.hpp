@@ -4,9 +4,9 @@
 #include <glm/glm.hpp>
 
 struct Vertex {
-  glm::vec3 position;
-  glm::vec3 normal;
-  glm::vec2 texture;
+  glm::vec3 m_position{0.f};
+  glm::vec3 m_normal{0.f};
+  glm::vec3 m_texCord{0.f};
 };
 
 #endif // VERTEX_HPP_
