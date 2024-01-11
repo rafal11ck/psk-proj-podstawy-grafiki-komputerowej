@@ -16,6 +16,8 @@ Engine &engine{Engine::getInstance()};
 
 struct Vertex {
   glm::vec3 m_position{0.f};
+  glm::vec3 m_normal{0.f};
+  glm::vec3 m_texCord{0.f};
 };
 
 class VertexArray {
@@ -129,8 +131,7 @@ protected:
 
     m_EBO->setData(m_indicies);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
-                          (void *)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)0);
     glEnableVertexAttribArray(0);
   }
 
