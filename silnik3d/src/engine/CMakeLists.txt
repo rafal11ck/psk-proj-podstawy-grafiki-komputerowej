@@ -43,7 +43,9 @@ engine.cpp
 engine.hpp
 include/basicMesh.hpp
 include/camera.hpp
+include/drawable.hpp
 include/elementBuffer.hpp
+include/resources.hpp
 include/shader.hpp
 include/shader_m.hpp
 include/vertex.hpp

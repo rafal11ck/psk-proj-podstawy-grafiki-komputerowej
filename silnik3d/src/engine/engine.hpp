@@ -5,8 +5,10 @@
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/Window/Window.hpp"
-#include "log.hpp"
+#include "drawable.hpp"
+#include "shader.hpp"
 #include <functional>
+#include <set>
 
 /**
  *@class
@@ -48,6 +50,29 @@ public:
 
   Engine &setMaxFps(int fps);
 
+  /**
+   *@brief Add drawable to be drawn by engine.
+   *
+   *Added dawables will be rendered.
+   *
+   *@note Added object has to outlive Engine object in which case it will be
+   *desroyed by ~Engine() or be removed via removeDrawable().
+   *
+   *@see removeDrawable()
+   **/
+  void addDrawable(Drawable *drawable);
+
+  /**
+   *@brief Add drawable to be drawn by engine.
+   *
+   *Removes drawable from engine collection.
+   *
+   *@warn This does not delete object.
+   *
+   *@see addDrawable
+   **/
+  void removeDrawable(Drawable *const drawable);
+
 private:
   static Engine *s_instance;
 
@@ -67,10 +92,24 @@ private:
    **/
   std::array<eventHandler_t, Event::Count> m_eventHandlers;
 
+  /**
+   *@brief Shader for drawing objects.
+   *
+   **/
+  Shader *m_defaultShader{nullptr};
+
+  /**
+   *@brief Collection of drawables drawn by engine.
+   **/
+  std::set<Drawable *> m_drawables{};
+
 private:
   Engine();
+  ~Engine();
 
   void handleEvents();
+
+  void render();
 
   /** @brief Builds the window with openGl context
    */

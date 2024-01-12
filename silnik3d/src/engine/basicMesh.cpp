@@ -1,3 +1,6 @@
+#define TRACE
+#include "log.hpp"
+
 #include "basicMesh.hpp"
 
 void BasicMesh::initialize(verticies_t veritices, indicies_t indicies) {
@@ -40,7 +43,8 @@ BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies) {
 
 BasicMesh::~BasicMesh() { delete m_VAO; }
 
-void BasicMesh::drawElements(Shader &shader) {
+void BasicMesh::draw(Shader &shader) {
+  LOGTRACEN;
   shader.use();
   m_VAO->bind();
   glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, 0);

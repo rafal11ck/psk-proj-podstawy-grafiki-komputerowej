@@ -1,6 +1,7 @@
 #ifndef BASICMESH_HPP_
 #define BASICMESH_HPP_
 
+#include "drawable.hpp"
 #include "elementBuffer.hpp"
 #include "log.hpp"
 #include "shader.hpp"
@@ -8,7 +9,7 @@
 #include "vertexBuffer.hpp"
 #include <GL/glew.h>
 
-class BasicMesh {
+class BasicMesh : public Drawable {
 public:
   using verticies_t = std::vector<Vertex>;
   using indicies_t = std::vector<GLuint>;
@@ -40,6 +41,7 @@ public:
 
   ~BasicMesh();
 
-  void drawElements(Shader &shader);
+  void extracted();
+  void draw(Shader &shader) override;
 };
 #endif // BASICMESH_HPP_

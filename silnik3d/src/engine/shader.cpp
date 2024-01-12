@@ -1,3 +1,6 @@
+#define TRACE
+#include "log.hpp"
+
 #include "shader.hpp"
 #include <GL/glew.h>
 
@@ -70,6 +73,7 @@ void Shader::checkForException(GLuint program, Exception exceptionType) {
   }
 
   if (!success) {
+    LOGERROR << '\n';
     glGetShaderInfoLog(program, 1024, NULL, infoLog);
     std::cout << "SHADER " << type << " ERROR " << std::endl
               << infoLog << std::endl;
@@ -77,15 +81,19 @@ void Shader::checkForException(GLuint program, Exception exceptionType) {
 }
 
 Shader::Shader(const char *vertexPath, const char *fragmentPath) {
+  LOGTRACEN;
   vertexShader = createShader(vertexPath, VERTEX);
   fragmentShader = createShader(fragmentPath, FRAGMENT);
   id = createProgram();
 }
 
+Shader::Shader(const std::string vertexPath, const std::string fragmentPath)
+    : Shader(vertexPath.c_str(), fragmentPath.c_str()) {}
+
 void Shader::use() { glUseProgram(id); }
 
 void Shader::setBool(const char *name, bool value) {
-  glUniform1i(glGetUniformLocation(id, name), (int)value);
+  glUniform1i(glGetUniformLocation(id, name), static_cast<int>(value));
 }
 
 void Shader::setInt(const char *name, int value) {

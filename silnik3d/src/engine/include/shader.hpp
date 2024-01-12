@@ -26,6 +26,7 @@ private:
 
 public:
   Shader(const char *vertexPath, const char *fragmentPath);
+  Shader(const std::string vertexPath, const std::string fragmentPath);
 
   void use();
   void setBool(const char *name, bool value);
