@@ -5,6 +5,7 @@
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/Window/Window.hpp"
+#include "camera.hpp"
 #include "drawable.hpp"
 #include "shader.hpp"
 #include <functional>
@@ -20,6 +21,14 @@ public:
   using Time = sf::Time;
   using Event = sf::Event;
   using eventHandler_t = std::function<void(const Event &)>;
+
+  /**
+   *@brief Distance to near clipping plane from camera.*/
+  static constexpr float clippingPlaneNear{0.1};
+
+  /**
+   *@brief Distance to far clipping plane from camera.*/
+  static constexpr float clippingPlaneFar{100};
 
   static Engine &getInstance();
 
@@ -73,6 +82,18 @@ public:
    **/
   void removeDrawable(Drawable *const drawable);
 
+  Camera &getCamera();
+  float getAspectRatio() const;
+
+  /**
+   *@brief Compute projection matix.
+   *
+   *It is based on m_camera zoom and m_window aspect ratio.
+   *
+   *@warn It only computes is.
+   **/
+  glm::mat4 computeProjectionMatrix() const;
+
 private:
   static Engine *s_instance;
 
@@ -102,6 +123,8 @@ private:
    *@brief Collection of drawables drawn by engine.
    **/
   std::set<Drawable *> m_drawables{};
+
+  Camera m_camera{};
 
 private:
   Engine();

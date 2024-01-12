@@ -1,9 +1,11 @@
 #ifndef CAMERA_HPP_
 #define CAMERA_HPP_
 
-#include "SFML/Window/Event.hpp"
+#include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
+
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/fwd.hpp>
 #include <glm/glm.hpp>
 
 // An abstract camera class that processes input and calculates the
@@ -20,6 +22,7 @@ public:
   static constexpr float SENSITIVITY = 0.1f;
   static constexpr float ZOOM = 45.0f;
 
+private:
   // camera Attributes
   glm::vec3 m_position;
   glm::vec3 m_front;
@@ -35,6 +38,7 @@ public:
   float m_mouseSensitivity;
   float m_zoom;
 
+public:
   // constructor with vectors
   Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
          glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW,
@@ -63,6 +67,12 @@ public:
 
   // calculates the front vector from the Camera's (updated) Euler Angles
   void updateCameraVectors();
+
+  float getZoom() const;
+
+  glm::vec3 getPosition() const;
+
+  void setSpeed(float speed);
 };
 
 #endif // CAMERA_HPP_

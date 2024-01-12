@@ -89,3 +89,8 @@ void Camera::updateCameraVectors() {
                             // which results in slower movement.
   m_up = glm::normalize(glm::cross(m_right, m_front));
 }
+
+float Camera::getZoom() const { return m_zoom; };
+glm::vec3 Camera::getPosition() const { return m_position; };
+
+void Camera::setSpeed(float speed) { m_movementSpeed = speed; };

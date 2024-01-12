@@ -1,11 +1,12 @@
-#include <cstdlib>
 #define TRACE
 #include <log.hpp>
+
+#include <GL/glew.h>
 
 #include "engine.hpp"
 #include "resources.hpp"
 #include "shader.hpp"
-#include <GL/glew.h>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <ostream>
 
@@ -92,6 +93,21 @@ void Engine::removeDrawable(Drawable *const drawable) {
   m_drawables.erase(drawable);
 };
 
+Camera &Engine::getCamera() { return m_camera; };
+
+float Engine::getAspectRatio() const {
+  return static_cast<float>(getWindow().getSize().x) / getWindow().getSize().y;
+}
+
+#include <glm/ext/matrix_clip_space.hpp>
+
+glm::mat4 Engine::computeProjectionMatrix() const {
+  glm::mat4 projection =
+      glm::perspective(glm::radians(m_camera.getZoom()), getAspectRatio(),
+                       clippingPlaneNear, clippingPlaneFar);
+  return projection;
+}
+
 Engine::Engine() {
   LOGINFO << "Initializing Engine\n";
   m_eventHandlers.fill([](const sf::Event &event) {});
@@ -140,7 +156,7 @@ void Engine::handleEvents() {
 }
 
 void Engine::render() {
-  LOGTRACEN;
+  // LOGTRACEN;
 
   if (m_defaultShader == nullptr) {
     LOGERROR << "default shader does not exist\n";

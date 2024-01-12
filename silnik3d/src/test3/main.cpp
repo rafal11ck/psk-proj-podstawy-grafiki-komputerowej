@@ -2,12 +2,12 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include "SFML/Window/Mouse.hpp"
-#include "engine.hpp"
 #include <glm/geometric.hpp>
 
 #define TRACE
 #include "log.hpp"
 
+#include "engine.hpp"
 #include "shader.hpp"
 #include <GL/glew.h>
 #include <SFML/OpenGL.hpp>
@@ -22,7 +22,7 @@
 
 Engine &engine{Engine::getInstance()};
 
-Camera camera{{0.f, 0.f, 3.f}};
+Camera &camera{engine.getCamera()};
 
 unsigned int texture1, texture2;
 
@@ -192,8 +192,7 @@ void init() {
   ourShader.setInt("texture1", 0);
   ourShader.setInt("texture2", 1);
 
-  camera.m_movementSpeed = 250;
-
+  engine.getCamera().setSpeed(100);
   engine.getWindow().setMouseCursorGrabbed(true);
   engine.getWindow().setMouseCursorVisible(false);
 
@@ -205,10 +204,10 @@ void loopFun() {
   handleCamera();
 
   // bind textures on corresponding texture units
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texture1);
-  glActiveTexture(GL_TEXTURE1);
-  glBindTexture(GL_TEXTURE_2D, texture2);
+  // glActiveTexture(GL_TEXTURE0);
+  // glBindTexture(GL_TEXTURE_2D, texture1);
+  // glActiveTexture(GL_TEXTURE1);
+  // glBindTexture(GL_TEXTURE_2D, texture2);
 
   glClearColor(0.0, 0.2f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -217,11 +216,7 @@ void loopFun() {
 
   // pass projection matrix to shader (note that in this case it could change
   // every frame)
-  glm::mat4 projection =
-      glm::perspective(glm::radians(camera.m_zoom),
-                       static_cast<float>(engine.getWindow().getSize().x) /
-                           static_cast<float>(engine.getWindow().getSize().y),
-                       0.1f, 100.0f);
+  glm::mat4 projection = engine.computeProjectionMatrix();
 
   ourShader.setMat4("projection", projection);
 
@@ -240,6 +235,7 @@ void loopFun() {
     float angle = 20.0f * i;
     model =
         glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+
     ourShader.setMat4("model", model);
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -266,16 +262,5 @@ void cameraMouseHandle(const sf::Event ev) {
   xOffset *= sensitivity;
   yOffset *= sensitivity;
 
-  camera.m_yaw += xOffset;
-  camera.m_pitch += yOffset;
-
-  if (pitch > 89.0f) {
-    pitch = 89.0f;
-  }
-
-  if (pitch < -89.0f) {
-    pitch = 89.0f;
-  }
-
-  camera.updateCameraVectors();
+  camera.processMouseMovement(xOffset, yOffset);
 }

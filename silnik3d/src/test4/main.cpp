@@ -20,7 +20,8 @@
 
 Engine &engine{Engine::getInstance()};
 
-Camera camera{{-0.0f, 0.f, -4.f}};
+Camera &camera{engine.getCamera()};
+
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 sf::Vector2i lastMousePos{};
@@ -134,7 +135,7 @@ void init() {
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
-  camera.m_movementSpeed = 250;
+  camera.setSpeed(250);
 
   lastMousePos = sf::Mouse::getPosition(engine.getWindow());
 
@@ -157,12 +158,12 @@ void loopFun() {
   lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
   lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
   lightingShader.setVec3("lightPos", lightPos);
-  lightingShader.setVec3("viewPos", camera.m_position);
+  lightingShader.setVec3("viewPos", camera.getPosition());
 
   const sf::Vector2u screenSize = engine.getWindow().getSize();
 
   // view/projection transformations
-  glm::mat4 projection = glm::perspective(glm::radians(camera.m_zoom),
+  glm::mat4 projection = glm::perspective(glm::radians(camera.getZoom()),
                                           static_cast<float>(screenSize.x) /
                                               static_cast<float>(screenSize.y),
                                           0.1f, 100.0f);

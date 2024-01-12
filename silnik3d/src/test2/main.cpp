@@ -99,7 +99,7 @@ void init() {
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
-  camera.m_movementSpeed = 250;
+  camera.setSpeed(250);
 
   engine.getWindow().setMouseCursorGrabbed(true);
   engine.getWindow().setMouseCursorVisible(false);
@@ -129,7 +129,7 @@ void loopFun() {
   // pass projection matrix to shader (note that in this case it could change
   // every frame)
   glm::mat4 projection =
-      glm::perspective(glm::radians(camera.m_zoom),
+      glm::perspective(glm::radians(camera.getZoom()),
                        static_cast<float>(engine.getWindow().getSize().x) /
                            static_cast<float>(engine.getWindow().getSize().y),
                        0.1f, 100.0f);
