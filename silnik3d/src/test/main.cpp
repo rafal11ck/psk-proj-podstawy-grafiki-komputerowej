@@ -1,3 +1,4 @@
+#include "rotatable.hpp"
 #define TRACE
 #include "log.hpp"
 

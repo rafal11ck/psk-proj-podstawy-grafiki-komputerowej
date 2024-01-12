@@ -13,7 +13,7 @@ protected:
    **/
   // glm::vec4 m_model{1.0f};
 
-  virtual glm::vec4 getModel() = 0;
+  virtual glm::vec4 getModelMatrix() = 0;
   virtual ~Transformable() = 0;
 };
 

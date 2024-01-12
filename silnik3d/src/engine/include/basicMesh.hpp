@@ -4,6 +4,8 @@
 #include "drawable.hpp"
 #include "elementBuffer.hpp"
 #include "log.hpp"
+#include "moveable.hpp"
+#include "rotatable.hpp"
 #include "shader.hpp"
 #include "vertexArray.hpp"
 #include "vertexBuffer.hpp"
@@ -41,7 +43,6 @@ public:
 
   ~BasicMesh();
 
-  void extracted();
-  void draw(Shader &shader) override;
+  virtual void draw(Shader &shader) override;
 };
 #endif // BASICMESH_HPP_

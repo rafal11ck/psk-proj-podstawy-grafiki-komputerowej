@@ -15,6 +15,8 @@ public:
 
   glm::vec3 getPosition() const;
 
+  virtual glm::vec4 getModelMatrix() override;
+
   virtual ~Movable();
 };
 
