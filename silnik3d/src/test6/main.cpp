@@ -23,6 +23,8 @@ int main() {
 
   Shape *rectangle = new Shape{verticies, indicies};
 
+  rectangle->setPosition(0.2, 0.3, 0);
+
   engine.addDrawable(rectangle);
 
   engine.loop();
