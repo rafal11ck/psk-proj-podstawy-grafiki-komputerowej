@@ -1,3 +1,4 @@
+#include <cstdlib>
 #define TRACE
 #include <log.hpp>
 
@@ -110,9 +111,23 @@ float Engine::getAspectRatio() const {
 }
 
 glm::mat4 Engine::computeProjectionMatrix() const {
-  glm::mat4 projection =
-      glm::perspective(glm::radians(m_camera.getZoom()), getAspectRatio(),
-                       clippingPlaneNear, clippingPlaneFar);
+
+  glm::mat4 projection{};
+  switch (m_projectionType) {
+  case ProjectionType::perspective:
+    projection =
+        glm::perspective(glm::radians(m_camera.getZoom()), getAspectRatio(),
+                         clippingPlaneNear, clippingPlaneFar);
+    break;
+  case ProjectionType::orthogonal:
+    projection = glm::ortho(-getAspectRatio(), getAspectRatio(), -1.f, 1.f,
+                            clippingPlaneNear, clippingPlaneFar);
+    break;
+  default:
+    LOGERROR << "Projection type not handled (casted = "
+             << static_cast<int>(m_projectionType) << ")\n";
+    abort();
+  }
   return projection;
 }
 
@@ -128,6 +143,12 @@ void Engine::setCameraHandlingKeyboard(bool enbaled) {
   m_cameraHandlingKeyboard = enbaled;
 }
 
+void Engine::setProjectionType(ProjectionType projectionType) {
+  LOGINFO << "Setting projection type to (casted "
+          << static_cast<int>(projectionType) << ")\n";
+  m_projectionType = projectionType;
+}
+
 Engine::Engine() {
   LOGINFO << "Initializing Engine\n";
   m_eventHandlers.fill([](const sf::Event &event) {});
@@ -140,6 +161,7 @@ Engine::Engine() {
       new Shader(defaultShaderPathVertex, defaultShaderPathFragment);
 
   m_defaultShader->use();
+  m_defaultShader->setMat4("view", glm::mat4{1});
 
   LOGINFO << "Main loop is now running\n";
 }
@@ -172,7 +194,7 @@ void Engine::handleEvents() {
       // adjust the viewport when the window is resized
       glViewport(0, 0, event.size.width, event.size.height);
       break;
-    case sf::Event::MouseMoveEvent:
+    case sf::Event::MouseMoved:
       handleCameraMouseMove(event);
       break;
     default:
@@ -192,7 +214,10 @@ void Engine::render() {
   }
 
   m_defaultShader->use();
+
   m_defaultShader->setMat4("projection", computeProjectionMatrix());
+
+  m_defaultShader->setMat4("view", getCamera().getViewMatrix());
 
   for (auto drawable : m_drawables) {
     drawable->draw(*m_defaultShader);

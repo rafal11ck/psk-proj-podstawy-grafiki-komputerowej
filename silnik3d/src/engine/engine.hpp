@@ -25,6 +25,8 @@ public:
   using Event = sf::Event;
   using eventHandler_t = std::function<void(const Event &)>;
 
+  enum class ProjectionType { orthogonal, perspective, max_ProjectionType };
+
   /**
    *@brief Distance to near clipping plane from camera.*/
   static constexpr float clippingPlaneNear{0.1};
@@ -114,6 +116,8 @@ public:
    **/
   void setCameraHandlingKeyboard(bool enbaled);
 
+  void setProjectionType(ProjectionType projectionType);
+
 private:
   static Engine *s_instance;
 
@@ -155,6 +159,8 @@ private:
    *@brief Does engine change camrea position o mouse move.
    **/
   bool m_cameraHandlingKeyboard{false};
+
+  ProjectionType m_projectionType{ProjectionType::orthogonal};
 
 private:
   Engine();
