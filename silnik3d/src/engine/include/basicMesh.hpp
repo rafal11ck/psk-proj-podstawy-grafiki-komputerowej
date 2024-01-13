@@ -10,20 +10,22 @@
 #include "vertexArray.hpp"
 #include "vertexBuffer.hpp"
 #include <GL/glew.h>
+#include <netdb.h>
 
 class BasicMesh : public Drawable {
 public:
   using verticies_t = std::vector<Vertex>;
   using indicies_t = std::vector<GLuint>;
 
-private:
+protected:
   /// @brief Vertex array object.
   VertexArray *m_VAO{nullptr};
 
+private:
   VertexBuffer *m_VBO{nullptr};
 
   ElementBuffer *m_EBO{nullptr};
-  /// @biref Vericies collection.
+  /// @brief Vericies collection.
   verticies_t m_verticies;
   /// @brief Elements  inidcies collection.
   indicies_t m_indicies;

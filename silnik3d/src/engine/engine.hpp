@@ -76,7 +76,7 @@ public:
    *
    *Removes drawable from engine collection.
    *
-   *@warn This does not delete object.
+   *@warning This does not delete object.
    *
    *@see addDrawable
    **/
@@ -90,7 +90,7 @@ public:
    *
    *It is based on m_camera zoom and m_window aspect ratio.
    *
-   *@warn It only computes is.
+   *@warning It only computes is.
    **/
   glm::mat4 computeProjectionMatrix() const;
 

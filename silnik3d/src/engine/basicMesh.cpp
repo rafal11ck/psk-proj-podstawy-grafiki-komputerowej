@@ -41,8 +41,6 @@ BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies) {
   initialize(veritices, indicies);
 }
 
-BasicMesh::~BasicMesh() { delete m_VAO; }
-
 void BasicMesh::draw(Shader &shader) {
   LOGTRACEN;
   shader.use();
@@ -50,3 +48,5 @@ void BasicMesh::draw(Shader &shader) {
   glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, 0);
   m_VAO->unBind();
 }
+
+BasicMesh::~BasicMesh() { delete m_VAO; }

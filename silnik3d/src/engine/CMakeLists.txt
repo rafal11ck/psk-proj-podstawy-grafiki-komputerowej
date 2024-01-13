@@ -51,6 +51,7 @@ include/rotatable.hpp
 include/scaleable.hpp
 include/shader.hpp
 include/shader_m.hpp
+include/shape.hpp
 include/transformable.hpp
 include/vertex.hpp
 include/vertexArray.hpp
@@ -61,7 +62,9 @@ moveable.cpp
 rotatable.cpp
 scaleable.cpp
 shader.cpp
+shape.cpp
 stb_image.cpp
+transformable.cpp
 vertexArray.cpp
 vertexBuffer.cpp
 ${CMAKE_BINARY_DIR}/generated/resources.cpp

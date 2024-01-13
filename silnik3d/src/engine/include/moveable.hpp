@@ -12,12 +12,13 @@ private:
 public:
   void setPosition(GLfloat x, GLfloat y, GLfloat z);
   void setPosition(glm::vec3 position);
-
   glm::vec3 getPosition() const;
 
-  virtual glm::vec4 getModelMatrix() override;
+  // virtual glm::vec4 getModelMatrix() override;
 
-  virtual ~Movable();
+  virtual ~Movable() = 0;
 };
+
+;
 
 #endif // MOVEABLE_HPP_
