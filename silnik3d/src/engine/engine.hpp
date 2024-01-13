@@ -7,9 +7,11 @@
 #include "SFML/Window/Window.hpp"
 #include "camera.hpp"
 #include "drawable.hpp"
+#include "resources.hpp"
 #include "shader.hpp"
 #include <functional>
 #include <set>
+#include <string_view>
 
 /**
  *@class
@@ -29,6 +31,11 @@ public:
   /**
    *@brief Distance to far clipping plane from camera.*/
   static constexpr float clippingPlaneFar{100};
+
+  static const std::string defaultShaderDir;
+
+  static const std::string defaultShaderPathVertex;
+  static const std::string defaultShaderPathFragment;
 
   static Engine &getInstance();
 

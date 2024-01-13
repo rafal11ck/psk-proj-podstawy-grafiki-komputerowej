@@ -12,6 +12,14 @@
 
 Engine *Engine::s_instance{nullptr};
 
+const std::string Engine::defaultShaderDir{getResourcesPath() + "/shaders/"};
+
+const std::string Engine::defaultShaderPathVertex{defaultShaderDir +
+                                                  "vertex.glsl"};
+
+const std::string Engine::defaultShaderPathFragment{defaultShaderDir +
+                                                    "/fragment.glsl"};
+
 Engine &Engine::getInstance() {
 
   if (s_instance == nullptr) {
@@ -117,7 +125,7 @@ Engine::Engine() {
   std::string shaderDir{getResourcesPath() + "/shaders/"};
 
   m_defaultShader =
-      new Shader(shaderDir + "vertex.glsl", shaderDir + "/fragment.glsl");
+      new Shader(defaultShaderPathVertex, defaultShaderPathFragment);
 
   m_defaultShader->use();
 

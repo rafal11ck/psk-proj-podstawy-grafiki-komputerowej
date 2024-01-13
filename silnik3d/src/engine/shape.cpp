@@ -1,12 +1,16 @@
-#include "shape.hpp"
-#include "basicMesh.hpp"
-#include "shader.hpp"
-#include <glm/ext/matrix_transform.hpp>
+
 #define TRACE
 #include "log.hpp"
 
+#include "basicMesh.hpp"
+#include "shader.hpp"
+#include "shape.hpp"
+#include <glm/ext/matrix_transform.hpp>
+
 Shape::Shape(verticies_t verticies, indicies_t indicies)
-    : BasicMesh(verticies, indicies) {}
+    : BasicMesh(verticies, indicies) {
+  LOGTRACEN;
+}
 
 glm::mat4 Shape::getModelMatrix() {
   LOGTRACEN;
