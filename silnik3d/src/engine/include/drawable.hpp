@@ -12,7 +12,7 @@ class Drawable {
 public:
   virtual void draw(Shader &shader) = 0;
 
-  virtual ~Drawable() { LOGWARN << "Destructor is not overloaded\n"; };
+  virtual ~Drawable() = 0;
 };
 
 #endif // DRAWABLE_HPP_

@@ -21,6 +21,8 @@ glm::mat4 Shape::getModelMatrix() {
 
   model = model * getRotationMatrix();
 
+  model = glm::scale(model, getScale());
+
   return model;
 };
 

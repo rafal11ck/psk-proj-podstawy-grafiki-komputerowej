@@ -3,10 +3,12 @@
 
 #include "basicMesh.hpp"
 #include "rotatable.hpp"
+#include "scaleable.hpp"
 
 class Shape : public BasicMesh,
               public virtual Movable,
-              public virtual Rotatable {
+              public virtual Rotatable,
+              public virtual Scalable {
 
 public:
   Shape(verticies_t verticies, indicies_t indicies);
