@@ -168,6 +168,10 @@ void Engine::render() {
     LOGERROR << "default shader does not exist\n";
     std::abort();
   }
+
+  m_defaultShader->use();
+  m_defaultShader->setMat4("projection", computeProjectionMatrix());
+
   for (auto drawable : m_drawables) {
     drawable->draw(*m_defaultShader);
   }
