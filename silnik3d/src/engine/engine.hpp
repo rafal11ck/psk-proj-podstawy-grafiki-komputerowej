@@ -4,6 +4,7 @@
 #include "SFML/System/Clock.hpp"
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
+#include "SFML/Window/Event.hpp"
 #include "SFML/Window/Window.hpp"
 #include "camera.hpp"
 #include "drawable.hpp"
@@ -101,6 +102,18 @@ public:
    **/
   glm::mat4 computeProjectionMatrix() const;
 
+  /**
+   *@brief Set if engine should change camera angles on mouse move within it's
+   *widnow.
+   **/
+  void setCameraHandlingMouse(bool enbaled);
+
+  /**
+   *@brief Set if engine should change camera positon on mouse move within
+   *it's widnow.
+   **/
+  void setCameraHandlingKeyboard(bool enbaled);
+
 private:
   static Engine *s_instance;
 
@@ -133,6 +146,16 @@ private:
 
   Camera m_camera{};
 
+  /**
+   *@brief Does engine change camrea angle o mouse move
+   **/
+  bool m_engineHandleCameraOnMouseMove{false};
+
+  /**
+   *@brief Does engine change camrea position o mouse move.
+   **/
+  bool m_cameraHandlingKeyboard{false};
+
 private:
   Engine();
   ~Engine();
@@ -145,6 +168,20 @@ private:
    */
   Engine &buildWindow(sf::ContextSettings settings = sf::ContextSettings{
                           24, 8, 4, 3, 3, sf::ContextSettings::Core});
+  /**
+   *@brief Builtin camera handler.
+   *
+   *Handles mouse movement event.
+   *
+   **/
+  void handleCameraMouseMove(const sf::Event ev);
+
+  /**
+   *@brief Builtin camera handler.
+   *
+   *Used in main loop.
+   **/
+  void handleCameraKeyboard();
 };
 
 #endif // ENGINE_HPP_

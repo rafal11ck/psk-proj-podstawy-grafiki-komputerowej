@@ -6,6 +6,8 @@
 #include "engine.hpp"
 #include "resources.hpp"
 #include "shader.hpp"
+#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/glm.hpp>
 #include <iostream>
@@ -59,6 +61,7 @@ void Engine::loop() {
     m_lastFrameDuration = m_clockFrame.restart();
     // handle events
     handleEvents();
+    handleCameraKeyboard();
 
     glClearColor(0.0, 0.2f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -113,6 +116,18 @@ glm::mat4 Engine::computeProjectionMatrix() const {
   return projection;
 }
 
+void Engine::setCameraHandlingMouse(bool enbaled) {
+  LOGINFO << "Setting engine camera rotation on mouse move to "
+          << (enbaled ? "true" : "false") << "\n";
+  m_engineHandleCameraOnMouseMove = enbaled;
+}
+
+void Engine::setCameraHandlingKeyboard(bool enbaled) {
+  LOGINFO << "Setting engine camera move on keyboard to "
+          << (enbaled ? "true" : "false") << "\n";
+  m_cameraHandlingKeyboard = enbaled;
+}
+
 Engine::Engine() {
   LOGINFO << "Initializing Engine\n";
   m_eventHandlers.fill([](const sf::Event &event) {});
@@ -148,12 +163,20 @@ Engine::~Engine() {
 void Engine::handleEvents() {
   sf::Event event;
   while (m_window.pollEvent(event)) {
-    if (event.type == sf::Event::Closed) {
-      // end the program
+
+    switch (event.type) {
+    case sf::Event::Closed:
       isLoopRunning = false;
-    } else if (event.type == sf::Event::Resized) {
+      break;
+    case sf::Event::Resized:
       // adjust the viewport when the window is resized
       glViewport(0, 0, event.size.width, event.size.height);
+      break;
+    case sf::Event::MouseMoveEvent:
+      handleCameraMouseMove(event);
+      break;
+    default:
+      break;
     }
 
     m_eventHandlers[event.type](event);
@@ -175,3 +198,51 @@ void Engine::render() {
     drawable->draw(*m_defaultShader);
   }
 }
+
+void Engine::handleCameraMouseMove(const sf::Event ev) {
+  if (!m_engineHandleCameraOnMouseMove) {
+    return;
+  }
+
+  static sf::Vector2i lastMousePos{sf::Mouse::getPosition(getWindow())};
+
+  float xOffset{static_cast<float>(ev.mouseMove.x) - lastMousePos.x};
+  float yOffset{static_cast<float>(lastMousePos.y - ev.mouseMove.y)};
+
+  sf::Vector2i middle{static_cast<int>(getWindow().getSize().x * 0.5f),
+                      static_cast<int>(getWindow().getSize().y * 0.5f)};
+
+  // sf::Mouse::setPosition(middle, engine.getWindow());
+
+  lastMousePos = sf::Mouse::getPosition(getWindow());
+
+  static constexpr float sensitivity = 0.3f;
+  xOffset *= sensitivity;
+  yOffset *= sensitivity;
+
+  getCamera().processMouseMovement(xOffset, yOffset);
+}
+
+void Engine::handleCameraKeyboard() {
+  if (!m_cameraHandlingKeyboard) {
+    return;
+  }
+
+  // Only accept one diretion movement on axis
+  auto handle{[&](sf::Keyboard::Key key1, sf::Keyboard::Key key2,
+                  Camera::Camera_Movement dir1, Camera::Camera_Movement dir2) {
+    if (sf::Keyboard::isKeyPressed(key1) ^ sf::Keyboard::isKeyPressed(key2)) {
+      if (sf::Keyboard::isKeyPressed(key1)) {
+        getCamera().processKeyboard(dir1, getLastFrameDuration().asSeconds());
+      } else if (sf::Keyboard::isKeyPressed(key2)) {
+        getCamera().processKeyboard(dir2, getLastFrameDuration().asSeconds());
+      }
+    }
+  }};
+
+  handle(sf::Keyboard::Key::W, sf::Keyboard::Key::S,
+         Camera::Camera_Movement::FORWARD, Camera::Camera_Movement::BACKWARD);
+
+  handle(sf::Keyboard::Key::A, sf::Keyboard::Key::D,
+         Camera::Camera_Movement::LEFT, Camera::Camera_Movement::RIGHT);
+};
