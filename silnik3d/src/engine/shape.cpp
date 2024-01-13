@@ -15,9 +15,11 @@ Shape::Shape(verticies_t verticies, indicies_t indicies)
 glm::mat4 Shape::getModelMatrix() {
   LOGTRACEN;
 
-  glm::mat4 model(1);
-  // move the object
+  glm::mat4 model{1};
+
   model = glm::translate(model, getPosition());
+
+  model = model * getRotationMatrix();
 
   return model;
 };

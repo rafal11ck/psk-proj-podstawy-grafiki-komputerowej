@@ -10,8 +10,19 @@ private:
   glm::mat4 m_rotationMatrix{1.f};
 
 public:
-  virtual void rotate(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
-  virtual void rotate(GLfloat angle, glm::vec3 origin);
+  /**
+   *@brief Rotate by given angle around axis.
+   *@param angle Angle in radians
+   **/
+  void rotate(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+
+  /**
+   *@brief Rotate by given angle around axis.
+   *@param angle Angle in radians
+   **/
+  void rotate(GLfloat angle, glm::vec3 axis);
+
+  const glm::mat4 &getRotationMatrix() const;
 };
 
 #endif // ROTATABLE_HPP_

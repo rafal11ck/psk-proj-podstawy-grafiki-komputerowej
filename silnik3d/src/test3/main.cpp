@@ -192,7 +192,7 @@ void init() {
   ourShader.setInt("texture1", 0);
   ourShader.setInt("texture2", 1);
 
-  engine.getCamera().setSpeed(100);
+  engine.getCamera().setSpeed(2);
   engine.getWindow().setMouseCursorGrabbed(true);
   engine.getWindow().setMouseCursorVisible(false);
 
@@ -200,6 +200,10 @@ void init() {
 }
 
 void loopFun() {
+
+  sf::Mouse::setPosition({static_cast<int>(engine.getWindow().getSize().x) / 2,
+                          static_cast<int>(engine.getWindow().getSize().y) / 2},
+                         engine.getWindow());
 
   handleCamera();
 

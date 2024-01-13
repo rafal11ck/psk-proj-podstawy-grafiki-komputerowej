@@ -28,9 +28,7 @@ Engine &Engine::getInstance() {
   return *s_instance;
 };
 
-sf::Time Engine::getLastFrameDuration() const {
-  return m_clockFrame.getElapsedTime();
-}
+sf::Time Engine::getLastFrameDuration() const { return m_lastFrameDuration; }
 
 Engine &Engine::buildWindow(sf::ContextSettings settings) {
   LOGTRACEN;

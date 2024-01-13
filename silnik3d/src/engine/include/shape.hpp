@@ -2,8 +2,11 @@
 #define SHAPE_HPP_
 
 #include "basicMesh.hpp"
+#include "rotatable.hpp"
 
-class Shape : public BasicMesh, public virtual Movable {
+class Shape : public BasicMesh,
+              public virtual Movable,
+              public virtual Rotatable {
 
 public:
   Shape(verticies_t verticies, indicies_t indicies);
