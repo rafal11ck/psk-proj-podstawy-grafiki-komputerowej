@@ -6,6 +6,7 @@
 #include "engine.hpp"
 #include "resources.hpp"
 #include "shader.hpp"
+#include <glm/ext/matrix_clip_space.hpp>
 #include <glm/glm.hpp>
 #include <iostream>
 #include <ostream>
@@ -104,8 +105,6 @@ Camera &Engine::getCamera() { return m_camera; };
 float Engine::getAspectRatio() const {
   return static_cast<float>(getWindow().getSize().x) / getWindow().getSize().y;
 }
-
-#include <glm/ext/matrix_clip_space.hpp>
 
 glm::mat4 Engine::computeProjectionMatrix() const {
   glm::mat4 projection =
