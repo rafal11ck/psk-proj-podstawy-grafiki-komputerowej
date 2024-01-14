@@ -1,3 +1,7 @@
+/**
+ * @file
+ * @brief Perspective example.
+ */
 
 #include "shape.hpp"
 #define TRACE

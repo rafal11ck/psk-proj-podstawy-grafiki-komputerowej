@@ -1,3 +1,8 @@
+/**
+ *@file
+ *@brief Shape example.
+ */
+
 #define TRACE
 #include "log.hpp"
 

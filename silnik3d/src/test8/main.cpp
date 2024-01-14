@@ -1,4 +1,9 @@
 
+/**
+ *@file
+ *@brief Camera example.
+ **/
+
 #include "shape.hpp"
 #define TRACE
 #include "log.hpp"
