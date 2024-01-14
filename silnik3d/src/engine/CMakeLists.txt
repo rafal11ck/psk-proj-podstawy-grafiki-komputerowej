@@ -53,6 +53,7 @@ include/scaleable.hpp
 include/shader.hpp
 include/shader_m.hpp
 include/shape.hpp
+include/texture.hpp
 include/transformable.hpp
 include/vertex.hpp
 include/vertexArray.hpp
@@ -65,6 +66,7 @@ scaleable.cpp
 shader.cpp
 shape.cpp
 stb_image.cpp
+texture.cpp
 transformable.cpp
 vertexArray.cpp
 vertexBuffer.cpp
