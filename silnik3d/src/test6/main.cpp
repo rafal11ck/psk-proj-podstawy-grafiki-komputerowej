@@ -19,14 +19,14 @@ std::vector<Vertex> verticies{
 std::vector<GLuint> indicies{0, 1, 3, 1, 2, 3};
 
 int main() {
-  engine.setMaxFps(30);
+  engine.setMaxFps(75);
 
   Shape *moveRectangle{new Shape{verticies, indicies}};
   // MoveRectangle->rotate(glm::radians(-30.f), {0, 0, 1});
 
   // Rectangles have to be moved away or they will be out of view due to
   // projection matix
-  moveRectangle->setPosition(0.7, 0.7, -5);
+  moveRectangle->setPosition(0.7, 0.7, -1);
   engine.addDrawable(moveRectangle);
 
   moveRectangle->setScale(0.2);
@@ -34,7 +34,7 @@ int main() {
   Shape *rotateRect{new Shape{verticies, indicies}};
   engine.addDrawable(rotateRect);
 
-  rotateRect->setPosition(-0.7, 0.7, -5);
+  rotateRect->setPosition(-0.5, 0.5, -1);
   rotateRect->setScale(0.3);
 
   // make it rotate
