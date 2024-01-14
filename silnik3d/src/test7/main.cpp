@@ -20,6 +20,7 @@ std::vector<GLuint> indicies{0, 1, 3, 1, 2, 3};
 
 int main() {
   engine.setMaxFps(30);
+  engine.setProjectionType(Engine::ProjectionType::perspective);
 
   Shape *moveRectangle{new Shape{verticies, indicies}};
   // MoveRectangle->rotate(glm::radians(-30.f), {0, 0, 1});
