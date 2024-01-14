@@ -69,7 +69,6 @@ sf::Vector2i lastMousePos{};
 
 void init();
 void loopFun();
-void cameraMouseHandle(const sf::Event ev);
 
 int main() {
 
@@ -77,8 +76,6 @@ int main() {
 
   init();
   std::cout << "Init done\n";
-
-  engine.setEventHandler(sf::Event::EventType::MouseMoved, cameraMouseHandle);
 
   engine.getWindow().setMouseCursorGrabbed(true);
   engine.getWindow().setMouseCursorVisible(false);
@@ -90,27 +87,6 @@ int main() {
   engine.loop();
 
   engine.getWindow().setMouseCursorGrabbed(false);
-}
-
-// Move camera around
-void handleCamera() {
-  // Only accept one diretion movement on axis
-  auto handle{[](sf::Keyboard::Key key1, sf::Keyboard::Key key2,
-                 Camera::Camera_Movement dir1, Camera::Camera_Movement dir2) {
-    if (sf::Keyboard::isKeyPressed(key1) ^ sf::Keyboard::isKeyPressed(key2)) {
-      if (sf::Keyboard::isKeyPressed(key1)) {
-        camera.processKeyboard(dir1, engine.getLastFrameDuration().asSeconds());
-      } else if (sf::Keyboard::isKeyPressed(key2)) {
-        camera.processKeyboard(dir2, engine.getLastFrameDuration().asSeconds());
-      }
-    }
-  }};
-
-  handle(sf::Keyboard::Key::W, sf::Keyboard::Key::S,
-         Camera::Camera_Movement::FORWARD, Camera::Camera_Movement::BACKWARD);
-
-  handle(sf::Keyboard::Key::A, sf::Keyboard::Key::D,
-         Camera::Camera_Movement::LEFT, Camera::Camera_Movement::RIGHT);
 }
 
 void init() {
@@ -196,18 +172,12 @@ void init() {
   // engine.getWindow().setMouseCursorGrabbed(true);
   // engine.getWindow().setMouseCursorVisible(false);
 
-  engine.setMaxFps(75);
+  engine.setMaxFps(5);
 
   engine.setProjectionType(Engine::ProjectionType::perspective);
 }
 
 void loopFun() {
-
-  sf::Mouse::setPosition({static_cast<int>(engine.getWindow().getSize().x) / 2,
-                          static_cast<int>(engine.getWindow().getSize().y) / 2},
-                         engine.getWindow());
-
-  handleCamera();
 
   // bind textures on corresponding texture units
   glActiveTexture(GL_TEXTURE0);
@@ -246,27 +216,4 @@ void loopFun() {
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
   }
-}
-
-// engine.setEventHandler(sf::Event::EventType::MouseMoved, cameraMouseHandle);
-void cameraMouseHandle(const sf::Event ev) {
-
-  static float yaw{};
-  static float pitch{};
-
-  float xOffset{static_cast<float>(ev.mouseMove.x) - lastMousePos.x};
-  float yOffset{static_cast<float>(lastMousePos.y - ev.mouseMove.y)};
-
-  sf::Vector2i middle{static_cast<int>(engine.getWindow().getSize().x * 0.5f),
-                      static_cast<int>(engine.getWindow().getSize().y * 0.5f)};
-
-  // sf::Mouse::setPosition(middle, engine.getWindow());
-
-  lastMousePos = sf::Mouse::getPosition(engine.getWindow());
-
-  static constexpr float sensitivity = 0.3f;
-  xOffset *= sensitivity;
-  yOffset *= sensitivity;
-
-  camera.processMouseMovement(xOffset, yOffset);
 }
