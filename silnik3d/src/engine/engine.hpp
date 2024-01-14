@@ -118,6 +118,8 @@ public:
 
   void setProjectionType(ProjectionType projectionType);
 
+  void moveMouseToCenterOfWindow();
+
 private:
   static Engine *s_instance;
 

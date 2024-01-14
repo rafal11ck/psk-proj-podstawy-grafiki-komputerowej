@@ -149,6 +149,12 @@ void Engine::setProjectionType(ProjectionType projectionType) {
   m_projectionType = projectionType;
 }
 
+void Engine::moveMouseToCenterOfWindow() {
+  sf::Mouse::setPosition({static_cast<int>(getWindow().getSize().x) / 2,
+                          static_cast<int>(getWindow().getSize().y) / 2},
+                         getWindow());
+}
+
 Engine::Engine() {
   LOGINFO << "Initializing Engine\n";
   m_eventHandlers.fill([](const sf::Event &event) {});
