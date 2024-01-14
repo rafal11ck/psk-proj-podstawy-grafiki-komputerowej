@@ -193,10 +193,12 @@ void init() {
   ourShader.setInt("texture2", 1);
 
   engine.getCamera().setSpeed(2);
-  engine.getWindow().setMouseCursorGrabbed(true);
-  engine.getWindow().setMouseCursorVisible(false);
+  // engine.getWindow().setMouseCursorGrabbed(true);
+  // engine.getWindow().setMouseCursorVisible(false);
 
   engine.setMaxFps(75);
+
+  engine.setProjectionType(Engine::ProjectionType::perspective);
 }
 
 void loopFun() {
@@ -208,10 +210,10 @@ void loopFun() {
   handleCamera();
 
   // bind textures on corresponding texture units
-  // glActiveTexture(GL_TEXTURE0);
-  // glBindTexture(GL_TEXTURE_2D, texture1);
-  // glActiveTexture(GL_TEXTURE1);
-  // glBindTexture(GL_TEXTURE_2D, texture2);
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, texture1);
+  glActiveTexture(GL_TEXTURE1);
+  glBindTexture(GL_TEXTURE_2D, texture2);
 
   glClearColor(0.0, 0.2f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
