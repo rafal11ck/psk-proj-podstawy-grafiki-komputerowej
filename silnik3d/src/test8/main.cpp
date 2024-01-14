@@ -19,8 +19,15 @@ std::vector<Vertex> verticies{
 std::vector<GLuint> indicies{0, 1, 3, 1, 2, 3};
 
 int main() {
-  engine.setMaxFps(30);
+  engine.setMaxFps(75);
   engine.setCameraHandlingKeyboard(true);
+  engine.setCameraHandlingMouse(true);
+
+  engine.setLoopFunction([]() { engine.moveMouseToCenterOfWindow(); });
+
+  engine.getWindow().setMouseCursorGrabbed(true);
+  engine.getWindow().setMouseCursorVisible(false);
+
   engine.setProjectionType(Engine::ProjectionType::perspective);
 
   Shape *moveRectangle{new Shape{verticies, indicies}};
