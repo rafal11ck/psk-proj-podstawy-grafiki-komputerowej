@@ -1,13 +1,8 @@
 
 /**
  *@file
- *@brief Test setting texture.
+ *@brief Test setting textures.
  **/
-
-/**
- *@file
- *@brief Shape example.
- */
 
 #include "resources.hpp"
 #include "texture.hpp"

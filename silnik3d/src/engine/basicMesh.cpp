@@ -37,11 +37,9 @@ void BasicMesh::initialize(verticies_t veritices, indicies_t indicies) {
 
 BasicMesh::BasicMesh(){};
 
-BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies,
-                     Texture diffuseTexture) {
+BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies) {
   LOGTRACEN;
   initialize(veritices, indicies);
-  m_textureDiffuse = diffuseTexture;
 }
 
 void BasicMesh::draw(Shader &shader) {

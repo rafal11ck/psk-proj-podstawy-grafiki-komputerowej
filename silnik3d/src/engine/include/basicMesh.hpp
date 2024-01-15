@@ -34,9 +34,6 @@ private:
   /// @brief Elements  inidcies collection.
   indicies_t m_indicies;
 
-  Texture m_textureDiffuse{Texture::TextureType::diffuse};
-  Texture m_textureSpecular{Texture::TextureType::specular};
-
 protected:
   /**
    *@brief
@@ -48,8 +45,7 @@ protected:
 
 public:
   BasicMesh();
-  BasicMesh(verticies_t veritices, indicies_t indicies,
-            Texture textureDiffuse = {Texture::TextureType::diffuse});
+  BasicMesh(verticies_t veritices, indicies_t indicies);
 
   ~BasicMesh();
 
