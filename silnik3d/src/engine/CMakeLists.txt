@@ -38,12 +38,14 @@ include_directories(${GLM_INCLUDE_DIRS})
 add_library(engine
 basicMesh.cpp
 camera.cpp
+cube.cpp
 drawable.cpp
 elementBuffer.cpp
 engine.cpp
 engine.hpp
 include/basicMesh.hpp
 include/camera.hpp
+include/cube.hpp
 include/drawable.hpp
 include/elementBuffer.hpp
 include/moveable.hpp

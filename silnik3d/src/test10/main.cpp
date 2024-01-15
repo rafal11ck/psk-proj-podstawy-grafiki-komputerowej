@@ -1,34 +1,13 @@
 
 /**
  *@file
- *@brief Test setting textures.
+ *@brief Test Cube.
  **/
 
-#include "resources.hpp"
-#include "texture.hpp"
-#include "vertex.hpp"
-#include <glm/fwd.hpp>
-#define TRACE
-#include "log.hpp"
-
+#include "cube.hpp"
 #include "engine.hpp"
-#include "shape.hpp"
-#include <vector>
 
 Engine &engine{Engine::getInstance()};
-
-std::vector<Vertex> verticies{
-    Vertex{glm::vec3{1.f, 1.f, 0.0f}, glm::vec3{0.f}, {1.f, 1.f}}, // top right
-    Vertex{glm::vec3{1.f, -1.f, 0.0f},
-           glm::vec3{0.f},
-           {1.f, -0.f}}, // bottom right
-    Vertex{glm::vec3{-1.f, -1.f, 0.0f},
-           glm::vec3{0.f},
-           {0.f, -0.f}}, // bottom left
-    Vertex{glm::vec3{-1.f, 1.f, 0.0f}, glm::vec3{0.f}, {0.f, 1.f}} // top left
-};
-
-std::vector<GLuint> indicies{0, 1, 3, 1, 2, 3};
 
 int main() {
   engine.setProjectionType(Engine::ProjectionType::perspective);
@@ -38,28 +17,30 @@ int main() {
   engine.getWindow().setMouseCursorVisible(false);
 
   engine.setMaxFps(75);
-  // engine.setProjectionType(Engine::ProjectionType::perspective);
 
-  Shape *rectangle =
-      new Shape{verticies, indicies,
-                Texture{Texture::TextureType::diffuse,
-                        getResourcesPath() + "/textures/eureka.png"}};
+  Shape *boxContainer =
+      new Cube{Texture{Texture::TextureType::diffuse,
+                       getResourcesPath() + "/textures/container.png"},
+               Texture{Texture::TextureType::specular,
+                       getResourcesPath() + "/textures/eureka.png"}};
 
-  // move it so it won't be clipped.
-  rectangle->setPosition(0.5, 0, -1);
-  rectangle->setScale(0.5);
-  engine.addDrawable(rectangle);
+  boxContainer->setPosition(-0.5, 0, -4);
+  boxContainer->setScale(0.2);
+  engine.addDrawable(boxContainer);
 
-  Shape *box =
-      new Shape{verticies, indicies,
-                Texture{Texture::TextureType::diffuse,
-                        getResourcesPath() + "/textures/container.png"},
-                Texture{Texture::TextureType::specular,
-                        getResourcesPath() + "/textures/eureka.png"}};
+  Shape *boxMeme =
+      new Cube(Texture{Texture::TextureType::diffuse,
+                       getResourcesPath() + "/textures/eureka.png"});
+  engine.addDrawable(boxMeme);
+  boxMeme->setPosition(0, -1, -3);
+  boxMeme->setScale(0.2);
 
-  box->setPosition(-0.5, 0, -1);
-  box->setScale(0.5);
-  engine.addDrawable(box);
+  Shape *boxMemeFast =
+      new Cube(Texture{Texture::TextureType::diffuse,
+                       getResourcesPath() + "/textures/eureka.png"});
+  boxMemeFast->setPosition(1, 1, -3.5);
+  boxMemeFast->setScale(0.3);
+  engine.addDrawable(boxMemeFast);
 
   engine.setLoopFunction([&]() {
     engine.moveMouseToCenterOfWindow();
@@ -67,11 +48,10 @@ int main() {
     const float rotation{
         glm::radians(angleSpeed * engine.getLastFrameDuration().asSeconds())};
 
-    rectangle->rotate(rotation, {0, 1, 0});
-    box->rotate(rotation, {1, 0, 0});
+    boxContainer->rotate(rotation, {1, 0, 0});
+    boxMeme->rotate(rotation, {-1, 0, 0});
+    boxMemeFast->rotate(rotation * 5, {0, 0.5, 0.5});
   });
 
   engine.loop();
-
-  delete rectangle;
 }
