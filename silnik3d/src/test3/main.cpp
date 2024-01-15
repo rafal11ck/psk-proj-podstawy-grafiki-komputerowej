@@ -131,12 +131,6 @@ Texture texture2{"../engine/resources/textures/awesomeface.png",
 
 void loopFun() {
 
-  // bind textures on corresponding texture units
-  // glActiveTexture(GL_TEXTURE0);
-  // glBindTexture(GL_TEXTURE_2D, texture1.m_id);
-  // glActiveTexture(GL_TEXTURE1);
-  // glBindTexture(GL_TEXTURE_2D, texture2.m_id);
-
   glClearColor(0.0, 0.2f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
