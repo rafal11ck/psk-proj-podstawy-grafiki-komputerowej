@@ -91,11 +91,47 @@ int main() {
   engine.getWindow().setMouseCursorGrabbed(false);
 }
 
+/**
+ *@brief
+ *
+ *This class assumes texture unit 0 is used for diffuse texture and texture unit
+ *1 is used for specular map.
+ **/
 class Texture {
+
 public:
+  enum class TextureType { diffuse, specular };
+
+  /**
+   *@brief Retuns corespnding texture unit for the type.
+   **/
+  static GLenum getTextureTypeUnit(const TextureType type) {
+    switch (type) {
+    case TextureType::diffuse:
+      return GL_TEXTURE0;
+      break;
+    case TextureType::specular:
+      return GL_TEXTURE1;
+      break;
+    default:
+      LOGERROR << "TextureType not handled\n";
+      std::abort();
+    }
+  };
+
+  void bind() {
+    glActiveTexture(getTextureTypeUnit(m_type));
+    glBindTexture(GL_TEXTURE_2D, m_id);
+  }
+
+  TextureType m_type;
+
   GLuint m_id;
-  // Only PNG
-  Texture(const std::string path) {
+
+  // Only PNG / jpeg
+  Texture(const std::string path, TextureType type) : m_type(type) {
+    bind();
+
     glGenTextures(1, &m_id);
     glBindTexture(GL_TEXTURE_2D, m_id);
     // set the texture wrapping parameters
@@ -172,16 +208,21 @@ void init() {
 
   engine.setProjectionType(Engine::ProjectionType::perspective);
 }
-Texture texture1{"../engine/resources/textures/container.jpg"};
-Texture texture2{"../engine/resources/textures/awesomeface.png"};
+Texture texture1{"../engine/resources/textures/container.jpg",
+                 Texture::TextureType::diffuse};
+Texture texture2{"../engine/resources/textures/awesomeface.png",
+                 Texture::TextureType::specular};
 
 void loopFun() {
 
   // bind textures on corresponding texture units
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texture1.m_id);
-  glActiveTexture(GL_TEXTURE1);
-  glBindTexture(GL_TEXTURE_2D, texture2.m_id);
+  // glActiveTexture(GL_TEXTURE0);
+  // glBindTexture(GL_TEXTURE_2D, texture1.m_id);
+  // glActiveTexture(GL_TEXTURE1);
+  // glBindTexture(GL_TEXTURE_2D, texture2.m_id);
+
+  texture1.bind();
+  texture2.bind();
 
   glClearColor(0.0, 0.2f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
