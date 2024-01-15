@@ -7,12 +7,16 @@
 #include "moveable.hpp"
 #include "rotatable.hpp"
 #include "shader.hpp"
+#include "texture.hpp"
 #include "vertexArray.hpp"
 #include "vertexBuffer.hpp"
 #include <GL/glew.h>
 #include <netdb.h>
 
 class BasicMesh : public Drawable {
+  BasicMesh(BasicMesh &) = delete;
+  BasicMesh(BasicMesh &&) = delete;
+
 public:
   using verticies_t = std::vector<Vertex>;
   using indicies_t = std::vector<GLuint>;
@@ -30,6 +34,9 @@ private:
   /// @brief Elements  inidcies collection.
   indicies_t m_indicies;
 
+  Texture m_textureDiffuse{Texture::TextureType::diffuse};
+  Texture m_textureSpecular{Texture::TextureType::specular};
+
 protected:
   /**
    *@brief
@@ -41,7 +48,8 @@ protected:
 
 public:
   BasicMesh();
-  BasicMesh(verticies_t veritices, indicies_t indicies);
+  BasicMesh(verticies_t veritices, indicies_t indicies,
+            Texture textureDiffuse = {Texture::TextureType::diffuse});
 
   ~BasicMesh();
 

@@ -1,3 +1,4 @@
+#include "texture.hpp"
 #define TRACE
 #include "log.hpp"
 
@@ -36,9 +37,11 @@ void BasicMesh::initialize(verticies_t veritices, indicies_t indicies) {
 
 BasicMesh::BasicMesh(){};
 
-BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies) {
+BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies,
+                     Texture diffuseTexture) {
   LOGTRACEN;
   initialize(veritices, indicies);
+  m_textureDiffuse = diffuseTexture;
 }
 
 void BasicMesh::draw(Shader &shader) {

@@ -28,6 +28,10 @@ glm::mat4 Shape::getModelMatrix() {
 
 void Shape::draw(Shader &shader) {
   shader.use();
+
+  shader.setInt("textureDiffuse", 0);
+  m_textureDiffuse.bind();
+
   shader.setMat4("model", getModelMatrix());
   BasicMesh::draw(shader);
 }

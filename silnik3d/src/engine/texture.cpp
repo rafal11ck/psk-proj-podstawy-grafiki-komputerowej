@@ -3,8 +3,8 @@
 #include "resources.hpp"
 #include <stb/stb_image.h>
 
-const std::string defaultTexturePath{getResourcesPath() +
-                                     "/textures/default.png"};
+const std::string Texture::defaultTexturePath{getResourcesPath() +
+                                              "/textures/default.png"};
 
 GLenum Texture::getTextureTypeUnit(const TextureType type) {
   switch (type) {
@@ -33,6 +33,8 @@ void Texture::unBind() {
 Texture::Texture(TextureType type, const std::string path) : m_type(type) {
   bind();
 
+  stbi_set_flip_vertically_on_load(true);
+
   glGenTextures(1, &m_id);
   glBindTexture(GL_TEXTURE_2D, m_id);
   // set the texture wrapping parameters
@@ -47,9 +49,9 @@ Texture::Texture(TextureType type, const std::string path) : m_type(type) {
   unsigned char *data =
       stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
 
-  LOGINFO << path << " has " << nrChannels << " chanels\n";
-
   if (data) {
+
+    LOGINFO << path << " has " << nrChannels << " chanels\n";
     GLenum format;
     switch (nrChannels) {
     case 3:
@@ -70,7 +72,7 @@ Texture::Texture(TextureType type, const std::string path) : m_type(type) {
                  GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
   } else {
-    LOGERROR << "Failed to load texture" << std::endl;
+    LOGERROR << "Failed to load texture from " << path << "\n";
   }
   stbi_image_free(data);
 }
