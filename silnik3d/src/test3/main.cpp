@@ -1,3 +1,4 @@
+
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
@@ -24,7 +25,7 @@ Engine &engine{Engine::getInstance()};
 
 Camera &camera{engine.getCamera()};
 
-unsigned int texture2;
+unsigned int texture1;
 
 Shader ourShader{"vertex.glsl", "fragment.glsl"};
 
@@ -58,7 +59,7 @@ float vertices[] = {
 
 // world space positions of our cubes
 glm::vec3 cubePositions[] = {
-    glm::vec3(0.0f, -5.0f, -2.0f),  glm::vec3(2.0f, 5.0f, -15.0f),
+    glm::vec3(0.0f, 1.0f, -5.0f),   glm::vec3(2.0f, 5.0f, -15.0f),
     glm::vec3(-1.5f, -2.2f, -2.5f), glm::vec3(-3.8f, -2.0f, -12.3f),
     glm::vec3(2.4f, -0.4f, -3.5f),  glm::vec3(-1.7f, 3.0f, -7.5f),
     glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
@@ -92,12 +93,11 @@ int main() {
 class Texture {
 public:
   GLuint m_id;
-
-  void bind() { glBindTexture(GL_TEXTURE_2D, m_id); }
-
-  Texture(const std::string &path) {
+  // Only PNG
+  Texture(
+      const std::string path = "../engine/resources/textures/awesomeface.png") {
     glGenTextures(1, &m_id);
-
+    glBindTexture(GL_TEXTURE_2D, m_id);
     // set the texture wrapping parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -105,26 +105,23 @@ public:
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load image, create texture and generate mipmaps
-    //
 
     int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(
-        true); // tell stb_image.h to flip loaded texture's on the y-axis.
     unsigned char *data =
         stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
+
     if (data) {
-      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
+      // note that the awesomeface.png has transparency and thus an alpha
+      // channel, so make sure to tell OpenGL the data type is of GL_RGBA
+      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA,
                    GL_UNSIGNED_BYTE, data);
       glGenerateMipmap(GL_TEXTURE_2D);
     } else {
       std::cout << "Failed to load texture" << std::endl;
     }
-
     stbi_image_free(data);
   }
 };
-
-Texture tex1{"../engine/resources/textures/container.jpg"};
 
 void init() {
   // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -140,7 +137,6 @@ void init() {
   // position attribute
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
-
   // texture coord attribute
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
                         (void *)(3 * sizeof(float)));
@@ -150,36 +146,8 @@ void init() {
   // -------------------------
   // texture 1
   // ---------
-  // glGenTextures(1, &texture1);
-  // glBindTexture(GL_TEXTURE_2D, texture1);
-  // set the texture wrapping parameters
-  // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  // // set texture filtering parameters
-  // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  // /
-  // load image, create texture and generate mipmaps
-
-  int width, height, nrChannels;
-  // stbi_set_flip_vertically_on_load(
-  //     true); // tell stb_image.h to flip loaded texture's on the y-axis.
-  unsigned char *data;
-  // // ;= stbi_load("../engine/resources/textures/container.jpg",
-  // //                               &width, &height, &nrChannels, 0);
-  // // if (data) {
-  // //   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
-  // //                GL_UNSIGNED_BYTE, data);
-  // //   glGenerateMipmap(GL_TEXTURE_2D);
-  // // } else {
-  // //   std::cout << "Failed to load texture" << std::endl;
-  // // }
-
-  // stbi_image_free(data);
-  // texture 2
-  // ---------
-  glGenTextures(1, &texture2);
-  glBindTexture(GL_TEXTURE_2D, texture2);
+  glGenTextures(1, &texture1);
+  glBindTexture(GL_TEXTURE_2D, texture1);
   // set the texture wrapping parameters
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -187,18 +155,20 @@ void init() {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   // load image, create texture and generate mipmaps
-  data = stbi_load("../engine/resources/textures/awesomeface.png", &width,
-                   &height, &nrChannels, 0);
 
+  int width, height, nrChannels;
+  stbi_set_flip_vertically_on_load(
+      true); // tell stb_image.h to flip loaded texture's on the y-axis.
+  unsigned char *data = stbi_load("../engine/resources/textures/container.jpg",
+                                  &width, &height, &nrChannels, 0);
   if (data) {
-    // note that the awesomeface.png has transparency and thus an alpha
-    // channel, so make sure to tell OpenGL the data type is of GL_RGBA
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA,
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
                  GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
   } else {
     std::cout << "Failed to load texture" << std::endl;
   }
+
   stbi_image_free(data);
 
   // tell opengl for each sampler to which texture unit it belongs to (only
@@ -212,17 +182,20 @@ void init() {
   // engine.getWindow().setMouseCursorGrabbed(true);
   // engine.getWindow().setMouseCursorVisible(false);
 
-  engine.setMaxFps(1);
+  engine.setMaxFps(5);
 
   engine.setProjectionType(Engine::ProjectionType::perspective);
 }
 
+Texture texture2{};
+
 void loopFun() {
+
   // bind textures on corresponding texture units
   glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, tex1.m_id);
+  glBindTexture(GL_TEXTURE_2D, texture1);
   glActiveTexture(GL_TEXTURE1);
-  glBindTexture(GL_TEXTURE_2D, texture2);
+  glBindTexture(GL_TEXTURE_2D, texture2.m_id);
 
   glClearColor(0.0, 0.2f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
