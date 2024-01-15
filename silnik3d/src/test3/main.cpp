@@ -3,6 +3,7 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include "SFML/Window/Mouse.hpp"
+#include "texture.hpp"
 #include <cstdlib>
 #include <glm/geometric.hpp>
 
@@ -90,98 +91,6 @@ int main() {
 
   engine.getWindow().setMouseCursorGrabbed(false);
 }
-
-/**
- *@brief
- *
- *This class assumes texture unit 0 is used for diffuse texture and texture unit
- *1 is used for specular map.
- **/
-class Texture {
-
-public:
-  enum class TextureType { diffuse, specular };
-
-private:
-  TextureType m_type;
-
-  GLuint m_id;
-
-public:
-  /**
-   *@brief Retuns corespnding texture unit for the type.
-   **/
-  static GLenum getTextureTypeUnit(const TextureType type) {
-    switch (type) {
-    case TextureType::diffuse:
-      return GL_TEXTURE0;
-      break;
-    case TextureType::specular:
-      return GL_TEXTURE1;
-      break;
-    default:
-      LOGERROR << "TextureType not handled\n";
-      std::abort();
-    }
-  };
-
-  void bind() {
-    glActiveTexture(getTextureTypeUnit(m_type));
-    glBindTexture(GL_TEXTURE_2D, m_id);
-  }
-
-  void unBind() {
-    glActiveTexture(getTextureTypeUnit(m_type));
-    glBindTexture(GL_TEXTURE_2D, 0);
-  }
-
-  // Only PNG / jpeg
-  Texture(const std::string path, TextureType type) : m_type(type) {
-    bind();
-
-    glGenTextures(1, &m_id);
-    glBindTexture(GL_TEXTURE_2D, m_id);
-    // set the texture wrapping parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // set texture filtering parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    // load image, create texture and generate mipmaps
-    int width, height, nrChannels;
-    unsigned char *data =
-        stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
-
-    LOGINFO << path << " has " << nrChannels << " chanels\n";
-
-    if (data) {
-
-      GLenum format;
-      switch (nrChannels) {
-      case 3:
-        format = GL_RGB;
-        break;
-      case 4:
-        format = GL_RGBA;
-        break;
-      default:
-        LOGERROR << "Chanel count " << nrChannels << "is not handled ";
-        std::abort();
-        break;
-      }
-
-      // note that the awesomeface.png has transparency and thus an alpha
-      // channel, so make sure to tell OpenGL the data type is  ? of GL_RGBA?
-      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, format,
-                   GL_UNSIGNED_BYTE, data);
-      glGenerateMipmap(GL_TEXTURE_2D);
-    } else {
-      std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data);
-  }
-};
 
 void init() {
   // set up vertex data (and buffer(s)) and configure vertex attributes

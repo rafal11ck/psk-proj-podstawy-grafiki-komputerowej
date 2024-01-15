@@ -4,31 +4,39 @@
 #include <GL/glew.h>
 #include <string>
 
+/**
+ *@brief
+ *
+ *This class assumes texture unit 0 is used for diffuse texture and texture unit
+ *1 is used for specular map.
+ *
+ *Remember to enable samplers by setting sampler2D uniforms.
+ **/
 class Texture {
+
 public:
-  enum TextureType { diffuse, specular };
+  enum class TextureType { diffuse, specular };
 
   static const std::string defaultTexturePath;
 
 private:
   TextureType m_type;
-  GLuint m_id{0};
-  GLenum m_wrapping;
-  const std::string m_path{defaultTexturePath};
-
-  void loadImage(const char *path);
-
-  void initialize();
+  GLuint m_id;
 
 public:
-  Texture(TextureType type, const std::string &path = defaultTexturePath,
-          GLenum wrapping = GL_REPEAT);
-  ~Texture();
+  Texture(Texture &) = delete;
+  Texture(Texture &&) = delete;
+
+  /**
+   *@brief Retuns corespnding texture unit for the type.
+   **/
+  static GLenum getTextureTypeUnit(const TextureType type);
 
   void bind();
-  void unbind();
 
-  GLuint getId() const;
+  void unBind();
+
+  // Only PNG / jpeg tested
+  Texture(const std::string path, TextureType type);
 };
-
 #endif // TEXTURE_HPP_
