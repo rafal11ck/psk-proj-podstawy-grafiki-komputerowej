@@ -102,6 +102,12 @@ class Texture {
 public:
   enum class TextureType { diffuse, specular };
 
+private:
+  TextureType m_type;
+
+  GLuint m_id;
+
+public:
   /**
    *@brief Retuns corespnding texture unit for the type.
    **/
@@ -124,9 +130,10 @@ public:
     glBindTexture(GL_TEXTURE_2D, m_id);
   }
 
-  TextureType m_type;
-
-  GLuint m_id;
+  void unBind() {
+    glActiveTexture(getTextureTypeUnit(m_type));
+    glBindTexture(GL_TEXTURE_2D, 0);
+  }
 
   // Only PNG / jpeg
   Texture(const std::string path, TextureType type) : m_type(type) {
@@ -140,8 +147,8 @@ public:
     // set texture filtering parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load image, create texture and generate mipmaps
 
+    // load image, create texture and generate mipmaps
     int width, height, nrChannels;
     unsigned char *data =
         stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
@@ -221,9 +228,6 @@ void loopFun() {
   // glActiveTexture(GL_TEXTURE1);
   // glBindTexture(GL_TEXTURE_2D, texture2.m_id);
 
-  texture1.bind();
-  texture2.bind();
-
   glClearColor(0.0, 0.2f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -242,6 +246,10 @@ void loopFun() {
   // render boxes
   glBindVertexArray(VAO);
   for (unsigned int i = 0; i < 10; i++) {
+
+    texture1.bind();
+    texture2.bind();
+
     // calculate the model matrix for each object and pass it to shader before
     // drawing
     glm::mat4 model = glm::mat4(
@@ -254,5 +262,8 @@ void loopFun() {
     ourShader.setMat4("model", model);
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
+
+    texture1.unBind();
+    texture2.unBind();
   }
 }
