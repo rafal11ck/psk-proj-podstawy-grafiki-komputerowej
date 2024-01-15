@@ -13,7 +13,10 @@ class Shape : public BasicMesh,
 
 public:
   Shape(verticies_t verticies, indicies_t indicies,
-        Texture textureDiffuse = Texture{Texture::TextureType::diffuse});
+        Texture textureDiffuse = Texture{Texture::TextureType::diffuse},
+        Texture textureSpecular = Texture{Texture::TextureType::specular}
+
+  );
 
   virtual glm::mat4 getModelMatrix() override;
 
@@ -23,6 +26,7 @@ public:
 
 private:
   Texture m_textureDiffuse;
+  Texture m_textureSpecular;
 };
 
 #endif // SHAPE_HPP_

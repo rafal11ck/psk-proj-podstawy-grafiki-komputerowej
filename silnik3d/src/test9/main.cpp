@@ -52,7 +52,9 @@ int main() {
   Shape *box =
       new Shape{verticies, indicies,
                 Texture{Texture::TextureType::diffuse,
-                        getResourcesPath() + "/textures/container.png"}};
+                        getResourcesPath() + "/textures/container.png"},
+                Texture{Texture::TextureType::specular,
+                        getResourcesPath() + "/textures/eureka.png"}};
 
   box->setPosition(-0.5, 0, -1);
   box->setScale(0.5);

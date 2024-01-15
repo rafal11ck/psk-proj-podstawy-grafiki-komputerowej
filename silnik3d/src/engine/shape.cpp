@@ -7,8 +7,10 @@
 #include "shape.hpp"
 #include <glm/ext/matrix_transform.hpp>
 
-Shape::Shape(verticies_t verticies, indicies_t indicies, Texture textureDiffuse)
-    : BasicMesh(verticies, indicies), m_textureDiffuse(textureDiffuse) {
+Shape::Shape(verticies_t verticies, indicies_t indicies, Texture textureDiffuse,
+             Texture textureSpecular)
+    : BasicMesh(verticies, indicies), m_textureDiffuse(textureDiffuse),
+      m_textureSpecular(textureSpecular) {
   LOGTRACEN;
 }
 
@@ -30,7 +32,10 @@ void Shape::draw(Shader &shader) {
   shader.use();
 
   shader.setInt("textureDiffuse", 0);
+  shader.setInt("textureSpecular", 1);
+
   m_textureDiffuse.bind();
+  m_textureSpecular.bind();
 
   shader.setMat4("model", getModelMatrix());
   BasicMesh::draw(shader);

@@ -31,11 +31,13 @@ void Texture::unBind() {
 }
 
 Texture::Texture(TextureType type, const std::string path) : m_type(type) {
-  bind();
 
   stbi_set_flip_vertically_on_load(true);
 
   glGenTextures(1, &m_id);
+
+  bind();
+
   glBindTexture(GL_TEXTURE_2D, m_id);
   // set the texture wrapping parameters
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
