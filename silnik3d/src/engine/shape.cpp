@@ -7,8 +7,8 @@
 #include "shape.hpp"
 #include <glm/ext/matrix_transform.hpp>
 
-Shape::Shape(verticies_t verticies, indicies_t indicies)
-    : BasicMesh(verticies, indicies) {
+Shape::Shape(verticies_t verticies, indicies_t indicies, Texture textureDiffuse)
+    : BasicMesh(verticies, indicies), m_textureDiffuse(textureDiffuse) {
   LOGTRACEN;
 }
 

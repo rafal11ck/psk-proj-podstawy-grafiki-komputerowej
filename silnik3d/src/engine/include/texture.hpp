@@ -24,9 +24,6 @@ private:
   GLuint m_id;
 
 public:
-  Texture(Texture &) = delete;
-  Texture(Texture &&) = delete;
-
   /**
    *@brief Retuns corespnding texture unit for the type.
    **/
@@ -37,6 +34,6 @@ public:
   void unBind();
 
   // Only PNG / jpeg tested
-  Texture(const std::string path, TextureType type);
+  Texture(TextureType type, const std::string path = defaultTexturePath);
 };
 #endif // TEXTURE_HPP_

@@ -27,8 +27,6 @@ Engine &engine{Engine::getInstance()};
 
 Camera &camera{engine.getCamera()};
 
-unsigned int texture1old;
-
 Shader ourShader{"vertex.glsl", "fragment.glsl"};
 
 float lastX{};
@@ -80,16 +78,11 @@ int main() {
   init();
   std::cout << "Init done\n";
 
-  engine.getWindow().setMouseCursorGrabbed(true);
-  engine.getWindow().setMouseCursorVisible(false);
-
   lastMousePos = sf::Mouse::getPosition(engine.getWindow());
 
   engine.setLoopFunction(loopFun);
 
   engine.loop();
-
-  engine.getWindow().setMouseCursorGrabbed(false);
 }
 
 void init() {
@@ -116,18 +109,18 @@ void init() {
   ourShader.setInt("textureDiffuse", 0);
   ourShader.setInt("textureSpecular", 1);
 
-  engine.getCamera().setSpeed(2);
-  // engine.getWindow().setMouseCursorGrabbed(true);
-  // engine.getWindow().setMouseCursorVisible(false);
-
   engine.setMaxFps(5);
 
   engine.setProjectionType(Engine::ProjectionType::perspective);
 }
-Texture texture1{"../engine/resources/textures/container.jpg",
-                 Texture::TextureType::diffuse};
-Texture texture2{"../engine/resources/textures/awesomeface.png",
-                 Texture::TextureType::specular};
+Texture texture1{
+    Texture::TextureType::diffuse,
+    "../engine/resources/textures/container.jpg",
+};
+Texture texture2{
+    Texture::TextureType::specular,
+    "../engine/resources/textures/awesomeface.png",
+};
 
 void loopFun() {
 

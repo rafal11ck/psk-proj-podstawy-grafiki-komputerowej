@@ -1,6 +1,10 @@
 #include "include/texture.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 #include <stb/stb_image.h>
+
+const std::string defaultTexturePath{getResourcesPath() +
+                                     "/textures/default.png"};
 
 GLenum Texture::getTextureTypeUnit(const TextureType type) {
   switch (type) {
@@ -26,7 +30,7 @@ void Texture::unBind() {
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Texture::Texture(const std::string path, TextureType type) : m_type(type) {
+Texture::Texture(TextureType type, const std::string path) : m_type(type) {
   bind();
 
   glGenTextures(1, &m_id);
