@@ -197,8 +197,8 @@ void init() {
 
   // -------------------------------------------------------------------------------------------
   ourShader.use();
-  ourShader.setInt("texture1", 0);
-  ourShader.setInt("texture2", 1);
+  ourShader.setInt("textureDiffuse", 0);
+  ourShader.setInt("textureSpecular", 1);
 
   engine.getCamera().setSpeed(2);
   // engine.getWindow().setMouseCursorGrabbed(true);
