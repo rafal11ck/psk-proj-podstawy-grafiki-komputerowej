@@ -57,6 +57,7 @@ include/shader_m.hpp
 include/shape.hpp
 include/sphere.hpp
 include/texture.hpp
+include/torus.hpp
 include/transformable.hpp
 include/vertex.hpp
 include/vertexArray.hpp
@@ -71,6 +72,7 @@ shape.cpp
 sphere.cpp
 stb_image.cpp
 texture.cpp
+torus.cpp
 transformable.cpp
 vertexArray.cpp
 vertexBuffer.cpp
