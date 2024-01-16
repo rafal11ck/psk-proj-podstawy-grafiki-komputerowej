@@ -4,6 +4,8 @@
  *@brief Test shapes.
  **/
 
+#include "SFML/Window/Event.hpp"
+#include "SFML/Window/Keyboard.hpp"
 #include "cube.hpp"
 #include "engine.hpp"
 #include "resources.hpp"
@@ -19,6 +21,14 @@ int main() {
   engine.setCameraHandlingMouse(true);
   engine.getWindow().setMouseCursorGrabbed(true);
   engine.getWindow().setMouseCursorVisible(false);
+
+  engine.setEventHandler(Engine::Event::KeyReleased, [](sf::Event ev) {
+    static bool wireOn{false};
+    if (ev.key.code == sf::Keyboard::Key::M) {
+      LOGINFO << "Switching wireframe mode " << wireOn << '\n';
+      engine.setWireframeMode(wireOn = !wireOn);
+    }
+  });
 
   engine.setMaxFps(75);
 

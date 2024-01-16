@@ -120,6 +120,8 @@ public:
 
   void moveMouseToCenterOfWindow();
 
+  void setWireframeMode(bool enabled);
+
 private:
   static Engine *s_instance;
 

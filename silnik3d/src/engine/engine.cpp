@@ -155,6 +155,14 @@ void Engine::moveMouseToCenterOfWindow() {
                          getWindow());
 }
 
+void Engine::setWireframeMode(bool enabled) {
+  if (enabled) {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  } else {
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  }
+}
+
 Engine::Engine() {
   LOGINFO << "Initializing Engine\n";
   m_eventHandlers.fill([](const sf::Event &event) {});
