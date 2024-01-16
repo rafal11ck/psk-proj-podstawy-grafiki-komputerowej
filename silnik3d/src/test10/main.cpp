@@ -1,7 +1,7 @@
 
 /**
  *@file
- *@brief Test Cube.
+ *@brief Test shapes.
  **/
 
 #include "cube.hpp"
