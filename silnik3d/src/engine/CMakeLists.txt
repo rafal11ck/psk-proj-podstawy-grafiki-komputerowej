@@ -55,6 +55,7 @@ include/scaleable.hpp
 include/shader.hpp
 include/shader_m.hpp
 include/shape.hpp
+include/sphere.hpp
 include/texture.hpp
 include/transformable.hpp
 include/vertex.hpp
@@ -67,6 +68,7 @@ rotatable.cpp
 scaleable.cpp
 shader.cpp
 shape.cpp
+sphere.cpp
 stb_image.cpp
 texture.cpp
 transformable.cpp

@@ -1,12 +1,16 @@
 #include "include/sphere.hpp"
+#include "log.hpp"
+#include "shape.hpp"
 
 #include <GL/glew.h>
 #include <vector>
 
-static std::vector<Vertex> generateVerticies(float radius,
-                                             GLuint sectorCount = 30,
-                                             GLuint stackCount = 30) {
+unsigned int Sphere::defaultSectorCount{30};
+unsigned int Sphere::defaultStackCount{30};
 
+std::vector<Vertex> Sphere::generateVerticies(float radius,
+                                              unsigned int sectorCount,
+                                              unsigned int stackCount) {
   std::vector<Vertex> result{};
 
   GLfloat sectorStep = 2 * M_PI / static_cast<GLfloat>(sectorCount);
@@ -44,8 +48,9 @@ static std::vector<Vertex> generateVerticies(float radius,
   return result;
 }
 
-std::vector<GLuint> Sphere::generateIndicies(float radius, GLuint sectorCount,
-                                             GLuint stackCount) {
+std::vector<GLuint> Sphere::generateIndicies(float radius,
+                                             unsigned int sectorCount,
+                                             unsigned int stackCount) {
   std::vector<GLuint> result{};
   for (GLuint i = 0; i < stackCount; i++) {
     GLuint k1{i * (sectorCount + 1)};
@@ -67,3 +72,12 @@ std::vector<GLuint> Sphere::generateIndicies(float radius, GLuint sectorCount,
   }
   return result;
 }
+
+Sphere::Sphere(float radius, Texture textureDiffuse, Texture textureSpecular,
+               unsigned int sectorCount, unsigned int stackCount)
+    : Shape(generateVerticies(radius, sectorCount, stackCount),
+            generateIndicies(radius, sectorCount, stackCount), textureDiffuse,
+            textureSpecular),
+      m_radius(radius) {
+  LOGTRACEN;
+};

@@ -2,17 +2,31 @@
 #define SPHERE_HPP_
 
 #include "shape.hpp"
+#include "texture.hpp"
 #include "vertex.hpp"
 #include <GL/glew.h>
 
 class Sphere : public Shape {
+  static unsigned int defaultSectorCount;
+  static unsigned int defaultStackCount;
+
+public:
   static std::vector<Vertex> generateVerticies(float radius,
-                                               GLuint sectorCount = 30,
-                                               GLuint stackCount = 30);
+                                               unsigned int sectorCount,
+                                               unsigned int stackCount);
 
   static std::vector<GLuint> generateIndicies(float radius,
-                                              GLuint sectorCount = 30,
-                                              GLuint stackCount = 30);
+                                              unsigned int sectorCount,
+                                              unsigned int stackCount);
+
+  Sphere(float radius,
+         Texture textureDiffuse = Texture{Texture::TextureType::diffuse},
+         Texture textureSpecular = Texture{Texture::TextureType::specular},
+         unsigned int sectorCount = defaultSectorCount,
+         unsigned int stackCount = defaultStackCount);
+
+private:
+  float m_radius;
 };
 
 #endif // SPHERE_HPP_
