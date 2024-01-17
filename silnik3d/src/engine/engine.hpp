@@ -8,6 +8,7 @@
 #include "SFML/Window/Window.hpp"
 #include "camera.hpp"
 #include "drawable.hpp"
+#include "light.hpp"
 #include "resources.hpp"
 #include "shader.hpp"
 #include <functional>
@@ -29,16 +30,18 @@ public:
 
   /**
    *@brief Distance to near clipping plane from camera.*/
-  static constexpr float clippingPlaneNear{0.1};
+  static constexpr float s_clippingPlaneNear{0.1};
 
   /**
    *@brief Distance to far clipping plane from camera.*/
-  static constexpr float clippingPlaneFar{100};
+  static constexpr float s_clippingPlaneFar{100};
 
-  static const std::string defaultShaderDir;
+  static const std::string s_defaultShaderDir;
 
-  static const std::string defaultShaderPathVertex;
-  static const std::string defaultShaderPathFragment;
+  static const std::string s_defaultShaderPathVertex;
+  static const std::string s_defaultShaderPathFragment;
+
+  static const unsigned int s_maxlightcount;
 
   static Engine &getInstance();
 
@@ -91,6 +94,10 @@ public:
    *@see addDrawable
    **/
   void removeDrawable(Drawable *const drawable);
+
+  void addLight(Light *const light);
+
+  void removeLight(Light *const light);
 
   Camera &getCamera();
   float getAspectRatio() const;
@@ -151,6 +158,11 @@ private:
    *@brief Collection of drawables drawn by engine.
    **/
   std::set<Drawable *> m_drawables{};
+
+  /**
+   *@brief Collection of lights.
+   **/
+  std::set<Light *> m_lights{};
 
   Camera m_camera{};
 

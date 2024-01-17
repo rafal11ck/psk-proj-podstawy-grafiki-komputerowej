@@ -1,3 +1,4 @@
+#include "light.hpp"
 #include <cstdlib>
 #define TRACE
 #include <log.hpp>
@@ -16,13 +17,15 @@
 
 Engine *Engine::s_instance{nullptr};
 
-const std::string Engine::defaultShaderDir{getResourcesPath() + "/shaders/"};
+const std::string Engine::s_defaultShaderDir{getResourcesPath() + "/shaders/"};
 
-const std::string Engine::defaultShaderPathVertex{defaultShaderDir +
-                                                  "vertex.glsl"};
+const std::string Engine::s_defaultShaderPathVertex{s_defaultShaderDir +
+                                                    "vertex.glsl"};
 
-const std::string Engine::defaultShaderPathFragment{defaultShaderDir +
-                                                    "/fragment.glsl"};
+const std::string Engine::s_defaultShaderPathFragment{s_defaultShaderDir +
+                                                      "/fragment.glsl"};
+
+const unsigned int Engine::s_maxlightcount{8};
 
 Engine &Engine::getInstance() {
 
@@ -104,6 +107,24 @@ void Engine::removeDrawable(Drawable *const drawable) {
   m_drawables.erase(drawable);
 };
 
+void Engine::addLight(Light *const light) {
+
+  LOGINFO << "Attempting to add light drawable " << light << "\n";
+  const bool didInsert = m_lights.insert(light).second;
+  if (!didInsert) {
+    LOGWARN << "Attempted to add already existing light " << light << " !\n";
+  }
+
+  if (m_lights.size() >= Engine::s_maxlightcount) {
+    LOGWARN << "More lights than handled by engine.\n";
+  }
+};
+
+void Engine::removeLight(Light *const light) {
+  LOGINFO << "Removing light " << light << "\n";
+  m_lights.erase(light);
+};
+
 Camera &Engine::getCamera() { return m_camera; };
 
 float Engine::getAspectRatio() const {
@@ -117,11 +138,11 @@ glm::mat4 Engine::computeProjectionMatrix() const {
   case ProjectionType::perspective:
     projection =
         glm::perspective(glm::radians(m_camera.getZoom()), getAspectRatio(),
-                         clippingPlaneNear, clippingPlaneFar);
+                         s_clippingPlaneNear, s_clippingPlaneFar);
     break;
   case ProjectionType::orthogonal:
     projection = glm::ortho(-getAspectRatio(), getAspectRatio(), -1.f, 1.f,
-                            clippingPlaneNear, clippingPlaneFar);
+                            s_clippingPlaneNear, s_clippingPlaneFar);
     break;
   default:
     LOGERROR << "Projection type not handled (casted = "
@@ -172,7 +193,7 @@ Engine::Engine() {
   std::string shaderDir{getResourcesPath() + "/shaders/"};
 
   m_defaultShader =
-      new Shader(defaultShaderPathVertex, defaultShaderPathFragment);
+      new Shader(s_defaultShaderPathVertex, s_defaultShaderPathFragment);
 
   m_defaultShader->use();
   m_defaultShader->setMat4("view", glm::mat4{1});
@@ -188,6 +209,11 @@ Engine::~Engine() {
   for (auto drawable : m_drawables) {
     LOGINFO << "Deleting drawable" << drawable << "\n";
     delete (drawable);
+  }
+
+  for (auto light : m_lights) {
+    LOGINFO << "Deleting light" << light << "\n";
+    delete (light);
   }
 
   /// Deletes defaultshader it it's not nullptr.
