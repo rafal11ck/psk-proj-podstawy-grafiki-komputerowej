@@ -42,12 +42,18 @@ BasicMesh::BasicMesh(verticies_t veritices, indicies_t indicies) {
   initialize(veritices, indicies);
 }
 
+BasicMesh::~BasicMesh() { delete m_VAO; }
+
 void BasicMesh::draw(Shader &shader) {
   LOGTRACEN;
   shader.use();
+  shader.setInt("material.diffuse", 0);
+  shader.setInt("material.specular", 1);
+  shader.setFloat("material.shininess", m_shininess);
+
   m_VAO->bind();
   glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, 0);
   m_VAO->unBind();
 }
 
-BasicMesh::~BasicMesh() { delete m_VAO; }
+void BasicMesh::setShininess(float shininess) { m_shininess = shininess; };

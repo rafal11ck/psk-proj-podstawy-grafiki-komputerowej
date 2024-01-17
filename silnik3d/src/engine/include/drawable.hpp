@@ -9,6 +9,8 @@
  **/
 class Drawable {
 
+  float shininess;
+
 public:
   virtual void draw(Shader &shader) = 0;
 

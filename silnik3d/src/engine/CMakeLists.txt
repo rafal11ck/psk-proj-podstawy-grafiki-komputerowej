@@ -48,6 +48,7 @@ include/camera.hpp
 include/cube.hpp
 include/drawable.hpp
 include/elementBuffer.hpp
+include/light.hpp
 include/moveable.hpp
 include/resources.hpp
 include/rotatable.hpp
@@ -62,6 +63,7 @@ include/transformable.hpp
 include/vertex.hpp
 include/vertexArray.hpp
 include/vertexBuffer.hpp
+light.cpp
 log.cpp
 log.hpp
 moveable.cpp

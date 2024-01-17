@@ -34,6 +34,8 @@ private:
   /// @brief Elements  inidcies collection.
   indicies_t m_indicies;
 
+  float m_shininess{0.5};
+
 protected:
   /**
    *@brief
@@ -50,5 +52,7 @@ public:
   ~BasicMesh();
 
   virtual void draw(Shader &shader) override;
+
+  void setShininess(float shininess);
 };
 #endif // BASICMESH_HPP_

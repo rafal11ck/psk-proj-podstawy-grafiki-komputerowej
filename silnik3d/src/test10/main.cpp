@@ -72,6 +72,25 @@ int main() {
   ball->setPosition({0, 0, -5});
   paczek->setPosition({0, 0, -5});
 
+  Shape *gigaPaczek{new Torus(0.3, 25,
+                              {Texture::TextureType::diffuse,
+                               getResourcesPath() + "textures/container.png"},
+                              {Texture::TextureType::specular},
+                              Torus::s_defaultSidesCount, 100)};
+
+  engine.addDrawable(gigaPaczek);
+
+  Shape *gigaPaczek2{new Torus(0.3, 24,
+                               {
+                                   Texture::TextureType::diffuse,
+                               },
+                               {Texture::TextureType::specular}, 30, 100)};
+
+  engine.addDrawable(gigaPaczek2);
+
+  ball->setPosition({0, 0, -5});
+  paczek->setPosition({0, 0, -5});
+
   engine.setLoopFunction([&]() {
     engine.moveMouseToCenterOfWindow();
     static constexpr float angleSpeed{60};
@@ -79,7 +98,9 @@ int main() {
     const float rotation{
         glm::radians(angleSpeed * engine.getLastFrameDuration().asSeconds())};
 
-    paczek->rotate(rotation * 2, {1, 0, 1});
+    paczek->rotate(rotation * 0.3, {1, 0, 1});
+    gigaPaczek->rotate(rotation * 0.05, {-1, 1, 1});
+    gigaPaczek2->rotate(rotation * 0.07, {1, 0, -1});
     ball->rotate(rotation, {-0.5, 1, 0});
     boxContainer->rotate(rotation, {1, 0, 0});
     boxMeme->rotate(rotation, {-1, 0, 0});
