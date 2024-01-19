@@ -8,10 +8,12 @@
 #include "SFML/Window/Keyboard.hpp"
 #include "cube.hpp"
 #include "engine.hpp"
+#include "light.hpp"
 #include "resources.hpp"
 #include "sphere.hpp"
 #include "texture.hpp"
 #include "torus.hpp"
+#include <glm/fwd.hpp>
 
 Engine &engine{Engine::getInstance()};
 
@@ -36,10 +38,10 @@ int main() {
       new Cube{Texture{Texture::TextureType::diffuse,
                        getResourcesPath() + "/textures/container.png"},
                Texture{Texture::TextureType::specular,
-                       getResourcesPath() + "/textures/eureka.png"}};
+                       getResourcesPath() + "/textures/container.png"}};
 
-  boxContainer->setPosition(-3, 0, -3);
-  boxContainer->setScale(0.2);
+  boxContainer->setPosition(-5, 0, 10);
+  boxContainer->setScale(2);
   engine.addDrawable(boxContainer);
 
   Shape *boxMeme =
@@ -65,7 +67,7 @@ int main() {
   Shape *paczek{new Torus(0.1, 1,
                           {Texture::TextureType::diffuse,
                            getResourcesPath() + "textures/container.png"},
-                          {Texture::TextureType::specular}, 100, 100)};
+                          {Texture::TextureType::specular}, 80, 80)};
 
   engine.addDrawable(paczek);
 
@@ -91,6 +93,20 @@ int main() {
   ball->setPosition({0, 0, -5});
   paczek->setPosition({0, 0, -5});
 
+  Shape *lightCube{new Cube{}};
+  engine.addDrawable(lightCube);
+  lightCube->setScale(0.1);
+  lightCube->setPosition(0, 15, 0);
+
+  Light *light{new Light{}};
+  light->setAmbient(glm::vec3{0.3});
+  light->setDiffuse(glm::vec3{0.25});
+  light->setSpecular({0.3, 0.3, 0.3});
+
+  light->setPosition({0, 15, 0});
+
+  engine.addLight(light);
+
   engine.setLoopFunction([&]() {
     engine.moveMouseToCenterOfWindow();
     static constexpr float angleSpeed{60};
@@ -99,10 +115,10 @@ int main() {
         glm::radians(angleSpeed * engine.getLastFrameDuration().asSeconds())};
 
     paczek->rotate(rotation * 0.3, {1, 0, 1});
-    gigaPaczek->rotate(rotation * 0.05, {-1, 1, 1});
-    gigaPaczek2->rotate(rotation * 0.07, {1, 0, -1});
+    gigaPaczek->rotate(rotation * 0.10, {-1, 1, 1});
+    gigaPaczek2->rotate(rotation * 0.10, {1, 0, -1});
     ball->rotate(rotation, {-0.5, 1, 0});
-    boxContainer->rotate(rotation, {1, 0, 0});
+    boxContainer->rotate(rotation * 0.3, {1, 0, 0});
     boxMeme->rotate(rotation, {-1, 0, 0});
     boxMemeFast->rotate(rotation * 5, {0, 0.5, 0.5});
   });

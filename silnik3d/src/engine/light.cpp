@@ -1,10 +1,13 @@
 #include "include/light.hpp"
+#include "log.hpp"
 
 Light::Light() {
   diffuse = glm::vec3(0.5f);
   ambient = glm::vec3(0.2f);
   specular = glm::vec3(1.0f);
 }
+
+Light::~Light() {}
 
 void Light::setAmbient(glm::vec3 ambient) { this->ambient = ambient; }
 
@@ -24,18 +27,18 @@ void Light::setSpecular(GLfloat r, GLfloat g, GLfloat b) {
   this->specular = glm::vec3(r, g, b);
 }
 
-glm::vec3 Light::getAmbient() { return this->ambient; }
+glm::vec3 Light::getAmbient() const { return this->ambient; }
 
-glm::vec3 Light::getDiffuse() { return this->diffuse; }
+glm::vec3 Light::getDiffuse() const { return this->diffuse; }
 
-glm::vec3 Light::getSpecular() { return this->specular; }
+glm::vec3 Light::getSpecular() const { return this->specular; }
 
-void Light::update(Shader &shader, int index) {
+void Light::update(Shader &shader, int index) const {
   if (index >= 8 || index < 0) {
-    std::cout << "SHADER ERROR" << std::endl;
-    std::cout
+    LOGERROR
+        << "SHADER ERROR "
         << "Light index out of range. This value should be between 0 and 7."
-        << std::endl;
+        << "Passed " << index << '\n';
     return;
   }
 

@@ -24,6 +24,7 @@ struct Light {
 uniform vec3 viewPos;
 uniform Material material;
 uniform Light light[MAX_LIGHTS];
+uniform int LightsCount;
 
 vec3 calcLight(Light light, vec3 norm, vec3 viewDir) {
     vec3 lightDir = normalize(light.position - FragPos);
@@ -47,7 +48,7 @@ void main()
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 result = vec3(0.0);
 
-    for(int i = 0; i < MAX_LIGHTS; i++) {
+    for(int i = 0; i < LightsCount; i++) {
         result += calcLight(light[i], norm, viewDir);
     }
 

@@ -5,7 +5,7 @@
 #include "shape.hpp"
 #include "texture.hpp"
 
-class Cube final : public Shape {
+class Cube : public Shape {
   static const std::vector<Vertex> s_verticies;
   static const std::vector<GLuint> s_indicies;
 

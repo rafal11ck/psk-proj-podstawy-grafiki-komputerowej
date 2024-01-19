@@ -14,7 +14,7 @@ public:
   void setPosition(glm::vec3 position);
   glm::vec3 getPosition() const;
 
-  // virtual glm::vec4 getModelMatrix() override;
+  virtual glm::mat4 getModelMatrix() override;
 
   virtual ~Movable() = 0;
 };

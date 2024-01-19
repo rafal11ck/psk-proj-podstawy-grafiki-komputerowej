@@ -255,6 +255,8 @@ void Engine::render() {
 
   m_defaultShader->use();
 
+  updateShaderLights(*m_defaultShader);
+
   m_defaultShader->setMat4("projection", computeProjectionMatrix());
 
   m_defaultShader->setMat4("view", getCamera().getViewMatrix());
@@ -311,3 +313,19 @@ void Engine::handleCameraKeyboard() {
   handle(sf::Keyboard::Key::A, sf::Keyboard::Key::D,
          Camera::Camera_Movement::LEFT, Camera::Camera_Movement::RIGHT);
 };
+
+void Engine::updateShaderLights(Shader &shader) const {
+  LOGTRACEN;
+
+  shader.setInt("LightsCount", m_lights.size());
+
+  int idx{};
+  for (auto it{m_lights.begin()}; it != m_lights.end(); ++it, ++idx) {
+    (*it)->update(shader, idx);
+  }
+
+  for (int idx = m_lights.size(); idx < Engine::s_maxlightcount; ++idx) {
+    Light dumbLight{};
+    dumbLight.update(shader, idx);
+  }
+}

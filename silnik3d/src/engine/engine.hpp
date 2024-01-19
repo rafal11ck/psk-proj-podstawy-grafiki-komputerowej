@@ -204,6 +204,8 @@ private:
    *Used in main loop.
    **/
   void handleCameraKeyboard();
+
+  void updateShaderLights(Shader &shader) const;
 };
 
 #endif // ENGINE_HPP_
