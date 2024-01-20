@@ -14,3 +14,10 @@ add_subdirectory(test8)
 add_subdirectory(test9)
 add_subdirectory(test10)
 add_subdirectory(test11)
+
+
+add_subdirectory(test12)
+add_subdirectory(test13)
+add_subdirectory(test14)
+add_subdirectory(test15)
+add_subdirectory(test16)
