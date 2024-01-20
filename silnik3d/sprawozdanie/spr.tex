@@ -1,4 +1,4 @@
-% Created 2024-01-20 Sat 14:15
+% Created 2024-01-20 Sat 14:25
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 
 \newpage
 \section{Wymagania systemowe}
-\label{sec:org4b8497f}
+\label{sec:orge379287}
 \begin{itemize}
 \item SFML
 \item GLEW
@@ -40,10 +40,10 @@
 \item cmake
 \end{itemize}
 \section{Z wymagań projektu}
-\label{sec:orgf9dbc72}
+\label{sec:orgf7514bb}
 
 \subsection{Obsługa klawiatury i myszy}
-\label{sec:orgeba6bcd}
+\label{sec:orgeefe7e3}
 
 Wykorzystaj \texttt{Engine::setEventHandler()}. Po szczegóły zajrzyj do dokumentacji.
 
@@ -74,47 +74,47 @@ int main() {
 }
 \end{verbatim}
 \subsection{Zmienna szybkość odświeżania}
-\label{sec:org2c7ad5a}
+\label{sec:org890b744}
 
 Wykorzystaj \texttt{Engine::setMaxFps()}.
 \subsection{Rysowanie prymitywów (3D)}
-\label{sec:org7689385}
+\label{sec:org357f7e9}
 
 Wykorzystaj klasę \texttt{Shape} oraz jej pochodne np \texttt{Cube}. W celu dodania własnych prymitywów należy stworzyć klasę która dziedziczy po \texttt{Shape}.
 \subsection{Obsługa kamery}
-\label{sec:org4b3d890}
+\label{sec:orgca9255e}
 
 Klasa \texttt{Camera}, obiekt klasy \texttt{Engine} ma obiekt tej klasy, ma też domyślne obsługiwanie jej, które należy aktywować przy użyciu metod
 \texttt{Engine::setCameraHandlingKeyboard()} oraz \texttt{Engine::setCameraHandlingMouse}.
 Można także realizować własną obsługę kamery do tego należy uzyskać obiekt \texttt{Camera} przy użyciu metody \texttt{Engine::getCamrea()}.
 \subsection{Hierarchia klas}
-\label{sec:org2ec57a8}
+\label{sec:org61fab68}
 Jest, szczegóły można zobaczyć w dokumentacji.
 \subsection{Obsługa transformacji geometrycznych na prymitywach.}
-\label{sec:orgc90f349}
+\label{sec:org465e502}
 
 Jest przy użyciu pochodnych klasy \texttt{Transformable}. Szczegóły w dokumentacji.
 \subsection{Oświetlenie (można dodać obsługę przycisku, który wyłącza i włącza oświetlenie)}
-\label{sec:org7cb251d}
+\label{sec:org355ebe8}
 
 Klasa \texttt{Light} oraz metoda \texttt{Engine::addLight()}. Szczegóły w dokumentacji.
 Przycisk można zrealizować za pomocą ustawienia światła otoczenia na 1, jako jedyne źródło światła.
 \subsection{Cieniowanie (można dodać obsługę przycisku, który wyłącza i włącza cieniowanie)}
-\label{sec:orgff8149c}
+\label{sec:org599b4b9}
 
 Tak jak w oświetleniu należy użyć klasy \texttt{Light} oraz zmienić moc światła. Szczegóły w dokumentacji.
 \subsection{Teksturowanie obiektów}
-\label{sec:orgbf962e8}
+\label{sec:org7522fd4}
 
 Każda instancja klasy \texttt{Shape} musi mieć teksturę, jeśli tekstura nie zostanie podana do konstruktora, to wykorzysta jest domyślna tekstura.
 
 Szczegóły w dokumentacji.
 \section{Użycie silnika}
-\label{sec:org6e6b891}
+\label{sec:org357a322}
 Aby użyć silnik należy uzyskać obiekt klasy \texttt{Engine}. Przy użyciu metody \texttt{Engine::getInstance()}.
 Następnie należy wywołać metodę \texttt{Engine::loop()}, która aktywuje główną pętle gry.
 \subsection{Użycie prymitywów.}
-\label{sec:org1eaec48}
+\label{sec:org9a875c6}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/test14.png}
@@ -166,7 +166,7 @@ int main() {
 }
 \end{verbatim}
 \subsection{Teksturowanie}
-\label{sec:org9cb56de}
+\label{sec:orgf95d41a}
 
 \begin{figure}[htbp]
 \centering
@@ -217,7 +217,7 @@ int main() {
 }
 \end{verbatim}
 \subsection{Oświetlenie, cieniowanie, transformacje}
-\label{sec:org2fd61dc}
+\label{sec:org5d4a179}
 
 \begin{figure}[htbp]
 \centering
@@ -249,6 +249,9 @@ constexpr float lightDistance{2};
 int main() {
   /// Set ProjectionType perspective so that it looks natural.
   engine.setProjectionType(Engine::ProjectionType::perspective);
+
+  /// Enable keyboard movement
+  engine.setCameraHandlingKeyboard(true);
 
   /// Add light to engine that is full ambient light so that textures are
   /// visible
@@ -300,9 +303,9 @@ int main() {
 }
 \end{verbatim}
 \section{Wybrane testy}
-\label{sec:org727f404}
+\label{sec:org3794488}
 \subsection{Test 10}
-\label{sec:org011e1f8}
+\label{sec:orgebba117}
 
 \begin{figure}[htbp]
 \centering
@@ -439,7 +442,7 @@ int main() {
 }
 \end{verbatim}
 \subsection{Test 11}
-\label{sec:orgd35187e}
+\label{sec:org98e250e}
 
 \begin{figure}[htbp]
 \centering

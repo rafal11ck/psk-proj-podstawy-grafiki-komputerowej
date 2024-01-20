@@ -22,6 +22,9 @@ int main() {
   /// Set ProjectionType perspective so that it looks natural.
   engine.setProjectionType(Engine::ProjectionType::perspective);
 
+  /// Enable keyboard movement
+  engine.setCameraHandlingKeyboard(true);
+
   /// Add light to engine that is full ambient light so that textures are
   /// visible
   Light *light{new Light{}};
