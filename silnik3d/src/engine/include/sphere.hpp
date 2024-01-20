@@ -19,7 +19,7 @@ public:
                                               unsigned int sectorCount,
                                               unsigned int stackCount);
 
-  Sphere(float radius,
+  Sphere(float radius = 1,
          Texture textureDiffuse = Texture{Texture::TextureType::diffuse},
          Texture textureSpecular = Texture{Texture::TextureType::specular},
          unsigned int sectorCount = defaultSectorCount,
