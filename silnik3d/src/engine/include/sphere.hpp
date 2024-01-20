@@ -12,17 +12,17 @@ class Sphere : public Shape {
   static unsigned int defaultStackCount;
 
 public:
-  /// @brief Generates verticies for the sphere 
+  /// @brief Generates verticies for the sphere
   static std::vector<Vertex> generateVerticies(float radius,
                                                unsigned int sectorCount,
                                                unsigned int stackCount);
-  /// @brief Generates indicies for the sphere 
+  /// @brief Generates indicies for the sphere
   static std::vector<GLuint> generateIndicies(float radius,
                                               unsigned int sectorCount,
                                               unsigned int stackCount);
 
   /// @brief Constructor
-  Sphere(float radius,
+  Sphere(float radius = 1,
          Texture textureDiffuse = Texture{Texture::TextureType::diffuse},
          Texture textureSpecular = Texture{Texture::TextureType::specular},
          unsigned int sectorCount = defaultSectorCount,

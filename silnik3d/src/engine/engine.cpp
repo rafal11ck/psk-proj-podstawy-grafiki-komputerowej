@@ -326,6 +326,10 @@ void Engine::updateShaderLights(Shader &shader) const {
 
   for (int idx = m_lights.size(); idx < Engine::s_maxlightcount; ++idx) {
     Light dumbLight{};
+    dumbLight.setPosition({0, 0, 0});
+    dumbLight.setAmbient(glm::vec3{0});
+    dumbLight.setDiffuse(glm::vec3{0});
+    dumbLight.setSpecular((glm::vec3{0}));
     dumbLight.update(shader, idx);
   }
 }

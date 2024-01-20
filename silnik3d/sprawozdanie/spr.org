@@ -1,7 +1,106 @@
-#+title: Spr
+#+title: Podstawy grafiki komputerwej 1 silnik do gier 3d
 #+language: pl
+#+author: Rafał Grot, Kamil Gunia, Piotr Górski
+#+latex_header: \usepackage[margin=2cm]{geometry}
+#+latex_header: \usepackage[polish]{babel}
+#+options: todo:nil
 
-* Libaries
+
+\newpage
+
+
+* DONE Wymagania systemowe
 - SFML
-- GLAD -- SFML zawiera GLAD
 - GLEW
+- GLM
+- stb
+- cmake
+
+* DONE Z wymagań projektu
+
+** DONE Obsługa klawiatury i myszy
+
+Wykorzystaj =Engine::setEventHandler()=. Po szczegóły zajrzyj do dokumentacji.
+
+- Przykład
+#+include: ../src/test12/main.cpp src cpp
+
+** DONE Zmienna szybkość odświeżania
+
+Wykorzystaj =Engine::setMaxFps()=.
+
+** DONE Rysowanie prymitywów (3D)
+
+Wykorzystaj klasę =Shape= oraz jej pochodne np =Cube=. W celu dodania własnych prymitywów należy stworzyć klasę która dziedziczy po =Shape=.
+
+** DONE Obsługa kamery
+
+Klasa =Camera=, obiekt klasy =Engine= ma obiekt tej klasy, ma też domyślne obsługiwanie jej, które należy aktywować przy użyciu metod
+=Engine::setCameraHandlingKeyboard()= oraz =Engine::setCameraHandlingMouse=.
+Można także realizować własną obsługę kamery do tego należy uzyskać obiekt =Camera= przy użyciu metody =Engine::getCamrea()=.
+
+** DONE Hierarchia klas
+Jest, szczegóły można zobaczyć w dokumentacji.
+
+** DONE Obsługa transformacji geometrycznych na prymitywach.
+
+Jest przy użyciu pochodnych klasy =Transformable=. Szczegóły w dokumentacji.
+
+
+** DONE Oświetlenie (można dodać obsługę przycisku, który wyłącza i włącza oświetlenie)
+
+Klasa =Light= oraz metoda =Engine::addLight()=. Szczegóły w dokumentacji.
+Przycisk można zrealizować za pomocą ustawienia światła otoczenia na 1, jako jedyne źródło światła.
+
+
+** DONE Cieniowanie (można dodać obsługę przycisku, który wyłącza i włącza cieniowanie)
+
+Tak jak w oświetleniu należy użyć klasy =Light= oraz zmienić moc światła. Szczegóły w dokumentacji.
+
+** DONE Teksturowanie obiektów
+
+Każda instancja klasy =Shape= musi mieć teksturę, jeśli tekstura nie zostanie podana do konstruktora, to wykorzysta jest domyślna tekstura.
+
+Szczegóły w dokumentacji.
+* TODO Użycie silnika
+Aby użyć silnik należy uzyskać obiekt klasy =Engine=. Przy użyciu metody =Engine::getInstance()=.
+Następnie należy wywołać metodę =Engine::loop()=, która aktywuje główną pętle gry.
+
+
+** DONE Użycie prymitywów.
+#+caption: Prymitywy.
+[[file:img/test14.png]]
+
+#+include: ../src/test14/main.cpp src cpp
+
+** DONE Teksturowanie
+
+#+caption: Teksturowanie obiektów.
+[[file:img/test15.png]]
+
+#+include: ../src/test15/main.cpp src cpp
+
+** DONE Oświetlenie, cieniowanie, transformacje
+
+#+caption: Środek pączka jest źródłem światła
+[[file:img/test16.png]]
+
+
+#+include: ../src/test16/main.cpp src cpp
+
+
+* Wybrane testy
+** Test 10
+
+#+caption: Zrzut ekranu z test10
+[[file:img/test10.png]]
+
+#+include: ../src/test10/main.cpp src cpp
+
+** Test 11
+
+#+caption: Zrzut ekranu z test11
+[[file:img/test11.png]]
+
+
+#+include: ../src/test11/main.cpp src cpp

@@ -1,11 +1,7 @@
 #include "include/light.hpp"
 #include "log.hpp"
 
-Light::Light() {
-  diffuse = glm::vec3(0.5f);
-  ambient = glm::vec3(0.2f);
-  specular = glm::vec3(1.0f);
-}
+Light::Light() {}
 
 Light::~Light() {}
 
