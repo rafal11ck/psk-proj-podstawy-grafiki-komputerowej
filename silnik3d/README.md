@@ -6,10 +6,6 @@
 - Zmienna szybkość odświeżania
 
 - Rysowanie prymitywów (3D)
-  + sześcian
-  + czworościan (ostrosłup)
-  + sfera
-  + torus
   
 - Obsługa kamery
 
@@ -29,4 +25,4 @@
 
 # How to use tests
 
-Build them and run in their respective source directory.
+Build them and run in their respective source directory. 
