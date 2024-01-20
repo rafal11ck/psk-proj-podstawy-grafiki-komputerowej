@@ -15,12 +15,16 @@ public:
   /**
    *@brief Rotate by given angle around axis.
    *@param angle Angle in radians
+   * @param x x parameter of rotation vector
+   * @param y y parameter of rotation vector
+   * @param z z parameter of rotation vector
    **/
   void rotate(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
 
   /**
    *@brief Rotate by given angle around axis.
    *@param angle Angle in radians
+   *@param axis Axis of rotation
    **/
   void rotate(GLfloat angle, glm::vec3 axis);
 
