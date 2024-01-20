@@ -29,11 +29,16 @@ public:
    **/
   static GLenum getTextureTypeUnit(const TextureType type);
 
+  /// @brief Binds texture to id
   void bind();
 
+  /// @brief Unbinds texture from id
   void unBind();
 
-  // Only PNG / jpeg tested
+  /**
+   * @brief Constructor
+   * Only PNG / jpeg tested
+  */
   Texture(TextureType type, const std::string path = defaultTexturePath);
 };
 #endif // TEXTURE_HPP_

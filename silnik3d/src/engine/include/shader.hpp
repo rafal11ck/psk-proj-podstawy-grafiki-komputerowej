@@ -11,6 +11,7 @@
 #include <sstream>
 #include <string>
 
+/// @brief Shader class
 class Shader {
 private:
   using ShaderType = enum SHADER_TYPE { VERTEX, FRAGMENT };
@@ -19,6 +20,7 @@ private:
   GLuint vertexShader;
   GLuint id;
 
+  /// @brief Loads shader from file 
   std::string loadShaderFromFile(const char *path);
   GLuint createShader(const char *path, ShaderType type);
   GLuint createProgram();

@@ -9,11 +9,17 @@
 #include <sstream>
 #include <string>
 
+/// @brief Shader class
 class Shader {
 public:
   unsigned int ID;
   // constructor generates the shader on the fly
   // ------------------------------------------------------------------------
+  /**
+   * @brief Constructor, generates the shader on the fly
+   * @param vertexPath Path to vertex source code
+   * @param fragmentPath Path to fragment source code
+  */
   Shader(const char *vertexPath, const char *fragmentPath) {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;

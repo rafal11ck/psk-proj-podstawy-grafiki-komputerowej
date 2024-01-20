@@ -3,15 +3,19 @@
 
 #include <GL/glew.h>
 
+/// @brief Vertex Array class
 class VertexArray {
   /// @brief Vertex array id;
   GLuint m_VAOid{};
 
 public:
+  /// @brief Constructor
   VertexArray();
 
+  /// @brief Binds vertex array to id
   void bind();
 
+  /// @brief Unbinds vertex array from id
   static void unBind();
 
   /**

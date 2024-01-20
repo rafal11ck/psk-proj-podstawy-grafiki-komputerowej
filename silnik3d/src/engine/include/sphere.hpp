@@ -6,19 +6,22 @@
 #include "vertex.hpp"
 #include <GL/glew.h>
 
+/// @brief Sphere class
 class Sphere : public Shape {
   static unsigned int defaultSectorCount;
   static unsigned int defaultStackCount;
 
 public:
+  /// @brief Generates verticies for the sphere 
   static std::vector<Vertex> generateVerticies(float radius,
                                                unsigned int sectorCount,
                                                unsigned int stackCount);
-
+  /// @brief Generates indicies for the sphere 
   static std::vector<GLuint> generateIndicies(float radius,
                                               unsigned int sectorCount,
                                               unsigned int stackCount);
 
+  /// @brief Constructor
   Sphere(float radius,
          Texture textureDiffuse = Texture{Texture::TextureType::diffuse},
          Texture textureSpecular = Texture{Texture::TextureType::specular},
@@ -26,6 +29,7 @@ public:
          unsigned int stackCount = defaultStackCount);
 
 private:
+  /// @brief Radius of the sphere
   float m_radius;
 };
 
