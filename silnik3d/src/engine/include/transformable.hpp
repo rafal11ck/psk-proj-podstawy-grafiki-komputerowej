@@ -1,11 +1,11 @@
 #ifndef TRANSFORMABLE_HPP_
 #define TRANSFORMABLE_HPP_
 
-/**
- *@brief Enables to do transformations to used as model matrix.
- **/
 #include <glm/glm.hpp>
 
+/**
+ *@brief Enables to do transformations used as model matrix.
+ **/
 class Transformable {
 protected:
   /**
@@ -13,7 +13,9 @@ protected:
    **/
   // glm::vec4 m_model{1.0f};
 
+  /// @brief Pure virtual Model Matrix getter 
   virtual glm::mat4 getModelMatrix() = 0;
+  /// @brief Pure virtual Destructor
   virtual ~Transformable() = 0;
 };
 

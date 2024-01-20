@@ -16,8 +16,7 @@
 #include <string_view>
 
 /**
- *@class
- *@brief Singleton
+ *@brief Singleton Engine class
  **/
 class Engine {
 
@@ -43,6 +42,7 @@ public:
 
   static const unsigned int s_maxlightcount;
 
+  /// @brief Engine instance getter 
   static Engine &getInstance();
 
   Time getLastFrameDuration() const;

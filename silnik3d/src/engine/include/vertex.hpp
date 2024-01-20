@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 
+/// @brief Vertex struct
 struct Vertex {
   glm::vec3 m_position{0.f};
   glm::vec3 m_normal{0.f};

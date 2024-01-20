@@ -5,7 +5,9 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
+/// @brief Indicates that object is transformable
 class Scalable : virtual public Transformable {
+  /// @brief Scale vector
   glm::vec3 m_scale{1.f};
 
 public:
@@ -27,8 +29,10 @@ public:
    **/
   void setScale(glm::vec3 scale);
 
+  /// @brief Scale getter 
   glm::vec3 getScale() const;
 
+  /// @brief Destructor
   virtual ~Scalable() = 0;
 };
 

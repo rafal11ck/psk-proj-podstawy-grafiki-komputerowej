@@ -5,8 +5,10 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
+/// @brief Indicates that object is rotateable
 class Rotatable : virtual public Transformable {
 private:
+  /// @brief Rotation Matrix
   glm::mat4 m_rotationMatrix{1.f};
 
 public:
@@ -22,6 +24,8 @@ public:
    **/
   void rotate(GLfloat angle, glm::vec3 axis);
 
+  /// @brief Rotation Matrix getter
+  /// @return Retursn the Rotation Matrix
   const glm::mat4 &getRotationMatrix() const;
 };
 

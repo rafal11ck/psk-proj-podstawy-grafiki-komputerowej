@@ -12,8 +12,11 @@ class Drawable {
   float shininess;
 
 public:
+  /// @brief Virtual method to draw a drawable
+  /// @param shader Shader for the drawable
   virtual void draw(Shader &shader) = 0;
 
+  /// @brief Destructor
   virtual ~Drawable() = 0;
 };
 

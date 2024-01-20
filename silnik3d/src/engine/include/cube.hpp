@@ -5,11 +5,15 @@
 #include "shape.hpp"
 #include "texture.hpp"
 
+/// @brief Cube class
 class Cube : public Shape {
   static const std::vector<Vertex> s_verticies;
   static const std::vector<GLuint> s_indicies;
 
 public:
+  /// @brief Constructor
+  /// @param textureDiffuse The Diffuse lighting texture
+  /// @param textureSpecular Thee Specular lighting texture
   Cube(Texture textureDiffuse = Texture{Texture::TextureType::diffuse},
        Texture textureSpecular = Texture{Texture::TextureType::specular});
 };
