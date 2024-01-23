@@ -15,8 +15,10 @@
 class Texture {
 
 public:
+  /// @brief TextureType aliases
   enum class TextureType { diffuse, specular };
 
+  /// @brief The default path to the texture
   static const std::string defaultTexturePath;
 
 private:

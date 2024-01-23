@@ -22,7 +22,9 @@ class BasicMesh : public Drawable {
   BasicMesh(BasicMesh &&) = delete;
 
 public:
+  /// @brief Vertex alias
   using verticies_t = std::vector<Vertex>;
+  /// @brief Index alias
   using indicies_t = std::vector<GLuint>;
 
 protected:

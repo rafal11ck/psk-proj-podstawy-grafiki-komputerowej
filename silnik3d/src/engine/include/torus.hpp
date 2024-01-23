@@ -7,7 +7,9 @@
 /// @brief Torus class
 class Torus : public Shape {
 public:
+  /// @brief Default amount of sides
   static const unsigned int s_defaultSidesCount;
+  /// @brief Deefault amount of rings
   static const unsigned int s_defaultRingsCount;
 
   /// @brief Generates vertices for torus 
@@ -18,7 +20,9 @@ public:
   static indicies_t generateIndicies(unsigned int sides, unsigned int rings);
 
 private:
+  /// @brief The outer radius
   float m_outerRadius;
+  /// @brief The inner radius
   float m_innerRadius;
 
 public:

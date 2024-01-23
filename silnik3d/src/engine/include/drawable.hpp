@@ -9,6 +9,7 @@
  **/
 class Drawable {
 
+  /// @brief Shininess of drawable
   float shininess;
 
 public:

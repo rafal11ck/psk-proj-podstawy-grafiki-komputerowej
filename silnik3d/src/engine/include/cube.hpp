@@ -7,7 +7,9 @@
 
 /// @brief Cube class
 class Cube : public Shape {
+  /// @brief shape's verticies vector
   static const std::vector<Vertex> s_verticies;
+  /// @brief shape's indicies vector
   static const std::vector<GLuint> s_indicies;
 
 public:

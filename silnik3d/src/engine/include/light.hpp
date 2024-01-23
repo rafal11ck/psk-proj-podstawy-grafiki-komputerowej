@@ -9,8 +9,11 @@
 /// @brief Light class
 class Light : public Movable {
 private:
+  /// @brief Ambient light vector
   glm::vec3 ambient{0};
+  /// @brief Diffuse light vector
   glm::vec3 diffuse{0};
+  /// @brief Specular light vector
   glm::vec3 specular{0};
 
 public:

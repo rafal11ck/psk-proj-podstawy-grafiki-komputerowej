@@ -27,18 +27,28 @@ public:
 
 private:
   // camera Attributes
+  ///@brief Camera position vector
   glm::vec3 m_position;
+  /// @brief Camera front vector
   glm::vec3 m_front;
+  /// @brief Camera up vector
   glm::vec3 m_up;
+  /// @brief Camera right vector
   glm::vec3 m_right;
+  /// @brief World's up direction vector
   glm::vec3 m_worldUp;
 
   // euler Angles
+  ///@brief Camera yaw
   float m_yaw;
+  /// @brief Camera pitch
   float m_pitch;
   // camera options
+  ///@brief Camera movement speed
   float m_movementSpeed;
+  /// @brief Camera mouse sensitivity
   float m_mouseSensitivity;
+  /// @brief Camera zoom
   float m_zoom;
 
 public:

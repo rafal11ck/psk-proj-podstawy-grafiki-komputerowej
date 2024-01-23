@@ -8,7 +8,9 @@
 
 /// @brief Sphere class
 class Sphere : public Shape {
+  /// @brief Amount of sectors
   static unsigned int defaultSectorCount;
+  /// @brief Amount of stacks of sectors
   static unsigned int defaultStackCount;
 
 public:
